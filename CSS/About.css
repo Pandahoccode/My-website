@@ -1,0 +1,131 @@
+/* about.css - About page specific styles */
+.about {
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  background-image: url(../assets/images/Background/Background-about.gif);
+  background-size: cover;
+}
+
+
+.about h2 {
+  font-size: 3rem;
+  background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 2rem;
+}
+
+.profile-pic {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid;
+  border-image: linear-gradient(135deg, #8b5cf6, #3b82f6) 1;
+  margin: 2rem auto;
+  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.profile-pic:hover {
+  transform: scale(1.05);
+}
+
+.about p {
+  font-size: 1.1rem;
+  color: whitesmoke;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 1.5rem auto;
+  text-align: left;
+}
+
+.about strong {
+  background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 600;
+}
+
+/* Skills Section */
+.skills-section {
+  margin-top: 4rem;
+}
+
+.skills-section h3 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: whitesmoke;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.skill-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-left: 4px solid #8b5cf6;
+}
+
+.skill-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(139, 92, 246, 0.2);
+  border-left-color: #3b82f6;
+}
+
+.skill-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Timeline Section */
+.timeline-section {
+  margin-top: 4rem;
+}
+
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 3rem auto;
+  padding-left: 2rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, #8b5cf6, #3b82f6);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 3rem;
+  padding-left: 2rem;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -1.5rem;
+  top: 0.5rem;
+  width: 12px;
+  height: 12px;
+  background: #8b5cf6;
+  border-radius: 50%;
+  border: 3px solid white;
+}

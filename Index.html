@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="page-title">My Website</title>
+  <link rel="stylesheet" href="CSS/Global.css">
+  <link rel="stylesheet" href="CSS/Home.css">
+  <link rel="stylesheet" href="CSS/Lang-switch.css">
+</head>
+
+<body>
+  <!-- Navigation -->
+  <header>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active" data-i18n="nav-home">Home</a></li>
+        <li><a href="Projects.html" data-i18n="nav-projects">Projects</a></li>
+        <li><a href="About.html" data-i18n="nav-about">About</a></li>
+        <li><a href="Contact.html" data-i18n="nav-contact">Contact</a></li>
+      </ul>
+      <div class="language-switcher">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="fr">FR</button>
+        <button class="lang-btn" data-lang="vi">VN</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero section -->
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1 data-i18n="home-title">Hi, I'm <span class="gradient-text">Phuc Anh</span></h1>
+        <p class="hero-subtitle" data-i18n="home-subtitle">Second-year BUT SD Student | Passionate about Computer Vision & AI</p>
+        <p class="hero-description" data-i18n="home-description">Transforming data into intelligent solutions through computer vision and machine learning</p>
+        <div class="hero-buttons">
+          <a href="projects.html" class="btn btn-primary" data-i18n="home-projects-btn">View My Projects</a>
+          <a href="about.html" class="btn btn-secondary" data-i18n="home-about-btn">Learn More About Me</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="floating-card">
+          <div class="card-icon">👁️</div>
+          <h4 data-i18n="skill-cv-title">Computer Vision</h4>
+          <p data-i18n="skill-cv-desc">Object Detection & Image Processing</p>
+        </div>
+        <div class="floating-card">
+          <div class="card-icon">📊</div>
+          <h4 data-i18n="skill-data-title">Data Science</h4>
+          <p data-i18n="skill-data-desc">Analysis & Visualization</p>
+        </div>
+        <div class="floating-card">
+          <div class="card-icon">🤖</div>
+          <h4 data-i18n="skill-ai-title">AI/ML</h4>
+          <p data-i18n="skill-ai-desc">Machine Learning Models</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Preview -->
+    <section class="skills-preview" style="text-align: center;">
+      <div class="container">
+        <h2 data-i18n="skills-title">Technical Expertise</h2>
+        <div class="skills-grid">
+          <div class="skill-item">
+            <div class="skill-icon">🐍</div>
+            <h3 data-i18n="python-title">Python Development</h3>
+            <p data-i18n="python-desc">Data analysis, computer vision, and automation scripts</p>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon">🛠️</div>
+            <h3 data-i18n="opencv-title">OpenCV & YOLO</h3>
+            <p data-i18n="opencv-desc">Real-time object detection and image processing</p>
+          </div>
+          <div class="skill-item">
+            <div class="skill-icon">📈</div>
+            <h3 data-i18n="analytics-title">Data Analytics</h3>
+            <p data-i18n="analytics-desc">SQL, PowerBI, and statistical analysis</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section class="featured-projects">
+      <div class="container">
+        <h2 data-i18n="featured-title">Featured Projects</h2>
+        <div class="projects-preview">
+          <div class="project-card preview">
+            <div class="project-badge" data-i18n="featured-badge">Featured</div>
+            <h3 data-i18n="project-helmet-title">Helmet Detection AI</h3>
+            <p data-i18n="project-helmet-desc">Real-time safety monitoring using YOLOv5</p>
+            <div class="project-tags">
+              <span>Python</span>
+              <span>OpenCV</span>
+              <span>YOLO</span>
+            </div>
+            <a href="projects.html#project1" class="project-link" data-i18n="view-project">View Project →</a>
+          </div>
+          <div class="project-card preview">
+            <div class="project-badge" data-i18n="featured-badge">Featured</div>
+            <h3 data-i18n="project-sql-title">SQL Dashboard</h3>
+            <p data-i18n="project-sql-desc">Interactive data visualization for 10,000+ records</p>
+            <div class="project-tags">
+              <span>SQL</span>
+              <span>PowerBI</span>
+              <span>Data Analysis</span>
+            </div>
+            <a href="projects.html#project2" class="project-link" data-i18n="view-project">View Project →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <p data-i18n="footer-rights">© 2025 [YOUR NAME]. All rights reserved.</p>
+      <div class="social-links">
+        <a href="mailto:youremail@example.com" class="social-link">📧</a>
+        <a href="https://linkedin.com/in/yourprofile" class="social-link">💼</a>
+        <a href="https://github.com/yourusername" class="social-link">🐙</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Move scripts to the end of body -->
+  <script src="js/switch-lang.js"></script>
+  <script src="js/francais.js"></script>
+  <script src="js/vietnamien.js"></script>
+  <script src="js/effects.js"></script>
+</body>
+</html>
+
+<!-- Separate the JavaScript file into files : Effects. js (Event listner, hover , Home.js, Projects JS) -->

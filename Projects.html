@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="projects-page-title">My Projects - Portfolio</title>
+  <link rel="stylesheet" href="CSS/Global.css">
+  <link rel="stylesheet" href="CSS/Projects.css">
+  <link rel="stylesheet" href="CSS/Lang-switch.css">
+</head>
+
+<body class="projects">
+  <header>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html" data-i18n="nav-home">Home</a></li>
+        <li><a href="projects.html" class="active" data-i18n="nav-projects">Projects</a></li>
+        <li><a href="about.html" data-i18n="nav-about">About</a></li>
+        <li><a href="contact.html" data-i18n="nav-contact">Contact</a></li>
+      </ul>
+      <div class="language-switcher">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="fr">FR</button>
+        <button class="lang-btn" data-lang="vi">VN</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="projects-hero">
+      <div class="container">
+        <h1 data-i18n="projects-title">My Projects</h1>
+        <p data-i18n="projects-description">A collection of my work in computer vision and data science</p>
+      </div>
+    </section>
+
+    <section class="projects-grid-section">
+      <div class="container">
+        <div class="projects-grid">
+          <!-- Project 1 - Simple -->
+          <div class="project-card">
+            <div class="project-image">
+              <img src="assets/images/project1.png" alt="Helmet Detection AI" onerror="this.src='https://via.placeholder.com/400x200/8b5cf6/ffffff?text=Helmet+AI'">
+            </div>
+            <div class="project-content">
+              <h3 data-i18n="project-helmet-title">Helmet Detection AI</h3>
+              <span class ="tech-tag" #class="project-date" data-i18n="project-date-university">2024 • University Project</span>
+              <p data-i18n="project-helmet-description">Real-time safety monitoring system using YOLOv5 to detect helmet usage in various environments.</p>
+              
+              <div class="project-tech">
+                <span class ="tech-tag">#Python</span>
+                <span class ="tech-tag">#OpenCV</span>
+                <span class ="tech-tag">#YOLOv5</span>
+              </div>
+
+              <div class="project-links">
+                <a href="#" class="project-link" data-i18n="project-view-details">View Details</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 - Simple -->
+          <div class="project-card">
+            <div class="project-image">
+              <img src="assets/images/project2.png" alt="SQL Dashboard" onerror="this.src='https://via.placeholder.com/400x200/3b82f6/ffffff?text=SQL+Dashboard'">
+            </div>
+            <div class="project-content">
+              <h3 data-i18n="project-sql-title">SQL Business Dashboard</h3>
+              <span class ="tech-tag" #class="project-date" data-i18n="project-date-academic">2024 • Academic Project</span>
+              <p data-i18n="project-sql-description">Interactive dashboard analyzing 10,000+ records with SQL and PowerBI visualizations.</p>
+              
+              <div class="project-tech">
+                <span class ="tech-tag">#SQL</span>
+                <span class ="tech-tag">#PowerBI</span>
+                <span class ="tech-tag">#Data Analysis</span>
+              </div>
+
+              <div class="project-links">
+                <a href="#" class="project-link" data-i18n="project-view-details">View Details</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 - Simple -->
+          <div class="project-card">
+            <div class="project-image">
+              <img src="assets/images/project3.jpg" alt="Data Analysis" onerror="this.src='https://via.placeholder.com/400x200/10b981/ffffff?text=Data+Analysis'">
+            </div>
+            <div class="project-content">
+              <h3 data-i18n="project-stats-title">Statistical Analysis</h3>
+              <span class ="tech-tag" #class="project-date" data-i18n="project-date-coursework">2023 • BUT SD Coursework</span>
+              <p data-i18n="project-stats-description">Python data analysis project focusing on statistical methods and visualization techniques.</p>
+              
+              <div class="project-tech">
+                <span class ="tech-tag">#Python</span>
+                <span class ="tech-tag">#Pandas</span>
+                <span class ="tech-tag">#Statistics</span>
+              </div>
+
+              <div class="project-links">
+                <a href="#" class="project-link" data-i18n="project-view-details">View Details</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4 - Simple -->
+          <div class="project-card">
+            <div class="project-image">
+              <img src="assets/images/project4.jpg" alt="Portfolio Website" onerror="this.src='https://via.placeholder.com/400x200/8b5cf6/ffffff?text=Portfolio'">
+            </div>
+            <div class="project-content">
+              <h3 data-i18n="project-portfolio-title">Portfolio Website</h3>
+              <span class ="tech-tag" #class="project-date" data-i18n="project-date-personal">2024 • Personal Project</span>
+              <p data-i18n="project-portfolio-description">Responsive portfolio website built with HTML, CSS, and JavaScript to showcase my work.</p>
+              
+              <div class="project-tech">
+                <span class ="tech-tag" #class="tech-tag">#HTML</span>
+                <span class ="tech-tag" #class="tech-tag">#CSS</span>
+                <span class ="tech-tag" #class="tech-tag">#JavaScript</span>
+              </div>
+
+              <div class="project-links">
+                <a href="index.html" class="project-link" data-i18n="project-live-site">Live Site</a>
+                <a href="#" class="project-link" data-i18n="project-source-code">Code</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container">
+        <h2 data-i18n="cta-title">Want to see more?</h2>
+        <p data-i18n="cta-description">Check out my GitHub or get in touch to discuss projects</p>
+        <div class="cta-buttons">
+          <a href="contact.html" class="btn" data-i18n="cta-contact">Contact Me</a>
+          <a href="about.html" class="btn" data-i18n="cta-about">About Me</a>
+        </div>
+      </div>
+    </section>
+
+  <footer>
+    <p data-i18n="footer-rights">© 2025 [YOUR NAME]. All rights reserved.</p>
+  </footer>
+
+</main>
+  <!-- Language Scripts -->
+  <script src="js/francais.js"></script>
+  <script src="js/vietnamien.js"></script>
+  <script src="js/switch-lang.js"></script>

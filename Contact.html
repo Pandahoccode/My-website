@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="contact-page-title">Contact - Portfolio</title>
+  <link rel="stylesheet" href="CSS/Global.css">
+  <link rel="stylesheet" href="CSS/Contact.css">
+  <link rel="stylesheet" href="CSS/Lang-switch.css">
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html" data-i18n="nav-home">Home</a></li>
+        <li><a href="projects.html" data-i18n="nav-projects">Projects</a></li>
+        <li><a href="about.html" data-i18n="nav-about">About</a></li>
+        <li><a href="contact.html" class="active" data-i18n="nav-contact">Contact</a></li>
+      </ul>
+      <div class="language-switcher">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="fr">FR</button>
+        <button class="lang-btn" data-lang="vi">VN</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="contact-hero">
+      <div class="container">
+        <h1 data-i18n="contact-title">Let's Connect!</h1>
+        <p class="hero-subtitle" data-i18n="contact-subtitle">Discuss a project or just want to say hi? My inbox is open for all.</p>
+      </div>
+    </section>
+
+    <section class="contact-content">
+      <div class="container">
+        <div class="contact-grid">
+          <!-- Contact Information -->
+          <div class="contact-info">
+            <h2 data-i18n="contact-info-title">Contact Information</h2>
+            <p class="info-intro" data-i18n="contact-info-intro">
+              I'm always interested in hearing about new opportunities and collaborating on exciting projects.
+            </p>
+            
+            <div class="contact-details">
+              <div class="contact-item">
+                <div class="contact-icon">👤</div>
+                <div class="contact-text">
+                  <h4 data-i18n="contact-name-label">Name</h4>
+                  <p>[YOUR NAME]</p>
+                </div>
+              </div>
+              
+              <div class="contact-item">
+                <div class="contact-icon">🎓</div>
+                <div class="contact-text">
+                  <h4 data-i18n="contact-role-label">Role</h4>
+                  <p data-i18n="contact-role-value">Computer Vision Enthusiast | BUT Student</p>
+                </div>
+              </div>
+              
+              <div class="contact-item">
+                <div class="contact-icon">📍</div>
+                <div class="contact-text">
+                  <h4 data-i18n="contact-location-label">Location</h4>
+                  <p data-i18n="contact-location-value">Available for remote collaboration worldwide</p>
+                </div>
+              </div>
+              
+              <div class="contact-item">
+                <div class="contact-icon">💼</div>
+                <div class="contact-text">
+                  <h4 data-i18n="contact-status-label">Status</h4>
+                  <p data-i18n="contact-status-value">Currently focused on studies and personal projects</p>
+                </div>
+              </div>
+              
+              <div class="contact-item">
+                <div class="contact-icon">📧</div>
+                <div class="contact-text">
+                  <h4 data-i18n="contact-email-label">Email</h4>
+                  <p><a href="mailto:youremail@example.com">youremail@example.com</a></p>
+                </div>
+              </div>
+              
+              <div class="contact-item">
+                <div class="contact-icon">💼</div>
+                <div class="contact-text">
+                  <h4 data-i18n="contact-linkedin-label">LinkedIn</h4>
+                  <p><a href="https://www.linkedin.com/in/your-profile" target="_blank">linkedin.com/in/your-profile</a></p>
+                </div>
+              </div>
+            </div>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+      <div class="container">
+        <h2 data-i18n="contact-cta-title">Ready to Start a Project?</h2>
+        <p data-i18n="contact-cta-desc">Let's discuss how we can work together to bring your ideas to life</p>
+        <div class="cta-buttons">
+          <a href="mailto:youremail@example.com" class="btn btn-primary" data-i18n="contact-cta-email">Send Email</a>
+          <a href="projects.html" class="btn btn-secondary" data-i18n="contact-cta-projects">View My Work</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p data-i18n="footer-rights">© 2025 [YOUR NAME]. All rights reserved.</p>
+      <div class="social-links">
+        <a href="mailto:youremail@example.com" class="social-link" title="Email">📧</a>
+        <a href="https://linkedin.com/in/yourprofile" class="social-link" title="LinkedIn">💼</a>
+        <a href="https://github.com/yourusername" class="social-link" title="GitHub">🐙</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/francais.js"></script>
+  <script src="js/vietnamien.js"></script>
+  <script src="js/switch-lang.js"></script>
+</body>
+</html>

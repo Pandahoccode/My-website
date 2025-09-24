@@ -1,0 +1,41 @@
+/* language-switcher.css - Styles for language switcher */
+
+.language-switcher {
+    display: inline-table;
+    gap: 0.5rem;
+    align-items: center;
+    margin-right: auto;
+}
+
+.lang-btn {
+    padding: 0.4rem 0.8rem;
+    border: 2px solid #8b5cf6;
+    background: transparent;
+    color: #8b5cf6;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-decoration: none;
+}
+
+.lang-btn.active,
+.lang-btn:hover {
+    background: #8b5cf6;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    .language-switcher {
+        justify-content: center;
+        margin: 1rem 0;
+        order: 2;
+    }
+    
+    .nav-links {
+        order: 1;
+    }
+}
