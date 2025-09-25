@@ -25,6 +25,7 @@ header {
   z-index: 1000;
   transition: all 0.3s ease;
   box-shadow: 0 2px 20px rgba(139, 92, 246, 0.1);
+  text-wrap: wrap;
 }
 
 h1 {

@@ -7,7 +7,7 @@ window.translations['vi'] = {
     'nav-contact': 'Liên Hệ',
     
     // Home Page
-    'home-title': 'Xin chào, tôi là',
+    'home-title': 'Xin chào, tôi là Phúc Anh',
     'home-subtitle': 'Sinh viên năm 2 BUT SD | Đam mê Thị giác Máy tính & Khoa học Dữ liệu',
     'home-description': 'Chuyển đổi dữ liệu thành giải pháp thông minh thông qua thị giác máy tính và machine learning',
     'home-projects-btn': 'Xem Dự Án',
@@ -143,6 +143,6 @@ window.translations['vi'] = {
     'contact-cta-work': 'Xem Công Việc',
     
     // Footer
-    'footer-rights': '© 2025 [TÊN BẠN]. Đã đăng ký bản quyền.',
+    'footer-rights': '© 2025 Phúc Anh. Đã đăng ký bản quyền.',
     'footer-built': 'Được xây dựng với đam mê Thị giác Máy tính & AI'
 };

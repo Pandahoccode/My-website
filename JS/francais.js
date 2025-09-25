@@ -8,7 +8,7 @@ window.translations['fr'] = {
     'nav-contact': 'Contact',
     
     // Home Page
-    'home-title': 'Bonjour, je suis ton nom',
+    'home-title': 'Bonjour, je suis Phuc Anh',
     'home-subtitle': 'Étudiant en 2ème année BUT SD | Passionné par la Vision par Ordinateur & IA',
     'home-description': 'Transformer les données en solutions intelligentes grâce à la vision par ordinateur et au machine learning',
     'home-projects-btn': 'Voir Mes Projets',
@@ -150,6 +150,6 @@ window.translations['fr'] = {
     'contact-cta-work': 'Voir Mon Travail',
     
     // Footer
-    'footer-rights': '© 2025 [VOTRE NOM]. Tous droits réservés.',
+    'footer-rights': '© 2025 Phuc Anh. Tous droits réservés.',
     'footer-built': 'Construit avec passion pour la Vision par Ordinateur & IA'
 };
