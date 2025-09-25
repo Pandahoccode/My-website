@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  zoom: 110%;
 }
 
 body {
@@ -41,6 +42,10 @@ h1 {
   -webkit-text-fill-color: transparent;
 }
 
+nav {
+  display: inline;
+}
+
 .nav-links {
   display: flex;
   justify-content: center;
@@ -50,7 +55,7 @@ h1 {
 }
 
 .nav-links a {
-  color: #4b5563;
+  color: #ebedf0;
   text-decoration: none;
   font-weight: 600;
   padding: 0.5rem 1rem;
