@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="CSS/Lang-switch.css">
 </head>
 
-<body>
+<body >
   <header>
     <nav>
       <ul class="nav-links">
@@ -27,117 +27,254 @@
   </header>
 
   <main class="about">
+    <!-- Hero Section -->
     <section class="about-hero">
       <div class="container">
-        <div class="about-content">
-          <div class="about-text">
+        <div class="hero-content">
+          <div class="hero-text">
             <h1 data-i18n="about-title">About Me</h1>
-            <p class="intro-text" data-i18n="about-subtitle">Passionate Computer Vision Student & AI Enthusiast</p>
+            <p class="hero-subtitle" data-i18n="about-subtitle">Computer Vision Student & AI Enthusiast</p>
+            <p class="hero-description" data-i18n="about-intro">
+              Passionate about creating intelligent systems that solve real-world problems through technology
+            </p>
           </div>
-          <div class="profile-image">
-            <img src="assets/images/content/Portrait.png" alt="Profile Photo" class="profile-pic">
-            <div class="profile-badge" data-i18n="about-badge">BUT SD Student</div>
+          <div class="hero-visual">
+            <div class="profile-card">
+              <img src="./assets/images/content/Portrait.png" alt="Profile Photo" class="profile-pic">
+              <div class="profile-info">
+                <h3 data-i18n="about-name">Dang Phuc Anh</h3>
+                <p data-i18n="about-role">BUT SD Student</p>
+                <div class="profile-stats">
+                  <div class="stat">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label" data-i18n="about-projects">Projects</span>
+                  </div>
+                  <div class="stat">
+                    <span class="stat-number">5+</span>
+                    <span class="stat-label" data-i18n="about-technologies">Programming Language</span>
+                  </div>
+                  <div class="stat">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label" data-i18n="about-years">Years</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="about-details">
+    <!-- Journey Section -->
+    <section class="journey-section">
       <div class="container">
-        <div class="about-grid">
-          <div class="about-card">
-            <h2 data-i18n="about-journey-title">My Journey</h2>
-            <p data-i18n="about-journey-text1">
-              Hi! My name is <strong>[YOUR NAME]</strong>. I'm a second-year student in the 
-              <strong>BUT Statistique et Décisionnel</strong> program, specializing in 
-              data analysis and artificial intelligence.
+        <div class="section-header">
+          <h2 data-i18n="about-journey-title">My Journey</h2>
+          <p data-i18n="about-journey-subtitle">From curiosity to passion in Computer Vision and AI</p>
+        </div>
+        
+        <div class="journey-grid">
+          <div class="journey-card">
+            <div class="journey-icon">🎓</div>
+            <h3 data-i18n="about-education-title">Academic Foundation</h3>
+            <p data-i18n="about-education-text">
+              Currently pursuing my BUT SD degree with a focus on statistics, data analysis, 
+              and decision support systems. Building a strong theoretical foundation while 
+              applying knowledge to practical projects.
             </p>
-            <p data-i18n="about-journey-text2">
+          </div>
+          
+          <div class="journey-card">
+            <div class="journey-icon">👁️</div>
+            <h3 data-i18n="about-passion-title">Passion Discovery</h3>
+            <p data-i18n="about-passion-text">
               My passion for <strong>Computer Vision and AI</strong> started during my first year 
               when I discovered the incredible potential of machine learning to solve real-world problems. 
               Since then, I've been dedicated to mastering the skills needed to create intelligent systems.
             </p>
           </div>
-
-          <div class="about-card">
-            <h2 data-i18n="about-whatido-title">What I Do</h2>
-            <p data-i18n="about-whatido-text1">
+          
+          <div class="journey-card">
+            <div class="journey-icon">🚀</div>
+            <h3 data-i18n="about-mission-title">Current Mission</h3>
+            <p data-i18n="about-mission-text">
               I combine <strong>technical expertise</strong> with an <strong>entrepreneurial mindset</strong> 
-              to develop solutions that have real-world impact. My projects range from building AI models 
-              for safety applications to creating data-driven dashboards for business intelligence.
-            </p>
-            <p data-i18n="about-whatido-text2">
-              I believe in the power of technology to make a positive difference, and I'm particularly 
-              interested in projects that combine technical innovation with social impact.
+              to develop solutions that have real-world impact. I believe in the power of technology 
+              to make a positive difference through innovation and social impact.
             </p>
           </div>
         </div>
       </div>
     </section>
-    
+
     <!-- Skills Section -->
     <section class="skills-section">
       <div class="container">
-        <h2 data-i18n="about-skills-title">Technical Skills</h2>
+        <div class="section-header">
+          <h2 data-i18n="about-skills-title">Technical Skills</h2>
+          <p data-i18n="about-skills-subtitle">Technologies and tools I work with</p>
+        </div>
+        
         <div class="skills-grid">
+          <!-- Computer Vision -->
           <div class="skill-category">
-            <h3 data-i18n="about-cv-title">Computer Vision</h3>
+            <div class="skill-header">
+              <div class="skill-icon">👁️</div>
+              <h3 data-i18n="about-cv-title">Computer Vision</h3>
+            </div>
             <div class="skill-items">
-              <span class="skill-item">OpenCV</span>
-              <span class="skill-item">YOLO/Object Detection</span>
-              <span class="skill-item">Image Processing</span>
-              <span class="skill-item">Neural Networks</span>
+              <div class="skill-item">
+                <span class="skill-name">OpenCV</span>
+                <div class="skill-level">
+                  <div class="skill-progress" data-level="85"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">YOLO/Object Detection</span>
+                <div class="skill-level">
+                  <div class="skill-progress" data-level="80"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Image Processing</span>
+                <div class="skill-level">
+                  <div class="skill-progress" data-level="75"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Neural Networks</span>
+                <div class="skill-level">
+                  <div class="skill-progress" data-level="70"></div>
+                </div>
+              </div>
             </div>
           </div>
           
+          <!-- Data Science -->
           <div class="skill-category">
-            <h3 data-i18n="about-data-title">Data Science</h3>
+            <div class="skill-header">
+              <div class="skill-icon">📊</div>
+              <h3 data-i18n="about-data-title">Data Science</h3>
+            </div>
             <div class="skill-items">
-              <span class="skill-item">Python</span>
-              <span class="skill-item">SQL</span>
-              <span class="skill-item">PowerBI</span>
-              <span class="skill-item">Statistical Analysis</span>
+              <div class="skill-item">
+                <span class="skill-name">Python</span>
+                <div class="skill-level">
+                  <div class="skill-progress" data-level="90"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">SQL</span>
+                <div class="skill-level">
+                  <div class="skill-progress" data-level="85"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">PowerBI</span>
+                <div class="skill-level">
+                  <div class="skill-progress" data-level="80"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Statistical Analysis</span>
+                <div class="skill-level">
+                  <div class="skill-progress" data-level="75"></div>
+                </div>
+              </div>
             </div>
           </div>
           
+          <!-- Web Technologies -->
           <div class="skill-category">
-            <h3 data-i18n="about-web-title">Web Technologies</h3>
+            <div class="skill-header">
+              <div class="skill-icon">🌐</div>
+              <h3 data-i18n="about-web-title">Web Technologies</h3>
+            </div>
             <div class="skill-items">
-              <span class="skill-item">HTML/CSS</span>
-              <span class="skill-item">JavaScript</span>
-              <span class="skill-item">Git</span>
-              <span class="skill-item">API Development</span>
+              <div class="skill-item">
+                <span class="skill-name">HTML/CSS</span>
+                <div class="skill-level">
+                  <div class="skill-progress" data-level="88"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">JavaScript</span>
+                <div class="skill-level">
+                  <div class="skill-progress" data-level="82"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">Git</span>
+                <div class="skill-level">
+                  <div class="skill-progress" data-level="85"></div>
+                </div>
+              </div>
+              <div class="skill-item">
+                <span class="skill-name">API Development</span>
+                <div class="skill-level">
+                  <div class="skill-progress" data-level="70"></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+
     <!-- Experience Timeline -->
     <section class="timeline-section">
       <div class="container">
-        <h2 data-i18n="about-experience-title">My Journey & Experience</h2>
+        <div class="section-header">
+          <h2 data-i18n="about-experience-title">My Journey & Experience</h2>
+          <p data-i18n="about-experience-subtitle">Key milestones in my development journey</p>
+        </div>
+        
         <div class="timeline">
           <div class="timeline-item">
-            <div class="timeline-date" data-i18n="about-exp1-date">2023 - Present</div>
+            <div class="timeline-marker">
+              <div class="timeline-date" data-i18n="about-exp1-date">2023 - Present</div>
+              <div class="timeline-dot"></div>
+            </div>
             <div class="timeline-content">
               <h3 data-i18n="about-exp1-title">BUT SD Student</h3>
               <p data-i18n="about-exp1-desc">Specializing in statistics, data analysis, and decision support systems</p>
+              <ul class="timeline-features">
+                <li data-i18n="about-exp1-feat1">Advanced coursework in machine learning</li>
+                <li data-i18n="about-exp1-feat2">Data visualization and business intelligence</li>
+                <li data-i18n="about-exp1-feat3">Statistical analysis and modeling</li>
+              </ul>
             </div>
           </div>
           
           <div class="timeline-item">
-            <div class="timeline-date" data-i18n="about-exp2-date">2023</div>
+            <div class="timeline-marker">
+              <div class="timeline-date" data-i18n="about-exp2-date">2023</div>
+              <div class="timeline-dot"></div>
+            </div>
             <div class="timeline-content">
               <h3 data-i18n="about-exp2-title">First Computer Vision Project</h3>
               <p data-i18n="about-exp2-desc">Developed initial projects in image processing and object detection</p>
+              <ul class="timeline-features">
+                <li data-i18n="about-exp2-feat1">Learned OpenCV fundamentals</li>
+                <li data-i18n="about-exp2-feat2">Completed YOLO-based object detection</li>
+                <li data-i18n="about-exp2-feat3">Built foundation for advanced AI projects</li>
+              </ul>
             </div>
           </div>
           
           <div class="timeline-item">
-            <div class="timeline-date" data-i18n="about-exp3-date">2022</div>
+            <div class="timeline-marker">
+              <div class="timeline-date" data-i18n="about-exp3-date">2022</div>
+              <div class="timeline-dot"></div>
+            </div>
             <div class="timeline-content">
               <h3 data-i18n="about-exp3-title">Started Programming Journey</h3>
               <p data-i18n="about-exp3-desc">Began learning Python and data analysis fundamentals</p>
+              <ul class="timeline-features">
+                <li data-i18n="about-exp3-feat1">Mastered Python programming basics</li>
+                <li data-i18n="about-exp3-feat2">Explored data analysis with Pandas</li>
+                <li data-i18n="about-exp3-feat3">Developed interest in AI and machine learning</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -147,7 +284,11 @@
     <!-- Personal Interests -->
     <section class="interests-section">
       <div class="container">
-        <h2 data-i18n="about-interests-title">Beyond Coding</h2>
+        <div class="section-header">
+          <h2 data-i18n="about-interests-title">Beyond Coding</h2>
+          <p data-i18n="about-interests-subtitle">What drives me outside of technology</p>
+        </div>
+        
         <div class="interests-grid">
           <div class="interest-card">
             <div class="interest-icon">🌍</div>
@@ -169,16 +310,27 @@
         </div>
       </div>
     </section>
-  
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+      <div class="container">
+        <h2 data-i18n="about-cta-title">Let's Build Something Amazing</h2>
+        <p data-i18n="about-cta-text">Interested in collaborating or learning more about my work?</p>
+        <div class="cta-buttons">
+          <a href="projects.html" class="btn btn-primary" data-i18n="about-cta-projects">View My Projects</a>
+          <a href="contact.html" class="btn btn-secondary" data-i18n="about-cta-contact">Get In Touch</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
     <p data-i18n="footer-rights">© 2025 Phuc Anh. All rights reserved.</p>
   </footer>
 
-  </main>
-
   <script src="js/francais.js"></script>
   <script src="js/vietnamien.js"></script>
   <script src="js/switch-lang.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
