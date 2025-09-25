@@ -190,6 +190,9 @@
     font-size: 0.8rem;
     font-weight: 600;
     transition: transform 0.2s ease;
+    margin: 5px;
+    display: inline-flex;
+    text-wrap: wrap;
 }
 
 .tech-tag:hover {
@@ -198,9 +201,9 @@
 
 /* ===== PROJECT LINKS ===== */
 .project-links {
-    display: flex;
+    display: inline-flex;
     gap: 1rem;
-    margin-top: 2rem;
+    margin-top: 10px;
     flex-wrap: wrap;
 }
 
@@ -475,20 +478,6 @@
 }
 
 /* ===== ACCESSIBILITY ===== */
-@media (prefers-reduced-motion: reduce) {
-    .project-card,
-    .filter-btn,
-    .project-link,
-    .btn {
-        transition: none;
-        animation: none;
-    }
-    
-    .project-card:hover {
-        transform: none;
-    }
-}
-
 /* Focus styles for keyboard navigation */
 .filter-btn:focus,
 .project-link:focus,

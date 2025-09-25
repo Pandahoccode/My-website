@@ -118,6 +118,8 @@
 .btn-primary {
     background: white;
     color: #8b5cf6;
+    margin-bottom: 15px;
+    margin-inline-end: 15px;
 }
 
 .btn-primary:hover {
@@ -142,9 +144,11 @@
 
 /* Floating cards in hero */
 .floating-card {
+    display: flexbox;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     padding: 1.5rem;
+    margin-left: 30px;
     border-radius: 15px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     text-align: center;

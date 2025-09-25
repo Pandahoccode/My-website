@@ -1,10 +1,10 @@
 /* language-switcher.css - Styles for language switcher */
 
 .language-switcher {
-    display: inline-table;
     gap: 0.5rem;
     align-items: center;
     margin-right: auto;
+    padding: 20px;
 }
 
 .lang-btn {
