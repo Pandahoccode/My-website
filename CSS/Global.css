@@ -44,7 +44,7 @@ h1 {
 }
 
 nav {
-  display: inline;
+  display: inline-flex;
 }
 
 .nav-links {
