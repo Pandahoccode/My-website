@@ -9,8 +9,7 @@
   <link rel="stylesheet" href="CSS/Lang-switch.css">
 </head>
 
-<body>
-  <!-- Navigation -->
+<body class="contact-page">
   <header>
     <nav>
       <ul class="nav-links">
@@ -27,74 +26,108 @@
     </nav>
   </header>
 
-  <!-- Hero -->
   <main>
+    <!-- Hero Section -->
     <section class="contact-hero">
       <div class="container">
-        <h1 data-i18n="contact-title">Let's Connect!</h1>
-        <p class="hero-subtitle" data-i18n="contact-subtitle">
-          Discuss a project or just want to say hi? My inbox is open for all.
-        </p>
+        <div class="hero-content">
+          <h1 data-i18n="contact-title">Let's Work Together</h1>
+          <p class="hero-subtitle" data-i18n="contact-subtitle">Ready to bring your ideas to life? Let's discuss how we can collaborate</p>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-number">24h</div>
+              <div class="stat-label" data-i18n="contact-response">Avg. Response Time</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">100%</div>
+              <div class="stat-label" data-i18n="contact-commitment">Commitment</div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Contact Information -->
-    <section class="contact-content">
+    <!-- Contact Methods -->
+    <section class="contact-methods">
       <div class="container">
-        <div class="contact-info">
-          <h2 data-i18n="contact-info-title">Contact Information</h2>
-          <p class="info-intro" data-i18n="contact-info-intro">
-            I'm always interested in hearing about new opportunities and collaborating on exciting projects.
-          </p>
+        <div class="section-header">
+          <h2 data-i18n="contact-methods-title">Ways to Reach Me</h2>
+          <p data-i18n="contact-methods-subtitle">Choose your preferred method of communication</p>
+        </div>
 
-          <div class="contact-details">
-            <div class="contact-item">
-              <div class="contact-icon">👤</div>
-              <div class="contact-text">
-                <h4 data-i18n="contact-name-label">Name</h4>
-                <p>Dang Phuc Anh</p>
-              </div>
+        <div class="methods-grid">
+          <!-- Email -->
+          <div class="method-card">
+            <div class="method-icon">📧</div>
+            <h3 data-i18n="contact-email-title">Email</h3>
+            <p data-i18n="contact-email-desc">Perfect for detailed project discussions and formal inquiries</p>
+            <div class="contact-info">
+              <span class="contact-detail">dpa280706@gmail.com</span>
             </div>
+            <a href="mailto:dpa280706@gmail.com" class="method-btn" data-i18n="contact-send-email">
+              <span>Send Email</span>
+              <span>→</span>
+            </a>
+          </div>
 
-            <div class="contact-item">
-              <div class="contact-icon">🎓</div>
-              <div class="contact-text">
-                <h4 data-i18n="contact-role-label">Role</h4>
-                <p data-i18n="contact-role-value">Computer Vision Enthusiast | BUT Student</p>
-              </div>
+          <!-- LinkedIn -->
+          <div class="method-card">
+            <div class="method-icon">💼</div>
+            <h3 data-i18n="contact-linkedin-title">LinkedIn</h3>
+            <p data-i18n="contact-linkedin-desc">Great for professional networking and career opportunities</p>
+            <div class="contact-info">
+              <span class="contact-detail">linkedin.com/in/Phuc_Anh_Dang</span>
             </div>
+            <a href="https://www.linkedin.com/in/phuc-anh-dang-862680319/" target="_blank" class="method-btn" data-i18n="contact-connect-linkedin">
+              <span>Connect</span>
+              <span>→</span>
+            </a>
+          </div>
 
-            <div class="contact-item">
-              <div class="contact-icon">📍</div>
-              <div class="contact-text">
-                <h4 data-i18n="contact-location-label">Location</h4>
-                <p data-i18n="contact-location-value">Available for remote collaboration worldwide</p>
-              </div>
+          <!-- GitHub -->
+          <div class="method-card">
+            <div class="method-icon">🐙</div>
+            <h3 data-i18n="contact-github-title">GitHub</h3>
+            <p data-i18n="contact-github-desc">Ideal for technical collaboration and code review</p>
+            <div class="contact-info">
+              <span class="contact-detail">github.com/Pandahoccode</span>
             </div>
+            <a href="https://github.com/Pandahoccode" target="_blank" class="method-btn" data-i18n="contact-view-github">
+              <span>View Profile</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <div class="contact-item">
-              <div class="contact-icon">💼</div>
-              <div class="contact-text">
-                <h4 data-i18n="contact-status-label">Status</h4>
-                <p data-i18n="contact-status-value">Currently focused on studies and personal projects</p>
+    <!-- Availability Status -->
+    <section class="availability-section">
+      <div class="container">
+        <div class="availability-card">
+          <div class="status-indicator">
+            <div class="status-dot available"></div>
+            <span data-i18n="contact-status-available">Available for projects</span>
+          </div>
+          <div class="availability-info">
+            <h3 data-i18n="contact-availability-title">Current Availability</h3>
+            <p data-i18n="contact-availability-desc">
+              I'm currently accepting new projects and collaboration opportunities. 
+              Whether you need a computer vision solution, data analysis, or web development, 
+              I'd love to hear about your project.
+            </p>
+            <div class="availability-details">
+              <div class="detail-item">
+                <span class="detail-label" data-i18n="contact-response-time">Response Time:</span>
+                <span class="detail-value" data-i18n="contact-within-24h">Within 24 hours</span>
               </div>
-            </div>
-
-            <div class="contact-item">
-              <div class="contact-icon">📧</div>
-              <div class="contact-text">
-                <h4 data-i18n="contact-email-label">Email</h4>
-                <p><a href="mailto:dpa280706@gmail.com">dpa280706@gmail.com</a></p>
+              <div class="detail-item">
+                <span class="detail-label" data-i18n="contact-project-types">Project Types:</span>
+                <span class="detail-value" data-i18n="contact-all-projects">Computer Vision • Data Science</span>
               </div>
-            </div>
-
-            <div class="contact-item">
-              <div class="contact-icon">💼</div>
-              <div class="contact-text">
-                <h4 data-i18n="contact-linkedin-label">LinkedIn</h4>
-                <p><a href="https://linkedin.com/in/phuc-anh-dang-862680319/" target="_blank">
-                  linkedin.com/in/DPA
-                </a></p>
+              <div class="detail-item">
+                <span class="detail-label" data-i18n="contact-engagement">Engagement:</span>
+                <span class="detail-value" data-i18n="contact-flexible">France</span>
               </div>
             </div>
           </div>
@@ -102,29 +135,62 @@
       </div>
     </section>
 
-    <!-- Call to Action -->
-    <section class="cta-section">
+    <!-- Collaboration Types -->
+    <section class="collaboration-section">
       <div class="container">
-        <h2 data-i18n="contact-cta-title">Ready to Start a Project?</h2>
-        <p data-i18n="contact-cta-desc">
-          Let's discuss how we can work together to bring your ideas to life.
-        </p>
-        <div class="cta-buttons">
-          <a href="mailto:dpa280706@gmail.com" class="btn btn-primary" data-i18n="contact-cta-email">Send Email</a>
-          <a href="projects.html" class="btn btn-secondary" data-i18n="contact-cta-projects">View My Work</a>
+        <div class="section-header">
+          <h2 data-i18n="collaboration-title">Types of Collaboration</h2>
+          <p data-i18n="collaboration-subtitle">Here's how we can work together</p>
+        </div>
+
+        <div class="collaboration-grid">
+          <div class="collab-type">
+            <div class="collab-icon">👁️</div>
+            <h4 data-i18n="collab-vision-title">Computer Vision Projects</h4>
+            <ul>
+              <li data-i18n="collab-vision-1">Object detection systems</li>
+              <li data-i18n="collab-vision-2">Image processing solutions</li>
+              <li data-i18n="collab-vision-3">AI model development</li>
+            </ul>
+          </div>
+
+          <div class="collab-type">
+            <div class="collab-icon">📊</div>
+            <h4 data-i18n="collab-data-title">Data Science & Analysis</h4>
+            <ul>
+              <li data-i18n="collab-data-1">Data visualization dashboards</li>
+              <li data-i18n="collab-data-2">Statistical analysis</li>
+              <li data-i18n="collab-data-3">Business intelligence</li>
+            </ul>
+          </div>
+    </section>
+
+    <!-- Quick Contact -->
+    <section class="quick-contact">
+      <div class="container">
+        <div class="quick-contact-card">
+          <h3 data-i18n="quick-contact-title">Prefer a Quick Message?</h3>
+          <p data-i18n="quick-contact-desc">Send me a direct email and I'll get back to you as soon as possible.</p>
+          <div class="email-actions">
+            <a href="mailto:youremail@example.com" class="btn btn-primary" data-i18n="contact-email-now">
+              📧 Email Now
+            </a>
+            <button class="btn btn-secondary" onclick="copyEmail()" data-i18n="contact-copy-email">
+              📋 Copy Email
+            </button>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Footer -->
   <footer>
     <div class="footer-content">
-      <p data-i18n="footer-rights">© 2025 Phuc Anh. All rights reserved.</p>
+      <p data-i18n="footer-rights">© 2025 [YOUR NAME]. All rights reserved.</p>
       <div class="social-links">
-        <a href="mailto:dpa280706@gmail.com" class="social-link">📧</a>
-        <a href="https://linkedin.com/in/phuc-anh-dang-862680319/" class="social-link">💼</a>
-        <a href="https://github.com/Pandahoccode" class="social-link">💻</a>
+        <a href="mailto:dpa280706@gmail.com" class="social-link" title="Email">📧</a>
+        <a href="https://www.linkedin.com/in/phuc-anh-dang-862680319/" class="social-link" title="LinkedIn">💼</a>
+        <a href="https://github.com/Pandahoccode" class="social-link" title="GitHub">🐙</a>
       </div>
     </div>
   </footer>
@@ -133,5 +199,6 @@
   <script src="js/francais.js"></script>
   <script src="js/vietnamien.js"></script>
   <script src="js/switch-lang.js"></script>
-</body>
-</html>
+  
+
+
