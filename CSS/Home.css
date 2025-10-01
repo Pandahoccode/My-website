@@ -6,7 +6,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 2rem;
+    padding: 6rem 0 4rem;
     background-image: url(../assets/images/Background/Background-index.gif);
     background-size: cover;
     color: white;
@@ -35,6 +35,7 @@
 
 .hero-content {
     position: relative;
+    gap: 4rem;
     z-index: 2;
     max-width: 50%;
     animation: slideInLeft 1s ease-out;
@@ -281,7 +282,7 @@
 }
 
 .project-badge {
-    position: absolute;
+    display: inline;
     top: 1rem;
     right: 1rem;
     background: linear-gradient(135deg, #8b5cf6, #3b82f6);
@@ -290,6 +291,8 @@
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: 600;
+    margin-top: 2em;
+    margin-bottom: 2rem;
     z-index: 2;
 }
 
@@ -308,6 +311,7 @@
     color: #666;
     margin-bottom: 1rem;
     line-height: 1.5;
+    margin-top: 1rem;
 }
 
 .project-tags {

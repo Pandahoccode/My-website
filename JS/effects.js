@@ -184,6 +184,14 @@ function initializeEffects() {
     }
 }
 
+    // Copy email function
+    function copyEmail() {
+      const email = 'youremail@example.com';
+      navigator.clipboard.writeText(email).then(() => {
+        alert('Email copied to clipboard: ' + email);
+      });
+    }
+
 // Export functions for use in other files
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = {

@@ -1,27 +1,28 @@
-/* Language switcher alignment */
+/* Fixed Language Switcher Alignment */
 .language-switcher {
-    display: inline-flex;
-    gap: 0.5rem;
-    align-items: right;
-    margin: 10px;
-    padding-left: auto;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin: 0; /* Remove margin */
+  padding: 0; /* Remove padding */
+  /* No need for padding-left: auto with justify-content: space-between */
 }
 
 .lang-btn {
-    padding: 0.5rem 1rem;
-    border: 2px solid #8b5cf6;
-    background: transparent;
-    color: #8b5cf6;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-weight: 600;
-    font-size: 0.8rem;
+  padding: 0.5rem 1rem;
+  border: 2px solid #8b5cf6;
+  background: transparent;
+  color: #8b5cf6;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  font-size: 0.8rem;
 }
 
 .lang-btn.active,
 .lang-btn:hover {
-    background: #8b5cf6;
-    color: white;
-    transform: scale(1.05);
+  background: #8b5cf6;
+  color: white;
+  transform: scale(1.05);
 }
