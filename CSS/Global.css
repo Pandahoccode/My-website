@@ -102,9 +102,19 @@ nav {
 /* Mobile Responsive */
 @media (max-width: 768px) {
   nav {
-    flex-direction: column;
+    flex-direction: row;
     gap: 1rem;
     padding: 1rem;
+  }
+  
+  nav ul {
+    display: flex;
+    flex-direction: column;  
+    align-items: center; 
+    justify-content: center; 
+    padding: 0;
+    margin: 0;
+    list-style: none;
   }
   
   .nav-links {
