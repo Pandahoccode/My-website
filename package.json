@@ -1,0 +1,23 @@
+{
+  "name": "my-website",
+  "version": "1.0.0",
+  "description": "A website portfolio of myself",
+  "homepage": "https://github.com/Pandahoccode/My-website-#readme",
+  "bugs": {
+    "url": "https://github.com/Pandahoccode/My-website-/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pandahoccode/My-website-.git"
+  },
+  "license": "ISC",
+  "author": "Dang Phuc Anh",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^1.5.0"
+  }
+}
