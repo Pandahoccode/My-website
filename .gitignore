@@ -1,5 +1,11 @@
 node_modules/
-package-lock.json
 dist/
 .env
 .vscode/
+.agent/
+.next/
+out/
+build/
+.DS_Store
+*.tsbuildinfo
+
