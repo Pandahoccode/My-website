@@ -1,6 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { Projects } from '@/components/sections/Projects';
-import { Hero } from '@/components/sections/Hero';
+import { Hero } from '../../components/sections/Hero';
 import { About } from '@/components/sections/About';
 import { Skills } from '@/components/sections/Skills';
 import { Contact } from '@/components/sections/Contact';
@@ -11,7 +11,7 @@ export default function Home() {
   const t = useTranslations('Hero');
 
   return (
-    <main className="relative w-full min-h-screen flex flex-col bg-navy-black">
+    <main className="relative w-full min-h-screen flex flex-col bg-background">
       {/* Scrollytelling Hero Area */}
       <ScrollFrames />
       <Hero />

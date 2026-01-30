@@ -26,6 +26,10 @@
 
   /* Animations */
   --animate-spin-slow: spin 10s linear infinite;
+
+  /* Base Colors */
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
 }
 
 :root {
