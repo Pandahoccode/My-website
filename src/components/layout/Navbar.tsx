@@ -29,7 +29,7 @@ export function Navbar() {
   }, [isMobileMenuOpen]);
 
   const navItems = [
-    { key: 'home', href: '/' },
+    { key: 'home', href: '/#hero' },
     { key: 'projects', href: '/#projects' },
     { key: 'about', href: '/#about' },
     { key: 'contact', href: '/#contact' },
@@ -45,7 +45,7 @@ export function Navbar() {
       >
         <div className="flex items-center gap-6">
           <Link href="/" className="group flex items-center gap-2 relative" onClick={() => setIsMobileMenuOpen(false)}>
-            <div className="relative w-10 h-10 md:w-12 md:h-12 transition-transform duration-300 group-hover:scale-110">
+            <div className="relative w-12 h-12 md:w-14 md:h-14 transition-transform duration-300 group-hover:scale-110">
               <Image
                 src="/Logo.svg"
                 alt="Phuc Anh Logo"
@@ -54,7 +54,7 @@ export function Navbar() {
                 priority
               />
             </div>
-            <span className="font-outfit font-bold text-lg md:text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[var(--color-vivid-cyan)] to-[var(--color-sovereign-purple)] opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 hidden sm:block">
+            <span className="font-outfit font-bold text-xl md:text-2xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[var(--color-vivid-cyan)] to-[var(--color-sovereign-purple)] opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 hidden sm:block">
               Phuc Anh
             </span>
           </Link>
@@ -66,7 +66,7 @@ export function Navbar() {
             <Link
               key={item.key}
               href={item.href}
-              className="font-inter text-sm font-medium text-muted-foreground hover:text-foreground transition-colors relative group py-2"
+              className="font-inter text-base font-medium text-muted-foreground hover:text-foreground transition-colors relative group py-2"
             >
               {t(item.key)}
               <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-gradient-to-r from-[var(--color-vivid-cyan)] to-[var(--color-sovereign-purple)] group-hover:w-full group-hover:left-0 transition-all duration-300 ease-out" />
@@ -192,6 +192,26 @@ export function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+      {/* Scroll to Top Button */}
+      <AnimatePresence>
+        {mounted && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0 }}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="fixed bottom-8 right-8 z-40 p-3 rounded-full bg-background/80 backdrop-blur-md border border-foreground/10 shadow-lg text-foreground/80 hover:text-electric-blue hover:border-electric-blue/50 transition-all duration-300 hidden md:flex items-center justify-center group"
+          >
+            <div className="absolute inset-0 rounded-full bg-electric-blue/10 opacity-0 group-hover:opacity-100 transition-opacity blur-md" />
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="relative z-10">
+              <path d="m18 15-6-6-6 6" />
+            </svg>
+          </motion.button>
+        )}
+      </AnimatePresence>
+
     </>
   );
 }

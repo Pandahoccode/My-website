@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from 'next-intl';
 
 const skillsData = {
   languages: [
@@ -24,27 +25,29 @@ const skillsData = {
 };
 
 export function Skills() {
+  const t = useTranslations('Skills');
+
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Section Header */}
       <div className="text-center mb-16 space-y-4">
         <h2 className="text-3xl md:text-5xl font-bold text-foreground tracking-tight">
-          Technical Arsenal
+          {t('title')}
         </h2>
         <p className="text-foreground/60 text-lg max-w-2xl mx-auto">
-          A blend of data science rigor and frontend creativity.
+          {t('subtitle')}
         </p>
       </div>
 
       <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-12">
         {/* Languages Column */}
-        <SkillColumn title="Languages" skills={skillsData.languages} delay={0} />
+        <SkillColumn title={t('languages')} skills={skillsData.languages} delay={0} />
 
         {/* Data Science Column */}
-        <SkillColumn title="Data Science" skills={skillsData.dataScience} delay={0.2} />
+        <SkillColumn title={t('dataScience')} skills={skillsData.dataScience} delay={0.2} />
 
         {/* Web Tech Column */}
-        <SkillColumn title="Web Technologies" skills={skillsData.webTech} delay={0.4} />
+        <SkillColumn title={t('webTech')} skills={skillsData.webTech} delay={0.4} />
       </div>
     </section>
   );

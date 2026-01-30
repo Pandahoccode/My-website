@@ -14,6 +14,7 @@
   },
   "Projects": {
     "title": "Travaux Sélectionnés",
+    "featuredTitle": "Projets en Vedette",
     "viewProject": "Voir le Projet",
     "frenchCinema": {
       "title": "Analyse du Cinéma Français",
@@ -33,6 +34,8 @@
   },
   "About": {
     "title": "Parcours Données",
+    "description1": "Je suis un étudiant en Science des Données passionné par la découverte d'insights dans des ensembles de données complexes et la création de solutions élégantes.",
+    "description2": "Mon objectif est l'apprentissage automatique, l'analyse statistique et la création de visualisations de données percutantes qui racontent des histoires convaincantes.",
     "education": {
       "title": "Éducation",
       "degree": "BUT Science des Données",
@@ -56,7 +59,30 @@
       "title": "Certifications",
       "google": "Google Data Analytics",
       "oracle": "Fondamentaux IA Oracle"
+    },
+    "basedIn": "Basé à",
+    "journey": "Parcours",
+    "milestones": {
+      "student": {
+        "title": "Étudiant en Data Science",
+        "description": "Poursuite d'un BUT en Science des Données, concentré sur le ML et l'analyse statistique"
+      },
+      "frontend": {
+        "title": "Développeur Frontend",
+        "description": "Création d'applications web modernes avec React et Next.js"
+      },
+      "started": {
+        "title": "Début du Parcours",
+        "description": "Apprentissage de la programmation avec Python et la visualisation de données"
+      }
     }
+  },
+  "Skills": {
+    "title": "Arsenal Technique",
+    "subtitle": "Un mélange de rigueur en science des données et de créativité frontend.",
+    "languages": "Langages",
+    "dataScience": "Data Science",
+    "webTech": "Technologies Web"
   },
   "Contact": {
     "title": "Connectons-nous",

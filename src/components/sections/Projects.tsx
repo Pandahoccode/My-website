@@ -43,7 +43,7 @@ export function Projects() {
           className="mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-bold text-foreground tracking-tight mb-4">
-            Featured Projects
+            {t('featuredTitle')}
           </h2>
           <div className="h-1 w-20 bg-gradient-primary rounded-full" />
         </motion.div>

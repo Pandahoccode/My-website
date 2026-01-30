@@ -14,6 +14,7 @@
   },
   "Projects": {
     "title": "Selected Works",
+    "featuredTitle": "Featured Projects",
     "viewProject": "View Project",
     "frenchCinema": {
       "title": "French Cinema Analysis",
@@ -33,6 +34,8 @@
   },
   "About": {
     "title": "Data Journey",
+    "description1": "I'm a Data Science student passionate about uncovering insights from complex datasets and building elegant solutions.",
+    "description2": "My focus is on machine learning, statistical analysis, and creating impactful data visualizations that tell compelling stories.",
     "education": {
       "title": "Education",
       "degree": "BUT Data Science",
@@ -56,7 +59,30 @@
       "title": "Certifications",
       "google": "Google Data Analytics",
       "oracle": "Oracle AI Foundations"
+    },
+    "basedIn": "Based In",
+    "journey": "Journey",
+    "milestones": {
+      "student": {
+        "title": "Data Science Student",
+        "description": "Pursuing BS in Data Science, focusing on ML and statistical analysis"
+      },
+      "frontend": {
+        "title": "Frontend Developer",
+        "description": "Building modern web applications with React and Next.js"
+      },
+      "started": {
+        "title": "Started Coding Journey",
+        "description": "Began learning programming with Python and data visualization"
+      }
     }
+  },
+  "Skills": {
+    "title": "Technical Arsenal",
+    "subtitle": "A blend of data science rigor and frontend creativity.",
+    "languages": "Languages",
+    "dataScience": "Data Science",
+    "webTech": "Web Technologies"
   },
   "Contact": {
     "title": "Let's Connect",

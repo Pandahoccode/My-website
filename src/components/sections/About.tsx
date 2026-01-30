@@ -7,23 +7,24 @@ import { GraduationCap, MapPin, Calendar } from 'lucide-react';
 export function About() {
   const t = useTranslations('About');
 
+  // Use translations for milestones
   const milestones = [
     {
-      year: "2024 - Present",
-      title: "Data Science Student",
-      description: "Pursuing BS in Data Science, focusing on ML and statistical analysis",
+      year: t('education.year'),
+      title: t('milestones.student.title'),
+      description: t('milestones.student.description'),
       color: "cyan"
     },
     {
       year: "2023",
-      title: "Frontend Developer",
-      description: "Building modern web applications with React and Next.js",
+      title: t('milestones.frontend.title'),
+      description: t('milestones.frontend.description'),
       color: "purple"
     },
     {
       year: "2022",
-      title: "Started Coding Journey",
-      description: "Began learning programming with Python and data visualization",
+      title: t('milestones.started.title'),
+      description: t('milestones.started.description'),
       color: "gray"
     }
   ];
@@ -41,7 +42,7 @@ export function About() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4 font-outfit">
-            About Me
+            {t('title')}
           </h2>
           <div className="h-1 w-16 bg-gradient-to-r from-electric-blue to-deep-purple rounded-full mx-auto" />
         </motion.div>
@@ -72,7 +73,7 @@ export function About() {
                   <GraduationCap size={20} />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground text-sm uppercase tracking-wider mb-1">Education</h3>
+                  <h3 className="font-semibold text-foreground text-sm uppercase tracking-wider mb-1">{t('education.title')}</h3>
                   <p className="text-foreground font-medium">{t('education.degree')}</p>
                   <p className="text-foreground/60 text-sm">{t('education.school')}</p>
                 </div>
@@ -83,7 +84,7 @@ export function About() {
                   <MapPin size={20} />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-foreground text-sm uppercase tracking-wider mb-1">Based In</h3>
+                  <h3 className="font-semibold text-foreground text-sm uppercase tracking-wider mb-1">{t('basedIn')}</h3>
                   <p className="text-foreground font-medium">Hanoi, Vietnam</p>
                   <p className="text-foreground/60 text-sm">UTC+7</p>
                 </div>
@@ -98,20 +99,20 @@ export function About() {
             viewport={{ once: true }}
             className="lg:col-span-7"
           >
-            <h3 className="text-2xl font-bold text-foreground mb-8 font-outfit">Journey</h3>
+            <h3 className="text-2xl font-bold text-foreground mb-8 font-outfit">{t('journey')}</h3>
 
             <div className="relative border-l-2 border-foreground/10 ml-3 space-y-12">
               {milestones.map((milestone, index) => (
                 <div key={index} className="relative pl-12 group">
                   {/* Dot */}
                   <div className={`absolute -left-[9px] top-2 w-5 h-5 rounded-full border-4 border-background ${milestone.color === 'cyan' ? 'bg-electric-blue' :
-                      milestone.color === 'purple' ? 'bg-deep-purple' : 'bg-gray-400'
+                    milestone.color === 'purple' ? 'bg-deep-purple' : 'bg-gray-400'
                     } transition-transform duration-300 group-hover:scale-125`} />
 
                   {/* Content */}
                   <div className="space-y-2">
                     <span className={`inline-block px-3 py-1 rounded-full text-xs font-mono font-bold ${milestone.color === 'cyan' ? 'bg-electric-blue/10 text-electric-blue' :
-                        milestone.color === 'purple' ? 'bg-deep-purple/10 text-deep-purple' : 'bg-gray-200 dark:bg-gray-800 text-gray-500'
+                      milestone.color === 'purple' ? 'bg-deep-purple/10 text-deep-purple' : 'bg-gray-200 dark:bg-gray-800 text-gray-500'
                       }`}>
                       {milestone.year}
                     </span>

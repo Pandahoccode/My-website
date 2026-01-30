@@ -14,6 +14,7 @@
   },
   "Projects": {
     "title": "Dự Án Tiêu Biểu",
+    "featuredTitle": "Dự Án Nổi Bật",
     "viewProject": "Xem Dự Án",
     "frenchCinema": {
       "title": "Phân Tích Điện Ảnh Pháp",
@@ -33,6 +34,8 @@
   },
   "About": {
     "title": "Hành Trình Dữ Liệu",
+    "description1": "Tôi là sinh viên Khoa học Dữ liệu đam mê khám phá những hiểu biết sâu sắc từ các bộ dữ liệu phức tạp và xây dựng các giải pháp tinh tế.",
+    "description2": "Tôi tập trung vào học máy, phân tích thống kê và tạo ra các trực quan hóa dữ liệu có tác động kể những câu chuyện hấp dẫn.",
     "education": {
       "title": "Giáo Dục",
       "degree": "BUT Khoa học Dữ liệu",
@@ -56,7 +59,30 @@
       "title": "Chứng Chỉ",
       "google": "Google Data Analytics",
       "oracle": "Oracle AI Foundations"
+    },
+    "basedIn": "Sinh sống tại",
+    "journey": "Hành Trình",
+    "milestones": {
+      "student": {
+        "title": "Sinh Viên Khoa Học Dữ Liệu",
+        "description": "Theo học Cử nhân Khoa học Dữ liệu, tập trung vào ML và phân tích thống kê"
+      },
+      "frontend": {
+        "title": "Lập Trình Viên Frontend",
+        "description": "Xây dựng ứng dụng web hiện đại với React và Next.js"
+      },
+      "started": {
+        "title": "Bắt Đầu Lập Trình",
+        "description": "Bắt đầu học lập trình với Python và trực quan hóa dữ liệu"
+      }
     }
+  },
+  "Skills": {
+    "title": "Kho Vũ Khí Kỹ Thuật",
+    "subtitle": "Sự kết hợp giữa tính chính xác của khoa học dữ liệu và sự sáng tạo frontend.",
+    "languages": "Ngôn Ngữ",
+    "dataScience": "Khoa Học Dữ Liệu",
+    "webTech": "Công Nghệ Web"
   },
   "Contact": {
     "title": "Kết Nối",

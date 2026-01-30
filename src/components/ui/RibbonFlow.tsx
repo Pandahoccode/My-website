@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { useTheme } from "next-themes";
 
 export function RibbonFlow() {
   const canvasRef = useRef<HTMLCanvasElement>(null);

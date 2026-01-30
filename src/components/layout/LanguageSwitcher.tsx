@@ -1,30 +1,48 @@
 "use client";
 
 import { useLocale } from 'next-intl';
-import { usePathname, useRouter } from '@/i18n/routing';
+import { useRouter } from '@/i18n/routing';
+import { usePathname } from 'next/navigation'; // Use standard Next.js hook to get the FULL path
 import { motion } from 'framer-motion';
 import { clsx } from 'clsx';
 import { useTransition } from 'react';
 
 const locales = ['en', 'fr', 'vi'] as const;
 
+// Helper function to strip ANY locale prefix from a path
+function stripLocaleFromPath(path: string): string {
+  for (const locale of locales) {
+    const localePrefix = `/${locale}`;
+    // Handle exact match (e.g., "/fr")
+    if (path === localePrefix) {
+      return '/';
+    }
+    // Handle prefix match (e.g., "/fr/about")
+    if (path.startsWith(`${localePrefix}/`)) {
+      return path.substring(localePrefix.length);
+    }
+  }
+  return path;
+}
+
 export function LanguageSwitcher() {
   const locale = useLocale();
   const router = useRouter();
-  const pathname = usePathname();
+  const fullPathname = usePathname(); // This returns the full path, e.g., /fr/about
   const [isPending, startTransition] = useTransition();
 
   const handleLocaleChange = (newLocale: string) => {
     startTransition(() => {
-      router.replace(pathname, { locale: newLocale });
+      // 1. Strip ANY locale prefix from the path (not just the current one)
+      const pathWithoutLocale = stripLocaleFromPath(fullPathname);
+
+      // 2. Use next-intl's router.replace which will correctly prepend the new locale
+      router.replace(pathWithoutLocale, { locale: newLocale });
     });
   };
 
   return (
-    <div className="flex items-center gap-1 bg-background/50 backdrop-blur-md rounded-full px-2 py-1 border border-foreground/5 relative">
-      {/* Circuit Line - Background Decoration */}
-      <div className="absolute top-1/2 left-2 right-2 h-[1px] bg-foreground/10 -z-10" />
-
+    <div className="flex items-center p-1 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 relative">
       {locales.map((l) => {
         const isActive = l === locale;
         return (
@@ -33,18 +51,18 @@ export function LanguageSwitcher() {
             onClick={() => handleLocaleChange(l)}
             disabled={isPending}
             className={clsx(
-              "relative px-3 py-1 text-xs font-mono font-bold uppercase transition-colors duration-300",
-              isActive ? "text-background" : "text-foreground/60 hover:text-[#00D2FF]"
+              "relative px-4 py-1.5 text-sm font-medium rounded-full transition-colors duration-300 z-10",
+              isActive ? "text-white" : "text-white/60 hover:text-white"
             )}
           >
             {isActive && (
               <motion.div
-                layoutId="activeLocaleNode"
-                className="absolute inset-0 bg-[#00D2FF] rounded-full z-[-1]"
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                layoutId="activeLocaleBg"
+                className="absolute inset-0 bg-gradient-to-r from-[#00AEEF] to-[#9D50BB] rounded-full -z-10"
+                transition={{ type: "spring", stiffness: 300, damping: 25 }}
               />
             )}
-            {l}
+            {l.toUpperCase()}
           </button>
         );
       })}
