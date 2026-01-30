@@ -20,10 +20,10 @@ export default function Home() {
       <Projects />
 
       <SectionSeparator />
-      <Skills />
+      <About />
 
       <SectionSeparator />
-      <About />
+      <Skills />
 
       <SectionSeparator />
       <Contact />

@@ -1,6 +1,7 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import "./globals.css";
+import { Providers } from "@/components/providers/Providers";
 import { Inter, Outfit } from "next/font/google";
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
@@ -27,13 +28,15 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className="dark">
-      <body className={`${inter.variable} ${outfit.variable} antialiased bg-[#192459] text-white overflow-x-hidden selection:bg-[#00D2FF] selection:text-[#192459]`}>
+    <html lang={locale} suppressHydrationWarning>
+      <body className={`${inter.variable} ${outfit.variable} antialiased bg-background text-foreground overflow-x-hidden selection:bg-[var(--color-vivid-cyan)] selection:text-white transition-colors duration-300`}>
         <NextIntlClientProvider messages={messages}>
-          <RibbonFlow />
-          <Navbar />
-          {children}
-          <Footer />
+          <Providers>
+            <RibbonFlow />
+            <Navbar />
+            {children}
+            <Footer />
+          </Providers>
         </NextIntlClientProvider>
       </body>
     </html>

@@ -79,8 +79,8 @@ export function ScrollFrames({ children }: ScrollFramesProps) {
         />
 
         {/* Updated Gradient Overlay matching new palette */}
-        <div className="absolute inset-0 bg-gradient-to-t from-navy-black via-transparent to-navy-black/50" />
-        <div className="absolute inset-0 bg-gradient-to-b from-navy-black/30 via-transparent to-navy-black" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/50" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-background" />
 
         {/* Content */}
         <div className="relative z-10 h-full flex items-center justify-center">
@@ -89,7 +89,7 @@ export function ScrollFrames({ children }: ScrollFramesProps) {
 
         {/* Loading */}
         {!isLoaded && (
-          <div className="absolute inset-0 bg-navy-black flex items-center justify-center z-50">
+          <div className="absolute inset-0 bg-background flex items-center justify-center z-50">
             <div className="text-electric-blue font-mono animate-pulse">Loading frames...</div>
           </div>
         )}

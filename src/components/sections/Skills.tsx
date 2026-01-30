@@ -28,10 +28,10 @@ export function Skills() {
     <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Section Header */}
       <div className="text-center mb-16 space-y-4">
-        <h2 className="text-3xl md:text-5xl font-bold text-white tracking-tight">
+        <h2 className="text-3xl md:text-5xl font-bold text-foreground tracking-tight">
           Technical Arsenal
         </h2>
-        <p className="text-muted-slate text-lg max-w-2xl mx-auto">
+        <p className="text-foreground/60 text-lg max-w-2xl mx-auto">
           A blend of data science rigor and frontend creativity.
         </p>
       </div>
@@ -59,7 +59,7 @@ function SkillColumn({ title, skills, delay }: { title: string, skills: any[], d
       viewport={{ once: true }}
       className="space-y-6"
     >
-      <h3 className="text-xl font-semibold text-electric-cyan border-b border-white/10 pb-2 mb-6">
+      <h3 className="text-xl font-semibold text-electric-cyan border-b border-foreground/10 pb-2 mb-6">
         {title}
       </h3>
 
@@ -67,12 +67,12 @@ function SkillColumn({ title, skills, delay }: { title: string, skills: any[], d
         {skills.map((skill, index) => (
           <div key={skill.name} className="space-y-2">
             <div className="flex justify-between items-center text-sm">
-              <span className="text-polar-white font-medium">{skill.name}</span>
-              <span className="text-muted-slate font-mono">{skill.level}%</span>
+              <span className="text-foreground font-medium">{skill.name}</span>
+              <span className="text-foreground/60 font-mono">{skill.level}%</span>
             </div>
 
             {/* Progress Bar Container */}
-            <div className="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+            <div className="h-2 w-full bg-foreground/10 rounded-full overflow-hidden">
               {/* Gradient Bar */}
               <motion.div
                 initial={{ width: 0 }}

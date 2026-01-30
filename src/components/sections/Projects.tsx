@@ -42,7 +42,7 @@ export function Projects() {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground tracking-tight mb-4">
             Featured Projects
           </h2>
           <div className="h-1 w-20 bg-gradient-primary rounded-full" />
@@ -76,11 +76,11 @@ function ProjectCard({ projectKey, data, index }: any) {
       className="group"
     >
       {/* Dark Card Container */}
-      <div className="bg-slate-900/50 backdrop-blur-sm border border-white/5 rounded-2xl p-6 hover:border-cyan-500/30 transition-all duration-300 hover:shadow-[0_0_30px_rgba(34,211,238,0.1)] h-full flex flex-col">
+      <div className="bg-background/40 backdrop-blur-sm border border-foreground/5 rounded-2xl p-6 hover:border-cyan-500/30 transition-all duration-300 hover:shadow-[0_0_30px_rgba(34,211,238,0.1)] h-full flex flex-col">
 
         {/* Top: Icons */}
         <div className="flex items-center justify-between mb-4">
-          <div className="p-2 bg-white/5 rounded-lg">
+          <div className="p-2 bg-foreground/5 rounded-lg">
             <Code2 className="w-5 h-5 text-cyan-400" />
           </div>
           <div className="flex gap-2">
@@ -88,35 +88,35 @@ function ProjectCard({ projectKey, data, index }: any) {
               href={data.github}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 bg-white/5 rounded-lg hover:bg-white/10 transition-colors"
+              className="p-2 bg-foreground/5 rounded-lg hover:bg-foreground/10 transition-colors"
             >
-              <Github className="w-4 h-4 text-gray-400 hover:text-white transition-colors" />
+              <Github className="w-4 h-4 text-foreground/60 hover:text-foreground transition-colors" />
             </a>
             <a
               href={data.demo}
-              className="p-2 bg-white/5 rounded-lg hover:bg-white/10 transition-colors"
+              className="p-2 bg-foreground/5 rounded-lg hover:bg-foreground/10 transition-colors"
             >
-              <ExternalLink className="w-4 h-4 text-gray-400 hover:text-white transition-colors" />
+              <ExternalLink className="w-4 h-4 text-foreground/60 hover:text-foreground transition-colors" />
             </a>
           </div>
         </div>
 
         {/* Middle: Title & Description */}
         <div className="flex-1 mb-4">
-          <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
+          <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-cyan-400 transition-colors">
             {t(`${projectKey}.title` as any)}
           </h3>
-          <p className="text-gray-400 text-sm leading-relaxed line-clamp-3">
+          <p className="text-foreground/70 text-sm leading-relaxed line-clamp-3">
             {t(`${projectKey}.description` as any)}
           </p>
         </div>
 
         {/* Bottom: Tech Tags */}
-        <div className="flex flex-wrap gap-2 pt-4 border-t border-white/5">
+        <div className="flex flex-wrap gap-2 pt-4 border-t border-foreground/10">
           {data.tags.map((tag: string) => (
             <span
               key={tag}
-              className="px-3 py-1 bg-gray-800/80 text-gray-300 text-xs rounded-full font-medium"
+              className="px-3 py-1 bg-foreground/5 text-foreground/80 text-xs rounded-full font-medium"
             >
               {tag}
             </span>

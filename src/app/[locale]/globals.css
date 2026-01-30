@@ -9,6 +9,11 @@
   --color-sovereign-purple: #8E44AD;
   --color-electric-cyan: #22D3EE;
 
+  /* Aliases for Component Consistency */
+  --color-navy-black: #030712;
+  --color-electric-blue: #00D2FF;
+  --color-deep-purple: #8E44AD;
+
   /* Typography */
   --color-polar-white: #F8FAFC;
   --color-muted-slate: #94A3B8;
@@ -23,11 +28,24 @@
   --animate-spin-slow: spin 10s linear infinite;
 }
 
+:root {
+  /* Light Mode Defaults */
+  --background: #F8FAFC; /* polar-white */
+  --foreground: #030712; /* deep-obsidian */
+  --color-primary: #00D2FF;
+}
+
+.dark {
+  /* Dark Mode Defaults */
+  --background: #030712; /* deep-obsidian */
+  --foreground: #F8FAFC; /* polar-white */
+}
+
 /* Base Override */
 @layer base {
   body {
-    background-color: var(--color-deep-obsidian);
-    color: var(--color-polar-white);
+    background-color: var(--background);
+    color: var(--foreground);
   }
 }
 
@@ -59,10 +77,10 @@
 
 @layer base {
   h1, h2, h3, h4, h5, h6 {
-    @apply text-white/90;
+    @apply text-foreground/90;
   }
   p, span, li, a {
-    @apply text-white/60;
+    @apply text-foreground/60;
   }
   /* Re-override specific text needing full opacity */
   .text-transparent {

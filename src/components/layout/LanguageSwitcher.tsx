@@ -21,9 +21,9 @@ export function LanguageSwitcher() {
   };
 
   return (
-    <div className="flex items-center gap-1 bg-[#030712]/50 backdrop-blur-md rounded-full px-2 py-1 border border-white/5 relative">
+    <div className="flex items-center gap-1 bg-background/50 backdrop-blur-md rounded-full px-2 py-1 border border-foreground/5 relative">
       {/* Circuit Line - Background Decoration */}
-      <div className="absolute top-1/2 left-2 right-2 h-[1px] bg-white/10 -z-10" />
+      <div className="absolute top-1/2 left-2 right-2 h-[1px] bg-foreground/10 -z-10" />
 
       {locales.map((l) => {
         const isActive = l === locale;
@@ -34,7 +34,7 @@ export function LanguageSwitcher() {
             disabled={isPending}
             className={clsx(
               "relative px-3 py-1 text-xs font-mono font-bold uppercase transition-colors duration-300",
-              isActive ? "text-[#030712]" : "text-white/60 hover:text-[#00D2FF]"
+              isActive ? "text-background" : "text-foreground/60 hover:text-[#00D2FF]"
             )}
           >
             {isActive && (

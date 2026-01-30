@@ -9,7 +9,7 @@ export function Hero() {
   const t = useTranslations('Hero');
 
   return (
-    <section className="relative z-10 flex items-center justify-center py-20 md:py-32 px-6 bg-navy-black overflow-hidden">
+    <section className="relative z-10 flex items-center justify-center py-20 md:py-32 px-6 bg-background overflow-hidden">
       {/* Ambient background glow */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-electric-blue/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-deep-purple/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
@@ -25,8 +25,8 @@ export function Hero() {
           className="flex flex-col items-center md:items-start text-center md:text-left space-y-8"
         >
           <div>
-            <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-white font-outfit leading-none mb-2">
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-gray-400">
+            <h1 className="text-5xl md:text-7xl font-black tracking-tighter text-foreground font-outfit leading-none mb-2">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-foreground via-foreground to-muted-slate">
                 {t('title')}
               </span>
             </h1>
@@ -35,14 +35,14 @@ export function Hero() {
             </p>
           </div>
 
-          <p className="text-gray-300 font-light max-w-lg font-inter leading-relaxed text-lg">
+          <p className="text-foreground/80 font-light max-w-lg font-inter leading-relaxed text-lg">
             {t('role')}
           </p>
 
           <div className="relative group">
             <div className="absolute -inset-1 bg-gradient-to-r from-electric-blue to-deep-purple rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
-            <div className="relative border-l-4 border-deep-purple pl-6 py-4 bg-white/5 pr-6 rounded-r-lg backdrop-blur-md border md:border-t-0 md:border-b-0 md:border-r-0 border-white/10">
-              <p className="text-gray-200 italic font-serif text-xl leading-relaxed">
+            <div className="relative border-l-4 border-deep-purple pl-6 py-4 bg-foreground/5 pr-6 rounded-r-lg backdrop-blur-md border md:border-t-0 md:border-b-0 md:border-r-0 border-foreground/10">
+              <p className="text-foreground/90 italic font-serif text-xl leading-relaxed">
                 {t('quote')}
               </p>
               <p className="text-sm text-electric-blue mt-3 font-mono font-bold tracking-wider">
