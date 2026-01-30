@@ -2,92 +2,142 @@
 
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
+import { GraduationCap, MapPin, Calendar } from 'lucide-react';
 
 export function About() {
   const t = useTranslations('About');
 
-  // Education & Roadmap Data
-  const roadmap = [
-    { year: "Year 1", title: t('roadmap.year1'), completed: true },
-    { year: "Year 2", title: t('roadmap.year2'), completed: true },
-    { year: "Future", title: t('roadmap.future'), completed: false },
-  ];
-
-  const skills = [
-    { key: "python", percent: 90 },
-    { key: "sql", percent: 85 },
-    { key: "ml", percent: 75 },
+  const milestones = [
+    {
+      year: "2024 - Present",
+      title: "Data Science Student",
+      description: "Pursuing BS in Data Science, focusing on ML and statistical analysis",
+      color: "cyan"
+    },
+    {
+      year: "2023",
+      title: "Frontend Developer",
+      description: "Building modern web applications with React and Next.js",
+      color: "purple"
+    },
+    {
+      year: "2022",
+      title: "Started Coding Journey",
+      description: "Began learning programming with Python and data visualization",
+      color: "gray"
+    }
   ];
 
   return (
-    <section id="about" className="relative z-10 py-32 px-6 md:px-12 max-w-7xl mx-auto">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
 
-        {/* Column 1: Roadmap (Circuit Style) */}
-        <div>
-          <h2 className="text-4xl font-black font-outfit text-white mb-12">
-            {t('title')}
+        {/* Section Title */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">
+            About Me
           </h2>
+          <div className="h-1 w-20 bg-gradient-primary rounded-full mx-auto" />
+        </motion.div>
 
-          <div className="relative pl-8 ml-4 space-y-12">
-            {/* Animated Data Circuit Line */}
-            <motion.div
-              initial={{ height: 0 }}
-              whileInView={{ height: "100%" }}
-              transition={{ duration: 1.5, ease: "easeInOut" }}
-              viewport={{ once: true }}
-              className="absolute left-0 top-0 w-[2px] bg-gradient-to-b from-electric-blue via-deep-purple to-transparent shadow-[0_0_10px_rgba(0,174,239,0.5)]"
-            />
-            {/* Background Line (Dim) */}
-            <div className="absolute left-0 top-0 bottom-0 w-[2px] bg-white/5 -z-10" />
+        {/* Split Layout */}
+        <div className="grid lg:grid-cols-2 gap-16">
 
-            {/* Education Node */}
-            <div className="relative">
-              <span className="absolute -left-[41px] top-0 w-6 h-6 rounded-full bg-navy-black border-2 border-electric-blue shadow-[0_0_15px_rgba(0,174,239,0.8)] z-10" />
-              <div className="mb-2 text-electric-blue font-mono text-sm">{t('education.year')}</div>
-              <h3 className="text-2xl font-bold text-white mb-1">{t('education.degree')}</h3>
-              <div className="text-gray-400">{t('education.school')}</div>
+          {/* LEFT: Narrative + Cards */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="space-y-8"
+          >
+            {/* Narrative */}
+            <div className="space-y-4">
+              <p className="text-gray-300 leading-relaxed text-lg">
+                {t('description1')}
+              </p>
+              <p className="text-gray-400 leading-relaxed">
+                {t('description2')}
+              </p>
             </div>
 
-            {/* Roadmap Nodes */}
-            {roadmap.map((item, i) => (
-              <div key={i} className="relative">
-                <span className={`absolute -left-[41px] top-1 w-4 h-4 rounded-full bg-navy-black border-2 ${item.completed ? 'border-deep-purple shadow-[0_0_10px_rgba(106,27,154,0.5)]' : 'border-gray-600'}`} />
-                <div className="text-gray-500 font-mono text-xs mb-1">{item.year}</div>
-                <div className={`${item.completed ? 'text-white' : 'text-gray-600'} text-lg font-medium`}>
-                  {item.title}
+            {/* Info Cards */}
+            <div className="grid sm:grid-cols-2 gap-4">
+              {/* Education Card */}
+              <div className="glass-card rounded-xl p-5 hover:border-cyan-500/30 transition-colors group">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="p-2 bg-cyan-500/10 rounded-lg group-hover:bg-cyan-500/20 transition-colors">
+                    <GraduationCap className="w-5 h-5 text-cyan-400" />
+                  </div>
+                  <h3 className="font-semibold text-white">Education</h3>
                 </div>
+                <p className="text-gray-400 text-sm">{t('education.degree')}</p>
+                <p className="text-cyan-400 text-xs mt-1 font-medium">{t('education.school')}</p>
               </div>
-            ))}
-          </div>
-        </div>
 
-        {/* Column 2: Skills */}
-        <div>
-          <h2 className="text-4xl font-black font-outfit text-white mb-12">
-            {t('skills.title')}
-          </h2>
-
-          <div className="space-y-8">
-            {skills.map((skill, index) => (
-              <div key={skill.key}>
-                <div className="flex justify-between mb-2">
-                  <span className="text-white font-medium">{t(`skills.${skill.key}`)}</span>
-                  <span className="text-electric-blue font-mono">{skill.percent}%</span>
+              {/* Location Card */}
+              <div className="glass-card rounded-xl p-5 hover:border-purple-500/30 transition-colors group">
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="p-2 bg-purple-500/10 rounded-lg group-hover:bg-purple-500/20 transition-colors">
+                    <MapPin className="w-5 h-5 text-purple-400" />
+                  </div>
+                  <h3 className="font-semibold text-white">Location</h3>
                 </div>
-                <div className="h-2 bg-white/5 rounded-full overflow-hidden">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${skill.percent}%` }}
-                    transition={{ duration: 1, delay: 0.2 + (index * 0.1), ease: "easeOut" }}
-                    className="h-full bg-gradient-to-r from-electric-blue to-deep-purple"
-                  />
-                </div>
+                <p className="text-gray-400 text-sm">Hanoi, Vietnam</p>
+                <p className="text-purple-400 text-xs mt-1 font-medium">UTC+7</p>
               </div>
-            ))}
-          </div>
-        </div>
+            </div>
+          </motion.div>
 
+          {/* RIGHT: Timeline */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="relative"
+          >
+            {/* Vertical Line */}
+            <div className="absolute left-6 top-0 bottom-0 w-[2px] bg-gradient-to-b from-cyan-500 via-purple-500 to-transparent opacity-30" />
+
+            {/* Milestones */}
+            <div className="space-y-8 relative">
+              {milestones.map((milestone, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.15 }}
+                  viewport={{ once: true }}
+                  className="relative pl-16"
+                >
+                  {/* Node */}
+                  <div className={`absolute left-4 top-2 w-5 h-5 rounded-full border-2 ${milestone.color === 'cyan' ? 'border-cyan-500 shadow-[0_0_10px_rgba(34,211,238,0.5)]' :
+                      milestone.color === 'purple' ? 'border-purple-500 shadow-[0_0_10px_rgba(142,68,173,0.5)]' :
+                        'border-gray-600'
+                    } bg-deep-obsidian`} />
+
+                  {/* Content */}
+                  <div className="glass-card rounded-lg p-4 hover:border-white/10 transition-colors">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Calendar className="w-4 h-4 text-cyan-400" />
+                      <span className="text-sm text-cyan-400 font-mono">{milestone.year}</span>
+                    </div>
+                    <h3 className="text-white font-semibold mb-1">{milestone.title}</h3>
+                    <p className="text-gray-400 text-sm leading-relaxed">{milestone.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+        </div>
       </div>
     </section>
   );

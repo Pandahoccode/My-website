@@ -6,21 +6,40 @@
     "contact": "Contact"
   },
   "Hero": {
-    "title": "PHUC ANH",
-    "role": "Étudiant en Science des Données (2ème année)",
-    "description": "Transformer des données complexes en histoires visuelles fluides."
+    "title": "Dang Phuc Anh",
+    "description": "Étudiant en Data Science concentré sur la transformation de la complexité brute en récits numériques élégants et évolutifs.",
+    "role": "Architecturer des perspectives exploitables grâce à l'exploitation stratégique des données. Actuellement en Bachelor Universitaire de Technologie (BUT) Science des Données à l'Université de Lille, je recherche un stage de 10 semaines à partir du 6 avril 2026.",
+    "quote": "\"Sans données, vous n’êtes qu’une autre personne avec une opinion.\"",
+    "quoteAuthor": "— W. Edwards Deming"
   },
   "Projects": {
     "title": "Travaux Sélectionnés",
-    "viewProject": "Voir le Projet"
+    "viewProject": "Voir le Projet",
+    "frenchCinema": {
+      "title": "Analyse du Cinéma Français",
+      "category": "Analyse de Données",
+      "description": "Analyse des tendances du cinéma français, mettant en évidence la résilience post-Covid avec Python, R et Power BI."
+    },
+    "airQuality": {
+      "title": "Qualité de l'Air au Vietnam",
+      "category": "Apprentissage Automatique",
+      "description": "Étude des modèles de qualité de l'air utilisant des API et le clustering non supervisé (K-means)."
+    },
+    "dataWarehouse": {
+      "title": "Entrepôt de Données Chinook",
+      "category": "Ingénierie des Données",
+      "description": "Pipeline ETL automatisé utilisant Oracle Data Integrator pour transformer les données de ventes musicales en un entrepôt de données en étoile."
+    }
   },
   "About": {
-    "title": "Parcours Data",
+    "title": "Parcours Données",
     "education": {
       "title": "Éducation",
-      "degree": "Licence en Science des Données",
-      "school": "Université des Sciences",
-      "year": "2024 - Présent"
+      "degree": "BUT Science des Données",
+      "school": "Université de Lille",
+      "year": "2024 – Présent",
+      "hs_degree": "Baccalauréat Scientifique",
+      "hs_school": "Lycée Hanoi-Amsterdam"
     },
     "roadmap": {
       "year1": "Fondamentaux & Algorithmes",
@@ -29,13 +48,26 @@
     },
     "skills": {
       "title": "Compétences Clés",
-      "python": "Python & Analyse de Données",
-      "sql": "SQL & Conception de BDD",
-      "ml": "Apprentissage Automatique"
+      "python": "Python & SQL",
+      "visualization": "Visualisation de Données (Power BI/Qlik)",
+      "ml": "Machine Learning (Clustering/PCA)"
+    },
+    "certifications": {
+      "title": "Certifications",
+      "google": "Google Data Analytics",
+      "oracle": "Fondamentaux IA Oracle"
     }
+  },
+  "Contact": {
+    "title": "Connectons-nous",
+    "text": "Intéressé par une collaboration ou une question ? Je suis toujours ouvert pour discuter de science des données, d'IA et de développement créatif.",
+    "emailLabel": "Email",
+    "messageLabel": "Message",
+    "sendButton": "Envoyer le Message",
+    "email": "phuc-anh.dang.etu@univ-lille.fr"
   },
   "Footer": {
     "copyright": "© 2026 Phuc Anh. Construit avec Next.js & Lovelace.",
-    "contact": "Connexion"
+    "contact": "Connecter"
   }
 }

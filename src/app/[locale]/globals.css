@@ -1,33 +1,47 @@
 @import "tailwindcss";
 
 @theme {
-  /* Primary Palette */
-  --color-electric-blue: #00AEEF;
-  --color-deep-purple: #6A1B9A;
-  --color-cyan-blue: #00BFFF;
+  /* Atmosphere */
+  --color-deep-obsidian: #030712; /* Updated to Deep Midnight/Black */
 
-  /* Secondary Palette */
-  --color-navy-black: #030712; /* Deep Midnight Navy */
-  --color-midnight-blue: #0D47A1;
-  --color-sky-blue: #E1F5FE;
-  --color-sky-blue-depth: #B3E5FC;
+  /* Primary Gradients */
+  --color-vivid-cyan: #00D2FF;
+  --color-sovereign-purple: #8E44AD;
+  --color-electric-cyan: #22D3EE;
 
-  /* Extended Palette */
-  --color-off-white: #F0F4F8;
-  --color-soft-purple: #BA68C8;
-  --color-tech-gray: #607D8B;
-  --color-error-red: #FF5252;
+  /* Typography */
+  --color-polar-white: #F8FAFC;
+  --color-muted-slate: #94A3B8;
 
-  /* Legacy/Existing (Check if still needed) */
-  --color-deep-navy: #030712; /* Kept for main background */
-  --color-cyber-purple: #9D50BB; /* Kept as lighter variant */
+  /* Mapping for utilities */
+  /* We will use bg-[...] mostly, but these help semantic usage */
 
-  --font-display: var(--font-outfit), system-ui, sans-serif;
-  --font-body: var(--font-inter), system-ui, sans-serif;
   --font-sans: var(--font-inter), system-ui, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, monospace;
+  --font-display: var(--font-inter), system-ui, sans-serif;
 
-  --image-circuit-pattern: url('/patterns/circuit.svg');
+  /* Animations */
+  --animate-spin-slow: spin 10s linear infinite;
+}
+
+/* Base Override */
+@layer base {
+  body {
+    background-color: var(--color-deep-obsidian);
+    color: var(--color-polar-white);
+  }
+}
+
+/* Gradient Utilities */
+@utility bg-gradient-primary {
+  @apply bg-gradient-to-r from-[var(--color-vivid-cyan)] to-[var(--color-sovereign-purple)];
+}
+
+@utility text-gradient-primary {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-[var(--color-vivid-cyan)] to-[var(--color-sovereign-purple)];
+}
+
+@utility glass-card {
+  @apply bg-white/5 backdrop-blur-lg border border-white/10;
 }
 
 /* Custom Utilities */

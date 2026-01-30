@@ -2,9 +2,16 @@
 
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
+import { Github, Linkedin, Mail } from 'lucide-react';
 
 export function Contact() {
-  const t = useTranslations('Navigation'); // Using Navigation keys for now if Contact specific keys miss
+  const t = useTranslations('Contact');
+
+  const socialLinks = [
+    { icon: Mail, href: `mailto:${t('email')}`, label: "Email" },
+    { icon: Linkedin, href: "https://www.linkedin.com/", label: "LinkedIn" },
+    { icon: Github, href: "https://github.com/", label: "GitHub" }
+  ];
 
   return (
     <section id="contact" className="relative z-10 py-32 px-6 md:px-12 max-w-4xl mx-auto">
@@ -21,15 +28,30 @@ export function Contact() {
 
         <div className="relative z-10 text-center">
           <h2 className="text-4xl md:text-5xl font-black font-outfit text-white mb-6">
-            Let's <span className="text-electric-blue">Connect</span>
+            {t('title')}
           </h2>
           <p className="text-gray-400 mb-10 max-w-lg mx-auto font-inter">
-            Interested in collaborating or have a question? I'm always open to discussing data science, AI, and creative development.
+            {t('text')}
           </p>
+
+          <div className="flex justify-center gap-8 mb-12">
+            {socialLinks.map((link, index) => (
+              <a
+                key={index}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-4 rounded-full bg-white/5 border border-white/10 text-electric-blue hover:bg-electric-blue hover:text-navy-black transition-all duration-300 hover:scale-110 shadow-lg hover:shadow-[0_0_20px_rgba(0,174,239,0.5)]"
+                aria-label={link.label}
+              >
+                <link.icon size={24} />
+              </a>
+            ))}
+          </div>
 
           <form className="space-y-6 max-w-md mx-auto text-left">
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2 font-mono">Email</label>
+              <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2 font-mono">{t('emailLabel')}</label>
               <input
                 type="email"
                 id="email"
@@ -38,19 +60,19 @@ export function Contact() {
               />
             </div>
             <div>
-              <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2 font-mono">Message</label>
+              <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2 font-mono">{t('messageLabel')}</label>
               <textarea
                 id="message"
                 rows={4}
                 className="w-full bg-navy-black/60 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-electric-blue transition-colors placeholder:text-gray-600"
-                placeholder="Hello..."
+                placeholder="..."
               />
             </div>
             <button
               type="submit"
               className="w-full py-4 bg-gradient-to-r from-electric-blue to-deep-purple rounded-lg text-white font-bold font-outfit tracking-wide hover:shadow-[0_0_20px_rgba(0,174,239,0.5)] transition-shadow duration-300"
             >
-              Send Message
+              {t('sendButton')}
             </button>
           </form>
         </div>

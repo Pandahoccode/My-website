@@ -1,41 +1,73 @@
 {
   "Navigation": {
-    "home": "Trang chủ",
-    "projects": "Dự án",
-    "about": "Giới thiệu",
-    "contact": "Liên hệ"
+    "home": "Trang Chủ",
+    "projects": "Dự Án",
+    "about": "Giới Thiệu",
+    "contact": "Liên Hệ"
   },
   "Hero": {
-    "title": "PHUC ANH",
-    "role": "Sinh viên Khoa học Dữ liệu (Năm 2)",
-    "description": "Biến dữ liệu phức tạp thành những câu chuyện hình ảnh sống động."
+    "title": "Đặng Phúc Anh",
+    "description": "Học giả Khoa học Dữ liệu tập trung vào việc biến sự phức tạp thô thành những câu chuyện kỹ thuật số thanh lịch, có thể mở rộng.",
+    "role": "Kiến trúc hóa những thông tin chi tiết có thể hành động thông qua việc khai thác dữ liệu chiến lược. Hiện đang theo học Cử nhân Công nghệ (BUT) về Khoa học Dữ liệu tại Đại học Lille, tìm kiếm thực tập 10 tuần bắt đầu từ ngày 6 tháng 4 năm 2026.",
+    "quote": "\"Không có dữ liệu, bạn chỉ là một người khác với một ý kiến.\"",
+    "quoteAuthor": "— W. Edwards Deming"
   },
   "Projects": {
-    "title": "Dự án Tiêu biểu",
-    "viewProject": "Xem Dự án"
-  },
-  "About": {
-    "title": "Hành trình Dữ liệu",
-    "education": {
-      "title": "Học vấn",
-      "degree": "Cử nhân Khoa học Dữ liệu",
-      "school": "Đại học Khoa học Tự nhiên",
-      "year": "2024 - Hiện tại"
+    "title": "Dự Án Tiêu Biểu",
+    "viewProject": "Xem Dự Án",
+    "frenchCinema": {
+      "title": "Phân Tích Điện Ảnh Pháp",
+      "category": "Phân Tích Dữ Liệu",
+      "description": "Phân tích xu hướng điện ảnh Pháp, làm nổi bật khả năng phục hồi sau Covid sử dụng Python, R và Power BI."
     },
-    "roadmap": {
-      "year1": "Nền tảng & Thuật toán",
-      "year2": "Học máy & Trực quan hóa",
-      "future": "Deep Learning & Hệ thống AI"
+    "airQuality": {
+      "title": "Chất Lượng Không Khí Việt Nam",
+      "category": "Học Máy",
+      "description": "Nghiên cứu mô hình chất lượng không khí sử dụng API và phân cụm không giám sát (K-means)."
     },
-    "skills": {
-      "title": "Kỹ năng Cốt lõi",
-      "python": "Python & Phân tích Dữ liệu",
-      "sql": "SQL & Thiết kế Cơ sở Dữ liệu",
-      "ml": "Học máy (Machine Learning)"
+    "dataWarehouse": {
+      "title": "Kho Dữ Liệu Chinook",
+      "category": "Kỹ Thuật Dữ Liệu",
+      "description": "Quy trình ETL tự động sử dụng Oracle Data Integrator để chuyển đổi dữ liệu bán hàng âm nhạc thành Kho Dữ liệu lược đồ sao."
     }
   },
+  "About": {
+    "title": "Hành Trình Dữ Liệu",
+    "education": {
+      "title": "Giáo Dục",
+      "degree": "BUT Khoa học Dữ liệu",
+      "school": "Đại học Lille",
+      "year": "2024 – Hiện tại",
+      "hs_degree": "Tú tài Khoa học",
+      "hs_school": "THPT Chuyên Hà Nội - Amsterdam"
+    },
+    "roadmap": {
+      "year1": "Cơ Bản & Thuật Toán",
+      "year2": "Học Máy & Trực Quan Hóa",
+      "future": "Học Sâu & Hệ Thống AI"
+    },
+    "skills": {
+      "title": "Kỹ Năng Cốt Lõi",
+      "python": "Python & SQL",
+      "visualization": "Trực Quan Hóa Dữ Liệu (Power BI/Qlik)",
+      "ml": "Học Máy (Clustering/PCA)"
+    },
+    "certifications": {
+      "title": "Chứng Chỉ",
+      "google": "Google Data Analytics",
+      "oracle": "Oracle AI Foundations"
+    }
+  },
+  "Contact": {
+    "title": "Kết Nối",
+    "text": "Quan tâm đến việc hợp tác hoặc có câu hỏi? Tôi luôn sẵn sàng thảo luận về khoa học dữ liệu, AI và phát triển sáng tạo.",
+    "emailLabel": "Email",
+    "messageLabel": "Tin Nhắn",
+    "sendButton": "Gửi Tin Nhắn",
+    "email": "phuc-anh.dang.etu@univ-lille.fr"
+  },
   "Footer": {
-    "copyright": "© 2026 Phuc Anh. Xây dựng với Next.js & Lovelace.",
-    "contact": "Kết nối"
+    "copyright": "© 2026 Phúc Anh. Xây dựng với Next.js & Lovelace.",
+    "contact": "Kết Nối"
   }
 }

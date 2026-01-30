@@ -1,107 +1,128 @@
 "use client";
 
 import { useTranslations } from 'next-intl';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { motion } from 'framer-motion';
+import { Code2, Github, ExternalLink } from 'lucide-react';
 import { Link } from '@/i18n/routing';
-
-const projects = [
-  {
-    id: 1,
-    title: "EcoSense AI",
-    category: "Data Science",
-    image: "/projects/ecosense.jpg", // Placeholder
-    color: "from-[#00D2FF] to-[#3A7BD5]"
-  },
-  {
-    id: 2,
-    title: "Neural Finance",
-    category: "Fintech",
-    image: "/projects/finance.jpg",
-    color: "from-[#9D50BB] to-[#6E48AA]"
-  },
-  {
-    id: 3,
-    title: "Urban Pulse",
-    category: "Visualization",
-    image: "/projects/urban.jpg",
-    color: "from-[#F857A6] to-[#FF5858]"
-  }
-];
 
 export function Projects() {
   const t = useTranslations('Projects');
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
+
+  const projectKeys = ['frenchCinema', 'airQuality', 'dataWarehouse'];
+
+  const projectData = {
+    frenchCinema: {
+      tags: ['Python', 'Scikit-Learn', 'Pandas', 'Matplotlib'],
+      github: 'https://github.com/phuc-anh',
+      demo: '#',
+      gradient: 'from-cyan-500 to-blue-600'
+    },
+    airQuality: {
+      tags: ['Python', 'TensorFlow', 'Data Viz', 'API'],
+      github: 'https://github.com/phuc-anh',
+      demo: '#',
+      gradient: 'from-purple-500 to-indigo-600'
+    },
+    dataWarehouse: {
+      tags: ['SQL', 'ETL', 'Python', 'PostgreSQL'],
+      github: 'https://github.com/phuc-anh',
+      demo: '#',
+      gradient: 'from-pink-500 to-rose-600'
+    }
+  };
 
   return (
-    <section id="projects" ref={containerRef} className="relative z-10 py-32 px-6 md:px-12 max-w-7xl mx-auto">
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="mb-20"
-      >
-        <h2 className="text-4xl md:text-6xl font-black font-outfit mb-4">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">
-            {t('title')}
-          </span>
-        </h2>
-        <div className="h-1 w-24 bg-[#00D2FF] rounded-full" />
-      </motion.div>
+    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="mb-16"
+        >
+          <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-4">
+            Featured Projects
+          </h2>
+          <div className="h-1 w-20 bg-gradient-primary rounded-full" />
+        </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
-        {projects.map((project, index) => (
-          <ProjectCard key={project.id} project={project} index={index} />
-        ))}
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projectKeys.map((key, index) => (
+            <ProjectCard
+              key={key}
+              projectKey={key}
+              data={projectData[key as keyof typeof projectData]}
+              index={index}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
 }
 
-function ProjectCard({ project, index }: { project: any, index: number }) {
+function ProjectCard({ projectKey, data, index }: any) {
   const t = useTranslations('Projects');
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 100 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: index * 0.2, type: "spring", stiffness: 50 }}
-      viewport={{ once: true, margin: "-100px" }}
-      className={`group relative ${index % 2 === 1 ? "md:mt-32" : ""} hover:z-20`}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      viewport={{ once: true }}
+      className="group"
     >
-      <motion.div
-        animate={{ y: [0, -15, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: index * 1.5 }}
-        className="w-full h-full"
-      >
-        {/* Glassmorphic Card Container */}
-        <div className="relative overflow-hidden rounded-2xl bg-navy-black/40 backdrop-blur-2xl border border-white/5 aspect-[4/3] mb-6 group-hover:border-cyan-blue/80 group-hover:shadow-[0_0_30px_rgba(0,191,255,0.2)] transition-all duration-500 shadow-2xl">
-          <div className={`absolute inset-0 opacity-20 group-hover:opacity-40 transition-opacity duration-500 bg-gradient-to-br ${project.color}`} />
+      {/* Dark Card Container */}
+      <div className="bg-slate-900/50 backdrop-blur-sm border border-white/5 rounded-2xl p-6 hover:border-cyan-500/30 transition-all duration-300 hover:shadow-[0_0_30px_rgba(34,211,238,0.1)] h-full flex flex-col">
 
-          {/* Placeholder for Image */}
-          <div className="absolute inset-0 flex items-center justify-center text-white/20 font-mono text-4xl font-bold group-hover:scale-110 transition-transform duration-700">
-            {project.title[0]}
+        {/* Top: Icons */}
+        <div className="flex items-center justify-between mb-4">
+          <div className="p-2 bg-white/5 rounded-lg">
+            <Code2 className="w-5 h-5 text-cyan-400" />
           </div>
-
-          {/* Hover Overlay */}
-          <div className="absolute inset-0 bg-navy-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-            <Link href={`/project/${project.id}`} className="px-8 py-4 border border-cyan-blue text-cyan-blue hover:bg-cyan-blue hover:text-navy-black rounded-full transition-all duration-300 font-bold font-mono text-sm uppercase tracking-widest backdrop-blur-md shadow-[0_0_20px_rgba(0,191,255,0.3)] hover:shadow-[0_0_40px_rgba(0,191,255,0.6)] transform hover:scale-105">
-              {t('viewProject')}
-            </Link>
+          <div className="flex gap-2">
+            <a
+              href={data.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 bg-white/5 rounded-lg hover:bg-white/10 transition-colors"
+            >
+              <Github className="w-4 h-4 text-gray-400 hover:text-white transition-colors" />
+            </a>
+            <a
+              href={data.demo}
+              className="p-2 bg-white/5 rounded-lg hover:bg-white/10 transition-colors"
+            >
+              <ExternalLink className="w-4 h-4 text-gray-400 hover:text-white transition-colors" />
+            </a>
           </div>
         </div>
 
-        {/* Title & Category */}
-        <div className="flex items-center justify-between border-b border-white/10 pb-4 group-hover:border-cyan-blue transition-colors duration-500">
-          <h3 className="text-2xl font-bold font-outfit text-white group-hover:text-cyan-blue transition-colors">{project.title}</h3>
-          <span className="text-xs font-mono text-cyan-blue uppercase tracking-wider">{project.category}</span>
+        {/* Middle: Title & Description */}
+        <div className="flex-1 mb-4">
+          <h3 className="text-xl font-bold text-white mb-3 group-hover:text-cyan-400 transition-colors">
+            {t(`${projectKey}.title` as any)}
+          </h3>
+          <p className="text-gray-400 text-sm leading-relaxed line-clamp-3">
+            {t(`${projectKey}.description` as any)}
+          </p>
         </div>
-      </motion.div>
+
+        {/* Bottom: Tech Tags */}
+        <div className="flex flex-wrap gap-2 pt-4 border-t border-white/5">
+          {data.tags.map((tag: string) => (
+            <span
+              key={tag}
+              className="px-3 py-1 bg-gray-800/80 text-gray-300 text-xs rounded-full font-medium"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      </div>
     </motion.div>
   );
 }

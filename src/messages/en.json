@@ -7,22 +7,39 @@
   },
   "Hero": {
     "title": "Dang Phuc Anh",
-    "role": "Data Science scholar focused on transforming raw complexity into elegant, scalable digital narratives.",
+    "description": "Data Science scholar focused on transforming raw complexity into elegant, scalable digital narratives.",
+    "role": "Architecting actionable insights through the strategic exploitation of data. Currently pursuing a Bachelor of Technology (BUT) in Data Science at the University of Lille, seeking a 10-week internship starting April 6, 2026.",
     "quote": "\"Without data, you’re just another person with an opinion.\"",
-    "quoteAuthor": "— W. Edwards Deming",
-    "description": "2nd Year Data Science Student"
+    "quoteAuthor": "— W. Edwards Deming"
   },
   "Projects": {
     "title": "Selected Works",
-    "viewProject": "View Project"
+    "viewProject": "View Project",
+    "frenchCinema": {
+      "title": "French Cinema Analysis",
+      "category": "Data Analysis",
+      "description": "Analysis of French cinema trends, highlighting resilience findings post-Covid using Python, R, and Power BI."
+    },
+    "airQuality": {
+      "title": "Vietnam Air Quality",
+      "category": "Machine Learning",
+      "description": "Investigation of air quality patterns using APIs and unsupervised clustering (K-means)."
+    },
+    "dataWarehouse": {
+      "title": "Chinook Data Warehouse",
+      "category": "Data Engineering",
+      "description": "Automated ETL pipeline using Oracle Data Integrator to transform musical sales data into a star-schema Data Warehouse."
+    }
   },
   "About": {
     "title": "Data Journey",
     "education": {
       "title": "Education",
-      "degree": "Bachelor of Data Science",
-      "school": "University of Science",
-      "year": "2024 - Present"
+      "degree": "BUT Data Science",
+      "school": "Université de Lille",
+      "year": "2024 – Present",
+      "hs_degree": "Scientific Baccalaureate",
+      "hs_school": "Hanoi-Amsterdam High School"
     },
     "roadmap": {
       "year1": "Fundamentals & Algorithms",
@@ -30,11 +47,24 @@
       "future": "Deep Learning & AI Systems"
     },
     "skills": {
-      "title": "Core Stack",
-      "python": "Python & Data Analysis",
-      "sql": "SQL & Database Design",
-      "ml": "Machine Learning"
+      "title": "Core Skills",
+      "python": "Python & SQL",
+      "visualization": "Data Visualization (Power BI/Qlik)",
+      "ml": "Machine Learning (Clustering/PCA)"
+    },
+    "certifications": {
+      "title": "Certifications",
+      "google": "Google Data Analytics",
+      "oracle": "Oracle AI Foundations"
     }
+  },
+  "Contact": {
+    "title": "Let's Connect",
+    "text": "Interested in collaborating or have a question? I'm always open to discussing data science, AI, and creative development.",
+    "emailLabel": "Email",
+    "messageLabel": "Message",
+    "sendButton": "Send Message",
+    "email": "phuc-anh.dang.etu@univ-lille.fr"
   },
   "Footer": {
     "copyright": "© 2026 Phuc Anh. Built with Next.js & Lovelace.",
