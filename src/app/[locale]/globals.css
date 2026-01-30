@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme {
+  /* Primary Palette */
+  --color-electric-blue: #00AEEF;
+  --color-deep-purple: #6A1B9A;
+  --color-cyan-blue: #00BFFF;
+
+  /* Secondary Palette */
+  --color-navy-black: #030712; /* Deep Midnight Navy */
+  --color-midnight-blue: #0D47A1;
+  --color-sky-blue: #E1F5FE;
+  --color-sky-blue-depth: #B3E5FC;
+
+  /* Extended Palette */
+  --color-off-white: #F0F4F8;
+  --color-soft-purple: #BA68C8;
+  --color-tech-gray: #607D8B;
+  --color-error-red: #FF5252;
+
+  /* Legacy/Existing (Check if still needed) */
+  --color-deep-navy: #030712; /* Kept for main background */
+  --color-cyber-purple: #9D50BB; /* Kept as lighter variant */
+
+  --font-display: var(--font-outfit), system-ui, sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, monospace;
+
+  --image-circuit-pattern: url('/patterns/circuit.svg');
+}
+
+/* Custom Utilities */
+@utility text-glow {
+  text-shadow: 0 0 10px rgba(0, 210, 255, 0.5), 0 0 20px rgba(157, 80, 187, 0.3);
+}
+
+@utility text-glow-strong {
+  text-shadow: 0 0 15px rgba(0, 210, 255, 0.8), 0 0 30px rgba(157, 80, 187, 0.5);
+}
+
+@utility bg-glass {
+  @apply bg-[#030712]/60 backdrop-blur-xl border border-white/5;
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-white/90;
+  }
+  p, span, li, a {
+    @apply text-white/60;
+  }
+  /* Re-override specific text needing full opacity */
+  .text-transparent {
+    @apply text-transparent;
+  }
+}

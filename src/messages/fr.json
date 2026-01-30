@@ -1,0 +1,41 @@
+{
+  "Navigation": {
+    "home": "Accueil",
+    "projects": "Projets",
+    "about": "À Propos",
+    "contact": "Contact"
+  },
+  "Hero": {
+    "title": "PHUC ANH",
+    "role": "Étudiant en Science des Données (2ème année)",
+    "description": "Transformer des données complexes en histoires visuelles fluides."
+  },
+  "Projects": {
+    "title": "Travaux Sélectionnés",
+    "viewProject": "Voir le Projet"
+  },
+  "About": {
+    "title": "Parcours Data",
+    "education": {
+      "title": "Éducation",
+      "degree": "Licence en Science des Données",
+      "school": "Université des Sciences",
+      "year": "2024 - Présent"
+    },
+    "roadmap": {
+      "year1": "Fondamentaux & Algorithmes",
+      "year2": "Machine Learning & Visualisation",
+      "future": "Deep Learning & Systèmes IA"
+    },
+    "skills": {
+      "title": "Compétences Clés",
+      "python": "Python & Analyse de Données",
+      "sql": "SQL & Conception de BDD",
+      "ml": "Apprentissage Automatique"
+    }
+  },
+  "Footer": {
+    "copyright": "© 2026 Phuc Anh. Construit avec Next.js & Lovelace.",
+    "contact": "Connexion"
+  }
+}

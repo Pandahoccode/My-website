@@ -1,0 +1,43 @@
+{
+  "Navigation": {
+    "home": "Home",
+    "projects": "Projects",
+    "about": "About",
+    "contact": "Contact"
+  },
+  "Hero": {
+    "title": "Dang Phuc Anh",
+    "role": "Data Science scholar focused on transforming raw complexity into elegant, scalable digital narratives.",
+    "quote": "\"Without data, you’re just another person with an opinion.\"",
+    "quoteAuthor": "— W. Edwards Deming",
+    "description": "2nd Year Data Science Student"
+  },
+  "Projects": {
+    "title": "Selected Works",
+    "viewProject": "View Project"
+  },
+  "About": {
+    "title": "Data Journey",
+    "education": {
+      "title": "Education",
+      "degree": "Bachelor of Data Science",
+      "school": "University of Science",
+      "year": "2024 - Present"
+    },
+    "roadmap": {
+      "year1": "Fundamentals & Algorithms",
+      "year2": "Machine Learning & Visualization",
+      "future": "Deep Learning & AI Systems"
+    },
+    "skills": {
+      "title": "Core Stack",
+      "python": "Python & Data Analysis",
+      "sql": "SQL & Database Design",
+      "ml": "Machine Learning"
+    }
+  },
+  "Footer": {
+    "copyright": "© 2026 Phuc Anh. Built with Next.js & Lovelace.",
+    "contact": "Connect"
+  }
+}

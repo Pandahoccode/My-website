@@ -1,0 +1,41 @@
+{
+  "Navigation": {
+    "home": "Trang chủ",
+    "projects": "Dự án",
+    "about": "Giới thiệu",
+    "contact": "Liên hệ"
+  },
+  "Hero": {
+    "title": "PHUC ANH",
+    "role": "Sinh viên Khoa học Dữ liệu (Năm 2)",
+    "description": "Biến dữ liệu phức tạp thành những câu chuyện hình ảnh sống động."
+  },
+  "Projects": {
+    "title": "Dự án Tiêu biểu",
+    "viewProject": "Xem Dự án"
+  },
+  "About": {
+    "title": "Hành trình Dữ liệu",
+    "education": {
+      "title": "Học vấn",
+      "degree": "Cử nhân Khoa học Dữ liệu",
+      "school": "Đại học Khoa học Tự nhiên",
+      "year": "2024 - Hiện tại"
+    },
+    "roadmap": {
+      "year1": "Nền tảng & Thuật toán",
+      "year2": "Học máy & Trực quan hóa",
+      "future": "Deep Learning & Hệ thống AI"
+    },
+    "skills": {
+      "title": "Kỹ năng Cốt lõi",
+      "python": "Python & Phân tích Dữ liệu",
+      "sql": "SQL & Thiết kế Cơ sở Dữ liệu",
+      "ml": "Học máy (Machine Learning)"
+    }
+  },
+  "Footer": {
+    "copyright": "© 2026 Phuc Anh. Xây dựng với Next.js & Lovelace.",
+    "contact": "Kết nối"
+  }
+}
