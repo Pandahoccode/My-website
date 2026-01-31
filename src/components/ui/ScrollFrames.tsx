@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { useScroll, useTransform, useSpring } from "framer-motion";
 
 interface ScrollFramesProps {
   children?: React.ReactNode;
@@ -9,8 +9,10 @@ interface ScrollFramesProps {
 
 export function ScrollFrames({ children }: ScrollFramesProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const imgRef = useRef<HTMLImageElement>(null);
+  const imagesRef = useRef<HTMLImageElement[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [currentFrame, setCurrentFrame] = useState(1);
+  const lastFrameRef = useRef(1);
 
   const TOTAL_FRAMES = 150;
 
@@ -30,37 +32,85 @@ export function ScrollFrames({ children }: ScrollFramesProps) {
   // Transform smooth progress to frame number
   const frameNumber = useTransform(smoothProgress, [0, 0.75, 1], [1, TOTAL_FRAMES, TOTAL_FRAMES]);
 
-  // Sync frame number to state for image rendering
-  useEffect(() => {
-    const unsubscribe = frameNumber.on("change", (latest) => {
-      const rounded = Math.round(latest);
-      const clamped = Math.min(TOTAL_FRAMES, Math.max(1, rounded));
-      setCurrentFrame(clamped);
-    });
-    return unsubscribe;
-  }, [frameNumber]);
-
-  // Preload all frames... (omitted for brevity, keeping existing logic)
+  // **CRITICAL: Pre-load and PRE-DECODE all frames**
   useEffect(() => {
     let loaded = 0;
     const images: HTMLImageElement[] = [];
 
-    for (let i = 1; i <= TOTAL_FRAMES; i++) {
-      const img = new Image();
-      img.src = `/frames/ezgif-frame-${i.toString().padStart(3, '0')}.jpg`;
-      img.onload = () => {
-        loaded++;
-        if (loaded === TOTAL_FRAMES) setIsLoaded(true);
-      };
-      img.onerror = () => {
-        loaded++;
-        if (loaded === TOTAL_FRAMES) setIsLoaded(true);
-      };
-      images.push(img);
-    }
+    const loadImage = async (i: number) => {
+      return new Promise<void>((resolve) => {
+        const img = new Image();
+        img.src = `/frames/ezgif-frame-${i.toString().padStart(3, '0')}.jpg`;
+
+        img.onload = async () => {
+          // CRUCIAL: Pre-decode the image to avoid runtime lag
+          try {
+            if ('decode' in img) {
+              await img.decode();
+            }
+          } catch (error) {
+            console.warn(`Failed to decode frame ${i}:`, error);
+          }
+
+          loaded++;
+          if (loaded === TOTAL_FRAMES) {
+            setIsLoaded(true);
+          }
+          resolve();
+        };
+
+        img.onerror = () => {
+          console.error(`Failed to load frame ${i}`);
+          loaded++;
+          if (loaded === TOTAL_FRAMES) {
+            setIsLoaded(true);
+          }
+          resolve();
+        };
+
+        images.push(img);
+      });
+    };
+
+    // Load all frames
+    Promise.all(
+      Array.from({ length: TOTAL_FRAMES }, (_, i) => loadImage(i + 1))
+    );
+
+    imagesRef.current = images;
+
+    return () => {
+      // Cleanup
+      imagesRef.current = [];
+    };
   }, []);
 
-  const imageSrc = `/frames/ezgif-frame-${currentFrame.toString().padStart(3, '0')}.jpg`;
+  // **DOM MANIPULATION: Update img.src directly for zero flicker**
+  useEffect(() => {
+    const unsubscribe = frameNumber.on("change", (latest) => {
+      const rounded = Math.round(latest);
+      const clamped = Math.min(TOTAL_FRAMES, Math.max(1, rounded));
+
+      // Skip update if frame hasn't changed
+      if (clamped === lastFrameRef.current) return;
+      lastFrameRef.current = clamped;
+
+      const imgElement = imgRef.current;
+      if (!imgElement) return;
+
+      const frameIndex = clamped - 1; // 0-indexed
+      const preloadedImg = imagesRef.current[frameIndex];
+
+      // **ANTI-FLICKER LOGIC**: Only update src if image is fully decoded
+      // If not ready, keep showing the previous frame
+      if (preloadedImg && preloadedImg.complete && preloadedImg.naturalWidth > 0) {
+        // Direct DOM manipulation - no React re-render, no flicker
+        imgElement.src = preloadedImg.src;
+      }
+    });
+
+    return unsubscribe;
+  }, [frameNumber]);
 
   return (
     <section
@@ -69,23 +119,24 @@ export function ScrollFrames({ children }: ScrollFramesProps) {
       style={{ height: '400vh' }}
     >
       <div className="sticky top-0 h-screen w-full overflow-hidden">
-        {/* Frame Image */}
-        <motion.img
-          key={currentFrame}
-          src={imageSrc}
+        {/* Single img element - updated via DOM manipulation */}
+        <img
+          ref={imgRef}
+          src="/frames/ezgif-frame-001.jpg"
           alt=""
           className="absolute inset-0 w-full h-full object-cover"
-          initial={false}
+          style={{ imageRendering: 'crisp-edges' }}
         />
 
         {/* Updated Gradient Overlay matching new palette */}
-        {/* Updated Gradient Overlay matching new palette */}
-        <div className="absolute top-0 left-0 right-0 h-[20vh] bg-gradient-to-b from-background/80 to-transparent" />
-        <div className="absolute bottom-0 left-0 right-0 h-[20vh] bg-gradient-to-t from-background via-background/90 to-transparent" />
+        <div className="absolute top-0 left-0 right-0 h-[20vh] bg-gradient-to-b from-background/80 to-transparent pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-[20vh] bg-gradient-to-t from-background via-background/90 to-transparent pointer-events-none" />
 
         {/* Content */}
-        <div className="relative z-10 h-full flex items-center justify-center">
-          {children}
+        <div className="relative z-10 h-full flex items-center justify-center pointer-events-none">
+          <div className="pointer-events-auto">
+            {children}
+          </div>
         </div>
 
         {/* Loading */}
@@ -97,7 +148,7 @@ export function ScrollFrames({ children }: ScrollFramesProps) {
 
         {/* Debug - remove in production
         <div className="absolute bottom-4 right-4 text-xs text-white/50 font-mono z-20">
-          Frame: {currentFrame}/{TOTAL_FRAMES}
+          Frame: {lastFrameRef.current}/{TOTAL_FRAMES}
         </div>
         */}
       </div>

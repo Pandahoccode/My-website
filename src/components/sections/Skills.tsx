@@ -28,7 +28,7 @@ export function Skills() {
   const t = useTranslations('Skills');
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section id="skills" className="scroll-mt-28 py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Section Header */}
       <div className="text-center mb-16 space-y-4">
         <h2 className="text-3xl md:text-5xl font-bold text-foreground tracking-tight">

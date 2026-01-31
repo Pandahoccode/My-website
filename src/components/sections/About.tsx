@@ -30,7 +30,7 @@ export function About() {
   ];
 
   return (
-    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-background/50">
+    <section id="about" className="scroll-mt-28 py-20 px-4 sm:px-6 lg:px-8 bg-background/50">
       <div className="max-w-6xl mx-auto">
 
         {/* Header */}

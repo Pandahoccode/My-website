@@ -49,6 +49,7 @@
 @layer base {
   html {
     background-color: var(--background);
+    scroll-behavior: smooth;
   }
   body {
     background-color: transparent;

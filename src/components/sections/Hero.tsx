@@ -9,7 +9,7 @@ export function Hero() {
   const t = useTranslations('Hero');
 
   return (
-    <section id="hero" className="relative z-10 flex items-center justify-center py-20 md:py-32 px-6 bg-background overflow-hidden">
+    <section id="hero" className="scroll-mt-28 relative z-10 flex items-center justify-center py-20 md:py-32 px-6 bg-background overflow-hidden">
       {/* Ambient background glow */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-electric-blue/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-deep-purple/10 rounded-full blur-[120px] pointer-events-none mix-blend-screen" />

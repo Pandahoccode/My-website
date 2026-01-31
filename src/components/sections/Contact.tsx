@@ -14,7 +14,7 @@ export function Contact() {
   ];
 
   return (
-    <section id="contact" className="relative z-10 py-32 px-6 md:px-12 max-w-4xl mx-auto">
+    <section id="contact" className="scroll-mt-28 relative z-10 py-32 px-6 md:px-12 max-w-4xl mx-auto">
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         whileInView={{ opacity: 1, scale: 1 }}

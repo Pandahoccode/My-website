@@ -29,10 +29,10 @@ export function Navbar() {
   }, [isMobileMenuOpen]);
 
   const navItems = [
-    { key: 'home', href: '/#hero', icon: Home },
-    { key: 'projects', href: '/#projects', icon: FolderGit2 },
-    { key: 'about', href: '/#about', icon: User },
-    { key: 'contact', href: '/#contact', icon: Mail },
+    { key: 'home', href: '#hero', icon: Home },
+    { key: 'projects', href: '#projects', icon: FolderGit2 },
+    { key: 'about', href: '#about', icon: User },
+    { key: 'contact', href: '#contact', icon: Mail },
   ];
 
   return (
@@ -44,12 +44,13 @@ export function Navbar() {
         className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-background/60 border-b border-foreground/5 transition-colors duration-300"
       >
         {/* Container for Pixel-Perfect Alignment */}
-        <div className="max-w-7xl mx-auto px-6 md:px-12 py-4 flex items-center justify-between font-sans">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 py-4 flex items-center justify-between font-sans min-h-[5rem]">
 
           {/* LEFT: LOGO */}
           <div className="flex items-center gap-4">
             <Link href="/" className="group flex items-center gap-3 relative" onClick={() => setIsMobileMenuOpen(false)}>
-              <div className="relative w-12 h-12 md:w-14 md:h-14 transition-transform duration-300 group-hover:scale-110">
+              {/* Resized Logo Container for Sleeker Navbar */}
+              <div className="relative w-16 h-16 md:w-20 md:h-20 transition-transform duration-300 group-hover:scale-110">
                 <Image
                   src="/Logo.svg"
                   alt="Phuc Anh Logo"
@@ -78,25 +79,30 @@ export function Navbar() {
             ))}
           </nav>
 
-          {/* RIGHT: ACTIONS */}
+          {/* RIGHT: ACTIONS WRAPPER */}
           <div className="flex items-center gap-4">
 
-            {/* Desktop Actions */}
+            {/* Desktop Actions Grouped */}
             <div className="hidden md:flex items-center gap-4">
               <LanguageSwitcher />
 
+              {/* Theme Toggle Button - Fixed Logic & Styling */}
               <button
                 onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                className="p-2 rounded-full hover:bg-foreground/5 transition-colors relative overflow-hidden group"
+                className="group relative flex items-center justify-center p-2 rounded-full transition-all duration-300 hover:bg-gray-100 dark:hover:bg-white/10"
                 aria-label="Toggle Theme"
               >
-                {mounted && (
+                {mounted ? (
                   <div className="relative w-5 h-5 flex items-center justify-center">
-                    <Sun className="w-5 h-5 absolute rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 text-amber-500" />
-                    <Moon className="w-5 h-5 absolute rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 text-indigo-400" />
+                    {/* Sun Icon (Light Mode) */}
+                    <Sun className="absolute w-5 h-5 transition-all duration-300 scale-100 rotate-0 dark:scale-0 dark:-rotate-90 text-slate-600 group-hover:text-blue-600" />
+
+                    {/* Moon Icon (Dark Mode) */}
+                    <Moon className="absolute w-5 h-5 transition-all duration-300 scale-0 rotate-90 dark:scale-100 dark:rotate-0 text-gray-400 group-hover:text-white" />
                   </div>
+                ) : (
+                  <div className="w-5 h-5" />
                 )}
-                {!mounted && <div className="w-5 h-5" />}
               </button>
             </div>
 
@@ -166,9 +172,9 @@ export function Navbar() {
                   <span className="font-medium">Theme</span>
                   {mounted ? (
                     theme === 'dark' ? (
-                      <Moon className="w-5 h-5 text-indigo-400" />
+                      <Moon className="w-5 h-5 text-gray-400 group-hover:text-white" />
                     ) : (
-                      <Sun className="w-5 h-5 text-amber-500" />
+                      <Sun className="w-5 h-5 text-slate-600 group-hover:text-blue-600" />
                     )
                   ) : <div className="w-5 h-5" />}
                 </button>
