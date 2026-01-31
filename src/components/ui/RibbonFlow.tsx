@@ -1,126 +1,116 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function RibbonFlow() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [mounted, setMounted] = useState(false);
+
+  // Need to mount first, then check for canvas
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
+    if (!mounted) return;
+
+    // Check prefers-reduced-motion
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (mediaQuery.matches) return;
+
     const canvas = canvasRef.current;
     if (!canvas) return;
 
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
+    let animationId: number;
     let width = window.innerWidth;
     let height = window.innerHeight;
     let time = 0;
 
-    // Configuration
-    const ribbonCount = 20;
-    const speed = 0.005;
-
-    // Ribbon Particle Class
-    class Ribbon {
-      x: number;
-      y: number;
-      angle: number;
-      speed: number;
-      color: string;
-      thickness: number;
-      offset: number;
-
-      constructor(h: number) {
-        this.x = Math.random() * width;
-        this.y = Math.random() * height;
-        this.angle = Math.random() * Math.PI * 2;
-        this.speed = Math.random() * 0.5 + 0.2;
-        // Alternate between Electric Blue and Cyber Purple
-        this.color = Math.random() > 0.5
-          ? "rgba(0, 210, 255, 0.08)" // #00D2FF
-          : "rgba(157, 80, 187, 0.08)"; // #9D50BB
-        this.thickness = Math.random() * 20 + 10;
-        this.offset = Math.random() * 100;
+    // Simple visible waves configuration
+    const waves = [
+      {
+        color: "rgba(0, 210, 255, 0.35)", // Electric Blue - HIGH opacity
+        speed: 0.02,
+        yOffset: 0,
+        amplitude: 80,
+        frequency: 0.003
+      },
+      {
+        color: "rgba(157, 80, 187, 0.30)", // Cyber Purple
+        speed: 0.015,
+        yOffset: 100,
+        amplitude: 100,
+        frequency: 0.002
+      },
+      {
+        color: "rgba(0, 210, 255, 0.25)", // Electric Blue lighter
+        speed: 0.01,
+        yOffset: -100,
+        amplitude: 60,
+        frequency: 0.004
       }
+    ];
 
-      update(t: number) {
-        // Flow field logic (sine superpositions)
-        const angleNoise =
-          Math.sin(this.x * 0.002 + t * 0.5) +
-          Math.cos(this.y * 0.002 + t * 0.5) +
-          Math.sin(t * 0.2);
-
-        this.angle = angleNoise;
-
-        this.x += Math.cos(this.angle) * this.speed * 2;
-        this.y += Math.sin(this.angle) * this.speed * 2;
-
-        // Wrap around
-        if (this.x < -100) this.x = width + 100;
-        if (this.x > width + 100) this.x = -100;
-        if (this.y < -100) this.y = height + 100;
-        if (this.y > height + 100) this.y = -100;
-      }
-
-      draw(ctx: CanvasRenderingContext2D) {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.thickness, 0, Math.PI * 2);
-        ctx.fillStyle = this.color;
-        // Blur effect for "light" feel
-        ctx.shadowBlur = 20;
-        ctx.shadowColor = this.color;
-        ctx.fill();
-        ctx.shadowBlur = 0; // Reset
-      }
-    }
-
-    // Initialize Ribbons
-    const ribbons: Ribbon[] = [];
-    const init = () => {
+    const resize = () => {
       width = window.innerWidth;
       height = window.innerHeight;
       canvas.width = width;
       canvas.height = height;
-      ribbons.length = 0;
-      for (let i = 0; i < ribbonCount; i++) {
-        ribbons.push(new Ribbon(height));
-      }
     };
 
-    const animate = () => {
+    const draw = () => {
+      // Clear canvas
       ctx.clearRect(0, 0, width, height);
-      // Fade effect for trails?
-      // ctx.fillStyle = 'rgba(3, 7, 18, 0.1)';
-      // ctx.fillRect(0,0,width,height);
+      time += 1;
 
-      time += 0.01;
+      // Draw each wave
+      waves.forEach((wave) => {
+        ctx.beginPath();
+        ctx.moveTo(0, height);
 
-      // Draw connections or fluid paths?
-      // For "Silk", we draw continuous paths.
-      // Let's modify: Draw bezier curves based on points
+        // Draw wave path
+        for (let x = 0; x <= width; x += 5) {
+          const y = height / 2 + wave.yOffset +
+            Math.sin(x * wave.frequency + time * wave.speed) * wave.amplitude +
+            Math.sin(x * wave.frequency * 0.5 + time * wave.speed * 1.5) * (wave.amplitude * 0.5);
+          ctx.lineTo(x, y);
+        }
 
-      ribbons.forEach(r => {
-        r.update(time);
-        r.draw(ctx);
+        ctx.lineTo(width, height);
+        ctx.lineTo(0, height);
+        ctx.closePath();
+
+        // Fill with gradient
+        const gradient = ctx.createLinearGradient(0, height / 2 - 200, 0, height);
+        gradient.addColorStop(0, wave.color);
+        gradient.addColorStop(1, "transparent");
+        ctx.fillStyle = gradient;
+        ctx.fill();
       });
 
-      requestAnimationFrame(animate);
+      animationId = requestAnimationFrame(draw);
     };
 
-    window.addEventListener("resize", init);
-    init();
-    const animationId = requestAnimationFrame(animate);
+    window.addEventListener("resize", resize);
+    resize();
+    animationId = requestAnimationFrame(draw);
 
     return () => {
-      window.removeEventListener("resize", init);
+      window.removeEventListener("resize", resize);
       cancelAnimationFrame(animationId);
     };
-  }, []);
+  }, [mounted]);
 
+  // Always render the canvas - CSS handles initial state
   return (
     <canvas
       ref={canvasRef}
-      className="fixed top-0 left-0 w-full h-full pointer-events-none z-0 mix-blend-screen"
+      className="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
+      style={{ opacity: mounted ? 1 : 0 }}
+      aria-hidden="true"
     />
   );
 }

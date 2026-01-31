@@ -2,7 +2,7 @@
 
 @theme {
   /* Atmosphere */
-  --color-deep-obsidian: #030712; /* Updated to Deep Midnight/Black */
+  --color-deep-obsidian: #020617; /* Deep Navy */
 
   /* Primary Gradients */
   --color-vivid-cyan: #00D2FF;
@@ -10,7 +10,7 @@
   --color-electric-cyan: #22D3EE;
 
   /* Aliases for Component Consistency */
-  --color-navy-black: #030712;
+  --color-navy-black: #020617;
   --color-electric-blue: #00D2FF;
   --color-deep-purple: #8E44AD;
 
@@ -35,20 +35,23 @@
 :root {
   /* Light Mode Defaults */
   --background: #F8FAFC; /* polar-white */
-  --foreground: #030712; /* deep-obsidian */
+  --foreground: #020617; /* deep-navy */
   --color-primary: #00D2FF;
 }
 
 .dark {
   /* Dark Mode Defaults */
-  --background: #030712; /* deep-obsidian */
+  --background: #020617; /* deep-navy */
   --foreground: #F8FAFC; /* polar-white */
 }
 
 /* Base Override */
 @layer base {
-  body {
+  html {
     background-color: var(--background);
+  }
+  body {
+    background-color: transparent;
     color: var(--foreground);
   }
 }

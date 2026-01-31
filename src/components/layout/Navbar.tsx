@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from 'next-themes';
-import { Sun, Moon, Menu } from 'lucide-react';
+import { Sun, Moon, Menu, Home, FolderGit2, User, Mail } from 'lucide-react';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
@@ -29,10 +29,10 @@ export function Navbar() {
   }, [isMobileMenuOpen]);
 
   const navItems = [
-    { key: 'home', href: '/#hero' },
-    { key: 'projects', href: '/#projects' },
-    { key: 'about', href: '/#about' },
-    { key: 'contact', href: '/#contact' },
+    { key: 'home', href: '/#hero', icon: Home },
+    { key: 'projects', href: '/#projects', icon: FolderGit2 },
+    { key: 'about', href: '/#about', icon: User },
+    { key: 'contact', href: '/#contact', icon: Mail },
   ];
 
   return (
@@ -45,7 +45,7 @@ export function Navbar() {
       >
         <div className="flex items-center gap-6">
           <Link href="/" className="group flex items-center gap-2 relative" onClick={() => setIsMobileMenuOpen(false)}>
-            <div className="relative w-12 h-12 md:w-14 md:h-14 transition-transform duration-300 group-hover:scale-110">
+            <div className="relative w-16 h-16 md:w-20 md:h-20 transition-transform duration-300 group-hover:scale-110">
               <Image
                 src="/Logo.svg"
                 alt="Phuc Anh Logo"
@@ -66,8 +66,9 @@ export function Navbar() {
             <Link
               key={item.key}
               href={item.href}
-              className="font-inter text-base font-medium text-muted-foreground hover:text-foreground transition-colors relative group py-2"
+              className="font-inter text-base font-medium text-muted-foreground hover:text-foreground transition-colors relative group py-2 flex items-center gap-2"
             >
+              <item.icon className="w-4 h-4 text-electric-blue opacity-70 group-hover:opacity-100 transition-opacity" />
               {t(item.key)}
               <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-gradient-to-r from-[var(--color-vivid-cyan)] to-[var(--color-sovereign-purple)] group-hover:w-full group-hover:left-0 transition-all duration-300 ease-out" />
             </Link>

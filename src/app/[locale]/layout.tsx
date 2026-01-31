@@ -6,7 +6,7 @@ import { Inter, Outfit } from "next/font/google";
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { Navbar } from '@/components/layout/Navbar';
-import { RibbonFlow } from '@/components/ui/RibbonFlow';
+import { FluidBackground } from '@/components/ui/FluidBackground';
 import { Footer } from '@/components/layout/Footer';
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -29,10 +29,10 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
-      <body className={`${inter.variable} ${outfit.variable} antialiased bg-background text-foreground overflow-x-hidden selection:bg-[var(--color-vivid-cyan)] selection:text-white transition-colors duration-300`}>
+      <body className={`${inter.variable} ${outfit.variable} antialiased bg-transparent text-foreground overflow-x-hidden selection:bg-[var(--color-vivid-cyan)] selection:text-white transition-colors duration-300`}>
         <NextIntlClientProvider messages={messages}>
           <Providers>
-            <RibbonFlow />
+            <FluidBackground />
             <Navbar />
             {children}
             <Footer />
