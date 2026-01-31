@@ -8,6 +8,7 @@ import { routing } from '@/i18n/routing';
 import { Navbar } from '@/components/layout/Navbar';
 import { FluidBackground } from '@/components/ui/FluidBackground';
 import { Footer } from '@/components/layout/Footer';
+import { ScrollToTop } from '@/components/ui/ScrollToTop';
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
@@ -35,6 +36,7 @@ export default async function LocaleLayout({
             <FluidBackground />
             <Navbar />
             {children}
+            <ScrollToTop />
             <Footer />
           </Providers>
         </NextIntlClientProvider>
