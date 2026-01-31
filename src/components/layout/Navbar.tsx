@@ -41,82 +41,87 @@ export function Navbar() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, ease: "circOut" }}
-        className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 md:px-12 backdrop-blur-xl bg-background/60 border-b border-foreground/5 transition-colors duration-300"
+        className="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl bg-background/60 border-b border-foreground/5 transition-colors duration-300"
       >
-        <div className="flex items-center gap-6">
-          <Link href="/" className="group flex items-center gap-2 relative" onClick={() => setIsMobileMenuOpen(false)}>
-            <div className="relative w-16 h-16 md:w-20 md:h-20 transition-transform duration-300 group-hover:scale-110">
-              <Image
-                src="/Logo.svg"
-                alt="Phuc Anh Logo"
-                fill
-                className="object-contain"
-                priority
-              />
-            </div>
-            <span className="font-outfit font-bold text-xl md:text-2xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[var(--color-vivid-cyan)] to-[var(--color-sovereign-purple)] opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 hidden sm:block">
-              Phuc Anh
-            </span>
-          </Link>
-        </div>
+        {/* Container for Pixel-Perfect Alignment */}
+        <div className="max-w-7xl mx-auto px-6 md:px-12 py-4 flex items-center justify-between font-sans">
 
-        {/* Centered Navigation for Desktop */}
-        <nav className="hidden md:flex items-center gap-8 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-          {navItems.map((item) => (
-            <Link
-              key={item.key}
-              href={item.href}
-              className="font-inter text-base font-medium text-muted-foreground hover:text-foreground transition-colors relative group py-2 flex items-center gap-2"
-            >
-              <item.icon className="w-4 h-4 text-electric-blue opacity-70 group-hover:opacity-100 transition-opacity" />
-              {t(item.key)}
-              <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-gradient-to-r from-[var(--color-vivid-cyan)] to-[var(--color-sovereign-purple)] group-hover:w-full group-hover:left-0 transition-all duration-300 ease-out" />
-            </Link>
-          ))}
-        </nav>
-
-        <div className="flex items-center gap-3">
-          {/* Theme Toggle */}
-          <button
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="p-2 rounded-full hover:bg-foreground/5 transition-colors relative overflow-hidden group hidden md:block" // Hidden on mobile, moved to menu
-            aria-label="Toggle Theme"
-          >
-            {mounted && (
-              <div className="relative w-5 h-5 flex items-center justify-center">
-                <Sun className="w-5 h-5 absolute rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 text-amber-500" />
-                <Moon className="w-5 h-5 absolute rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 text-indigo-400" />
+          {/* LEFT: LOGO */}
+          <div className="flex items-center gap-4">
+            <Link href="/" className="group flex items-center gap-3 relative" onClick={() => setIsMobileMenuOpen(false)}>
+              <div className="relative w-12 h-12 md:w-14 md:h-14 transition-transform duration-300 group-hover:scale-110">
+                <Image
+                  src="/Logo.svg"
+                  alt="Phuc Anh Logo"
+                  fill
+                  className="object-contain"
+                  priority
+                />
               </div>
-            )}
-            {!mounted && <div className="w-5 h-5" />}
-          </button>
-
-          <div className="hidden md:block">
-            <LanguageSwitcher />
+              <span className="font-outfit font-bold text-2xl md:text-3xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-[var(--color-vivid-cyan)] to-[var(--color-sovereign-purple)] opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 hidden sm:block">
+                Phuc Anh
+              </span>
+            </Link>
           </div>
 
-          {/* Mobile Menu Trigger */}
-          <button
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden p-2 rounded-full hover:bg-foreground/5 transition-colors text-foreground z-50 relative"
-            aria-label="Toggle Mobile Menu"
-          >
-            <div className="relative w-6 h-6 flex flex-col justify-center items-center gap-1.5">
-              {/* Hamburger / X animation */}
-              <motion.span
-                animate={isMobileMenuOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-                className="w-6 h-0.5 bg-foreground block transition-transform origin-center"
-              />
-              <motion.span
-                animate={isMobileMenuOpen ? { opacity: 0 } : { opacity: 1 }}
-                className="w-6 h-0.5 bg-foreground block transition-opacity"
-              />
-              <motion.span
-                animate={isMobileMenuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-                className="w-6 h-0.5 bg-foreground block transition-transform origin-center"
-              />
+          {/* CENTER: DESKTOP NAVIGATION */}
+          <nav className="hidden md:flex items-center gap-8">
+            {navItems.map((item) => (
+              <Link
+                key={item.key}
+                href={item.href}
+                className="font-inter text-lg font-bold tracking-tight text-foreground/60 hover:text-foreground transition-colors relative group py-2 flex items-center gap-2"
+              >
+                {t(item.key)}
+                <span className="absolute bottom-0 left-1/2 w-0 h-[2px] bg-gradient-to-r from-[var(--color-vivid-cyan)] to-[var(--color-sovereign-purple)] group-hover:w-full group-hover:left-0 transition-all duration-300 ease-out" />
+              </Link>
+            ))}
+          </nav>
+
+          {/* RIGHT: ACTIONS */}
+          <div className="flex items-center gap-4">
+
+            {/* Desktop Actions */}
+            <div className="hidden md:flex items-center gap-4">
+              <LanguageSwitcher />
+
+              <button
+                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+                className="p-2 rounded-full hover:bg-foreground/5 transition-colors relative overflow-hidden group"
+                aria-label="Toggle Theme"
+              >
+                {mounted && (
+                  <div className="relative w-5 h-5 flex items-center justify-center">
+                    <Sun className="w-5 h-5 absolute rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 text-amber-500" />
+                    <Moon className="w-5 h-5 absolute rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 text-indigo-400" />
+                  </div>
+                )}
+                {!mounted && <div className="w-5 h-5" />}
+              </button>
             </div>
-          </button>
+
+            {/* Mobile Menu Trigger */}
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="md:hidden p-2 rounded-full hover:bg-foreground/5 transition-colors text-foreground z-50 relative"
+              aria-label="Toggle Mobile Menu"
+            >
+              <div className="relative w-6 h-6 flex flex-col justify-center items-center gap-1.5">
+                <motion.span
+                  animate={isMobileMenuOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
+                  className="w-6 h-0.5 bg-foreground block transition-transform origin-center"
+                />
+                <motion.span
+                  animate={isMobileMenuOpen ? { opacity: 0 } : { opacity: 1 }}
+                  className="w-6 h-0.5 bg-foreground block transition-opacity"
+                />
+                <motion.span
+                  animate={isMobileMenuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
+                  className="w-6 h-0.5 bg-foreground block transition-transform origin-center"
+                />
+              </div>
+            </button>
+          </div>
         </div>
       </motion.header>
 
@@ -128,7 +133,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="fixed inset-0 z-40 bg-background/95 backdrop-blur-3xl pt-24 px-6 md:hidden flex flex-col items-center"
+            className="fixed inset-0 z-40 bg-background/95 backdrop-blur-3xl pt-24 px-6 md:hidden flex flex-col items-center justify-start h-screen"
           >
             <nav className="flex flex-col items-center gap-8 w-full max-w-xs">
               {navItems.map((item, index) => (
@@ -149,24 +154,16 @@ export function Navbar() {
                 </motion.div>
               ))}
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5 }}
-                className="w-full h-[1px] bg-foreground/10 my-4"
-              />
+              <div className="w-full h-[1px] bg-foreground/10 my-4" />
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6 }}
-                className="flex items-center justify-between w-full gap-6"
-              >
-                <span className="text-muted-foreground font-medium">Appearance</span>
+              <div className="flex flex-col gap-6 w-full items-center">
+                <LanguageSwitcher />
+
                 <button
                   onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-                  className="p-3 rounded-full bg-foreground/5 hover:bg-foreground/10 transition-colors"
+                  className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
                 >
+                  <span className="font-medium">Theme</span>
                   {mounted ? (
                     theme === 'dark' ? (
                       <Moon className="w-5 h-5 text-indigo-400" />
@@ -175,44 +172,11 @@ export function Navbar() {
                     )
                   ) : <div className="w-5 h-5" />}
                 </button>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7 }}
-                className="flex items-center justify-between w-full gap-6"
-              >
-                <span className="text-muted-foreground font-medium">Language</span>
-                <div className="scale-110">
-                  <LanguageSwitcher />
-                </div>
-              </motion.div>
-
+              </div>
             </nav>
           </motion.div>
         )}
       </AnimatePresence>
-      {/* Scroll to Top Button */}
-      <AnimatePresence>
-        {mounted && (
-          <motion.button
-            initial={{ opacity: 0, scale: 0 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0 }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="fixed bottom-8 right-8 z-40 p-3 rounded-full bg-background/80 backdrop-blur-md border border-foreground/10 shadow-lg text-foreground/80 hover:text-electric-blue hover:border-electric-blue/50 transition-all duration-300 hidden md:flex items-center justify-center group"
-          >
-            <div className="absolute inset-0 rounded-full bg-electric-blue/10 opacity-0 group-hover:opacity-100 transition-opacity blur-md" />
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="relative z-10">
-              <path d="m18 15-6-6-6 6" />
-            </svg>
-          </motion.button>
-        )}
-      </AnimatePresence>
-
     </>
   );
 }
