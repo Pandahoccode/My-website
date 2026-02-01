@@ -1,0 +1,33 @@
+---
+title: 'The Algorithms Behind the Portfolio'
+date: '2024-03-15'
+excerpt: 'A deep dive into the math ensuring the Fluid Flow Field animation runs at 60fps.'
+tags: ['Next.js', 'Canvas', 'Performance']
+---
+
+# The Fluid Flow Field
+
+Designing the background for this portfolio wasn't just about aesthetics; it was a challenge in **performance engineering**.
+
+## The Math
+
+We use a **Perlin Noise** field to dictate the velocity vectors of particles. The core equation relies on ensuring smooth gradients between random values.
+
+```javascript
+function computeField(x, y) {
+  const angle = noise(x * 0.01, y * 0.01) * Math.PI * 2;
+  return {
+    x: Math.cos(angle),
+    y: Math.sin(angle)
+  };
+}
+```
+
+## Optimization
+
+To ensure the animation remains fluid even on mobile devices:
+1. We use an **OffscreenCanvas** where supported.
+2. Particle count is dynamically adjusted based on the `window.innerWidth`.
+3. We avoid React state updates inside the render loop, relying strictly on refs.
+
+Stay tuned for more updates on how I build data-driven interfaces.

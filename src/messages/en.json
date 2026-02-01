@@ -3,33 +3,35 @@
     "home": "Home",
     "projects": "Projects",
     "about": "About",
+    "blog": "Blog",
     "contact": "Contact"
   },
   "Hero": {
     "title": "Dang Phuc Anh",
-    "description": "2nd Year Data Science Student",
-    "role": "Data Science scholar focused on transforming raw complexity into elegant, scalable digital narratives.",
+    "description": "Turning complex datasets into clear, actionable strategic insights.",
+    "role": "Architecting actionable insights through the strategic exploitation of data. Currently pursuing a Bachelor of Technology (BUT) in Data Science at the University of Lille, seeking a 10-week internship starting April 6, 2026.",
+    "subBio": "Open to 10-week internships starting April 2026. Specialized in Python, SQL, and Data Visualization.",
+    "resumeButton": "Resume",
     "quote": "\"Without data, you’re just another person with an opinion.\"",
     "quoteAuthor": "— W. Edwards Deming"
   },
   "Projects": {
     "title": "Selected Works",
-    "featuredTitle": "Featured Projects",
     "viewProject": "View Project",
     "frenchCinema": {
       "title": "French Cinema Analysis",
       "category": "Data Analysis",
-      "description": "Analysis of French cinema trends, highlighting resilience findings post-Covid using Python, R, and Power BI."
+      "description": "Analyzing post-Covid resilience and streaming impact using R & Power BI."
     },
     "airQuality": {
       "title": "Vietnam Air Quality",
       "category": "Machine Learning",
-      "description": "Investigation of air quality patterns using APIs and unsupervised clustering (K-means)."
+      "description": "Clustering 40+ stations using PCA & K-Means to identify pollution patterns."
     },
     "dataWarehouse": {
       "title": "Chinook Data Warehouse",
       "category": "Data Engineering",
-      "description": "Automated ETL pipeline using Oracle Data Integrator to transform musical sales data into a star-schema Data Warehouse."
+      "description": "ETL pipeline automation with Oracle Data Integrator to optimize sales analysis."
     }
   },
   "About": {

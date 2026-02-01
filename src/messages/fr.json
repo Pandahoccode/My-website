@@ -3,12 +3,15 @@
     "home": "Accueil",
     "projects": "Projets",
     "about": "À Propos",
+    "blog": "Blog",
     "contact": "Contact"
   },
   "Hero": {
     "title": "Dang Phuc Anh",
-    "description": "Étudiant de 2ème année en Data Science",
-    "role": "Chercheur en Data Science concentré sur la transformation de la complexité brute en récits numériques élégants et évolutifs.",
+    "description": "Transformer des ensembles de données complexes en perspectives stratégiques claires et exploitables.",
+    "role": "Architecturer des perspectives exploitables grâce à l'exploitation stratégique des données. Actuellement en Bachelor Universitaire de Technologie (BUT) Science des Données à l'Université de Lille, je recherche un stage de 10 semaines à partir du 6 avril 2026.",
+    "subBio": "Ouvert pour un stage de 10 semaines à partir d'avril 2026. Spécialisé en Python, SQL et visualisation de données.",
+    "resumeButton": "CV",
     "quote": "\"Sans données, vous n’êtes qu’une autre personne avec une opinion.\"",
     "quoteAuthor": "— W. Edwards Deming"
   },
@@ -19,17 +22,17 @@
     "frenchCinema": {
       "title": "Analyse du Cinéma Français",
       "category": "Analyse de Données",
-      "description": "Analyse des tendances du cinéma français, mettant en évidence la résilience post-Covid avec Python, R et Power BI."
+      "description": "Analyse de la résilience post-Covid et de l'impact du streaming utilisant R et Power BI."
     },
     "airQuality": {
       "title": "Qualité de l'Air au Vietnam",
       "category": "Apprentissage Automatique",
-      "description": "Étude des modèles de qualité de l'air utilisant des API et le clustering non supervisé (K-means)."
+      "description": "Clustering de 40+ stations utilisant PCA & K-Means pour identifier les modèles de pollution."
     },
     "dataWarehouse": {
       "title": "Entrepôt de Données Chinook",
       "category": "Ingénierie des Données",
-      "description": "Pipeline ETL automatisé utilisant Oracle Data Integrator pour transformer les données de ventes musicales en un entrepôt de données en étoile."
+      "description": "Automatisation du pipeline ETL avec Oracle Data Integrator pour optimiser l'analyse des ventes."
     }
   },
   "About": {
