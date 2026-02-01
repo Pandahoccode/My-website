@@ -1,32 +1,15 @@
-import { useTranslations } from 'next-intl';
-import { Projects } from '@/components/sections/Projects';
-import { Hero } from '../../components/sections/Hero';
-import { About } from '@/components/sections/About';
-import { Skills } from '@/components/sections/Skills';
-import { Contact } from '@/components/sections/Contact';
-import { Separator } from '@/components/ui/SectionSeparator';
-import { ScrollFrames } from '@/components/ui/ScrollFrames';
+/**
+ * PORTFOLIO HOME PAGE
+ * Route: /[locale] (e.g., /en, /fr, /vi)
+ *
+ * Main landing page displaying the portfolio with Hero, ScrollFrames,
+ * About, Skills, Projects, and Contact sections.
+ *
+ * @see src/views/PortfolioView.tsx for the full implementation
+ */
 
-export default function Home() {
-  const t = useTranslations('Hero');
+import { PortfolioView } from "@/views/PortfolioView";
 
-  return (
-    <main className="relative w-full min-h-screen flex flex-col">
-      {/* Scrollytelling Hero Area */}
-      <ScrollFrames />
-      <Hero />
-
-      <Separator />
-      <Projects />
-
-      <Separator />
-      <About />
-
-      <Separator />
-      <Skills />
-
-      <Separator />
-      <Contact />
-    </main>
-  );
+export default function HomePage() {
+  return <PortfolioView />;
 }

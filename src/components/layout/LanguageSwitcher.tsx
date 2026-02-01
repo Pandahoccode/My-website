@@ -33,7 +33,11 @@ function stripLocaleFromPath(path: string): string {
   return path;
 }
 
-export function LanguageSwitcher() {
+interface LanguageSwitcherProps {
+  variant?: 'default' | 'glass';
+}
+
+export function LanguageSwitcher({ variant = 'default' }: LanguageSwitcherProps) {
   const router = useRouter();
   const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
@@ -51,8 +55,13 @@ export function LanguageSwitcher() {
     });
   };
 
+  const isGlass = variant === 'glass';
+
   return (
-    <div className="flex items-center p-1 rounded-full bg-foreground/5 backdrop-blur-xl border border-foreground/10 relative">
+    <div className={clsx(
+      "flex items-center p-1 rounded-full backdrop-blur-xl border relative transition-colors",
+      isGlass ? "bg-white/5 border-white/10" : "bg-foreground/5 border-foreground/10"
+    )}>
       {locales.map((l) => {
         const isActive = l === activeLocale;
         return (
@@ -64,7 +73,10 @@ export function LanguageSwitcher() {
               "relative px-3 py-1 font-bold rounded-full transition-all duration-300 z-10",
               isActive
                 ? "text-background text-xs scale-105 shadow-md"
-                : "text-foreground/60 text-xs hover:text-foreground hover:scale-105"
+                : clsx(
+                  "text-xs hover:scale-105",
+                  isGlass ? "text-white/60 hover:text-white" : "text-foreground/60 hover:text-foreground"
+                )
             )}
           >
             {isActive && (

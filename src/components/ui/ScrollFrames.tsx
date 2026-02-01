@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { useScroll, useTransform, useSpring } from "framer-motion";
+import { ScrollIndicator } from "./ScrollIndicator";
 
 interface ScrollFramesProps {
   children?: React.ReactNode;
@@ -151,6 +152,9 @@ export function ScrollFrames({ children }: ScrollFramesProps) {
           Frame: {lastFrameRef.current}/{TOTAL_FRAMES}
         </div>
         */}
+
+        {/* Scroll Down Indicator */}
+        <ScrollIndicator />
       </div>
     </section>
   );
