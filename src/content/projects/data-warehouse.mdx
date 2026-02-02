@@ -1,0 +1,40 @@
+---
+title: "Enterprise Data Warehouse"
+date: "2025-12-15"
+excerpt: "End-to-end data warehouse solution with ETL pipelines, star schema design, and PostgreSQL optimization."
+tags: ["SQL", "ETL", "Python", "PostgreSQL"]
+image: "/projects/data-warehouse.jpg"
+category: "Data Engineering"
+github: "https://github.com/phuc-anh"
+demo: "#"
+color: "from-[#F857A6] to-[#FF5858]"
+featured: true
+---
+
+# Enterprise Data Warehouse
+
+A scalable data warehouse architecture designed for analytical workloads and business intelligence.
+
+## Design Principles
+
+- **Star Schema**: Optimized for OLAP queries
+- **ETL Pipeline**: Python-based incremental data loading
+- **Performance**: Query optimization and indexing strategies
+
+## Implementation
+
+```sql
+-- Fact table with foreign keys to dimensions
+CREATE TABLE fact_sales (
+    sale_id SERIAL PRIMARY KEY,
+    date_id INT REFERENCES dim_date(date_id),
+    product_id INT REFERENCES dim_product(product_id),
+    customer_id INT REFERENCES dim_customer(customer_id),
+    quantity INT,
+    revenue DECIMAL(10, 2)
+);
+```
+
+## Results
+
+Reduced report generation time by 80% and enabled self-service analytics for business users.

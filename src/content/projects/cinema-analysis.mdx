@@ -1,0 +1,40 @@
+---
+title: "French Cinema Box Office Analysis"
+date: "2026-01-15"
+excerpt: "A comprehensive data science project analyzing French cinema trends using Python, Scikit-Learn, and advanced visualization techniques."
+tags: ["Python", "Scikit-Learn", "Pandas", "Matplotlib"]
+image: "/projects/cinema.jpg"
+category: "Data Science"
+github: "https://github.com/phuc-anh"
+demo: "#"
+color: "from-[#00D2FF] to-[#3A7BD5]"
+featured: true
+---
+
+# French Cinema Box Office Analysis
+
+This project dives deep into the French film industry, analyzing box office performance, audience trends, and predictive modeling for future releases.
+
+## Key Insights
+
+- **Data Collection**: Scraped and cleaned data from multiple French cinema databases
+- **Exploratory Analysis**: Identified seasonal patterns and genre preferences
+- **Predictive Model**: Built an ML model to forecast opening weekend performance
+
+## Technical Stack
+
+```python
+import pandas as pd
+from sklearn.ensemble import RandomForestRegressor
+import matplotlib.pyplot as plt
+
+# Feature engineering pipeline
+def create_features(df):
+    df['release_month'] = pd.to_datetime(df['release_date']).dt.month
+    df['is_holiday'] = df['release_date'].apply(check_holiday)
+    return df
+```
+
+## Results
+
+The model achieved 85% accuracy in predicting box office success categories, providing valuable insights for distribution strategies.

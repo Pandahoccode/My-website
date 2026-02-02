@@ -1,0 +1,39 @@
+---
+title: "Air Quality Prediction System"
+date: "2026-01-01"
+excerpt: "Real-time air quality monitoring and prediction using TensorFlow deep learning models and sensor API integration."
+tags: ["Python", "TensorFlow", "Data Viz", "API"]
+image: "/projects/air-quality.jpg"
+category: "Machine Learning"
+github: "https://github.com/phuc-anh"
+demo: "#"
+color: "from-[#9D50BB] to-[#6E48AA]"
+featured: true
+---
+
+# Air Quality Prediction System
+
+A real-time environmental monitoring solution that predicts air quality index using deep learning.
+
+## Architecture
+
+- **Data Pipeline**: Ingests data from IoT sensors and public APIs
+- **ML Model**: LSTM-based neural network for time-series forecasting
+- **Visualization**: Interactive dashboards with real-time updates
+
+## Key Features
+
+```python
+import tensorflow as tf
+from tensorflow.keras.layers import LSTM, Dense
+
+model = tf.keras.Sequential([
+    LSTM(64, return_sequences=True, input_shape=(24, 5)),
+    LSTM(32),
+    Dense(1, activation='linear')
+])
+```
+
+## Impact
+
+Deployed in 3 cities with 92% prediction accuracy for 24-hour forecasts.

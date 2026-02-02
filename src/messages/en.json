@@ -6,7 +6,7 @@
     "blog": "Blog",
     "contact": "Contact"
   },
-  "Hero": {
+  "Home": {
     "title": "Dang Phuc Anh",
     "description": "Turning complex datasets into clear, actionable strategic insights.",
     "role": "Architecting actionable insights through the strategic exploitation of data. Currently pursuing a Bachelor of Technology (BUT) in Data Science at the University of Lille, seeking a 10-week internship starting April 6, 2026.",
@@ -16,7 +16,7 @@
     "quoteAuthor": "— W. Edwards Deming"
   },
   "Projects": {
-    "title": "Selected Works",
+    "title": "Featured Projects",
     "viewProject": "View Project",
     "frenchCinema": {
       "title": "French Cinema Analysis",

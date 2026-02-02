@@ -1,6 +1,7 @@
-"use client";
+// PortfolioView - Server Component wrapper for all sections
+// Child components handle their own 'use client' directives as needed
 
-import { Hero } from "@/components/sections/Hero";
+import { Home } from "@/components/sections/Home";
 import { About } from "@/components/sections/About";
 import { Skills } from "@/components/sections/Skills";
 import { Projects } from "@/components/sections/Projects";
@@ -18,8 +19,8 @@ export function PortfolioView() {
         {/* Scroll Frames Section */}
         <ScrollFrames />
 
-        {/* Hero Section */}
-        <Hero />
+        {/* Home Section */}
+        <Home />
         <Separator />
 
         {/* Projects Section */}
