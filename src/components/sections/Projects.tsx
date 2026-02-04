@@ -1,22 +1,48 @@
 import { getAllProjects } from "@/lib/project";
 import { ProjectList } from "./ProjectList";
+import { getTranslations } from 'next-intl/server';
+import { Link } from "@/i18n/routing";
 
 export async function Projects() {
+  const t = await getTranslations('Projects');
   const projects = getAllProjects();
 
   return (
-    <section id="projects" className="relative z-10 py-32 px-6 md:px-12 max-w-7xl mx-auto">
-      <div className="mb-20">
-        <h2 className="text-4xl md:text-6xl font-black font-outfit mb-4">
-          <span className="text-gray-900 dark:text-transparent dark:bg-clip-text dark:bg-gradient-to-r dark:from-white dark:to-gray-500">
-            Featured Projects
-          </span>
-        </h2>
-        <div className="h-1 w-24 bg-[#00D2FF] rounded-full" />
-      </div>
+    <section id="projects" className="py-24 px-6 bg-background">
+      <div className="max-w-6xl mx-auto">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <h2
+            className="text-4xl md:text-5xl font-bold font-outfit mb-4"
+            style={{ color: 'var(--text-primary)' }}
+          >
+            {t('title')}
+          </h2>
+          <p
+            className="text-lg max-w-xl mx-auto"
+            style={{ color: 'var(--home-text)' }}
+          >
+            {t('subtitle')}
+          </p>
+        </div>
 
-      {/* Grid - Client Component */}
-      <ProjectList projects={projects} />
+        {/* Project Grid */}
+        <ProjectList projects={projects.slice(0, 3)} />
+
+        {/* View All Button */}
+        <div className="text-center mt-12">
+          <Link
+            href="/projects"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border font-medium transition-all hover:bg-slate-100 dark:hover:bg-white/10"
+            style={{
+              borderColor: 'var(--nav-border)',
+              color: 'var(--text-primary)'
+            }}
+          >
+            View All Projects <span>→</span>
+          </Link>
+        </div>
+      </div>
     </section>
   );
 }

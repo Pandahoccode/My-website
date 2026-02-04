@@ -6,14 +6,14 @@
  * Uses generateStaticParams for static generation of all post slugs.
  *
  * @see src/views/BlogPostView.tsx for the full implementation
- * @see src/content/posts/ for the MDX blog content files
+ * @see src/content/blog/ for the MDX blog content files
  */
 
 import { BlogPostView } from "@/views/BlogPostView";
-import { getPostSlugs } from '@/lib/posts';
+import { getBlogSlugs } from '@/lib/blog';
 
 export async function generateStaticParams() {
-  const slugs = getPostSlugs();
+  const slugs = getBlogSlugs();
   return slugs.map((slug) => ({
     slug: slug.replace(/\.mdx$/, ''),
   }));

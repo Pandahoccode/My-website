@@ -2,11 +2,11 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, BookOpen, Cpu, Sparkles } from "lucide-react";
-import type { Post } from "@/lib/blog";
+import type { BlogPost } from "@/lib/blog";
 
 // Icon mapping based on tags or fallback
-function getIconForPost(post: Post) {
-  const tags = post.meta.tags.map(t => t.toLowerCase());
+function getIconForBlog(blog: BlogPost) {
+  const tags = blog.meta.tags.map(t => t.toLowerCase());
   if (tags.some(t => t.includes('ai') || t.includes('ml') || t.includes('tensorflow'))) {
     return Sparkles;
   }
@@ -17,10 +17,10 @@ function getIconForPost(post: Post) {
 }
 
 interface BlogListProps {
-  posts: Post[];
+  blogs: BlogPost[];
 }
 
-export function BlogList({ posts }: BlogListProps) {
+export function BlogList({ blogs }: BlogListProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -54,11 +54,11 @@ export function BlogList({ posts }: BlogListProps) {
       viewport={{ once: true }}
       className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
     >
-      {posts.map((post) => {
-        const Icon = getIconForPost(post);
+      {blogs.map((blog) => {
+        const Icon = getIconForBlog(blog);
         return (
           <motion.div
-            key={post.slug}
+            key={blog.slug}
             variants={itemVariants}
             className="group relative bg-foreground/5 backdrop-blur-sm border border-foreground/10 rounded-2xl p-8 hover:bg-foreground/10 transition-colors duration-300"
           >
@@ -69,17 +69,17 @@ export function BlogList({ posts }: BlogListProps) {
 
             {/* Meta */}
             <div className="flex items-center gap-3 text-sm text-foreground/40 mb-3 font-mono">
-              <span>{formatDate(post.meta.date)}</span>
+              <span>{formatDate(blog.meta.date)}</span>
               <span>•</span>
-              <span className="text-[#9D50BB]">{post.meta.tags[0] || 'Article'}</span>
+              <span className="text-[#9D50BB]">{blog.meta.tags[0] || 'Article'}</span>
             </div>
 
             {/* Content */}
             <h3 className="text-2xl font-bold mb-3 font-outfit group-hover:text-[#00AEEF] transition-colors">
-              {post.meta.title}
+              {blog.meta.title}
             </h3>
             <p className="text-foreground/60 mb-8 leading-relaxed">
-              {post.meta.excerpt}
+              {blog.meta.excerpt}
             </p>
 
             {/* Link */}

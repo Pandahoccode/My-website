@@ -1,134 +1,210 @@
 "use client";
 
+import { motion } from "framer-motion";
 import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
-import { GraduationCap, MapPin, Calendar } from 'lucide-react';
+import { GraduationCap, Award, Calendar, ExternalLink } from "lucide-react";
 
 export function About() {
   const t = useTranslations('About');
 
-  // Use translations for milestones
-  const milestones = [
+  const timelineEvents = [
     {
-      year: t('education.year'),
-      title: t('milestones.student.title'),
-      description: t('milestones.student.description'),
-      color: "cyan"
+      year: "2026 (Current)",
+      title: "Bachelor of Technology in Data Science",
+      desc: "University of Lille. Focused on strategic data exploitation. Seeking a 10-week internship starting April 6."
+    },
+    {
+      year: "2025",
+      title: "Advanced Machine Learning",
+      desc: "Deep diving into Neural Networks, Deep Learning frameworks, and complex statistical modeling."
+    },
+    {
+      year: "2024",
+      title: "Big Data & EDA Master",
+      desc: "Mastering SQL for large datasets and Exploratory Data Analysis techniques to uncover hidden patterns."
     },
     {
       year: "2023",
-      title: t('milestones.frontend.title'),
-      description: t('milestones.frontend.description'),
-      color: "purple"
-    },
-    {
-      year: "2022",
-      title: t('milestones.started.title'),
-      description: t('milestones.started.description'),
-      color: "gray"
+      title: "Foundations",
+      desc: "Started the journey with Python programming and Mathematical Modeling for Data Science."
     }
   ];
 
+  const education = [
+    {
+      degree: t('education.degree'),
+      school: t('education.school'),
+      year: "2024 - Present"
+    },
+    {
+      degree: t('education.hs_degree'),
+      school: t('education.hs_school'),
+      year: "2019 - 2022"
+    }
+  ];
+
+  const certifications = [
+    {
+      name: "TensorFlow Developer",
+      issuer: "Google",
+      date: "2023",
+      link: "#"
+    },
+    {
+      name: "AWS Machine Learning",
+      issuer: "Amazon Web Services",
+      date: "2024",
+      link: "#"
+    }
+  ];
+
+  const skills = ["Python", "SQL", "Power BI", "Machine Learning", "Data Engineering", "React/Next.js"];
+
   return (
-    <section id="about" className="scroll-mt-28 py-20 px-4 sm:px-6 lg:px-8 bg-background/50">
-      <div className="max-w-6xl mx-auto">
+    <section id="about" className="py-20 px-6 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-500/5 dark:bg-purple-500/10 rounded-full blur-[120px] -z-10" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-500/5 dark:bg-cyan-500/10 rounded-full blur-[120px] -z-10" />
+
+      <div className="max-w-6xl mx-auto space-y-20">
 
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center space-y-4"
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4 font-outfit">
+          <h2 className="text-4xl md:text-5xl font-black font-outfit tracking-tight" style={{ color: 'var(--home-title)' }}>
             {t('title')}
           </h2>
-          <div className="h-1 w-16 bg-gradient-to-r from-electric-blue to-deep-purple rounded-full mx-auto" />
+          <p className="text-lg md:text-xl max-w-2xl mx-auto" style={{ color: 'var(--home-text)' }}>
+            {t('subtitle')}
+          </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-24">
+        <div className="grid md:grid-cols-2 gap-12 lg:gap-20">
 
-          {/* LEFT COLUMN: Bio & Profile (5 cols) */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="lg:col-span-5 space-y-8"
-          >
-            {/* Narrative */}
-            <div className="prose prose-lg dark:prose-invert">
-              <p className="text-foreground/90 leading-relaxed text-lg font-light">
-                {t('description1')}
-              </p>
-              <p className="text-foreground/70 leading-relaxed font-light">
-                {t('description2')}
+          {/* Left Column: Narrative & Roadmap */}
+          <div className="space-y-16">
+            <div className="space-y-6">
+              <h3 className="text-2xl font-bold" style={{ color: 'var(--home-title)' }}>
+                {t('journeyTitle')}
+              </h3>
+              <p className="text-lg leading-relaxed opacity-90 font-medium" style={{ color: 'var(--home-text)' }}>
+                {t('journeyDescription')}
               </p>
             </div>
 
-            {/* Profile Details (Clean List) */}
-            <div className="border-t border-foreground/10 pt-8 space-y-6">
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-electric-blue/10 rounded-lg text-electric-blue">
+            <div className="space-y-8">
+              <h3 className="text-2xl font-bold" style={{ color: 'var(--home-title)' }}>
+                {t('roadmapTitle')}
+              </h3>
+              <div className="space-y-8 relative border-l-2 ml-3 pl-8" style={{ borderColor: 'var(--card-border-color)' }}>
+                {timelineEvents.map((event, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    className="relative"
+                  >
+                    <span className="absolute -left-[41px] top-1 w-5 h-5 rounded-full border-4 border-white dark:border-[#030712] bg-cyan-500 shadow-lg" />
+                    <div className="space-y-1">
+                      <span className="text-sm font-mono font-bold text-cyan-600 dark:text-cyan-400">
+                        {event.year}
+                      </span>
+                      <h4 className="text-lg font-bold" style={{ color: 'var(--home-title)' }}>{event.title}</h4>
+                      <p className="text-sm leading-relaxed opacity-80" style={{ color: 'var(--home-text)' }}>
+                        {event.desc}
+                      </p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: Education, Certs & Skills */}
+          <div className="space-y-12">
+
+            {/* Education */}
+            <div className="space-y-6">
+              <div className="flex items-center gap-3">
+                <div className="p-2 rounded-lg bg-teal-500/10 text-teal-500">
                   <GraduationCap size={20} />
                 </div>
-                <div>
-                  <h3 className="font-semibold text-foreground text-sm uppercase tracking-wider mb-1">{t('education.title')}</h3>
-                  <p className="text-foreground font-medium">{t('education.degree')}</p>
-                  <p className="text-foreground/60 text-sm">{t('education.school')}</p>
-                </div>
+                <h3 className="text-2xl font-bold" style={{ color: 'var(--home-title)' }}>
+                  {t('educationTitle')}
+                </h3>
               </div>
-
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-deep-purple/10 rounded-lg text-deep-purple">
-                  <MapPin size={20} />
-                </div>
-                <div>
-                  <h3 className="font-semibold text-foreground text-sm uppercase tracking-wider mb-1">{t('basedIn')}</h3>
-                  <p className="text-foreground font-medium">Hanoi, Vietnam</p>
-                  <p className="text-foreground/60 text-sm">UTC+7</p>
-                </div>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* RIGHT COLUMN: Professional Timeline (7 cols) */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="lg:col-span-7"
-          >
-            <h3 className="text-2xl font-bold text-foreground mb-8 font-outfit">{t('journey')}</h3>
-
-            <div className="relative border-l-2 border-foreground/10 ml-3 space-y-12">
-              {milestones.map((milestone, index) => (
-                <div key={index} className="relative pl-12 group">
-                  {/* Dot */}
-                  <div className={`absolute -left-[9px] top-2 w-5 h-5 rounded-full border-4 border-background ${milestone.color === 'cyan' ? 'bg-electric-blue' :
-                    milestone.color === 'purple' ? 'bg-deep-purple' : 'bg-gray-400'
-                    } transition-transform duration-300 group-hover:scale-125`} />
-
-                  {/* Content */}
-                  <div className="space-y-2">
-                    <span className={`inline-block px-3 py-1 rounded-full text-xs font-mono font-bold ${milestone.color === 'cyan' ? 'bg-electric-blue/10 text-electric-blue' :
-                      milestone.color === 'purple' ? 'bg-deep-purple/10 text-deep-purple' : 'bg-gray-200 dark:bg-gray-800 text-gray-500'
-                      }`}>
-                      {milestone.year}
-                    </span>
-                    <h4 className="text-xl font-bold text-foreground group-hover:text-electric-blue transition-colors">
-                      {milestone.title}
-                    </h4>
-                    <p className="text-foreground/60 leading-relaxed max-w-md">
-                      {milestone.description}
-                    </p>
+              <div className="space-y-4">
+                {education.map((edu, idx) => (
+                  <div key={idx} className="p-4 rounded-xl border transition-colors bg-slate-50 dark:bg-white/5 border-slate-100 dark:border-white/5 hover:border-teal-500/30" style={{ borderColor: 'var(--card-border-color)', borderWidth: '1px' }}>
+                    <h4 className="font-bold text-lg" style={{ color: 'var(--home-title)' }}>{edu.degree}</h4>
+                    <p className="opacity-80" style={{ color: 'var(--home-text)' }}>{edu.school}</p>
+                    <span className="text-sm font-mono opacity-60 block mt-1">{edu.year}</span>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </motion.div>
+
+            {/* Certifications */}
+            <div className="space-y-6">
+              <div className="flex items-center gap-3">
+                <div className="p-2 rounded-lg bg-purple-500/10 text-purple-500">
+                  <Award size={20} />
+                </div>
+                <h3 className="text-2xl font-bold" style={{ color: 'var(--home-title)' }}>
+                  {t('certTitle')}
+                </h3>
+              </div>
+              <div className="grid gap-4">
+                {certifications.map((cert, index) => (
+                  <a
+                    key={index}
+                    href={cert.link}
+                    className="flex items-center justify-between p-4 rounded-xl border transition-all hover:bg-slate-50 dark:hover:bg-white/5 border-slate-100 dark:border-white/5 group hover:border-purple-500/30"
+                    style={{ borderColor: 'var(--card-border-color)', borderWidth: '1px' }}
+                  >
+                    <div>
+                      <h4 className="font-bold group-hover:text-cyan-500 transition-colors" style={{ color: 'var(--home-title)' }}>{cert.name}</h4>
+                      <p className="text-sm opacity-70" style={{ color: 'var(--home-text)' }}>{cert.issuer}</p>
+                    </div>
+                    <ExternalLink size={16} className="opacity-0 group-hover:opacity-100 transition-opacity text-cyan-500" />
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Skills */}
+            <div className="space-y-6">
+              <h3 className="text-2xl font-bold" style={{ color: 'var(--home-title)' }}>
+                {t('skillsTitle')}
+              </h3>
+              <div className="grid grid-cols-2 gap-4">
+                {['Problem Solving', 'Team Leadership', 'Adaptability', 'Communication', 'Critical Thinking', 'Agile Methodology'].map((skill) => (
+                  <div
+                    key={skill}
+                    className="p-4 rounded-xl border transition-all duration-300 bg-black/5 dark:bg-white/5 hover:bg-gray-100 dark:hover:bg-white/5 dark:hover:shadow-[0_0_10px_rgba(6,182,212,0.3)] flex items-center justify-center"
+                    style={{ borderColor: 'var(--card-border-color)', borderWidth: '1px' }}
+                  >
+                    <span
+                      className="text-sm font-mono font-bold text-center"
+                      style={{ color: 'var(--card-text-title)' }}
+                    >
+                      {skill}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+          </div>
 
         </div>
+
       </div>
     </section>
   );

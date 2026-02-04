@@ -6,7 +6,7 @@ import matter from 'gray-matter';
 // Type Definitions
 // ============================================================================
 
-export interface PostMeta {
+export interface BlogMeta {
   title: string;
   date: string;
   excerpt: string;
@@ -14,9 +14,9 @@ export interface PostMeta {
   image?: string;
 }
 
-export interface Post {
+export interface BlogPost {
   slug: string;
-  meta: PostMeta;
+  meta: BlogMeta;
   content: string;
 }
 
@@ -24,22 +24,22 @@ export interface Post {
 // Directory Path
 // ============================================================================
 
-const postsDirectory = path.join(process.cwd(), 'src/content/posts');
+const blogDirectory = path.join(process.cwd(), 'src/content/blog');
 
 // ============================================================================
-// Post Functions
+// Blog Functions
 // ============================================================================
 
-export function getPostSlugs(): string[] {
-  if (!fs.existsSync(postsDirectory)) {
+export function getBlogSlugs(): string[] {
+  if (!fs.existsSync(blogDirectory)) {
     return [];
   }
-  return fs.readdirSync(postsDirectory).filter((file) => file.endsWith('.mdx'));
+  return fs.readdirSync(blogDirectory).filter((file) => file.endsWith('.mdx'));
 }
 
-export function getPostBySlug(slug: string): Post | null {
+export function getBlogBySlug(slug: string): BlogPost | null {
   const realSlug = slug.replace(/\.mdx$/, '');
-  const fullPath = path.join(postsDirectory, `${realSlug}.mdx`);
+  const fullPath = path.join(blogDirectory, `${realSlug}.mdx`);
 
   if (!fs.existsSync(fullPath)) {
     return null;
@@ -50,16 +50,16 @@ export function getPostBySlug(slug: string): Post | null {
 
   return {
     slug: realSlug,
-    meta: data as PostMeta,
+    meta: data as BlogMeta,
     content,
   };
 }
 
-export function getAllPosts(): Post[] {
-  const slugs = getPostSlugs();
-  const posts = slugs
-    .map((slug) => getPostBySlug(slug))
-    .filter((post): post is Post => post !== null)
+export function getAllBlogs(): BlogPost[] {
+  const slugs = getBlogSlugs();
+  const blogs = slugs
+    .map((slug) => getBlogBySlug(slug))
+    .filter((blog): blog is BlogPost => blog !== null)
     .sort((a, b) => (a.meta.date > b.meta.date ? -1 : 1));
-  return posts;
+  return blogs;
 }

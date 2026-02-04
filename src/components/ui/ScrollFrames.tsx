@@ -130,8 +130,8 @@ export function ScrollFrames({ children }: ScrollFramesProps) {
         />
 
         {/* Updated Gradient Overlay matching new palette */}
-        <div className="absolute top-0 left-0 right-0 h-[20vh] bg-gradient-to-b from-background/80 to-transparent pointer-events-none" />
-        <div className="absolute bottom-0 left-0 right-0 h-[20vh] bg-gradient-to-t from-background via-background/90 to-transparent pointer-events-none" />
+        <div className="absolute top-0 left-0 right-0 h-[50vh] bg-gradient-to-b from-background/150 to-transparent " />
+        <div className="absolute bottom-0 left-0 right-0 h-[50vh] bg-gradient-to-t from-white dark:from-black to-transparent pointer-events-none" />
 
         {/* Content */}
         <div className="relative z-10 h-full flex items-center justify-center pointer-events-none">

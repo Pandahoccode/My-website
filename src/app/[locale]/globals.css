@@ -19,8 +19,6 @@
   --color-muted-slate: #94A3B8;
 
   /* Mapping for utilities */
-  /* We will use bg-[...] mostly, but these help semantic usage */
-
   --font-sans: var(--font-inter), system-ui, sans-serif;
   --font-display: var(--font-inter), system-ui, sans-serif;
 
@@ -32,28 +30,75 @@
   --color-background: var(--background);
 }
 
-:root {
-  /* Light Mode Defaults */
-  --background: #F8FAFC; /* polar-white */
-  --foreground: #020617; /* deep-navy */
-  --color-primary: #00D2FF;
+@layer base {
+  :root {
+    --background: 255 255 255;
+    --foreground: 15 23 42; /* Slate-900 (Dark Text) */
+
+    /* Strict Theme Control - Light Mode */
+    --home-bg: #f8f9fa;
+    --home-gradient: radial-gradient(circle at 50% 20%, #f8f9fa 0%, #ffffff 100%);
+
+    --nav-bg: rgba(255, 255, 255, 0.8);
+    --nav-border: rgba(0, 0, 0, 0.1);
+    --nav-text: #000000; /* Pure Black for Light Mode */
+
+    --text-primary: #1e293b; /* Slate-800 */
+
+    --home-title: #000000;
+    --home-text: #1e293b; /* Slate-800 */
+
+    --card-bg: #ffffff;
+    --card-border: 1px solid #000000;
+    --card-border-color: #000000;
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+
+    --card-text-title: #000000;
+    --card-text-desc: #000000;
+    --card-text-meta: #000000;
+
+    --lang-text: #1A1A1A;
+    --text-nav-inactive: rgba(0, 0, 0, 0.6);
+  }
+  .dark {
+    --background: 3 7 18;
+    --foreground: 255 255 255; /* White Text */
+
+    /* Strict Theme Control - Dark Mode */
+    --home-bg: #020617;
+    --home-gradient: radial-gradient(circle at 15% 50%, rgba(76, 29, 149, 0.15) 0%, transparent 50%), radial-gradient(circle at 85% 30%, rgba(6, 182, 212, 0.15) 0%, transparent 50%);
+
+    --nav-bg: rgba(3, 7, 18, 0.8);
+    --nav-border: rgba(255, 255, 255, 0.1);
+    --nav-text: #ffffff;
+
+    --text-primary: #ffffff;
+
+    --home-title: #ffffff;
+    --home-text: #d1d5db; /* Gray-300 */
+
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --card-border: 1px solid #FFFFFF;
+    --card-border-color: #FFFFFF; /* Pure White border for dark mode */
+    --card-shadow: none;
+
+    --card-text-title: #ffffff;
+    --card-text-desc: #d1d5db;
+    --card-text-meta: #9ca3af;
+
+    --lang-text: #FFFFFF;
+    --text-nav-inactive: rgba(255, 255, 255, 0.6);
+  }
 }
 
-.dark {
-  /* Dark Mode Defaults */
-  --background: #020617; /* deep-navy */
-  --foreground: #F8FAFC; /* polar-white */
+body {
+  @apply bg-[rgb(var(--background))] text-[rgb(var(--foreground))];
 }
 
 /* Base Override */
 @layer base {
   html {
-    background-color: var(--background);
     scroll-behavior: smooth;
-  }
-  body {
-    background-color: transparent;
-    color: var(--foreground);
   }
 }
 
@@ -69,6 +114,20 @@
 @utility glass-card {
   @apply bg-foreground/5 backdrop-blur-lg border border-foreground/10;
 }
+
+@utility bg-cosmic-gradient {
+  background: linear-gradient(135deg, #020617 0%, #1e1b4b 60%, #312e81 100%);
+}
+
+@theme {
+  --text-nav-inactive: rgba(0, 0, 0, 0.6);
+}
+@media (prefers-color-scheme: dark) {
+  @theme {
+    --text-nav-inactive: rgba(255, 255, 255, 0.6);
+  }
+}
+/* Manual override for class-based dark mode if needed, or just insert into :root/.dark block previously defined */
 
 /* Custom Utilities */
 @utility text-glow {

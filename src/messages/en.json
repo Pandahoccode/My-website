@@ -17,6 +17,7 @@
   },
   "Projects": {
     "title": "Featured Projects",
+    "subtitle": "A showcase of my data science and development work",
     "viewProject": "View Project",
     "frenchCinema": {
       "title": "French Cinema Analysis",
@@ -35,48 +36,28 @@
     }
   },
   "About": {
-    "title": "Data Journey",
-    "description1": "I'm a Data Science student passionate about uncovering insights from complex datasets and building elegant solutions.",
-    "description2": "My focus is on machine learning, statistical analysis, and creating impactful data visualizations that tell compelling stories.",
+    "title": "About Me",
+    "subtitle": "My journey through data, code, and creativity.",
+    "journeyTitle": "The Journey",
+    "journeyDescription": "Starting with a fascination for how numbers tell stories, my journey into Data Science began at the University of Lille. I specialize in architecting actionable insights by turning raw, complex datasets into strategic roadmaps.",
+    "roadmapTitle": "My Roadmap",
+    "educationTitle": "My Education",
+    "certTitle": "My Certificates",
+    "certTitle": "My Certificates",
+    "skillsTitle": "Core Soft Skills",
+    "skills": [
+      "Problem Solving",
+      "Team Leadership",
+      "Adaptability",
+      "Communication",
+      "Critical Thinking",
+      "Agile Methodology"
+    ],
     "education": {
-      "title": "Education",
       "degree": "BUT Data Science",
       "school": "Université de Lille",
-      "year": "2024 – Present",
       "hs_degree": "Scientific Baccalaureate",
       "hs_school": "Hanoi-Amsterdam High School"
-    },
-    "roadmap": {
-      "year1": "Fundamentals & Algorithms",
-      "year2": "Machine Learning & Visualization",
-      "future": "Deep Learning & AI Systems"
-    },
-    "skills": {
-      "title": "Core Skills",
-      "python": "Python & SQL",
-      "visualization": "Data Visualization (Power BI/Qlik)",
-      "ml": "Machine Learning (Clustering/PCA)"
-    },
-    "certifications": {
-      "title": "Certifications",
-      "google": "Google Data Analytics",
-      "oracle": "Oracle AI Foundations"
-    },
-    "basedIn": "Based In",
-    "journey": "Journey",
-    "milestones": {
-      "student": {
-        "title": "Data Science Student",
-        "description": "Pursuing BS in Data Science, focusing on ML and statistical analysis"
-      },
-      "frontend": {
-        "title": "Frontend Developer",
-        "description": "Building modern web applications with React and Next.js"
-      },
-      "started": {
-        "title": "Started Coding Journey",
-        "description": "Began learning programming with Python and data visualization"
-      }
     }
   },
   "Skills": {
