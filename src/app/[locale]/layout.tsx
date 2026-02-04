@@ -6,7 +6,7 @@ import { Inter, Outfit } from "next/font/google";
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { Navbar } from '@/components/layout/Navbar';
-import { FluidBackground } from '@/components/ui/FluidBackground';
+import { StarBackground } from '@/components/ui/StarBackground';
 import { Footer } from '@/components/layout/Footer';
 import { ScrollToTop } from '@/components/ui/ScrollToTop';
 
@@ -33,7 +33,7 @@ export default async function LocaleLayout({
       <body className={`${inter.variable} ${outfit.variable} antialiased bg-transparent text-foreground overflow-x-hidden selection:bg-[var(--color-vivid-cyan)] selection:text-white transition-colors duration-300`}>
         <NextIntlClientProvider messages={messages}>
           <Providers>
-            <FluidBackground />
+            <StarBackground />
             <Navbar />
             {children}
             <ScrollToTop />
