@@ -60,7 +60,7 @@ export function BlogList({ blogs }: BlogListProps) {
           <motion.div
             key={blog.slug}
             variants={itemVariants}
-            className="group relative bg-foreground/5 backdrop-blur-sm border border-foreground/10 rounded-2xl p-8 hover:bg-foreground/10 transition-colors duration-300"
+            className="group relative bg-foreground/5 backdrop-blur-sm rounded-2xl p-8 hover:bg-foreground/10 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] antigravity-card hover:translate-y-[-8px] hover:shadow-2xl dark:hover:shadow-[0_0_25px_rgba(255,255,255,0.1)]"
           >
             {/* Icon */}
             <div className="mb-6 inline-flex p-3 rounded-xl bg-gradient-to-br from-[#00AEEF]/10 to-[#9D50BB]/10 text-[#00AEEF]">

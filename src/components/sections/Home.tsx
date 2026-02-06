@@ -3,27 +3,30 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "@/i18n/routing";
 import { useTranslations } from 'next-intl';
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Download, ChevronDown, Sparkles } from "lucide-react";
 import Image from "next/image";
 import { useMounted } from "@/hooks/useMounted";
+import { useTheme } from "next-themes";
+import { AvatarEffect } from "@/components/ui/AvatarEffect";
 
 export function Home() {
   const t = useTranslations('Home');
   const mounted = useMounted();
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
 
   if (!mounted) {
-    return <section className="min-h-[85vh]" />;
+    return <section className="min-h-[50vh]" />;
   }
 
   return (
     <section
       id="hero"
-      className="min-h-[100vh] flex items-center justify-center px-6 lg:px-12 overflow-hidden relative transition-colors duration-300"
+      className="min-h-[80vh] flex items-center justify-center px-6 lg:px-12 overflow-visible relative transition-colors duration-300"
+
       style={{
-        backgroundColor: 'var(--home-bg)',
-        backgroundImage: 'var(--home-gradient)',
-        backgroundAttachment: 'fixed',
+        backgroundColor: 'transparent',
       }}
     >
       <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center relative z-10">
@@ -70,12 +73,39 @@ export function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="relative p-6 rounded-r-xl overflow-hidden border-l-4 border-cyan-500 shadow-[0_0_15px_rgba(6,182,212,0.3)] backdrop-blur-xl max-w-lg mt-4 bg-white/90 dark:bg-cosmic-gradient"
+            className="relative p-6 rounded-r-xl overflow-hidden border-l-4 backdrop-blur-xl max-w-lg mt-4"
+            style={{
+              // Conditional gradient based on theme
+              background: isDark
+                ? 'linear-gradient(135deg, #1e293b 0%, #0f172a 40%, #2e1065 100%)' // Dark Mode: Cosmic Depth
+                : 'linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(226, 232, 240, 0.8) 100%)', // Light Mode: Frosted Paper
+              // Border styling
+              borderLeftColor: '#0891b2', // Royal Cyan accent bar
+              borderWidth: '4px',
+              borderTop: isDark ? 'none' : '1px solid #000000',
+              borderRight: isDark ? 'none' : '1px solid #000000',
+              borderBottom: isDark ? 'none' : '1px solid #000000',
+              // Nebula glow for dark mode
+              boxShadow: isDark
+                ? '0 0 30px rgba(46, 16, 101, 0.4)'
+                : '0 0 15px rgba(6, 182, 212, 0.3)',
+            }}
           >
-            <p className="font-serif italic text-lg md:text-xl text-cyan-950 dark:text-cyan-50 tracking-wide">
+            <p
+              className="font-serif italic text-lg md:text-xl tracking-wide"
+              style={{
+                color: isDark ? '#FFFFFF' : '#0f172a', // White for dark, Deep Navy for light
+                textShadow: isDark ? '0 1px 2px rgba(0, 0, 0, 0.3)' : 'none', // Subtle shadow for crispness in dark mode
+              }}
+            >
               "{t('quote')}"
             </p>
-            <span className="font-mono text-sm text-cyan-700 dark:text-cyan-400 mt-3 block font-bold">
+            <span
+              className="font-mono text-sm mt-3 block font-bold"
+              style={{
+                color: isDark ? '#06b6d4' : '#0f172a', // Vivid Cyan for dark, Deep Navy for light
+              }}
+            >
               — W. Edwards Deming
             </span>
           </motion.div>
@@ -88,22 +118,11 @@ export function Home() {
           transition={{ duration: 1, ease: "circOut" }}
           className="relative flex flex-col items-center justify-center order-1 lg:order-2"
         >
-          {/* Avatar Container */}
-          <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 group">
-            <div className="absolute inset-0 bg-gradient-to-tr from-cyan-500 to-purple-500 rounded-full blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-500 dark:opacity-40 dark:group-hover:opacity-60 opacity-20 group-hover:opacity-30" />
-            <div className="relative w-full h-full rounded-full border-4 border-gray-100 dark:border-white/10 shadow-2xl overflow-hidden">
-              <Image
-                src="/avatar.jpg"
-                alt="Phuc Anh"
-                fill
-                className="object-cover transform group-hover:scale-105 transition-transform duration-700"
-                priority
-              />
-            </div>
-          </div>
+          {/* Avatar Container with Kinetic Halo */}
+          <AvatarEffect />
 
           {/* Resume Dropdown - Directly Below Avatar */}
-          <div className="mt-8 relative z-20">
+          <div className="mt-[2rem] relative z-[100]">
             <ResumeDropdown />
           </div>
         </motion.div>
@@ -123,9 +142,13 @@ export function Home() {
   );
 }
 
+
+
 function ResumeDropdown() {
   const t = useTranslations('Home');
   const [isOpen, setIsOpen] = useState(false);
+  const { theme } = useTheme();
+  const isDark = theme === 'dark';
 
   const resumeOptions = [
     { label: "🇫🇷 FR", href: "/assets/CV_Phuc_Anh_DANG_FR.pdf" },
@@ -134,22 +157,17 @@ function ResumeDropdown() {
   ];
 
   return (
-    <div className="relative inline-block" onMouseLeave={() => setIsOpen(false)}>
+    <div className="relative inline-block z-[100]" onMouseLeave={() => setIsOpen(false)}>
       <button
         onClick={() => setIsOpen(!isOpen)}
         onMouseEnter={() => setIsOpen(true)}
-        className="flex items-center gap-3 px-8 py-3 rounded-full transition-all duration-300 border font-bold tracking-wide shadow-lg hover:shadow-xl hover:scale-105"
-        style={{
-          backgroundColor: 'var(--nav-bg)', // Adapts to theme
-          borderColor: 'var(--nav-border)',
-          color: 'var(--nav-text)'
-        }}
+        className="flex items-center gap-[1rem] px-[2.5rem] py-[1rem] rounded-full transition-all duration-300 border font-bold tracking-wide shadow-lg hover:shadow-xl hover:scale-105 bg-black dark:bg-[var(--nav-bg)] text-white dark:text-[var(--nav-text)] border-black dark:border-[var(--nav-border)] relative text-lg"
       >
-        <Sparkles size={18} className="text-cyan-600 dark:text-cyan-400" />
+        <Sparkles size={20} className="text-white dark:text-cyan-400" />
         <span>{t('resumeButton')}</span>
         <ChevronDown
-          size={16}
-          className={`transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+          size={20}
+          className={`text-white dark:text-[var(--nav-text)] transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
         />
       </button>
 
@@ -160,7 +178,13 @@ function ResumeDropdown() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
             transition={{ duration: 0.15 }}
-            className="absolute top-full mt-3 left-1/2 -translate-x-1/2 w-40 bg-black/90 dark:bg-black/90 backdrop-blur-md border border-white/10 rounded-xl overflow-hidden shadow-2xl z-50 ring-1 ring-white/5"
+            className="absolute left-1/2 -translate-x-1/2 min-w-max backdrop-blur-md border rounded-xl overflow-hidden shadow-2xl z-[110] flex flex-row"
+            style={{
+              top: 'calc(100% + 1rem)',
+              minWidth: 'max-content',
+              backgroundColor: !isDark ? '#ffffff' : 'rgba(0, 0, 0, 0.9)',
+              borderColor: !isDark ? '#000000' : 'rgba(255, 255, 255, 0.1)',
+            }}
           >
             {resumeOptions.map((option) => (
               <a
@@ -168,9 +192,19 @@ function ResumeDropdown() {
                 href={option.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-3 px-4 py-3 text-white/80 hover:bg-white/10 hover:text-white font-bold text-sm transition-colors border-b border-white/5 last:border-0"
+                className="flex items-center justify-center gap-[0.75rem] px-[1.5rem] py-[1rem] font-bold text-base transition-colors border-r last:border-0 min-w-[5rem]"
+                style={{
+                  color: !isDark ? '#000000' : 'rgba(255, 255, 255, 0.8)',
+                  borderColor: !isDark ? 'rgba(0, 0, 0, 0.1)' : 'rgba(255, 255, 255, 0.05)',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = !isDark ? 'rgba(0, 0, 0, 0.05)' : 'rgba(255, 255, 255, 0.1)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = 'transparent';
+                }}
               >
-                <Download size={14} className="opacity-70" />
+                <Download size={16} className="opacity-70" />
                 {option.label}
               </a>
             ))}

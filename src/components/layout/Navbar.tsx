@@ -33,7 +33,7 @@ export function Navbar() {
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className="fixed top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-5xl z-50 rounded-full backdrop-blur-xl overflow-hidden shadow-lg transition-all duration-300"
+      className="fixed top-6 left-1/2 -translate-x-1/2 w-[95%] max-w-5xl z-50 rounded-full backdrop-blur-xl overflow-visible shadow-lg transition-all duration-300"
       style={{
         backgroundColor: 'var(--nav-bg)',
         border: '1px solid var(--nav-border)',
@@ -42,7 +42,7 @@ export function Navbar() {
       <div className="w-full px-6 py-3 flex items-center justify-between">
         {/* LEFT: Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <img src="/logo.svg" alt="Logo" className="w-14 h-14 group-hover:scale-110 transition-transform duration-300" />
+          <img src="/logo.svg" alt="Logo" className="w-18 h-18 group-hover:scale-110 transition-transform duration-300" />
           <span className="text-xl font-bold transition-all duration-300 relative">
             {/* Gradient Text (Reveal on Hover - Slide In) */}
             <span className="absolute inset-0 bg-gradient-to-r from-[#22D3EE] to-[#A855F7] bg-clip-text text-transparent opacity-0 -translate-x-4 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500 ease-out">

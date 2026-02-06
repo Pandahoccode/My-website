@@ -4,8 +4,7 @@ dist/
 .vscode/
 .agent/
 .next/
+updates/
 out/
 build/
 .DS_Store
-*.tsbuildinfo
-

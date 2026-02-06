@@ -58,7 +58,7 @@ export function LanguageSwitcher({ variant = 'default' }: LanguageSwitcherProps)
 
   return (
     <div className={clsx(
-      "flex items-center p-1 rounded-full backdrop-blur-xl border relative transition-colors",
+      "flex items-center p-[0.25rem] rounded-full backdrop-blur-xl border relative z-50 transition-colors",
       isGlass
         ? "bg-white/5 border-white/10"
         : "bg-white/50 dark:bg-white/5 border-gray-200 dark:border-white/10"
@@ -71,7 +71,7 @@ export function LanguageSwitcher({ variant = 'default' }: LanguageSwitcherProps)
             onClick={() => handleLocaleChange(l)}
             disabled={isPending}
             className={clsx(
-              "relative px-3 py-1 font-bold rounded-full transition-all duration-300 z-10",
+              "relative px-[0.75rem] py-[0.25rem] font-bold rounded-full transition-all duration-300 z-10 min-w-[3rem]",
               isActive
                 ? "scale-105 shadow-sm"
                 : "hover:scale-105"

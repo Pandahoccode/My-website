@@ -1,123 +1,196 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "@/i18n/routing";
+import { useState, useEffect } from "react";
+import { Search } from "lucide-react";
 import type { Project } from "@/lib/project";
 
 interface ProjectListProps {
   projects: Project[];
 }
 
+
 export function ProjectList({ projects }: ProjectListProps) {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+  const [filteredProjects, setFilteredProjects] = useState(projects);
+
+  // Extract all unique tags
+  const allTags = Array.from(new Set(projects.flatMap(p =>
+    [p.meta.category, ...(p.meta.tags || [])]
+  ))).filter(Boolean);
+
+  // Use actual tags from projects plus some defaults if needed
+  const displayTags = Array.from(new Set([...allTags, "Data Analysis", "Machine Learning", "Data Engineering", "Python", "SQL", "React"])).slice(0, 10);
+
+  useEffect(() => {
+    const lowerTerm = searchTerm.toLowerCase();
+    const results = projects.filter(project => {
+      const matchesSearch =
+        project.meta.title.toLowerCase().includes(lowerTerm) ||
+        project.meta.excerpt?.toLowerCase().includes(lowerTerm) ||
+        project.meta.category.toLowerCase().includes(lowerTerm);
+
+      const matchesTags = selectedTags.length === 0 || selectedTags.every(tag => {
+        return project.meta.category === tag || project.meta.tags.includes(tag);
+      });
+
+      return matchesSearch && matchesTags;
+    });
+    setFilteredProjects(results);
+  }, [searchTerm, selectedTags, projects]);
+
+  const toggleTag = (tag: string) => {
+    setSelectedTags(prev =>
+      prev.includes(tag) ? prev.filter(t => t !== tag) : [...prev, tag]
+    );
+  };
+
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-      {projects.map((project, index) => (
-        <ProjectCard key={project.slug} project={project} index={index} />
-      ))}
+    <div className="space-y-12">
+      {/* Search & Filter Section */}
+      <div className="max-w-2xl mx-auto space-y-6">
+        {/* Search Bar */}
+        <div className="relative group">
+          <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
+          <div className="relative flex items-center bg-white/50 dark:bg-black/50 backdrop-blur-xl border border-black/10 dark:border-white/10 rounded-full px-6 py-3 shadow-lg">
+            <Search className="w-5 h-5 text-gray-500 mr-3" />
+            <input
+              type="text"
+              placeholder="Search projects..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="bg-transparent border-none outline-none w-full placeholder-slate-400 font-medium transition-colors focus:ring-0"
+              style={{ color: 'var(--text-primary)' }}
+            />
+          </div>
+        </div>
+
+        {/* Hashtag Filters */}
+        <div className="flex flex-wrap justify-center gap-2">
+          {displayTags.map(tag => (
+            <button
+              key={tag}
+              onClick={() => toggleTag(tag)}
+              className={`px-4 py-1.5 rounded-full text-xs font-mono font-bold border transition-all duration-300 ${selectedTags.includes(tag)
+                ? 'bg-cyan-500/10 border-cyan-500 text-cyan-600 dark:text-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.3)]'
+                : 'bg-white/5 border-black/5 dark:border-white/10 hover:border-cyan-500/50 text-gray-500 hover:text-cyan-500'
+                }`}
+            >
+              {tag}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Projects Grid */}
+      <motion.div layout className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+        <AnimatePresence>
+          {filteredProjects.map((project, index) => (
+            <ProjectCard key={project.slug} project={project} index={index} />
+          ))}
+        </AnimatePresence>
+        {filteredProjects.length === 0 && (
+          <div className="col-span-full text-center py-20 opacity-50">
+            <p>No projects found matching your criteria.</p>
+          </div>
+        )}
+      </motion.div>
     </div>
   );
 }
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
+  // Determine Glow Color based on Category
+  const isData = project.meta.category.includes("Data");
+  const glowClass = isData ? "shadow-cyan-500/20 hover:shadow-cyan-500/40" : "shadow-purple-500/20 hover:shadow-purple-500/40";
+  const borderClass = isData ? "hover:border-cyan-500/50" : "hover:border-purple-500/50";
+  const textGradient = isData ? "from-cyan-400 to-blue-500" : "from-purple-400 to-pink-500";
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 50 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      viewport={{ once: true }}
-      className="group relative w-full h-full"
+      layout
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      transition={{ duration: 0.4, delay: index * 0.1 }}
+      className="group h-full"
     >
       <div
-        className="group relative flex flex-col h-full rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
-        style={{
-          backgroundColor: 'var(--card-bg)',
-          border: '1px solid var(--card-border-color, #e2e8f0)', // Default to light mode border
-          boxShadow: 'var(--card-shadow)',
-        }}
+        className={`relative flex flex-col h-full rounded-3xl overflow-hidden antigravity-card ${glowClass} ${borderClass}`}
       >
-        {/* Top 45%: Image Slot */}
-        <div className="relative h-64 w-full bg-slate-100 dark:bg-white/5 overflow-hidden flex-shrink-0">
-          {/* Gradient Placeholder */}
-          <div className={`absolute inset-0 bg-gradient-to-br ${project.meta.color} opacity-20`} />
+        {/* Top: Image Slot with Overlay */}
+        <div className="relative h-56 w-full overflow-hidden">
+          {/* Base Gradient Background */}
+          <div className={`absolute inset-0 bg-gradient-to-br ${project.meta.color} opacity-20 group-hover:opacity-30 transition-opacity duration-500`} />
 
-          {/* Initial Letter */}
+          {/* Dynamic Noise/Texture Overlay (Optional - simplified here) */}
+          <div className="absolute inset-0 bg-black/5 dark:bg-white/5 mix-blend-overlay" />
+
+          {/* Centered Big Letter */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-slate-300 dark:text-white/10 font-mono text-6xl font-black group-hover:scale-110 transition-transform duration-500">
+            <span className="text-8xl font-black font-outfit text-black/5 dark:text-white/5 group-hover:scale-110 transition-transform duration-700 select-none">
               {project.meta.title[0]}
             </span>
           </div>
 
-          {/* View Project Overlay */}
-          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-            <Link
-              href={`/project/${project.slug}`}
-              className="px-6 py-2 bg-white/20 backdrop-blur-md border border-white/40 text-white rounded-full hover:bg-white hover:text-black transition-all duration-300 font-medium text-sm"
-            >
-              View Project
-            </Link>
+          {/* Floating Category Tag */}
+          <div className="absolute top-4 left-4 z-10">
+            <span className={`px-3 py-1.5 rounded-full text-xs font-bold tracking-wider uppercase border backdrop-blur-xl bg-white/10 dark:bg-black/40 ${isData ? 'border-cyan-500/30 text-cyan-700 dark:text-cyan-300' : 'border-purple-500/30 text-purple-700 dark:text-purple-300'}`}>
+              {project.meta.category}
+            </span>
           </div>
+
+          {/* View Project Button Overlay */}
+          <Link href={`/project/${project.slug}`}>
+            <div className="absolute inset-0 bg-black/20 dark:bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-[2px] flex items-center justify-center cursor-pointer">
+              <span className="px-6 py-2.5 rounded-full bg-white text-black font-bold text-sm tracking-wide transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-xl hover:bg-cyan-50">
+                View Project
+              </span>
+            </div>
+          </Link>
         </div>
 
-        {/* Bottom 55%: Content */}
-        <div className="p-6 flex-1 flex flex-col bg-transparent">
+        {/* Bottom: Content */}
+        <div className="p-6 md:p-8 flex-1 flex flex-col border-t border-white/10 dark:border-white/5">
           <div className="flex flex-col gap-3 mb-4">
-            {/* Category Tag */}
-            {/* Category Tag & Tech Stack */}
-            <div className="flex flex-wrap gap-2 items-start mb-2">
-              <span
-                className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-slate-100 dark:bg-white/10 font-bold"
-                style={{ color: 'var(--card-text-desc)' }}
-              >
-                {project.meta.category}
-              </span>
-              {/* Tech Stack Hashtags (Simulated if not in data) */}
-              {['#Python', '#DataViz'].map((tag) => (
+            <h3
+              className="text-2xl font-black font-outfit tracking-tight group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors"
+              style={{ color: 'var(--text-header)' }}
+            >
+              {project.meta.title}
+            </h3>
+
+            <p className="text-sm md:text-base font-medium text-slate-600 dark:text-slate-400 leading-relaxed line-clamp-3">
+              {project.meta.excerpt}
+            </p>
+          </div>
+
+          <div className="mt-auto pt-6 border-t border-slate-200/50 dark:border-white/5 flex flex-col gap-5">
+            {/* Tech Stack Pills */}
+            <div className="flex flex-wrap gap-2">
+              {project.meta.tags.slice(0, 3).map(tag => (
                 <span
                   key={tag}
-                  className="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-black/5 dark:bg-white/5 border border-black/10 dark:border-white/10"
-                  style={{ color: 'var(--card-text-desc)', opacity: 0.8 }}
+                  className="px-2 py-1 text-[11px] font-mono font-semibold rounded-md bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-white/10"
                 >
                   {tag}
                 </span>
               ))}
             </div>
 
-            {/* Title */}
-            <h3
-              className="text-xl font-bold font-outfit transition-colors group-hover:text-blue-600 dark:group-hover:text-cyan-400"
-              style={{ color: 'var(--card-text-title)' }}
-            >
-              {project.meta.title}
-            </h3>
-          </div>
-
-          {/* Description */}
-          <p
-            className="text-sm leading-relaxed flex-1 line-clamp-3 font-medium"
-            style={{ color: 'var(--card-text-desc)' }}
-          >
-            {project.meta.excerpt}
-          </p>
-
-          {/* Footer */}
-          <div className="mt-6 pt-6 border-t border-slate-100 dark:border-white/5 flex justify-between items-center">
-            <div className="flex items-center gap-2">
-              <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${project.meta.color}`} />
-              <span
-                className="text-xs font-mono tracking-wider font-bold"
-                style={{ color: 'var(--card-text-meta)' }}
+            {/* Link & Year */}
+            <div className="flex items-center justify-between">
+              <span className="font-mono text-xs text-slate-400 dark:text-slate-500">2024</span>
+              <Link
+                href={`/project/${project.slug}`}
+                className={`text-sm font-bold flex items-center gap-2 transition-colors ${isData ? 'text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 dark:hover:text-cyan-300' : 'text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300'}`}
               >
-                {project.meta.featured ? 'Featured' : 'Project'}
-              </span>
+                Read Case Study
+                <span className="text-lg leading-none mb-0.5">→</span>
+              </Link>
             </div>
-
-            <Link
-              href={`/project/${project.slug}`}
-              className="text-sm text-blue-600 dark:text-cyan-400 hover:text-blue-800 dark:hover:text-white transition-colors flex items-center gap-1 font-bold group/link"
-            >
-              Read Case Study
-              <span className="group-hover/link:translate-x-1 transition-transform">→</span>
-            </Link>
           </div>
         </div>
       </div>

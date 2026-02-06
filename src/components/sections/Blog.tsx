@@ -1,7 +1,6 @@
 import { getAllBlogs } from "@/lib/blog";
 import { BlogList } from "./BlogList";
 import { Link } from "@/i18n/routing";
-import { ArrowRight } from "lucide-react";
 
 export async function Blog() {
   const blogs = getAllBlogs();
@@ -32,14 +31,15 @@ export async function Blog() {
         <div className="flex justify-center mt-16">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 px-6 py-2 rounded-full border transition-all hover:bg-slate-100 dark:hover:bg-white/10 text-sm"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full border font-bold text-sm tracking-wide transition-all duration-300 active:scale-95 hover:shadow-[0_0_20px_rgba(0,210,255,0.2)] dark:hover:shadow-[0_0_20px_rgba(0,210,255,0.1)] group"
             style={{
               borderColor: 'var(--nav-border)',
-              color: 'var(--text-primary)'
+              color: 'var(--text-primary)',
+              backgroundColor: 'var(--nav-bg)'
             }}
           >
             View All Posts
-            <ArrowRight className="w-4 h-4" />
+            <span className="group-hover:translate-x-1 transition-transform">→</span>
           </Link>
         </div>
       </div>

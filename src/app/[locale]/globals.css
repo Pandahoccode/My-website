@@ -19,8 +19,8 @@
   --color-muted-slate: #94A3B8;
 
   /* Mapping for utilities */
-  --font-sans: var(--font-inter), system-ui, sans-serif;
-  --font-display: var(--font-inter), system-ui, sans-serif;
+  --font-sans: var(--font-archivo), system-ui, sans-serif;
+  --font-display: var(--font-space), system-ui, sans-serif;
 
   /* Animations */
   --animate-spin-slow: spin 10s linear infinite;
@@ -43,7 +43,8 @@
     --nav-border: rgba(0, 0, 0, 0.1);
     --nav-text: #000000; /* Pure Black for Light Mode */
 
-    --text-primary: #1e293b; /* Slate-800 */
+    --text-primary: #0f172a; /* Slate-900 (Deep Navy) */
+    --text-header: #0f172a; /* Deep Navy for Headers */
 
     --home-title: #000000;
     --home-text: #1e293b; /* Slate-800 */
@@ -53,7 +54,7 @@
     --card-border-color: #000000;
     --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 
-    --card-text-title: #000000;
+    --card-text-title: #0f172a; /* Linked to text-header */
     --card-text-desc: #000000;
     --card-text-meta: #000000;
 
@@ -73,6 +74,7 @@
     --nav-text: #ffffff;
 
     --text-primary: #ffffff;
+    --text-header: #ffffff; /* White for Dark Mode Headers */
 
     --home-title: #ffffff;
     --home-text: #d1d5db; /* Gray-300 */
@@ -112,7 +114,42 @@ body {
 }
 
 @utility glass-card {
-  @apply bg-foreground/5 backdrop-blur-lg border border-foreground/10;
+  @apply backdrop-blur-lg border;
+  /* Light Mode: Frosty White */
+  @apply bg-white/70 border-gray-200/50;
+  /* Dark Mode: Deep Glass */
+  @apply dark:bg-white/5 dark:border-white/10;
+}
+
+@utility antigravity-card {
+  /* Motion Physics - Dampened Spring Motion */
+  /* transition: all 1s cubic-bezier(0.16, 1, 0.3, 1) */
+  @apply transition-all duration-[1200ms] ease-[cubic-bezier(0.16,1,0.3,1)];
+
+  /* Hardware Optimization */
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+
+  /* Hover State: The "Antigravity Scale" Factor */
+  @apply hover:-translate-y-[10px] hover:scale-[1.03];
+
+  /* Shadow & Light Sync - Soft-Light Shadow Diffusion */
+  /* Dark Mode: Expanded Nebula Glow (40px blur) */
+  @apply dark:hover:shadow-[0_0_40px_-5px_rgba(6,182,212,0.4)];
+  /* Light Mode: Transparent "Paper" Shadow */
+  @apply hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)];
+
+  /* Glass Preservation */
+  @apply backdrop-blur-lg;
+
+  /* Chameleon Border Logic */
+  @apply border;
+  border-color: #000000; /* Light Mode: Bold Black Border */
+  transition: border-color 0.4s ease-in-out;
+}
+
+.dark .antigravity-card {
+  border-color: #FFFFFF; /* Dark Mode: Crisp White Border */
 }
 
 @utility bg-cosmic-gradient {
@@ -152,5 +189,17 @@ body {
   /* Re-override specific text needing full opacity */
   .text-transparent {
     @apply text-transparent;
+  }
+}
+
+/* Kinetic Halo - Breathing Bioluminescence Animation */
+@keyframes pulse-aurora {
+  0%, 100% {
+    filter: blur(45px);
+    opacity: 0.6;
+  }
+  50% {
+    filter: blur(35px);
+    opacity: 0.8;
   }
 }

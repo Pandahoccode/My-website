@@ -141,7 +141,7 @@ export function About() {
               </div>
               <div className="space-y-4">
                 {education.map((edu, idx) => (
-                  <div key={idx} className="p-4 rounded-xl border transition-colors bg-slate-50 dark:bg-white/5 border-slate-100 dark:border-white/5 hover:border-teal-500/30" style={{ borderColor: 'var(--card-border-color)', borderWidth: '1px' }}>
+                  <div key={idx} className="p-4 rounded-xl border antigravity-card bg-slate-50 dark:bg-white/5 border-slate-100 dark:border-white/5 hover:border-teal-500/30" style={{ borderColor: 'var(--card-border-color)', borderWidth: '1px' }}>
                     <h4 className="font-bold text-lg" style={{ color: 'var(--home-title)' }}>{edu.degree}</h4>
                     <p className="opacity-80" style={{ color: 'var(--home-text)' }}>{edu.school}</p>
                     <span className="text-sm font-mono opacity-60 block mt-1">{edu.year}</span>
@@ -165,7 +165,7 @@ export function About() {
                   <a
                     key={index}
                     href={cert.link}
-                    className="flex items-center justify-between p-4 rounded-xl border transition-all hover:bg-slate-50 dark:hover:bg-white/5 border-slate-100 dark:border-white/5 group hover:border-purple-500/30"
+                    className="flex items-center justify-between p-4 rounded-xl border antigravity-card hover:bg-slate-50 dark:hover:bg-white/5 border-slate-100 dark:border-white/5 group hover:border-purple-500/30"
                     style={{ borderColor: 'var(--card-border-color)', borderWidth: '1px' }}
                   >
                     <div>
@@ -187,7 +187,7 @@ export function About() {
                 {['Problem Solving', 'Team Leadership', 'Adaptability', 'Communication', 'Critical Thinking', 'Agile Methodology'].map((skill) => (
                   <div
                     key={skill}
-                    className="p-4 rounded-xl border transition-all duration-300 bg-black/5 dark:bg-white/5 hover:bg-gray-100 dark:hover:bg-white/5 dark:hover:shadow-[0_0_10px_rgba(6,182,212,0.3)] flex items-center justify-center"
+                    className="p-4 rounded-xl border antigravity-card bg-black/5 dark:bg-white/5 hover:bg-gray-100 dark:hover:bg-white/5 flex items-center justify-center"
                     style={{ borderColor: 'var(--card-border-color)', borderWidth: '1px' }}
                   >
                     <span

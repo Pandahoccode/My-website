@@ -53,6 +53,7 @@ export function Skills() {
   );
 }
 
+
 function SkillColumn({ title, skills, delay }: { title: string, skills: any[], delay: number }) {
   return (
     <motion.div
@@ -60,13 +61,19 @@ function SkillColumn({ title, skills, delay }: { title: string, skills: any[], d
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay, ease: "easeOut" }}
       viewport={{ once: true }}
-      className="space-y-6"
+      className="relative p-6 rounded-2xl overflow-hidden group antigravity-card"
+      style={{
+        // Crystal Glass Effect handled by antigravity-card
+      }}
     >
-      <h3 className="text-xl font-semibold text-electric-cyan border-b border-foreground/10 pb-2 mb-6">
+      {/* Glossy Sheen Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+      <h3 className="text-xl font-semibold text-cyan-500 dark:text-cyan-400 border-b border-foreground/10 pb-3 mb-6 relative z-10 flex items-center gap-2">
         {title}
       </h3>
 
-      <div className="space-y-6">
+      <div className="space-y-6 relative z-10">
         {skills.map((skill, index) => (
           <div key={skill.name} className="space-y-2">
             <div className="flex justify-between items-center text-sm">
@@ -75,13 +82,17 @@ function SkillColumn({ title, skills, delay }: { title: string, skills: any[], d
             </div>
 
             {/* Progress Bar Container */}
-            <div className="h-2 w-full bg-foreground/10 rounded-full overflow-hidden">
-              {/* Gradient Bar */}
+            <div className="h-2 w-full bg-black/20 dark:bg-white/5 rounded-full overflow-hidden">
+              {/* Neon Gradient Bar */}
               <motion.div
                 initial={{ width: 0 }}
                 whileInView={{ width: `${skill.level}%` }}
                 transition={{ duration: 1, delay: delay + (index * 0.1), ease: "easeOut" }}
-                className="h-full bg-gradient-primary rounded-full"
+                className="h-full rounded-full relative"
+                style={{
+                  background: "linear-gradient(90deg, #06b6d4 0%, #8b5cf6 100%)", // Cyan to Purple
+                  boxShadow: "0 0 10px rgba(6, 182, 212, 0.5)" // Glow
+                }}
               />
             </div>
           </div>

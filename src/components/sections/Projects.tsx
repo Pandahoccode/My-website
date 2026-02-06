@@ -33,13 +33,15 @@ export async function Projects() {
         <div className="text-center mt-12">
           <Link
             href="/projects"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full border font-medium transition-all hover:bg-slate-100 dark:hover:bg-white/10"
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-full border font-bold text-sm tracking-wide transition-all duration-300 active:scale-95 hover:shadow-[0_0_20px_rgba(0,210,255,0.2)] dark:hover:shadow-[0_0_20px_rgba(0,210,255,0.1)] group"
             style={{
               borderColor: 'var(--nav-border)',
-              color: 'var(--text-primary)'
+              color: 'var(--text-primary)',
+              backgroundColor: 'var(--nav-bg)'
             }}
           >
-            View All Projects <span>→</span>
+            View All Projects
+            <span className="group-hover:translate-x-1 transition-transform">→</span>
           </Link>
         </div>
       </div>
