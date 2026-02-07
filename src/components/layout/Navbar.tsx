@@ -7,24 +7,35 @@ import { motion, useScroll } from 'framer-motion';
 import { useTheme } from 'next-themes';
 import { Sun, Moon } from 'lucide-react';
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 export function Navbar() {
   const t = useTranslations('Navigation');
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
   const { scrollYProgress } = useScroll();
+  const pathname = usePathname();
 
   useEffect(() => {
     setMounted(true);
   }, []);
 
+  // Detect if current path is the home page (including locale prefixes)
+  // Home paths: "/", "/en", "/fr", "/vi"
+  const isHomePage = pathname === '/' || /^\/(en|fr|vi)\/?$/.test(pathname);
+
   const navItems = [
-    { key: 'home', href: '#hero' },
-    { key: 'projects', href: '#projects' },
-    { key: 'about', href: '#about' },
-    { key: 'blog', href: '#blog' },
-    { key: 'contact', href: '#contact' },
+    { key: 'home', section: '#hero' },
+    { key: 'projects', section: '#projects' },
+    { key: 'about', section: '#about' },
+    { key: 'blog', section: '#blog' },
+    { key: 'contact', section: '#contact' },
   ];
+
+  // Generate href based on current page
+  const getNavHref = (section: string) => {
+    return isHomePage ? section : `/${section}`;
+  };
 
   const isDark = theme === 'dark';
 
@@ -56,7 +67,7 @@ export function Navbar() {
           {navItems.map((item) => (
             <Link
               key={item.key}
-              href={item.href}
+              href={getNavHref(item.section)}
               className="text-lg font-bold transition-colors hover:text-blue-600 dark:hover:text-cyan-400"
               style={{ color: 'var(--nav-text, inherit)' }}
             >
@@ -94,10 +105,20 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Progress Bar */}
+      {/* Progress Bar - Flush Underline */}
       <motion.div
-        className="absolute bottom-0 left-0 w-full h-[2px] bg-gradient-to-r from-cyan-500 to-purple-500"
-        style={{ scaleX: scrollYProgress, transformOrigin: "0%" }}
+        className="absolute bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-full pointer-events-none"
+        style={{
+          bottom: 0,
+          left: '1.8rem',
+          right: '1.8rem',
+          height: '3px',
+          scaleX: scrollYProgress,
+          transformOrigin: 'left',
+          boxShadow: isDark
+            ? '0 0 10px rgba(6, 182, 212, 0.6)'
+            : '0 1px 6px rgba(6, 182, 212, 0.5)',
+        }}
       />
     </motion.header>
   );

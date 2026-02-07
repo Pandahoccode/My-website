@@ -3,45 +3,38 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { useTheme } from "next-themes";
-import { motion, useSpring, useMotionValue, useMotionTemplate, useTransform } from "framer-motion";
+import { motion, useSpring, useMotionValue, useMotionTemplate } from "framer-motion";
 
 export function AvatarEffect() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { theme } = useTheme();
+  // Simplified theme detection
   const isDark = theme === 'dark' || theme === 'system';
 
   // Mouse position percentages (50% is center)
-  const mouseX = useMotionValue(50);
-  const mouseY = useMotionValue(50);
-  // Distance factor for extension size
-  const distVal = useMotionValue(0);
+  const centerX = useMotionValue(50);
+  const centerY = useMotionValue(50);
 
-  // Smooth out the movement
-  const smoothX = useSpring(mouseX, { stiffness: 60, damping: 20 });
-  const smoothY = useSpring(mouseY, { stiffness: 60, damping: 20 });
-  const smoothDist = useSpring(distVal, { stiffness: 40, damping: 20 });
-
-  // Calculate dynamic gradient size based on distance
-  // Base size + extension.
-  // Dark mode: Base 70% -> up to 150%
-  // Light mode: Base 80% -> up to 160%
-  const sizeDark = useTransform(smoothDist, [0, 1], ["70%", "140%"]);
-  const sizeLight = useTransform(smoothDist, [0, 1], ["80%", "150%"]);
+  // Smooth out the movement for "liquid" feel
+  const smoothX = useSpring(centerX, { stiffness: 80, damping: 20 });
+  const smoothY = useSpring(centerY, { stiffness: 80, damping: 20 });
 
   // Dynamic gradient template
-  // We use the dynamic size for the transparent stop
+  // Positions the CENTER of the radial gradient based on the clamped mouse position
+  // Dark: Cyan -> Purple nebula (Lighter Opacity)
   const darkGradient = useMotionTemplate`radial-gradient(
     circle at ${smoothX}% ${smoothY}%,
     #06b6d4 0%,
     #7c3aed 45%,
-    transparent ${sizeDark}
+    transparent 70%
   )`;
 
+  // Light: Bio-Luminescent Intensity (Electric Cyan -> Deep Azure)
   const lightGradient = useMotionTemplate`radial-gradient(
     circle at ${smoothX}% ${smoothY}%,
-    #e0f2fe 0%,
-    #7dd3fc 45%,
-    transparent ${sizeLight}
+    #06b6d4 0%,
+    #2563eb 45%,
+    transparent 70%
   )`;
 
   useEffect(() => {
@@ -50,63 +43,74 @@ export function AvatarEffect() {
       if (!container) return;
 
       const rect = container.getBoundingClientRect();
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
+      const cX = rect.left + rect.width / 2;
+      const cY = rect.top + rect.height / 2;
 
-      const offsetX = e.clientX - centerX;
-      const offsetY = e.clientY - centerY;
+      const offsetX = e.clientX - cX;
+      const offsetY = e.clientY - cY;
 
-      // Calculate normalized distance (0 to ~1.0+)
-      // Reference distance is roughly visible window half-width (e.g. 500px)
-      const currentDist = Math.sqrt(offsetX * offsetX + offsetY * offsetY);
-      const normalizedDist = Math.min(Math.max(currentDist / 600, 0), 2); // Cap at 2x
+      // Calculate distance
+      const distance = Math.sqrt(offsetX * offsetX + offsetY * offsetY);
+      const theta = Math.atan2(offsetY, offsetX);
 
-      distVal.set(normalizedDist);
+      // Clamp distance to max 20px radius
+      // This ensures the light stays TETHERED to the center and doesn't detach
+      const maxRadius = 25; // 20-25px feels right for "bulge" without breaking
+      const clampedDist = Math.min(distance, maxRadius);
 
-      // Map offset to percentage shift
-      // Increased multiplier from 40 to 80 to allow center to move further away
-      const percentX = 50 + (offsetX / (rect.width / 2)) * 80;
-      const percentY = 50 + (offsetY / (rect.height / 2)) * 80;
+      // Calculate clamped offsets
+      const clampedX = Math.cos(theta) * clampedDist;
+      const clampedY = Math.sin(theta) * clampedDist;
 
-      mouseX.set(percentX);
-      mouseY.set(percentY);
+      // Convert to percentage relative to container size
+      // Center is 50%.
+      // Movement range is roughly +/- (clampedDist / width * 100)
+      const percentX = 50 + (clampedX / (rect.width)) * 100 * 2; // *2 factor to push it visibly
+      const percentY = 50 + (clampedY / (rect.height)) * 100 * 2;
+
+      centerX.set(percentX);
+      centerY.set(percentY);
     };
 
     const handleMouseLeave = () => {
       // Return to center
-      mouseX.set(50);
-      mouseY.set(50);
-      distVal.set(0);
+      centerX.set(50);
+      centerY.set(50);
     };
 
+    // Attach to window to allow "pulling" from afar
     window.addEventListener('mousemove', handleMouseMove);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [mouseX, mouseY, distVal]);
+  }, [centerX, centerY]);
 
   return (
     <div
       ref={containerRef}
-      className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 group z-0"
+      className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 group z-0 flex items-center justify-center"
     >
-      {/* SVG Filter for Gooey Effect */}
+      {/* SVG Filter for Gooey Effect (Optional polish) */}
       <svg className="hidden">
-        <filter id="gooey">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="15" />
-          <feColorMatrix values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 20 -10" />
+        <filter id="gooey-halo">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
+          <feColorMatrix values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" />
         </filter>
       </svg>
 
-      {/* Fluid Aura Layer */}
+      {/* Tethered Aura Layer */}
       <motion.div
-        className="absolute inset-[-40px] rounded-full pointer-events-none z-0"
+        className="absolute inset-[-40px] rounded-full pointer-events-none z-0 opacity-0 animate-[fade-in_1s_ease-out_forwards]"
         style={{
           background: isDark ? darkGradient : lightGradient,
-          filter: isDark ? 'blur(40px) url(#gooey)' : 'blur(60px) url(#gooey)',
-          opacity: isDark ? 0.6 : 1.0,
-          mixBlendMode: isDark ? 'screen' : 'color-dodge',
+          // Light Mode: Increased blur (60px) and brightness/saturation for intensity
+          filter: isDark ? 'blur(40px)' : 'blur(60px) brightness(1.2) saturate(1.5)',
+          opacity: isDark ? 0.6 : 0.9,
+          // Light Mode: Normal blend for visibility
+          mixBlendMode: isDark ? 'screen' : 'normal',
+          // Procedural breathing animation
+          animation: 'pulse-halo 5s ease-in-out infinite',
         }}
       />
 
@@ -128,6 +132,13 @@ export function AvatarEffect() {
           priority
         />
       </div>
+
+      <style jsx global>{`
+        @keyframes pulse-halo {
+          0%, 100% { transform: scale(1.0); opacity: ${isDark ? 0.6 : 0.9}; }
+          50% { transform: scale(1.05); opacity: ${isDark ? 0.8 : 0.8}; }
+        }
+      `}</style>
     </div>
   );
 }
