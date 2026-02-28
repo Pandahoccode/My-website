@@ -9,8 +9,8 @@ export function Contact() {
 
   const socialLinks = [
     { icon: Mail, href: `mailto:${t('email')}`, label: "Email" },
-    { icon: Linkedin, href: "https://www.linkedin.com/", label: "LinkedIn" },
-    { icon: Github, href: "https://github.com/", label: "GitHub" }
+    { icon: Linkedin, href: "https://www.linkedin.com/in/phuc-anh-dang/", label: "LinkedIn" },
+    { icon: Github, href: "https://github.com/Pandahoccode", label: "GitHub" }
   ];
 
   return (

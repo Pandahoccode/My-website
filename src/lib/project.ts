@@ -17,6 +17,7 @@ export interface ProjectMeta {
   demo?: string;
   color: string;
   featured?: boolean;
+  lang?: string;
 }
 
 export interface Project {
@@ -67,4 +68,14 @@ export function getAllProjects(): Project[] {
     .filter((project): project is Project => project !== null)
     .sort((a, b) => (a.meta.date > b.meta.date ? -1 : 1));
   return projects;
+}
+
+/**
+ * Get projects filtered by locale.
+ * Projects without a lang field are shown in all locales.
+ */
+export function getProjectsByLocale(locale: string): Project[] {
+  return getAllProjects().filter(p =>
+    !p.meta.lang || p.meta.lang === locale
+  );
 }

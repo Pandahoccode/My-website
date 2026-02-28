@@ -10,16 +10,10 @@ export async function Blog() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="mb-16 text-center">
-          <h2
-            className="text-4xl md:text-5xl font-bold font-outfit mb-4"
-            style={{ color: 'var(--text-primary)' }}
-          >
+          <h2 className="text-4xl md:text-5xl font-bold font-outfit mb-4 text-foreground">
             Creative Log
           </h2>
-          <p
-            className="text-lg max-w-2xl mx-auto"
-            style={{ color: 'var(--home-text)' }}
-          >
+          <p className="text-lg max-w-2xl mx-auto text-foreground/80">
             Recent thoughts, technical discoveries, and explorations in code.
           </p>
         </div>

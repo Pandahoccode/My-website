@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { useScroll, useTransform, useSpring } from "framer-motion";
-import { ScrollIndicator } from "./ScrollIndicator";
+import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 
 interface ScrollFramesProps {
   children?: React.ReactNode;
@@ -139,20 +139,7 @@ export function ScrollFrames({ children }: ScrollFramesProps) {
             {children}
           </div>
         </div>
-
-        {/* Loading */}
-        {!isLoaded && (
-          <div className="absolute inset-0 bg-background flex items-center justify-center z-50">
-            <div className="text-electric-blue font-mono animate-pulse">Loading frames...</div>
-          </div>
-        )}
-
-        {/* Debug - remove in production
-        <div className="absolute bottom-4 right-4 text-xs text-white/50 font-mono z-20">
-          Frame: {lastFrameRef.current}/{TOTAL_FRAMES}
-        </div>
-        */}
-
+        
         {/* Scroll Down Indicator */}
         <ScrollIndicator />
       </div>

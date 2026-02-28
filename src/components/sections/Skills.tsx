@@ -61,7 +61,7 @@ function SkillColumn({ title, skills, delay }: { title: string, skills: any[], d
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay, ease: "easeOut" }}
       viewport={{ once: true }}
-      className="relative p-6 rounded-2xl overflow-hidden group antigravity-card"
+      className="relative p-6 overflow-hidden group glass-surface antigravity-card"
       style={{
         // Crystal Glass Effect handled by antigravity-card
       }}

@@ -1,27 +1,22 @@
-import { getAllProjects } from "@/lib/project";
+import { getProjectsByLocale } from "@/lib/project";
 import { ProjectList } from "./ProjectList";
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, getLocale } from 'next-intl/server';
 import { Link } from "@/i18n/routing";
 
 export async function Projects() {
   const t = await getTranslations('Projects');
-  const projects = getAllProjects();
+  const locale = await getLocale();
+  const projects = getProjectsByLocale(locale);
 
   return (
     <section id="projects" className="py-24 px-6 bg-background">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2
-            className="text-4xl md:text-5xl font-bold font-outfit mb-4"
-            style={{ color: 'var(--text-primary)' }}
-          >
+          <h2 className="text-4xl md:text-5xl font-bold font-outfit mb-4 text-foreground">
             {t('title')}
           </h2>
-          <p
-            className="text-lg max-w-xl mx-auto"
-            style={{ color: 'var(--home-text)' }}
-          >
+          <p className="text-lg max-w-xl mx-auto text-foreground/80">
             {t('subtitle')}
           </p>
         </div>

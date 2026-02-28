@@ -5,6 +5,15 @@ const withNextIntl = createNextIntlPlugin(
 );
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  logging: {
+    fetches: {
+      fullUrl: true,
+    },
+  },
+  devIndicators: {
+    appIsrStatus: false,
+  },
+};
 
 export default withNextIntl(nextConfig);

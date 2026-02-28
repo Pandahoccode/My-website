@@ -7,10 +7,10 @@
     "contact": "Contact"
   },
   "Home": {
-    "title": "Dang Phuc Anh",
-    "description": "Turning complex datasets into clear, actionable strategic insights.",
-    "role": "Architecting actionable insights through the strategic exploitation of data. Currently pursuing a Bachelor of Technology (BUT) in Data Science at the University of Lille, seeking a 10-week internship starting April 6, 2026.",
-    "subBio": "Open to 10-week internships starting April 2026. Specialized in Python, SQL, and Data Visualization.",
+    "greeting": "Hello, I'm",
+    "title": "Phuc Anh Dang",
+    "bio": "Curious and motivated, passionate about data management and strategic exploitation.",
+    "description": "Currently pursuing a Bachelor of Technology (BUT) in Data Science, I am seeking an opportunity to apply my skills in a stimulating professional environment and learn alongside industry experts. My goal is to contribute to innovative data management projects and make a positive impact.",
     "resumeButton": "Resume",
     "quote": "\"Without data, you’re just another person with an opinion.\"",
     "quoteAuthor": "— W. Edwards Deming"
@@ -19,50 +19,68 @@
     "title": "Featured Projects",
     "subtitle": "A showcase of my data science and development work",
     "viewProject": "View Project",
-    "frenchCinema": {
-      "title": "French Cinema Analysis",
-      "category": "Data Analysis",
-      "description": "Analyzing post-Covid resilience and streaming impact using R & Power BI."
-    },
-    "airQuality": {
-      "title": "Vietnam Air Quality",
-      "category": "Machine Learning",
-      "description": "Clustering 40+ stations using PCA & K-Means to identify pollution patterns."
-    },
     "dataWarehouse": {
       "title": "Chinook Data Warehouse",
-      "category": "Data Engineering",
-      "description": "ETL pipeline automation with Oracle Data Integrator to optimize sales analysis."
+      "description": "Transformed the Chinook database into a star schema Data Warehouse to optimize music sales analysis. Designed and automated a full ETL pipeline with Oracle Data Integrator."
+    },
+    "airQuality": {
+      "title": "Vietnam Air Quality Analysis",
+      "description": "Collected and prepared air quality data from 40+ stations via APIs. Cleaned, structured, and analyzed pollution levels using unsupervised clustering (PCA + K-means)."
+    },
+    "frenchCinema": {
+      "title": "French Cinema Analysis",
+      "description": "Analyzed the evolution of French cinemas facing Covid-19, streaming, and inflation (2018 base). Prepared data in Python, analyzed in R, and visualized in Power BI (2,042 establishments)."
     }
   },
   "About": {
     "title": "About Me",
     "subtitle": "My journey through data, code, and creativity.",
     "journeyTitle": "The Journey",
-    "journeyDescription": "Starting with a fascination for how numbers tell stories, my journey into Data Science began at the University of Lille. I specialize in architecting actionable insights by turning raw, complex datasets into strategic roadmaps.",
+    "journeyDescription": "My goal is to contribute to innovative data management projects and make a positive impact through data exploitation.",
     "roadmapTitle": "My Roadmap",
     "educationTitle": "My Education",
     "certTitle": "My Certificates",
-    "certTitle": "My Certificates",
     "skillsTitle": "Core Soft Skills",
-    "skills": [
-      "Problem Solving",
-      "Team Leadership",
-      "Adaptability",
-      "Communication",
-      "Critical Thinking",
-      "Agile Methodology"
-    ],
     "education": {
-      "degree": "BUT Data Science",
-      "school": "Université de Lille",
-      "hs_degree": "Scientific Baccalaureate",
-      "hs_school": "Hanoi-Amsterdam High School"
+      "degree": "Bachelor of Technology Data Science",
+      "school": "University of Lille - IUT",
+      "hs_degree": "Baccalaureate (Science)",
+      "hs_school": "Hanoi-Amsterdam High School for the Gifted"
+    },
+    "timeline": [
+      {
+        "year": "09/2025 - Present",
+        "title": "Design of a Data Warehouse",
+        "desc": "Transformed the Chinook database into a star Data Warehouse to optimize music sales analysis. Designed and automated a full ETL pipeline with Oracle Data Integrator."
+      },
+      {
+        "year": "11/2025 - Present",
+        "title": "Air Quality Analysis in Vietnam",
+        "desc": "Collected and prepared data from 40+ stations via APIs. Used unsupervised clustering (PCA + K-means) to classify stations and facilitate environmental analysis."
+      },
+      {
+        "year": "02/2025 - 05/2025",
+        "title": "French Cinemas Analysis",
+        "desc": "Analyzed the evolution of French cinemas facing Covid-19, streaming, and inflation. Data prep in Python, analysis in R, and dataviz in Power BI."
+      }
+    ],
+    "skills": {
+      "communication": "Curiosity & Continuous Learning",
+      "collaboration": "Teamwork & Collaboration",
+      "team-leadership": "Problem Solving",
+      "adaptability": "Analytical Mind"
+    },
+    "description1": "Curious and motivated, I am passionate about the management and strategic exploitation of data to generate actionable insights.",
+    "description2": "Currently pursuing a BUT in Data Science at the University of Lille, I am looking for an opportunity to apply my skills in a stimulating professional environment and learn alongside industry experts.",
+    "certifications": {
+      "title": "Certifications",
+      "google": "Google Data Analytics (Coursera & Google, 07/2025 - 11/2025)",
+      "oracle": "Oracle AI Foundations (Oracle Cloud Infrastructure, 10/2025)"
     }
   },
   "Skills": {
-    "title": "Technical Arsenal",
-    "subtitle": "A blend of data science rigor and frontend creativity.",
+    "title": "Technical Skills",
+    "subtitle": "A blend of data analytics science passion",
     "languages": "Languages",
     "dataScience": "Data Science",
     "webTech": "Web Technologies"
@@ -73,10 +91,15 @@
     "emailLabel": "Email",
     "messageLabel": "Message",
     "sendButton": "Send Message",
-    "email": "phuc-anh.dang.etu@univ-lille.fr"
+    "email": "phuc-anh.dang.etu@univ-lille.fr, dpa280706@gmail.com"
   },
   "Footer": {
-    "copyright": "© 2026 Phuc Anh. Built with Next.js & Lovelace.",
-    "contact": "Connect"
+    "ctaTitle": "Ready to make an impact?",
+    "ctaButton": "Get in Touch",
+    "status": "Looking for Opportunities",
+    "brandTagline": "Passionate about data management and generating relevant insights.",
+    "explore": "Explore",
+    "connect": "Connect",
+    "copyright": "© 2026 Phuc Anh. All rights reserved."
   }
 }

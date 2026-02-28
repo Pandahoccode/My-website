@@ -7,10 +7,11 @@
     "contact": "Liên Hệ"
   },
   "Home": {
+    "greeting": "Xin chào, tôi là",
     "title": "Đặng Phúc Anh",
-    "description": "Biến các tập dữ liệu phức tạp thành những hiểu biết chiến lược rõ ràng, có thể hành động.",
-    "subBio": "Tìm kiếm thực tập 10 tuần bắt đầu từ tháng 4 năm 2026. Chuyên về Python, SQL và Trực quan hóa dữ liệu.",
-    "role": "Kiến trúc hóa những thông tin chi tiết có thể hành động thông qua việc khai thác dữ liệu chiến lược. Hiện đang theo học Cử nhân Công nghệ (BUT) về Khoa học Dữ liệu tại Đại học Lille, tìm kiếm thực tập 10 tuần bắt đầu từ ngày 6 tháng 4 năm 2026.",
+    "description": "Quản lý và khai thác chiến lược dữ liệu để tạo ra những hiểu biết phù hợp.",
+    "subBio": "Chuyên môn về Python, SQL, Power BI và Machine Learning.",
+    "role": "Tò mò và năng động, tôi đang tìm kiếm cơ hội để áp dụng kỹ năng của mình trong một môi trường chuyên nghiệp thú vị và học hỏi cùng các chuyên gia trong ngành. Mục tiêu của tôi là đóng góp cho các dự án quản lý dữ liệu sáng tạo.",
     "resumeButton": "CV",
     "quote": "\"Không có dữ liệu, bạn chỉ là một người khác với một ý kiến.\"",
     "quoteAuthor": "— W. Edwards Deming"
@@ -22,70 +23,73 @@
     "frenchCinema": {
       "title": "Phân Tích Điện Ảnh Pháp",
       "category": "Phân Tích Dữ Liệu",
-      "description": "Phân tích khả năng phục hồi sau Covid và tác động của truyền trực tuyến sử dụng R & Power BI."
+      "description": "Phân tích sự phát triển đối phó với Covid-19, streaming, và lạm phát. Chuẩn bị bằng Python, phân tích bằng R, và trực quan hóa bằng Power BI."
     },
     "airQuality": {
-      "title": "Chất Lượng Không Khí Việt Nam",
+      "title": "Phân Tích Chất Lượng Không Khí",
       "category": "Học Máy",
-      "description": "Phân cụm hơn 40 trạm sử dụng PCA & K-Means để xác định các mô hình ô nhiễm."
+      "description": "Thu thập qua API (hơn 40 trạm). Làm sạch, cấu trúc và phân tích mức độ ô nhiễm thông qua phân cụm không giám sát (PCA + K-means)."
     },
     "dataWarehouse": {
       "title": "Kho Dữ Liệu Chinook",
       "category": "Kỹ Thuật Dữ Liệu",
-      "description": "Tự động hóa quy trình ETL với Oracle Data Integrator để tối ưu hóa phân tích bán hàng."
+      "description": "Chuyển đổi cơ sở dữ liệu Chinook thành Data Warehouse dạng sao. Thiết kế và tự động hóa quy trình ETL hoàn chỉnh bằng Oracle Data Integrator."
     }
   },
   "About": {
     "title": "Hành Trình Dữ Liệu",
-    "description1": "Tôi là sinh viên Khoa học Dữ liệu đam mê khám phá những hiểu biết sâu sắc từ các bộ dữ liệu phức tạp và xây dựng các giải pháp tinh tế.",
-    "description2": "Tôi tập trung vào học máy, phân tích thống kê và tạo ra các trực quan hóa dữ liệu có tác động kể những câu chuyện hấp dẫn.",
+    "description1": "Tò mò và năng động, tôi đam mê quản lý và khai thác dữ liệu chiến lược để tạo ra những hiểu biết sâu sắc.",
+    "description2": "Hiện đang theo học Cử nhân Công nghệ (BUT) về Khoa học Dữ liệu tại Đại học Lille, tôi đang tìm kiếm cơ hội để áp dụng các kỹ năng của mình trong một môi trường làm việc đầy thử thách và học hỏi cùng các chuyên gia.",
     "education": {
       "title": "Giáo Dục",
-      "degree": "BUT Khoa học Dữ liệu",
-      "school": "Đại học Lille",
+      "degree": "Cử nhân (BUT) Khoa học Dữ liệu",
+      "school": "Đại học Lille - IUT",
       "year": "2024 – Hiện tại",
       "hs_degree": "Tú tài Khoa học",
       "hs_school": "THPT Chuyên Hà Nội - Amsterdam"
     },
     "roadmap": {
-      "year1": "Cơ Bản & Thuật Toán",
-      "year2": "Học Máy & Trực Quan Hóa",
-      "future": "Học Sâu & Hệ Thống AI"
+      "year1": "Tò mò & Học tập liên tục",
+      "year2": "Kỹ năng giải quyết vấn đề",
+      "future": "Tư duy phân tích & Làm việc nhóm"
     },
     "skills": {
-      "title": "Kỹ Năng Cốt Lõi",
-      "python": "Python & SQL",
-      "visualization": "Trực Quan Hóa Dữ Liệu (Power BI/Qlik)",
-      "ml": "Học Máy (Clustering/PCA)"
+      "title": "Công cụ & Kỹ thuật",
+      "python": "Python, SQL, R, SAS. Lập trình web (HTML/CSS)",
+      "visualization": "Power BI / Qlik Sense / ODI",
+      "ml": "Ngôn ngữ (FR B2, EN B2, VI Bản xứ)"
     },
     "certifications": {
       "title": "Chứng Chỉ",
-      "google": "Google Data Analytics",
-      "oracle": "Oracle AI Foundations"
+      "google": "Google Data Analytics (Coursera & Google, 07/2025 - 11/2025)",
+      "oracle": "Oracle AI Foundations (Oracle Cloud Infrastructure, 10/2025)"
     },
     "basedIn": "Sinh sống tại",
     "journey": "Hành Trình",
-    "milestones": {
-      "student": {
-        "title": "Sinh Viên Khoa Học Dữ Liệu",
-        "description": "Theo học Cử nhân Khoa học Dữ liệu, tập trung vào ML và phân tích thống kê"
+    "timeline": [
+      {
+        "year": "09/2025 - Hiện tại",
+        "title": "Thiết kế Kho Dữ liệu",
+        "desc": "Chuyển đổi cơ sở dữ liệu Chinook thành Data Warehouse dạng sao để tối ưu hóa phân tích bán vé nghe nhạc. Tự động hóa pipeline ETL với Oracle Data Integrator."
       },
-      "frontend": {
-        "title": "Lập Trình Viên Frontend",
-        "description": "Xây dựng ứng dụng web hiện đại với React và Next.js"
+      {
+        "year": "11/2025 - Hiện tại",
+        "title": "Phân tích chất lượng không khí tại Việt Nam",
+        "desc": "Thu thập và chuẩn bị dữ liệu từ hơn 40 trạm qua API. Phân cụm không giám sát (PCA + K-means) để phân loại các trạm và hỗ trợ phân tích môi trường."
       },
-      "started": {
-        "title": "Bắt Đầu Lập Trình",
-        "description": "Bắt đầu học lập trình với Python và trực quan hóa dữ liệu"
+      {
+        "year": "02/2025 - 05/2025",
+        "title": "Phân tích rạp chiếu phim ở Pháp",
+        "desc": "Phân tích sự phát triển của điện ảnh Pháp đối mặt với Covid-19, streaming và lạm phát. Chuẩn bị dữ liệu bằng Python, phân tích bằng R và trực quan hóa bằng Power BI."
       }
-    }
+    ]
   },
   "Skills": {
-    "title": "Kho Vũ Khí Kỹ Thuật",
-    "subtitle": "Sự kết hợp giữa tính chính xác của khoa học dữ liệu và sự sáng tạo frontend.",
-    "languages": "Ngôn Ngữ",
-    "dataScience": "Khoa Học Dữ Liệu",
-    "webTech": "Công Nghệ Web"
+    "title": "Công cụ Kỹ thuật",
+    "subtitle": "Sự kết hợp giữa khoa học dữ liệu và lập trình web.",
+    "languages": "Lập trình",
+    "dataScience": "Khoa học Dữ liệu & BI",
+    "webTech": "Ngôn ngữ"
   },
   "Contact": {
     "title": "Kết Nối",
@@ -93,7 +97,7 @@
     "emailLabel": "Email",
     "messageLabel": "Tin Nhắn",
     "sendButton": "Gửi Tin Nhắn",
-    "email": "phuc-anh.dang.etu@univ-lille.fr"
+    "email": "phuc-anh.dang.etu@univ-lille.fr, dpa280706@gmail.com"
   },
   "Footer": {
     "copyright": "© 2026 Phúc Anh. Xây dựng với Next.js & Lovelace.",

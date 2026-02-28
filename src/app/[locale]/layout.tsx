@@ -6,9 +6,10 @@ import { Space_Grotesk, Archivo } from "next/font/google";
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { Navbar } from '@/components/layout/Navbar';
-import { StarBackground } from '@/components/ui/StarBackground';
 import { Footer } from '@/components/layout/Footer';
 import { ScrollToTop } from '@/components/ui/ScrollToTop';
+import { DynamicStarBackground } from '@/components/layout/DynamicStarBackground';
+import { Analytics } from '@vercel/analytics/react';
 
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space" });
 const archivo = Archivo({ subsets: ["latin"], variable: "--font-archivo" });
@@ -33,13 +34,14 @@ export default async function LocaleLayout({
       <body className={`${spaceGrotesk.variable} ${archivo.variable} antialiased bg-transparent text-foreground overflow-x-hidden selection:bg-[var(--color-vivid-cyan)] selection:text-white transition-colors duration-300`}>
         <NextIntlClientProvider messages={messages}>
           <Providers>
-            <StarBackground />
+            <DynamicStarBackground />
             <Navbar />
             {children}
             <ScrollToTop />
             <Footer />
           </Providers>
         </NextIntlClientProvider>
+        <Analytics />
       </body>
     </html>
   );

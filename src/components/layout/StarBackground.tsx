@@ -63,7 +63,7 @@ export function StarBackground() {
           y: Math.random() * heightRef.current,
           radius: Math.random() * 1.5,
           alpha: Math.random(),
-          pulseSpeed: 0.001 + Math.random() * 0.003
+          pulseSpeed: 0.01 + Math.random() * 0.009
         });
       }
     };

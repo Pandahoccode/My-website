@@ -3,7 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "@/i18n/routing";
 import { useState, useEffect } from "react";
-import { Search } from "lucide-react";
+import { SearchBar } from "@/components/ui/SearchBar";
 import type { Project } from "@/lib/project";
 
 interface ProjectListProps {
@@ -22,7 +22,7 @@ export function ProjectList({ projects }: ProjectListProps) {
   ))).filter(Boolean);
 
   // Use actual tags from projects plus some defaults if needed
-  const displayTags = Array.from(new Set([...allTags, "Data Analysis", "Machine Learning", "Data Engineering", "Python", "SQL", "React"])).slice(0, 10);
+  const displayTags = Array.from(new Set([...allTags, "Data Analysis", "Machine Learning", "Data Engineering", "Python", "SQL"])).slice(0, 15);
 
   useEffect(() => {
     const lowerTerm = searchTerm.toLowerCase();
@@ -51,37 +51,14 @@ export function ProjectList({ projects }: ProjectListProps) {
     <div className="space-y-12">
       {/* Search & Filter Section */}
       <div className="max-w-2xl mx-auto space-y-6">
-        {/* Search Bar */}
-        <div className="relative group">
-          <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
-          <div className="relative flex items-center bg-white/50 dark:bg-black/50 backdrop-blur-xl border border-black/10 dark:border-white/10 rounded-full px-6 py-3 shadow-lg">
-            <Search className="w-5 h-5 text-gray-500 mr-3" />
-            <input
-              type="text"
-              placeholder="Search projects..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="bg-transparent border-none outline-none w-full placeholder-slate-400 font-medium transition-colors focus:ring-0"
-              style={{ color: 'var(--text-primary)' }}
-            />
-          </div>
-        </div>
-
-        {/* Hashtag Filters */}
-        <div className="flex flex-wrap justify-center gap-2">
-          {displayTags.map(tag => (
-            <button
-              key={tag}
-              onClick={() => toggleTag(tag)}
-              className={`px-4 py-1.5 rounded-full text-xs font-mono font-bold border transition-all duration-300 ${selectedTags.includes(tag)
-                ? 'bg-cyan-500/10 border-cyan-500 text-cyan-600 dark:text-cyan-400 shadow-[0_0_10px_rgba(6,182,212,0.3)]'
-                : 'bg-white/5 border-black/5 dark:border-white/10 hover:border-cyan-500/50 text-gray-500 hover:text-cyan-500'
-                }`}
-            >
-              {tag}
-            </button>
-          ))}
-        </div>
+        <SearchBar
+          value={searchTerm}
+          onChange={setSearchTerm}
+          placeholder="Search projects..."
+          selectedTags={selectedTags}
+          availableTags={displayTags}
+          onToggleTag={toggleTag}
+        />
       </div>
 
       {/* Projects Grid */}
@@ -118,7 +95,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       className="group h-full"
     >
       <div
-        className={`relative flex flex-col h-full rounded-3xl overflow-hidden antigravity-card ${glowClass} ${borderClass}`}
+        className={`relative flex flex-col h-full overflow-hidden glass-surface antigravity-card ${glowClass} ${borderClass}`}
       >
         {/* Top: Image Slot with Overlay */}
         <div className="relative h-56 w-full overflow-hidden">
@@ -185,7 +162,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           <div className="mt-auto pt-6 border-t border-slate-200/50 dark:border-white/5 flex flex-col gap-5">
             {/* Tech Stack Pills */}
             <div className="flex flex-wrap gap-2">
-              {project.meta.tags.slice(0, 3).map(tag => (
+              {project.meta.tags.map(tag => (
                 <span
                   key={tag}
                   className="px-2 py-1 text-[11px] font-mono font-semibold rounded-md bg-slate-100 dark:bg-white/5 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-white/10"

@@ -6,19 +6,18 @@ import { LanguageSwitcher } from './LanguageSwitcher';
 import { motion, useScroll } from 'framer-motion';
 import { useTheme } from 'next-themes';
 import { Sun, Moon } from 'lucide-react';
-import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
+import { useMounted } from '@/hooks/useMounted';
+import Image from 'next/image';
 
 export function Navbar() {
   const t = useTranslations('Navigation');
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+  const mounted = useMounted();
   const { scrollYProgress } = useScroll();
   const pathname = usePathname();
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  if (!mounted) return null;
 
   // Detect if current path is the home page (including locale prefixes)
   // Home paths: "/", "/en", "/fr", "/vi"
@@ -37,7 +36,8 @@ export function Navbar() {
     return isHomePage ? section : `/${section}`;
   };
 
-  const isDark = theme === 'dark';
+  // Use a stable default for SSR to prevent hydration mismatch
+  const isDark = mounted ? theme === 'dark' : true;
 
   return (
     <motion.header
@@ -53,7 +53,7 @@ export function Navbar() {
       <div className="w-full px-6 py-3 flex items-center justify-between">
         {/* LEFT: Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <img src="/logo.svg" alt="Logo" className="w-18 h-18 group-hover:scale-110 transition-transform duration-300" />
+          <Image src="/assets/images/logo.svg" alt="Logo" width={72} height={72} className="w-18 h-18 group-hover:scale-110 transition-transform duration-300" priority />
           <span className="text-xl font-bold transition-all duration-300 relative">
             {/* Gradient Text (Reveal on Hover - Slide In) */}
             <span className="absolute inset-0 bg-gradient-to-r from-[#22D3EE] to-[#A855F7] bg-clip-text text-transparent opacity-0 -translate-x-4 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500 ease-out">
@@ -80,28 +80,28 @@ export function Navbar() {
         <div className="flex items-center gap-3">
           <LanguageSwitcher variant="glass" />
 
-          {/* Theme Toggle Pill */}
-          {mounted && (
-            <button
-              onClick={() => setTheme(isDark ? 'light' : 'dark')}
-              className={`relative w-14 h-7 rounded-full transition-colors duration-300 ${isDark ? 'bg-slate-700' : 'bg-blue-100'
-                }`}
-              aria-label="Toggle theme"
+          {/* Theme Toggle Pill - Always render with stable initial state */}
+          <button
+            onClick={() => setTheme(isDark ? 'light' : 'dark')}
+            className={`relative w-14 h-7 rounded-full transition-colors duration-300 ${isDark ? 'bg-slate-700' : 'bg-blue-100'
+              }`}
+            aria-label="Toggle theme"
+            suppressHydrationWarning
+          >
+            {/* Thumb */}
+            <motion.div
+              className="absolute top-0.5 left-0.5 w-6 h-6 rounded-full bg-white shadow-md flex items-center justify-center"
+              animate={{ x: isDark ? 0 : 30 }}
+              transition={{ type: "spring", stiffness: 500, damping: 30 }}
+              suppressHydrationWarning
             >
-              {/* Thumb */}
-              <motion.div
-                className="absolute top-0.5 left-0.5 w-6 h-6 rounded-full bg-white shadow-md flex items-center justify-center"
-                animate={{ x: isDark ? 0 : 30 }}
-                transition={{ type: "spring", stiffness: 500, damping: 30 }}
-              >
-                {isDark ? (
-                  <Moon className="w-4 h-4 text-slate-700" />
-                ) : (
-                  <Sun className="w-4 h-4 text-amber-500" />
-                )}
-              </motion.div>
-            </button>
-          )}
+              {isDark ? (
+                <Moon className="w-4 h-4 text-slate-700" />
+              ) : (
+                <Sun className="w-4 h-4 text-amber-500" />
+              )}
+            </motion.div>
+          </button>
         </div>
       </div>
 
@@ -119,6 +119,7 @@ export function Navbar() {
             ? '0 0 10px rgba(6, 182, 212, 0.6)'
             : '0 1px 6px rgba(6, 182, 212, 0.5)',
         }}
+        suppressHydrationWarning
       />
     </motion.header>
   );

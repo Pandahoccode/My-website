@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, BookOpen, Cpu, Sparkles } from "lucide-react";
+import { Link } from "@/i18n/routing";
 import type { BlogPost } from "@/lib/blog";
 
 // Icon mapping based on tags or fallback
@@ -60,33 +61,38 @@ export function BlogList({ blogs }: BlogListProps) {
           <motion.div
             key={blog.slug}
             variants={itemVariants}
-            className="group relative bg-foreground/5 backdrop-blur-sm rounded-2xl p-8 hover:bg-foreground/10 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] antigravity-card hover:translate-y-[-8px] hover:shadow-2xl dark:hover:shadow-[0_0_25px_rgba(255,255,255,0.1)]"
+            className="group relative"
           >
-            {/* Icon */}
-            <div className="mb-6 inline-flex p-3 rounded-xl bg-gradient-to-br from-[#00AEEF]/10 to-[#9D50BB]/10 text-[#00AEEF]">
-              <Icon className="w-6 h-6" />
-            </div>
+            <Link
+              href={`/blog/${blog.slug}`}
+              className="block backdrop-blur-sm p-8 transition-all duration-300 ease-[cubic-bezier(0.34,1.56,0.64,1)] glass-surface antigravity-card hover:translate-y-[-8px] hover:shadow-2xl dark:hover:shadow-[0_0_25px_rgba(255,255,255,0.1)]"
+            >
+              {/* Icon */}
+              <div className="mb-6 inline-flex p-3 rounded-xl bg-gradient-to-br from-[#00AEEF]/10 to-[#9D50BB]/10 text-[#00AEEF]">
+                <Icon className="w-6 h-6" />
+              </div>
 
-            {/* Meta */}
-            <div className="flex items-center gap-3 text-sm text-foreground/40 mb-3 font-mono">
-              <span>{formatDate(blog.meta.date)}</span>
-              <span>•</span>
-              <span className="text-[#9D50BB]">{blog.meta.tags[0] || 'Article'}</span>
-            </div>
+              {/* Meta */}
+              <div className="flex items-center gap-3 text-sm text-foreground/40 mb-3 font-mono">
+                <span>{formatDate(blog.meta.date)}</span>
+                <span>•</span>
+                <span className="text-[#9D50BB]">{blog.meta.tags[0] || 'Article'}</span>
+              </div>
 
-            {/* Content */}
-            <h3 className="text-2xl font-bold mb-3 font-outfit group-hover:text-[#00AEEF] transition-colors">
-              {blog.meta.title}
-            </h3>
-            <p className="text-foreground/60 mb-8 leading-relaxed">
-              {blog.meta.excerpt}
-            </p>
+              {/* Content */}
+              <h3 className="text-2xl font-bold mb-3 font-outfit group-hover:text-[#00AEEF] transition-colors">
+                {blog.meta.title}
+              </h3>
+              <p className="text-foreground/60 mb-8 leading-relaxed">
+                {blog.meta.excerpt}
+              </p>
 
-            {/* Link */}
-            <div className="flex items-center gap-2 text-foreground font-medium group-hover:gap-3 transition-all">
-              <span>Read Article</span>
-              <ArrowRight className="w-4 h-4 group-hover:text-[#00AEEF] transition-colors" />
-            </div>
+              {/* Link */}
+              <div className="flex items-center gap-2 text-foreground font-medium group-hover:gap-3 transition-all">
+                <span>Read Article</span>
+                <ArrowRight className="w-4 h-4 group-hover:text-[#00AEEF] transition-colors" />
+              </div>
+            </Link>
           </motion.div>
         );
       })}

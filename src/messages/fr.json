@@ -7,10 +7,11 @@
     "contact": "Contact"
   },
   "Home": {
-    "title": "Dang Phuc Anh",
-    "description": "Transformer des ensembles de données complexes en perspectives stratégiques claires et exploitables.",
-    "role": "Architecturer des perspectives exploitables grâce à l'exploitation stratégique des données. Actuellement en Bachelor Universitaire de Technologie (BUT) Science des Données à l'Université de Lille, je recherche un stage de 10 semaines à partir du 6 avril 2026.",
-    "subBio": "Ouvert pour un stage de 10 semaines à partir d'avril 2026. Spécialisé en Python, SQL et visualisation de données.",
+    "greeting": "Bonjour, je suis",
+    "title": "Phuc Anh Dang",
+    "description": "Générer des insights pertinents grâce à la gestion et l'exploitation stratégique des données.",
+    "role": "Curieux et motivé, je recherche une opportunité pour mettre en pratique mes compétences dans un environnement professionnel stimulant et apprendre aux côtés d'experts du secteur. Mon objectif est de contribuer à des projets innovants en data management.",
+    "subBio": "Spécialisé en Python, SQL, Power BI et Machine Learning.",
     "resumeButton": "CV",
     "quote": "\"Sans données, vous n’êtes qu’une autre personne avec une opinion.\"",
     "quoteAuthor": "— W. Edwards Deming"
@@ -20,48 +21,65 @@
     "featuredTitle": "Projets en Vedette",
     "viewProject": "Voir le Projet",
     "frenchCinema": {
-      "title": "Analyse du Cinéma Français",
-      "category": "Analyse de Données",
-      "description": "Analyse de la résilience post-Covid et de l'impact du streaming utilisant R et Power BI."
+      "title": "Analyse des Cinémas en France",
+      "category": "Data Analysis",
+      "description": "Analyse de l'évolution face au Covid-19, streaming et inflation. Préparation en Python, analyse en R, datavisualisation sous Power BI (2 042 établissements)."
     },
     "airQuality": {
-      "title": "Qualité de l'Air au Vietnam",
-      "category": "Apprentissage Automatique",
-      "description": "Clustering de 40+ stations utilisant PCA & K-Means pour identifier les modèles de pollution."
+      "title": "Analyse Qualité de l'Air du Vietnam",
+      "category": "Machine Learning",
+      "description": "Collecte via API (40+ stations). Nettoyage, structuration et analyse des niveaux de pollution. Clustering non supervisé (PCA + K-means)."
     },
     "dataWarehouse": {
-      "title": "Entrepôt de Données Chinook",
-      "category": "Ingénierie des Données",
-      "description": "Automatisation du pipeline ETL avec Oracle Data Integrator pour optimiser l'analyse des ventes."
+      "title": "Conception d'un Data Warehouse",
+      "category": "Data Engineering",
+      "description": "Transformation de la base Chinook en un Data Warehouse en étoile. Conception et automatisation d'un pipeline ETL complet avec Oracle Data Integrator."
     }
   },
   "About": {
     "title": "Parcours Données",
-    "description1": "Je suis un étudiant en Science des Données passionné par la découverte d'insights dans des ensembles de données complexes et la création de solutions élégantes.",
-    "description2": "Mon objectif est l'apprentissage automatique, l'analyse statistique et la création de visualisations de données percutantes qui racontent des histoires convaincantes.",
+    "description1": "Curieux et motivé, je me passionne pour la gestion et l’exploitation stratégique des données afin de générer des insights pertinents.",
+    "description2": "Actuellement en BUT Science des Données, je recherche une opportunité pour mettre en pratique mes compétences dans un environnement professionnel stimulant et apprendre aux côtés d’experts du secteur. Mon objectif est de contribuer à des projets innovants en data management.",
     "education": {
-      "title": "Éducation",
-      "degree": "BUT Science des Données",
-      "school": "Université de Lille",
+      "title": "Formation",
+      "degree": "BUT Science des données",
+      "school": "Université de Lille - IUT",
       "year": "2024 – Présent",
-      "hs_degree": "Baccalauréat Scientifique",
-      "hs_school": "Lycée Hanoi-Amsterdam"
+      "hs_degree": "Bac scientifique",
+      "hs_school": "Lycée d'Élite Hanoi-Amsterdam"
     },
+    "timeline": [
+      {
+        "year": "09/2025 - Présent",
+        "title": "Conception d'un Data Warehouse",
+        "desc": "Transformation de la base Chinook en un Data Warehouse en étoile pour optimiser l'analyse des ventes. Pipeline ETL automatisé avec Oracle Data Integrator."
+      },
+      {
+        "year": "11/2025 - Présent",
+        "title": "Analyse qualité de l'air du Vietnam",
+        "desc": "Collecte et préparation de données depuis 40+ stations via APIs. Approche de clustering non supervisé (PCA + K-means) pour classifier les stations."
+      },
+      {
+        "year": "02/2025 - 05/2025",
+        "title": "Analyse des cinémas en France",
+        "desc": "Analyse de l'évolution des cinémas face au Covid-19, au streaming et à l'inflation. Préparation en Python, analyse en R et dataviz sous Power BI."
+      }
+    ],
     "roadmap": {
-      "year1": "Fondamentaux & Algorithmes",
-      "year2": "Machine Learning & Visualisation",
-      "future": "Deep Learning & Systèmes IA"
+      "year1": "Curiosité & Apprentissage",
+      "year2": "Résolution de problèmes",
+      "future": "Esprit analytique & Travail en équipe"
     },
     "skills": {
-      "title": "Compétences Clés",
-      "python": "Python & SQL",
-      "visualization": "Visualisation de Données (Power BI/Qlik)",
-      "ml": "Machine Learning (Clustering/PCA)"
+      "title": "Outils & Compétences",
+      "python": "Python, SQL, R, SAS. Dev web (HTML/CSS)",
+      "visualization": "Power BI / Qlik Sense / ODI",
+      "ml": "Langues (FR B2, EN B2, VI Natif)"
     },
     "certifications": {
       "title": "Certifications",
-      "google": "Google Data Analytics",
-      "oracle": "Fondamentaux IA Oracle"
+      "google": "Google Data Analytics (Coursera & Google, 07/2025 - 11/2025)",
+      "oracle": "Oracle AI Foundations (Oracle Cloud Infrastructure, 10/2025)"
     },
     "basedIn": "Basé à",
     "journey": "Parcours",
@@ -81,11 +99,11 @@
     }
   },
   "Skills": {
-    "title": "Arsenal Technique",
-    "subtitle": "Un mélange de rigueur en science des données et de créativité frontend.",
-    "languages": "Langages",
-    "dataScience": "Data Science",
-    "webTech": "Technologies Web"
+    "title": "Outils & Techniques",
+    "subtitle": "Un mélange de rigueur en science des données et développement.",
+    "languages": "Programmation & Outils",
+    "dataScience": "Data & BI",
+    "webTech": "Langues"
   },
   "Contact": {
     "title": "Connectons-nous",
@@ -93,7 +111,7 @@
     "emailLabel": "Email",
     "messageLabel": "Message",
     "sendButton": "Envoyer le Message",
-    "email": "phuc-anh.dang.etu@univ-lille.fr"
+    "email": "phuc-anh.dang.etu@univ-lille.fr, dpa280706@gmail.com"
   },
   "Footer": {
     "copyright": "© 2026 Phuc Anh. Construit avec Next.js & Lovelace.",

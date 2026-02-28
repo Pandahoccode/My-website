@@ -7,28 +7,12 @@ import { GraduationCap, Award, Calendar, ExternalLink } from "lucide-react";
 export function About() {
   const t = useTranslations('About');
 
-  const timelineEvents = [
-    {
-      year: "2026 (Current)",
-      title: "Bachelor of Technology in Data Science",
-      desc: "University of Lille. Focused on strategic data exploitation. Seeking a 10-week internship starting April 6."
-    },
-    {
-      year: "2025",
-      title: "Advanced Machine Learning",
-      desc: "Deep diving into Neural Networks, Deep Learning frameworks, and complex statistical modeling."
-    },
-    {
-      year: "2024",
-      title: "Big Data & EDA Master",
-      desc: "Mastering SQL for large datasets and Exploratory Data Analysis techniques to uncover hidden patterns."
-    },
-    {
-      year: "2023",
-      title: "Foundations",
-      desc: "Started the journey with Python programming and Mathematical Modeling for Data Science."
-    }
-  ];
+  // Timeline events loaded from translations
+  const timelineEvents = t.raw('timeline') as Array<{
+    year: string;
+    title: string;
+    desc: string;
+  }>;
 
   const education = [
     {
@@ -39,26 +23,29 @@ export function About() {
     {
       degree: t('education.hs_degree'),
       school: t('education.hs_school'),
-      year: "2019 - 2022"
+      year: "2021 - 2024"
     }
   ];
 
   const certifications = [
     {
-      name: "TensorFlow Developer",
+      name: "Google Data Analytics",
       issuer: "Google",
-      date: "2023",
+      date: "2025",
       link: "#"
     },
     {
-      name: "AWS Machine Learning",
-      issuer: "Amazon Web Services",
-      date: "2024",
+      name: "Oracle Data Infrastructure",
+      issuer: "Oracle",
+      date: "2025",
       link: "#"
     }
   ];
 
-  const skills = ["Python", "SQL", "Power BI", "Machine Learning", "Data Engineering", "React/Next.js"];
+  const skills = [
+    t('skills.communication'), t('skills.collaboration'), t('skills.problem-solving'),
+    t('skills.adaptability'), t('skills.team-leadership'), t('skills.critical-thinking')
+  ];
 
   return (
     <section id="about" className="py-20 px-6 relative overflow-hidden">
@@ -141,7 +128,7 @@ export function About() {
               </div>
               <div className="space-y-4">
                 {education.map((edu, idx) => (
-                  <div key={idx} className="p-4 rounded-xl border antigravity-card bg-slate-50 dark:bg-white/5 border-slate-100 dark:border-white/5 hover:border-teal-500/30" style={{ borderColor: 'var(--card-border-color)', borderWidth: '1px' }}>
+                  <div key={idx} className="p-4 glass-surface antigravity-card hover:border-teal-500/30">
                     <h4 className="font-bold text-lg" style={{ color: 'var(--home-title)' }}>{edu.degree}</h4>
                     <p className="opacity-80" style={{ color: 'var(--home-text)' }}>{edu.school}</p>
                     <span className="text-sm font-mono opacity-60 block mt-1">{edu.year}</span>
@@ -165,7 +152,7 @@ export function About() {
                   <a
                     key={index}
                     href={cert.link}
-                    className="flex items-center justify-between p-4 rounded-xl border antigravity-card hover:bg-slate-50 dark:hover:bg-white/5 border-slate-100 dark:border-white/5 group hover:border-purple-500/30"
+                    className="flex items-center justify-between p-4 glass-surface antigravity-card group hover:border-purple-500/30"
                     style={{ borderColor: 'var(--card-border-color)', borderWidth: '1px' }}
                   >
                     <div>
@@ -187,7 +174,7 @@ export function About() {
                 {['Problem Solving', 'Team Leadership', 'Adaptability', 'Communication', 'Critical Thinking', 'Agile Methodology'].map((skill) => (
                   <div
                     key={skill}
-                    className="p-4 rounded-xl border antigravity-card bg-black/5 dark:bg-white/5 hover:bg-gray-100 dark:hover:bg-white/5 flex items-center justify-center"
+                    className="p-4 glass-surface antigravity-card flex items-center justify-center hover:border-cyan-500/30"
                     style={{ borderColor: 'var(--card-border-color)', borderWidth: '1px' }}
                   >
                     <span

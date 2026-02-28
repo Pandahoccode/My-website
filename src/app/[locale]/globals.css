@@ -152,6 +152,37 @@ body {
   border-color: #FFFFFF; /* Dark Mode: Crisp White Border */
 }
 
+/* ============================================
+   GLASS-SURFACE: Hyper-Refractive Glass System
+   Phase 15 - PCI-Density Blur Standard
+   ============================================ */
+@utility glass-surface {
+  /* PCI-Density Blur - 40px for maximum background refraction */
+  @apply backdrop-blur-[40px];
+
+  /* Light Mode: Frosted White with subtle cyan bleed-through */
+  background: rgba(255, 255, 255, 0.55);
+
+  /* Blueprint Crystal Border - Pure Black 1px frame */
+  border: 1px solid #000000;
+
+  /* Depth Shadow - Wide spread floating glass effect */
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+
+  /* Smooth physics transition */
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Border radius for soft edges */
+  @apply rounded-3xl;
+}
+
+.dark .glass-surface {
+  /* Dark Mode: Deep Space Glass */
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 40px -5px rgba(6, 182, 212, 0.15);
+}
+
 @utility bg-cosmic-gradient {
   background: linear-gradient(135deg, #020617 0%, #1e1b4b 60%, #312e81 100%);
 }

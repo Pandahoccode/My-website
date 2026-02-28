@@ -7,7 +7,7 @@ import { Skills } from "@/components/sections/Skills";
 import { Projects } from "@/components/sections/Projects";
 import { Contact } from "@/components/sections/Contact";
 import { Blog } from "@/components/sections/Blog";
-import { ScrollFrames } from "@/components/ui/ScrollFrames";
+import { ScrollFrames } from "@/components/layout/ScrollFrames";
 import { Separator } from "@/components/ui/SectionSeparator";
 
 export function PortfolioView() {

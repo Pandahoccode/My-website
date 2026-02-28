@@ -1,55 +1,76 @@
 "use client";
 
 import { motion } from 'framer-motion';
+import { useTheme } from 'next-themes';
+import { useMounted } from '@/hooks/useMounted';
 
-// Legacy separator (kept for compatibility)
-export function SectionSeparator() {
-  return (
-    <div className="relative z-10 w-full flex items-center justify-center py-20 pointer-events-none">
-      <motion.div
-        initial={{ width: 0, opacity: 0 }}
-        whileInView={{ width: "70%", opacity: 1 }}
-        transition={{ duration: 1.5, ease: "easeInOut" }}
-        viewport={{ once: true }}
-        className="h-[2px] bg-gradient-to-r from-transparent via-cyan-blue to-transparent relative shadow-[0_0_15px_rgba(0,191,255,0.6)]"
-      >
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-white shadow-[0_0_20px_rgba(0,191,255,1)]" />
-      </motion.div>
-    </div>
-  );
-}
-
-// Enhanced Data Stream Separator (recommended)
 export function Separator() {
+  // 1. Theme Logic
+  const { resolvedTheme } = useTheme();
+  const mounted = useMounted();
+
+  // Prevent hydration mismatch by defaulting to a safe state until mounted
+  if (!mounted) return <div className="py-24" />;
+
+  const isDark = resolvedTheme === 'dark';
+
+  // Define colors for JS-based animations (Shadows)
+  // All Blues: Cyan for Dark Mode / Royal Blue for Light Mode
+  const shadowColor = isDark ? 'rgba(6, 182, 212, 0.5)' : 'rgba(59, 130, 246, 0.5)';
+  const glowColor = isDark ? 'rgba(6, 182, 212, 0.9)' : 'rgba(59, 130, 246, 0.9)';
+
   return (
-    <div className="relative z-10 w-full flex items-center justify-center py-16 pointer-events-none">
+    <div className="relative z-10 w-full flex items-center justify-center py-24 pointer-events-none">
       <motion.div
         initial={{ width: 0, opacity: 0 }}
-        whileInView={{ width: "80%", opacity: 0.8 }}
-        transition={{ duration: 1.8, ease: "easeInOut" }}
-        viewport={{ once: true }}
-        className="h-[1px] bg-gradient-to-r from-transparent via-electric-blue to-transparent relative"
-        style={{
-          boxShadow: '0 0 10px currentColor',
-          filter: 'drop-shadow(0 0 8px rgba(0, 210, 255, 0.5))'
-        }}
+        whileInView={{ width: "90%", opacity: 1 }}
+        transition={{ duration: 2, ease: [0.2, 0.8, 0.2, 1] }}
+        viewport={{ once: true, margin: "-100px" }}
+        // 2. Increased Height: h-[3px] for better visibility
+        className="relative h-[3px] rounded-full"
       >
-        {/* Glowing pulse at center */}
+        {/* Base Line Background - ALL BLUE (Blue-500 in Light, Cyan-600 in Dark) */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500 dark:via-cyan-600 to-transparent opacity-40 blur-[0.5px]" />
+
+        {/* Breathing Energy Pulse - ALL BLUE (Blue-300 in Light, Cyan-400 in Dark) */}
         <motion.div
           animate={{
-            scale: [1, 1.3, 1],
-            opacity: [0.6, 1, 0.6]
+            opacity: [0.4, 0.8, 1, 0.8, 0.4],
+            scaleX: [0.95, 1, 1.05, 1, 0.95],
+            scaleY: [1, 1.5, 2, 1.5, 1], // Vertical expansion for "breathing" look
           }}
           transition={{
-            duration: 2,
+            duration: 5, // Slower, deeper breath
             repeat: Infinity,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-electric-blue"
-          style={{
-            boxShadow: '0 0 12px rgba(0, 210, 255, 0.9), 0 0 20px rgba(0, 210, 255, 0.6)'
-          }}
+          className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-300 dark:via-cyan-400 to-transparent blur-sm"
         />
+
+        {/* The Heartbeat Center */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+          <motion.div
+            animate={{
+              // 3. New Scale Sequence: [1, 1.25, 1.5, 1.25, 1]
+              scale: [1, 1.2, 1.3, 1.2, 1],
+              opacity: [0.7, 0.9, 1, 0.9, 0.7],
+              boxShadow: [
+                `0 0 10px ${shadowColor}`,
+                `0 0 20px ${shadowColor}`,
+                `0 0 35px ${glowColor}`,
+                `0 0 20px ${shadowColor}`,
+                `0 0 10px ${shadowColor}`
+              ]
+            }}
+            transition={{
+              duration: 5, // Synced with the line breath
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            // Dot Color: Blue-600 (Light) / Cyan-500 (Dark)
+            className="relative w-3 h-3 rounded-full bg-blue-600 dark:bg-cyan-500"
+          />
+        </div>
       </motion.div>
     </div>
   );

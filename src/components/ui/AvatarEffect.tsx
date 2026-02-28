@@ -4,12 +4,14 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import { motion, useSpring, useMotionValue, useMotionTemplate } from "framer-motion";
+import { useMounted } from '@/hooks/useMounted';
 
 export function AvatarEffect() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { theme } = useTheme();
+  const mounted = useMounted();
   // Simplified theme detection
-  const isDark = theme === 'dark' || theme === 'system';
+  const isDark = mounted ? (theme === 'dark' || theme === 'system') : true;
 
   // Mouse position percentages (50% is center)
   const centerX = useMotionValue(50);
@@ -86,10 +88,14 @@ export function AvatarEffect() {
     };
   }, [centerX, centerY]);
 
+  if (!mounted) return (
+    <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96" />
+  );
+
   return (
     <div
       ref={containerRef}
-      className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 group z-0 flex items-center justify-center"
+      className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 group z-0 flex items-center justify-center transform perspective-1000"
     >
       {/* SVG Filter for Gooey Effect (Optional polish) */}
       <svg className="hidden">
@@ -99,44 +105,44 @@ export function AvatarEffect() {
         </filter>
       </svg>
 
-      {/* Tethered Aura Layer */}
+      {/* Tethered Aura Layer (Phase 11: Elastic Halo) */}
       <motion.div
-        className="absolute inset-[-40px] rounded-full pointer-events-none z-0 opacity-0 animate-[fade-in_1s_ease-out_forwards]"
+        className="absolute inset-[-60px] rounded-full pointer-events-none z-0 opacity-0 animate-[fade-in_1s_ease-out_forwards]"
         style={{
           background: isDark ? darkGradient : lightGradient,
           // Light Mode: Increased blur (60px) and brightness/saturation for intensity
-          filter: isDark ? 'blur(40px)' : 'blur(60px) brightness(1.2) saturate(1.5)',
-          opacity: isDark ? 0.6 : 0.9,
+          filter: isDark ? 'blur(50px)' : 'blur(70px) brightness(1.3) saturate(1.8)',
+          opacity: isDark ? 0.7 : 0.8,
           // Light Mode: Normal blend for visibility
           mixBlendMode: isDark ? 'screen' : 'normal',
           // Procedural breathing animation
-          animation: 'pulse-halo 5s ease-in-out infinite',
+          animation: 'pulse-halo 4s ease-in-out infinite',
         }}
       />
 
-      {/* Avatar Image Container */}
+      {/* Avatar Image Container - The Source */}
       <div
-        className="relative w-full h-full rounded-full overflow-hidden z-10 transition-transform duration-500 hover:scale-[1.02]"
+        className="relative w-full h-full rounded-full overflow-hidden z-10 transition-transform duration-500 hover:scale-[1.03] hover:rotate-2"
         style={{
-          border: isDark ? '4px solid rgba(255,255,255,0.1)' : '4px solid #000',
+          border: isDark ? '4px solid rgba(255,255,255,0.15)' : '4px solid rgba(0,0,0,0.8)',
           boxShadow: isDark
-            ? '0 25px 50px -12px rgba(0, 0, 0, 0.5)'
-            : 'inset 0 0 0 2px #000, 0 25px 50px -12px rgba(0, 0, 0, 0.25)',
+            ? '0 0 40px rgba(124, 58, 237, 0.3), inset 0 0 20px rgba(6, 182, 212, 0.2)'
+            : '0 25px 50px -12px rgba(0, 0, 0, 0.3), inset 0 0 0 2px rgba(0,0,0,0.1)',
         }}
       >
         <Image
-          src="/avatar.jpg"
+          src="/assets/images/avatar.jpg"
           alt="Phuc Anh"
           fill
-          className="object-cover transform group-hover:scale-105 transition-transform duration-700"
+          className="object-cover transform group-hover:scale-110 transition-transform duration-700"
           priority
         />
       </div>
 
       <style jsx global>{`
         @keyframes pulse-halo {
-          0%, 100% { transform: scale(1.0); opacity: ${isDark ? 0.6 : 0.9}; }
-          50% { transform: scale(1.05); opacity: ${isDark ? 0.8 : 0.8}; }
+          0%, 100% { transform: scale(1.0); opacity: ${isDark ? 0.7 : 0.8}; }
+          50% { transform: scale(1.1); opacity: ${isDark ? 0.9 : 0.7}; }
         }
       `}</style>
     </div>
