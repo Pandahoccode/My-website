@@ -4,24 +4,18 @@ import { Link } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { motion, useScroll } from 'framer-motion';
-import { useTheme } from 'next-themes';
 import { Sun, Moon } from 'lucide-react';
-import { usePathname } from 'next/navigation';
-import { useMounted } from '@/hooks/useMounted';
+import { useThemeDark } from '@/hooks/useThemeDark';
+import { useNavigation } from '@/hooks/useNavigation';
 import Image from 'next/image';
 
 export function Navbar() {
   const t = useTranslations('Navigation');
-  const { theme, setTheme } = useTheme();
-  const mounted = useMounted();
+  const { isDark, mounted, setTheme } = useThemeDark();
   const { scrollYProgress } = useScroll();
-  const pathname = usePathname();
+  const { isHomePage, getNavHref } = useNavigation();
 
   if (!mounted) return null;
-
-  // Detect if current path is the home page (including locale prefixes)
-  // Home paths: "/", "/en", "/fr", "/vi"
-  const isHomePage = pathname === '/' || /^\/(en|fr|vi)\/?$/.test(pathname);
 
   const navItems = [
     { key: 'home', section: '#hero' },
@@ -31,13 +25,7 @@ export function Navbar() {
     { key: 'contact', section: '#contact' },
   ];
 
-  // Generate href based on current page
-  const getNavHref = (section: string) => {
-    return isHomePage ? section : `/${section}`;
-  };
 
-  // Use a stable default for SSR to prevent hydration mismatch
-  const isDark = mounted ? theme === 'dark' : true;
 
   return (
     <motion.header

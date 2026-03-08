@@ -2,27 +2,35 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "@/i18n/routing";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
+import Image from "next/image";
 import { SearchBar } from "@/components/ui/SearchBar";
 import type { Project } from "@/lib/project";
+import { useTranslations } from "next-intl";
 
 interface ProjectListProps {
   projects: Project[];
 }
 
-
 export function ProjectList({ projects }: ProjectListProps) {
+  const t = useTranslations('Projects');
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [filteredProjects, setFilteredProjects] = useState(projects);
 
-  // Extract all unique tags
-  const allTags = Array.from(new Set(projects.flatMap(p =>
-    [p.meta.category, ...(p.meta.tags || [])]
-  ))).filter(Boolean);
+  // Extract all unique tags (memoized to avoid recomputation)
+  const allTags = useMemo(() =>
+    Array.from(new Set(projects.flatMap(p =>
+      [p.meta.category, ...(p.meta.tags || [])]
+    ))).filter(Boolean),
+    [projects]
+  );
 
   // Use actual tags from projects plus some defaults if needed
-  const displayTags = Array.from(new Set([...allTags, "Data Analysis", "Machine Learning", "Data Engineering", "Python", "SQL"])).slice(0, 15);
+  const displayTags = useMemo(() =>
+    Array.from(new Set([...allTags, "Data Analysis", "Machine Learning", "Data Engineering", "Python", "SQL"])).slice(0, 15),
+    [allTags]
+  );
 
   useEffect(() => {
     const lowerTerm = searchTerm.toLowerCase();
@@ -41,11 +49,11 @@ export function ProjectList({ projects }: ProjectListProps) {
     setFilteredProjects(results);
   }, [searchTerm, selectedTags, projects]);
 
-  const toggleTag = (tag: string) => {
+  const toggleTag = useCallback((tag: string) => {
     setSelectedTags(prev =>
       prev.includes(tag) ? prev.filter(t => t !== tag) : [...prev, tag]
     );
-  };
+  }, []);
 
   return (
     <div className="space-y-12">
@@ -54,7 +62,7 @@ export function ProjectList({ projects }: ProjectListProps) {
         <SearchBar
           value={searchTerm}
           onChange={setSearchTerm}
-          placeholder="Search projects..."
+          placeholder={t('searchPlaceholder')}
           selectedTags={selectedTags}
           availableTags={displayTags}
           onToggleTag={toggleTag}
@@ -70,7 +78,7 @@ export function ProjectList({ projects }: ProjectListProps) {
         </AnimatePresence>
         {filteredProjects.length === 0 && (
           <div className="col-span-full text-center py-20 opacity-50">
-            <p>No projects found matching your criteria.</p>
+            <p>{t('noProjectsFound')}</p>
           </div>
         )}
       </motion.div>
@@ -79,6 +87,7 @@ export function ProjectList({ projects }: ProjectListProps) {
 }
 
 function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const t = useTranslations('Projects');
   // Determine Glow Color based on Category
   const isData = project.meta.category.includes("Data");
   const glowClass = isData ? "shadow-cyan-500/20 hover:shadow-cyan-500/40" : "shadow-purple-500/20 hover:shadow-purple-500/40";
@@ -99,18 +108,20 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
       >
         {/* Top: Image Slot with Overlay */}
         <div className="relative h-56 w-full overflow-hidden">
-          {/* Base Gradient Background */}
-          <div className={`absolute inset-0 bg-gradient-to-br ${project.meta.color} opacity-20 group-hover:opacity-30 transition-opacity duration-500`} />
+          {/* Image */}
+          {project.meta.image ? (
+            <Image
+              src={project.meta.image}
+              alt={project.meta.title}
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+          ) : (
+            <div className={`absolute inset-0 bg-gradient-to-br ${project.meta.color} opacity-20 group-hover:opacity-30 transition-opacity duration-500`} />
+          )}
 
           {/* Dynamic Noise/Texture Overlay (Optional - simplified here) */}
-          <div className="absolute inset-0 bg-black/5 dark:bg-white/5 mix-blend-overlay" />
-
-          {/* Centered Big Letter */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-8xl font-black font-outfit text-black/5 dark:text-white/5 group-hover:scale-110 transition-transform duration-700 select-none">
-              {project.meta.title[0]}
-            </span>
-          </div>
+          <div className="absolute inset-0 bg-black/10 dark:bg-white/5 mix-blend-overlay" />
 
           {/* Floating Category Tag */}
           <div className="absolute top-4 left-4 z-10">
@@ -138,7 +149,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           <Link href={`/project/${project.slug}`}>
             <div className="absolute inset-0 bg-black/20 dark:bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-300 backdrop-blur-[2px] flex items-center justify-center cursor-pointer">
               <span className="px-6 py-2.5 rounded-full bg-white text-black font-bold text-sm tracking-wide transform translate-y-4 group-hover:translate-y-0 transition-all duration-300 shadow-xl hover:bg-cyan-50">
-                View Project
+                {t('viewProject')}
               </span>
             </div>
           </Link>
@@ -154,7 +165,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               {project.meta.title}
             </h3>
 
-            <p className="text-sm md:text-base font-medium text-slate-600 dark:text-slate-400 leading-relaxed line-clamp-3">
+            <p className="text-sm md:text-base font-medium text-slate-600 dark:text-slate-400 leading-relaxed line-clamp-3 min-h-[4.5rem]">
               {project.meta.excerpt}
             </p>
           </div>
@@ -179,7 +190,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
                 href={`/project/${project.slug}`}
                 className={`text-sm font-bold flex items-center gap-2 transition-colors ${isData ? 'text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 dark:hover:text-cyan-300' : 'text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300'}`}
               >
-                Read Case Study
+                {t('readCaseStudy')}
                 <span className="text-lg leading-none mb-0.5">→</span>
               </Link>
             </div>

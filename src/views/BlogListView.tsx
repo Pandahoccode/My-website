@@ -1,19 +1,20 @@
 import { Link } from '@/i18n/routing';
-import { getAllBlogs } from '@/lib/blog';
-import { useTranslations } from 'next-intl';
+import { getBlogsByLocale } from '@/lib/blog';
+import { useTranslations, useLocale } from 'next-intl';
 
 export function BlogListView() {
-  const t = useTranslations('Navigation'); // Fallback or create a Blog specific dictionary
-  const blogs = getAllBlogs();
+  const t = useTranslations('Blog');
+  const locale = useLocale();
+  const blogs = getBlogsByLocale(locale);
 
   return (
     <div className="relative z-10 py-32 px-6 md:px-12 max-w-4xl mx-auto min-h-screen">
       <div className="mb-16">
         <h1 className="text-5xl font-black font-outfit text-foreground mb-6">
-          My <span className="text-electric-blue">Blog</span>
+          {t('title')}
         </h1>
         <p className="text-foreground/60 text-lg">
-          Documentation of my journey through code, data, and design.
+          {t('subtitle')}
         </p>
       </div>
 
@@ -46,7 +47,7 @@ export function BlogListView() {
 
         {blogs.length === 0 && (
           <div className="text-center text-foreground/50 py-12">
-            No blog found in the archives.
+            {t('noBlogsFound')}
           </div>
         )}
       </div>

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useTranslations } from 'next-intl';
+import Image from "next/image";
 import { GraduationCap, Award, Calendar, ExternalLink } from "lucide-react";
 
 export function About() {
@@ -18,12 +19,16 @@ export function About() {
     {
       degree: t('education.degree'),
       school: t('education.school'),
-      year: "2024 - Present"
+      year: "2024 - Present",
+      link: "https://iut.univ-lille.fr/les-departements/departement-science-des-donnees",
+      logo: "/assets/images/logo/iut_de_lille_logo.jpg"
     },
     {
       degree: t('education.hs_degree'),
       school: t('education.hs_school'),
-      year: "2021 - 2024"
+      year: "2021 - 2024",
+      link: "https://hn-ams.edu.vn/en",
+      logo: "/assets/images/logo/hanoi-ams-logo.jpg"
     }
   ];
 
@@ -32,13 +37,15 @@ export function About() {
       name: "Google Data Analytics",
       issuer: "Google",
       date: "2025",
-      link: "#"
+      link: "https://coursera.org/share/15d6208a3273dc4518b42bac37d47531",
+      logo: "/assets/images/logo/google-logo.png"
     },
     {
-      name: "Oracle Data Infrastructure",
+      name: "Oracle AI Foundations",
       issuer: "Oracle",
       date: "2025",
-      link: "#"
+      link: "https://catalog-education.oracle.com/pls/certview/sharebadge?id=AEBAC7CBD20C921A8E850CD9C88DF7E95094C51A69E27E48B078C5193BC0D72E",
+      logo: "/assets/images/logo/oracle-logo.png"
     }
   ];
 
@@ -103,7 +110,7 @@ export function About() {
                         {event.year}
                       </span>
                       <h4 className="text-lg font-bold" style={{ color: 'var(--home-title)' }}>{event.title}</h4>
-                      <p className="text-sm leading-relaxed opacity-80" style={{ color: 'var(--home-text)' }}>
+                      <p className="text-sm leading-relaxed opacity-80 whitespace-pre-line" style={{ color: 'var(--home-text)' }}>
                         {event.desc}
                       </p>
                     </div>
@@ -128,11 +135,21 @@ export function About() {
               </div>
               <div className="space-y-4">
                 {education.map((edu, idx) => (
-                  <div key={idx} className="p-4 glass-surface antigravity-card hover:border-teal-500/30">
-                    <h4 className="font-bold text-lg" style={{ color: 'var(--home-title)' }}>{edu.degree}</h4>
-                    <p className="opacity-80" style={{ color: 'var(--home-text)' }}>{edu.school}</p>
-                    <span className="text-sm font-mono opacity-60 block mt-1">{edu.year}</span>
-                  </div>
+                  <a key={idx} href={edu.link} target="_blank" rel="noopener noreferrer" className="block p-4 glass-surface antigravity-card hover:border-teal-500/30 transition-colors group" style={{ borderColor: 'var(--card-border-color)', borderWidth: '1px' }}>
+                    <div className="flex justify-between items-center gap-4">
+                      <div className="flex-1">
+                        <h4 className="font-bold text-lg group-hover:text-teal-500 transition-colors" style={{ color: 'var(--home-title)' }}>{edu.degree}</h4>
+                        <p className="opacity-80" style={{ color: 'var(--home-text)' }}>{edu.school}</p>
+                        <span className="text-sm font-mono opacity-60 block mt-1">{edu.year}</span>
+                      </div>
+                      <div className="flex flex-col items-end gap-2 shrink-0">
+                        <ExternalLink size={16} className="opacity-0 group-hover:opacity-100 transition-opacity text-teal-500 shrink-0" />
+                        <div className="relative w-32 h-20 rounded-md overflow-hidden shrink-0 bg-white shadow-sm">
+                          <Image src={edu.logo} alt={edu.school} fill className="object-contain p-2" />
+                        </div>
+                      </div>
+                    </div>
+                  </a>
                 ))}
               </div>
             </div>
@@ -152,12 +169,19 @@ export function About() {
                   <a
                     key={index}
                     href={cert.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center justify-between p-4 glass-surface antigravity-card group hover:border-purple-500/30"
                     style={{ borderColor: 'var(--card-border-color)', borderWidth: '1px' }}
                   >
-                    <div>
-                      <h4 className="font-bold group-hover:text-cyan-500 transition-colors" style={{ color: 'var(--home-title)' }}>{cert.name}</h4>
-                      <p className="text-sm opacity-70" style={{ color: 'var(--home-text)' }}>{cert.issuer}</p>
+                    <div className="flex items-center gap-4">
+                      <div className="relative w-12 h-12 rounded-full overflow-hidden border border-white/10 shrink-0 bg-white flex items-center justify-center p-1">
+                        <Image src={cert.logo} alt={cert.issuer} fill className="object-contain p-2" />
+                      </div>
+                      <div>
+                        <h4 className="font-bold group-hover:text-cyan-500 transition-colors" style={{ color: 'var(--home-title)' }}>{cert.name}</h4>
+                        <p className="text-sm opacity-70" style={{ color: 'var(--home-text)' }}>{cert.issuer}</p>
+                      </div>
                     </div>
                     <ExternalLink size={16} className="opacity-0 group-hover:opacity-100 transition-opacity text-cyan-500" />
                   </a>
@@ -171,7 +195,7 @@ export function About() {
                 {t('skillsTitle')}
               </h3>
               <div className="grid grid-cols-2 gap-4">
-                {['Problem Solving', 'Team Leadership', 'Adaptability', 'Communication', 'Critical Thinking', 'Agile Methodology'].map((skill) => (
+                {skills.map((skill) => (
                   <div
                     key={skill}
                     className="p-4 glass-surface antigravity-card flex items-center justify-center hover:border-cyan-500/30"

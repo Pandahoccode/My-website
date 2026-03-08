@@ -12,6 +12,7 @@ export interface BlogMeta {
   excerpt: string;
   tags: string[];
   image?: string;
+  lang?: string;
 }
 
 export interface BlogPost {
@@ -62,4 +63,11 @@ export function getAllBlogs(): BlogPost[] {
     .filter((blog): blog is BlogPost => blog !== null)
     .sort((a, b) => (a.meta.date > b.meta.date ? -1 : 1));
   return blogs;
+}
+
+export function getBlogsByLocale(locale: string): BlogPost[] {
+  return getAllBlogs().filter((blog) => {
+    const blogLang = blog.meta.lang || 'en';
+    return blogLang === locale;
+  });
 }

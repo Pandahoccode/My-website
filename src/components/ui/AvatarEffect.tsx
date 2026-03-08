@@ -2,16 +2,13 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
-import { useTheme } from "next-themes";
-import { motion, useSpring, useMotionValue, useMotionTemplate } from "framer-motion";
-import { useMounted } from '@/hooks/useMounted';
+import { motion, useSpring, useMotionValue, useMotionTemplate, useReducedMotion } from "framer-motion";
+import { useThemeDark } from '@/hooks/useThemeDark';
 
 export function AvatarEffect() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const { theme } = useTheme();
-  const mounted = useMounted();
-  // Simplified theme detection
-  const isDark = mounted ? (theme === 'dark' || theme === 'system') : true;
+  const { isDark, mounted } = useThemeDark();
+  const prefersReducedMotion = useReducedMotion();
 
   // Mouse position percentages (50% is center)
   const centerX = useMotionValue(50);
@@ -80,13 +77,16 @@ export function AvatarEffect() {
       centerY.set(50);
     };
 
+    // Skip mouse tracking if user prefers reduced motion
+    if (prefersReducedMotion) return;
+
     // Attach to window to allow "pulling" from afar
     window.addEventListener('mousemove', handleMouseMove);
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [centerX, centerY]);
+  }, [centerX, centerY, prefersReducedMotion]);
 
   if (!mounted) return (
     <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96" />
@@ -116,7 +116,7 @@ export function AvatarEffect() {
           // Light Mode: Normal blend for visibility
           mixBlendMode: isDark ? 'screen' : 'normal',
           // Procedural breathing animation
-          animation: 'pulse-halo 4s ease-in-out infinite',
+          animation: prefersReducedMotion ? 'none' : 'pulse-halo 4s ease-in-out infinite',
         }}
       />
 

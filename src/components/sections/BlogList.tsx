@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, BookOpen, Cpu, Sparkles } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import type { BlogPost } from "@/lib/blog";
+import { useTranslations, useLocale } from "next-intl";
 
 // Icon mapping based on tags or fallback
 function getIconForBlog(blog: BlogPost) {
@@ -22,6 +23,9 @@ interface BlogListProps {
 }
 
 export function BlogList({ blogs }: BlogListProps) {
+  const t = useTranslations('Blog');
+  const locale = useLocale();
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -41,10 +45,11 @@ export function BlogList({ blogs }: BlogListProps) {
     }
   };
 
-  // Format date helper
+  // Format date helper — locale-aware
+  const dateLocaleMap: Record<string, string> = { en: 'en-US', fr: 'fr-FR', vi: 'vi-VN' };
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+    return date.toLocaleDateString(dateLocaleMap[locale] || 'en-US', { month: 'short', year: 'numeric' });
   };
 
   return (
@@ -89,7 +94,7 @@ export function BlogList({ blogs }: BlogListProps) {
 
               {/* Link */}
               <div className="flex items-center gap-2 text-foreground font-medium group-hover:gap-3 transition-all">
-                <span>Read Article</span>
+                <span>{t('readArticle')}</span>
                 <ArrowRight className="w-4 h-4 group-hover:text-[#00AEEF] transition-colors" />
               </div>
             </Link>

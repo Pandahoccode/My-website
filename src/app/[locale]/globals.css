@@ -146,6 +146,9 @@ body {
   @apply border;
   border-color: #000000; /* Light Mode: Bold Black Border */
   transition: border-color 0.4s ease-in-out;
+
+  /* GPU Performance: Promote to compositing layer */
+  will-change: transform;
 }
 
 .dark .antigravity-card {
@@ -174,6 +177,10 @@ body {
 
   /* Border radius for soft edges */
   @apply rounded-3xl;
+
+  /* GPU Performance: Isolate compositing layer */
+  contain: layout paint;
+  will-change: transform;
 }
 
 .dark .glass-surface {
@@ -232,5 +239,22 @@ body {
   50% {
     filter: blur(35px);
     opacity: 0.8;
+  }
+}
+
+/* Mobile Performance: Reduce glass blur on constrained GPUs */
+@media (max-width: 768px) {
+  .glass-surface {
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+  }
+}
+
+/* Accessibility: Disable all breathing/pulsing animations */
+@media (prefers-reduced-motion: reduce) {
+  .glass-surface,
+  .antigravity-card {
+    transition: none !important;
+    animation: none !important;
   }
 }

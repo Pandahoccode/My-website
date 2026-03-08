@@ -1,12 +1,12 @@
-import { getProjectsByLocale } from "@/lib/project";
+"use client";
+
+import type { Project } from "@/lib/project";
 import { ProjectList } from "./ProjectList";
-import { getTranslations, getLocale } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
 import { Link } from "@/i18n/routing";
 
-export async function Projects() {
-  const t = await getTranslations('Projects');
-  const locale = await getLocale();
-  const projects = getProjectsByLocale(locale);
+export function Projects({ projects }: { projects: Project[] }) {
+  const t = useTranslations('Projects');
 
   return (
     <section id="projects" className="py-24 px-6 bg-background">
@@ -35,7 +35,7 @@ export async function Projects() {
               backgroundColor: 'var(--nav-bg)'
             }}
           >
-            View All Projects
+            {t('viewAll')}
             <span className="group-hover:translate-x-1 transition-transform">→</span>
           </Link>
         </div>

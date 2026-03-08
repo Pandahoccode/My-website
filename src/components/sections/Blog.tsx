@@ -1,9 +1,12 @@
-import { getAllBlogs } from "@/lib/blog";
+"use client";
+
+import type { BlogPost } from "@/lib/blog";
 import { BlogList } from "./BlogList";
+import { useTranslations } from 'next-intl';
 import { Link } from "@/i18n/routing";
 
-export async function Blog() {
-  const blogs = getAllBlogs();
+export function Blog({ blogs }: { blogs: BlogPost[] }) {
+  const t = useTranslations('Blog');
 
   return (
     <section id="blog" className="py-24 px-6 relative z-10 w-full">
@@ -11,10 +14,10 @@ export async function Blog() {
         {/* Header */}
         <div className="mb-16 text-center">
           <h2 className="text-4xl md:text-5xl font-bold font-outfit mb-4 text-foreground">
-            Creative Log
+            {t('title')}
           </h2>
           <p className="text-lg max-w-2xl mx-auto text-foreground/80">
-            Recent thoughts, technical discoveries, and explorations in code.
+            {t('subtitle')}
           </p>
         </div>
 
@@ -32,7 +35,7 @@ export async function Blog() {
               backgroundColor: 'var(--nav-bg)'
             }}
           >
-            View All Posts
+            {t('viewAll')}
             <span className="group-hover:translate-x-1 transition-transform">→</span>
           </Link>
         </div>

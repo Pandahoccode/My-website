@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Github, Linkedin, Facebook } from "lucide-react";
 
 export function SocialOrbit() {
   // High-fidelity icons configuration
@@ -18,12 +18,12 @@ export function SocialOrbit() {
       label: "LinkedIn",
       color: "hover:text-[#0077b5]" // LinkedIn Blue
     },
-    // Using X icon (Twitter)
+    // Using Facebook
     {
-      icon: Twitter, // Lucide 'Twitter' is often used for X, checking if X exists or we style it
-      href: "https://twitter.com",
-      label: "X (Twitter)",
-      color: "hover:text-[#1DA1F2] dark:hover:text-white" // X Black/White
+      icon: Facebook,
+      href: "https://www.facebook.com/dpa06/",
+      label: "Facebook",
+      color: "hover:text-[#1877F2]" // Facebook Blue
     }
   ];
 

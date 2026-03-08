@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { useTheme } from "next-themes";
+import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import { useThemeDark } from '@/hooks/useThemeDark';
 
 interface Star {
   x: number;
@@ -23,17 +23,9 @@ interface Meteor {
 
 export function StarBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [mounted, setMounted] = useState(false);
-  const { theme } = useTheme(); // Use next-themes to detect mode
+  const { isDark, mounted } = useThemeDark();
   const widthRef = useRef(0);
   const heightRef = useRef(0);
-
-  // Determine if we are in dark mode (defaulting to dark if undefined during server render, but mounted check handles that)
-  const isDark = mounted && (theme === 'dark' || theme === 'system');
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     if (!mounted) return;
@@ -176,7 +168,7 @@ export function StarBackground() {
       window.removeEventListener("resize", init);
       cancelAnimationFrame(animationId);
     };
-  }, [mounted, theme, isDark]);
+  }, [mounted, isDark]);
 
   if (!mounted) return null;
 

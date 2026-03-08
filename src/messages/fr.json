@@ -9,112 +9,117 @@
   "Home": {
     "greeting": "Bonjour, je suis",
     "title": "Phuc Anh Dang",
-    "description": "Générer des insights pertinents grâce à la gestion et l'exploitation stratégique des données.",
-    "role": "Curieux et motivé, je recherche une opportunité pour mettre en pratique mes compétences dans un environnement professionnel stimulant et apprendre aux côtés d'experts du secteur. Mon objectif est de contribuer à des projets innovants en data management.",
-    "subBio": "Spécialisé en Python, SQL, Power BI et Machine Learning.",
-    "resumeButton": "CV",
-    "quote": "\"Sans données, vous n’êtes qu’une autre personne avec une opinion.\"",
+    "bio": "Curieux et motivé, passionné par la gestion des données et leur exploitation stratégique.",
+    "description": "Actuellement en Bachelor Universitaire de Technologie (BUT) Science des Données, je recherche une opportunité pour appliquer mes compétences dans un environnement professionnel stimulant et apprendre aux côtés d'experts du secteur. Mon objectif est de contribuer à des projets innovants de gestion de données et d'avoir un impact positif.",
+    "resumeButton": "Mon CV",
+    "quote": "\"Sans données, vous n'êtes qu'une autre personne avec une opinion.\"",
     "quoteAuthor": "— W. Edwards Deming"
   },
   "Projects": {
-    "title": "Travaux Sélectionnés",
-    "featuredTitle": "Projets en Vedette",
+    "title": "Projets Phares",
+    "subtitle": "Une vitrine de mes travaux en science des données et développement",
     "viewProject": "Voir le Projet",
-    "frenchCinema": {
-      "title": "Analyse des Cinémas en France",
-      "category": "Data Analysis",
-      "description": "Analyse de l'évolution face au Covid-19, streaming et inflation. Préparation en Python, analyse en R, datavisualisation sous Power BI (2 042 établissements)."
+    "viewAll": "Voir tous les projets",
+    "searchPlaceholder": "Rechercher des projets...",
+    "noProjectsFound": "Aucun projet ne correspond à votre recherche.",
+    "readCaseStudy": "Lire l'Etude de Cas",
+    "backHome": "Accueil",
+    "backToProjects": "Retour aux Projets",
+    "viewCode": "Voir le Code",
+    "liveDemo": "Démo Live",
+    "dataWarehouse": {
+      "title": "Data Warehouse Chinook",
+      "description": "Transformation de la base de données Chinook en un schéma en étoile pour optimiser l'analyse des ventes musicales. Conception et automatisation d'un pipeline ETL complet avec Oracle Data Integrator."
     },
     "airQuality": {
-      "title": "Analyse Qualité de l'Air du Vietnam",
-      "category": "Machine Learning",
-      "description": "Collecte via API (40+ stations). Nettoyage, structuration et analyse des niveaux de pollution. Clustering non supervisé (PCA + K-means)."
+      "title": "Qualité de l'Air au Vietnam",
+      "description": "Collecte et préparation de données via API provenant de plus de 40 stations. Nettoyage, structuration et analyse des niveaux de pollution par clustering non supervisé (ACP + K-means)."
     },
-    "dataWarehouse": {
-      "title": "Conception d'un Data Warehouse",
-      "category": "Data Engineering",
-      "description": "Transformation de la base Chinook en un Data Warehouse en étoile. Conception et automatisation d'un pipeline ETL complet avec Oracle Data Integrator."
+    "frenchCinema": {
+      "title": "Analyse du Cinéma Français",
+      "description": "Étude de l'évolution des cinémas français face au Covid-19, au streaming et à l'inflation. Préparation des données en Python, analyse sous R et visualisation via Power BI (2 042 établissements)."
     }
   },
   "About": {
-    "title": "Parcours Données",
-    "description1": "Curieux et motivé, je me passionne pour la gestion et l’exploitation stratégique des données afin de générer des insights pertinents.",
-    "description2": "Actuellement en BUT Science des Données, je recherche une opportunité pour mettre en pratique mes compétences dans un environnement professionnel stimulant et apprendre aux côtés d’experts du secteur. Mon objectif est de contribuer à des projets innovants en data management.",
+    "title": "À Propos",
+    "subtitle": "Mon parcours à travers les données, le code et la créativité.",
+    "journeyTitle": "Le Parcours",
+    "journeyDescription": "Mon objectif est de contribuer à des projets innovants de gestion de données et d'avoir un impact positif grâce à leur exploitation.",
+    "roadmapTitle": "Ma Feuille de Route",
+    "educationTitle": "Ma Formation",
+    "certTitle": "Mes Certificats",
+    "skillsTitle": "Soft Skills",
     "education": {
-      "title": "Formation",
-      "degree": "BUT Science des données",
+      "degree": "BUT Science des Données",
       "school": "Université de Lille - IUT",
-      "year": "2024 – Présent",
-      "hs_degree": "Bac scientifique",
-      "hs_school": "Lycée d'Élite Hanoi-Amsterdam"
+      "hs_degree": "Baccalauréat Scientifique",
+      "hs_school": "Lycée d'excellence Hanoi-Amsterdam"
     },
     "timeline": [
       {
-        "year": "09/2025 - Présent",
-        "title": "Conception d'un Data Warehouse",
-        "desc": "Transformation de la base Chinook en un Data Warehouse en étoile pour optimiser l'analyse des ventes. Pipeline ETL automatisé avec Oracle Data Integrator."
+        "year": "2021 - 2022",
+        "title": "Développement Logiciel Fondamental",
+        "desc": "• Maîtrise des fondamentaux de l'informatique et de la logique algorithmique\n• Développement de compétences clés en C++ et Python\n• Solide base en programmation fonctionnelle"
       },
       {
-        "year": "11/2025 - Présent",
-        "title": "Analyse qualité de l'air du Vietnam",
-        "desc": "Collecte et préparation de données depuis 40+ stations via APIs. Approche de clustering non supervisé (PCA + K-means) pour classifier les stations."
+        "year": "2023 - 2024",
+        "title": "Ingénieur Logiciel | Green Ams Robotics Team",
+        "desc": "• Architecture de systèmes de contrôle pour la robotique de compétition\n• Implémentation du traitement des capteurs en temps réel et navigation autonome\n• Collaboration sur des cycles de développement rapides pour la FRC"
       },
       {
-        "year": "02/2025 - 05/2025",
-        "title": "Analyse des cinémas en France",
-        "desc": "Analyse de l'évolution des cinémas face au Covid-19, au streaming et à l'inflation. Préparation en Python, analyse en R et dataviz sous Power BI."
+        "year": "2025 - 2026",
+        "title": "Étudiant International | Université de Lille",
+        "desc": "• Poursuite d'études avancées en Science des Données et Analyse\n• Spécialisation en IA, modélisation statistique et données de haute dimension\n• Épanouissement dans un environnement académique mondial et multiculturel"
       }
     ],
-    "roadmap": {
-      "year1": "Curiosité & Apprentissage",
-      "year2": "Résolution de problèmes",
-      "future": "Esprit analytique & Travail en équipe"
-    },
     "skills": {
-      "title": "Outils & Compétences",
-      "python": "Python, SQL, R, SAS. Dev web (HTML/CSS)",
-      "visualization": "Power BI / Qlik Sense / ODI",
-      "ml": "Langues (FR B2, EN B2, VI Natif)"
+      "communication": "Communication",
+      "collaboration": "Travail d'équipe & Collaboration",
+      "problem-solving": "Résolution de problèmes",
+      "adaptability": "Adaptabilité",
+      "team-leadership": "Leadership d'équipe",
+      "critical-thinking": "Pensée critique"
     },
+    "description1": "Curieux et motivé, je suis passionné par la gestion et l'exploitation stratégique des données pour générer des insights actionnables.",
+    "description2": "Actuellement en BUT Science des Données à l'Université de Lille, je recherche une opportunité pour appliquer mes compétences dans un environnement professionnel stimulant et apprendre aux côtés d'experts.",
     "certifications": {
       "title": "Certifications",
       "google": "Google Data Analytics (Coursera & Google, 07/2025 - 11/2025)",
       "oracle": "Oracle AI Foundations (Oracle Cloud Infrastructure, 10/2025)"
-    },
-    "basedIn": "Basé à",
-    "journey": "Parcours",
-    "milestones": {
-      "student": {
-        "title": "Étudiant en Data Science",
-        "description": "Poursuite d'un BUT en Science des Données, concentré sur le ML et l'analyse statistique"
-      },
-      "frontend": {
-        "title": "Développeur Frontend",
-        "description": "Création d'applications web modernes avec React et Next.js"
-      },
-      "started": {
-        "title": "Début du Parcours",
-        "description": "Apprentissage de la programmation avec Python et la visualisation de données"
-      }
     }
   },
   "Skills": {
-    "title": "Outils & Techniques",
-    "subtitle": "Un mélange de rigueur en science des données et développement.",
-    "languages": "Programmation & Outils",
-    "dataScience": "Data & BI",
-    "webTech": "Langues"
+    "title": "Compétences Techniques",
+    "subtitle": "Un mélange de passion pour l'analyse et la science des données",
+    "tools": "Outils",
+    "codingLanguage": "Langages",
+    "tech": "Technologies"
+  },
+  "Blog": {
+    "title": "Mon Blog",
+    "subtitle": "Pensées récentes, découvertes techniques et explorations dans les données.",
+    "viewAll": "Voir tous les articles",
+    "readArticle": "Lire l'article",
+    "noBlogsFound": "Aucun article trouvé dans les archives.",
+    "backHome": "Accueil",
+    "backToBlog": "Retour au Blog"
   },
   "Contact": {
-    "title": "Connectons-nous",
+    "title": "Restons en Contact",
     "text": "Intéressé par une collaboration ou une question ? Je suis toujours ouvert pour discuter de science des données, d'IA et de développement créatif.",
-    "emailLabel": "Email",
+    "emailLabel": "E-mail",
     "messageLabel": "Message",
     "sendButton": "Envoyer le Message",
     "email": "phuc-anh.dang.etu@univ-lille.fr, dpa280706@gmail.com"
   },
   "Footer": {
-    "copyright": "© 2026 Phuc Anh. Construit avec Next.js & Lovelace.",
-    "contact": "Connecter"
+    "ctaTitle": "Prêt à avoir un impact ?",
+    "ctaButton": "Me contacter",
+    "status": "À la recherche d'opportunités",
+    "brandTagline": "Passionné par la gestion des données et la génération d'insights pertinents.",
+    "explore": "Explorer",
+    "connect": "Se connecter",
+    "copyright": "© 2026 Phuc Anh. Tous droits réservés.",
+    "backToTop": "Retour en haut"
   }
 }

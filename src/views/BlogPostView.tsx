@@ -3,9 +3,11 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import { notFound } from 'next/navigation';
 import { Link } from '@/i18n/routing';
 import { ArrowLeft, Home } from 'lucide-react';
+import { getTranslations } from 'next-intl/server';
 
 export async function BlogPostView({ slug }: { slug: string }) {
   const blog = getBlogBySlug(slug);
+  const t = await getTranslations('Blog');
 
   if (!blog) {
     notFound();
@@ -16,11 +18,11 @@ export async function BlogPostView({ slug }: { slug: string }) {
       {/* Navigation */}
       <div className="flex items-center gap-4 mb-8">
         <Link href="/" className="inline-flex items-center gap-2 text-foreground/60 hover:text-cyan-400 transition-colors">
-          <Home className="w-4 h-4" /> Home
+          <Home className="w-4 h-4" /> {t('backHome')}
         </Link>
         <span className="text-foreground/40">|</span>
         <Link href="/blog" className="inline-flex items-center gap-2 text-foreground/60 hover:text-cyan-400 transition-colors">
-          <ArrowLeft className="w-4 h-4" /> Back to Blog
+          <ArrowLeft className="w-4 h-4" /> {t('backToBlog')}
         </Link>
       </div>
 

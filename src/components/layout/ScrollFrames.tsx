@@ -116,7 +116,7 @@ export function ScrollFrames({ children }: ScrollFramesProps) {
   return (
     <section
       ref={containerRef}
-      className="relative"
+      className="relative mb-24 md:mb-32"
       style={{ height: '400vh' }}
     >
       <div className="sticky top-0 h-screen w-full overflow-hidden">
@@ -139,7 +139,7 @@ export function ScrollFrames({ children }: ScrollFramesProps) {
             {children}
           </div>
         </div>
-        
+
         {/* Scroll Down Indicator */}
         <ScrollIndicator />
       </div>

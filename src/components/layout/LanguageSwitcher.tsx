@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
 import { clsx } from 'clsx';
 import { useTransition, useMemo } from 'react';
+import { useMounted } from '@/hooks/useMounted';
 
 const locales = ['en', 'fr', 'vi'] as const;
 type Locale = typeof locales[number];
@@ -41,6 +42,8 @@ export function LanguageSwitcher({ variant = 'default' }: LanguageSwitcherProps)
   const router = useRouter();
   const pathname = usePathname();
   const [isPending, startTransition] = useTransition();
+  const mounted = useMounted();
+  const isGlass = variant === 'glass';
 
   // Derive the active locale directly from the pathname on every render.
   const activeLocale = useMemo(() => getLocaleFromPath(pathname), [pathname]);
@@ -54,7 +57,23 @@ export function LanguageSwitcher({ variant = 'default' }: LanguageSwitcherProps)
     });
   };
 
-  const isGlass = variant === 'glass';
+  // Prevent hydration mismatch — render skeleton pill until client-side mount
+  if (!mounted) {
+    return (
+      <div className={clsx(
+        "flex items-center p-[0.25rem] rounded-full backdrop-blur-xl border relative z-50 transition-colors",
+        isGlass
+          ? "bg-white/5 border-white/10"
+          : "bg-white/50 dark:bg-white/5 border-gray-200 dark:border-white/10"
+      )}>
+        {locales.map((l) => (
+          <div key={l} className="px-[0.75rem] py-[0.25rem] min-w-[3rem] text-center font-bold rounded-full opacity-50">
+            {l.toUpperCase()}
+          </div>
+        ))}
+      </div>
+    );
+  }
 
   return (
     <div className={clsx(

@@ -19,6 +19,14 @@
     "title": "Featured Projects",
     "subtitle": "A showcase of my data science and development work",
     "viewProject": "View Project",
+    "viewAll": "View All Projects",
+    "searchPlaceholder": "Search projects by title or tech...",
+    "noProjectsFound": "No projects found matching your search.",
+    "readCaseStudy": "Read Case Study",
+    "backHome": "Home",
+    "backToProjects": "Back to Projects",
+    "viewCode": "View Code",
+    "liveDemo": "Live Demo",
     "dataWarehouse": {
       "title": "Chinook Data Warehouse",
       "description": "Transformed the Chinook database into a star schema Data Warehouse to optimize music sales analysis. Designed and automated a full ETL pipeline with Oracle Data Integrator."
@@ -44,31 +52,33 @@
     "education": {
       "degree": "Bachelor of Technology Data Science",
       "school": "University of Lille - IUT",
-      "hs_degree": "Baccalaureate (Science)",
+      "hs_degree": "Baccalaureate (French)",
       "hs_school": "Hanoi-Amsterdam High School for the Gifted"
     },
     "timeline": [
       {
-        "year": "09/2025 - Present",
-        "title": "Design of a Data Warehouse",
-        "desc": "Transformed the Chinook database into a star Data Warehouse to optimize music sales analysis. Designed and automated a full ETL pipeline with Oracle Data Integrator."
+        "year": "2021 - 2022",
+        "title": "Foundational Software Development",
+        "desc": "• Mastered CS fundamentals and algorithmic logic\n• Developed core competency in C++ and Python\n• Built strong foundation in functional programming"
       },
       {
-        "year": "11/2025 - Present",
-        "title": "Air Quality Analysis in Vietnam",
-        "desc": "Collected and prepared data from 40+ stations via APIs. Used unsupervised clustering (PCA + K-means) to classify stations and facilitate environmental analysis."
+        "year": "2023 - 2024",
+        "title": "Software Engineer | Green Ams Robotics Team",
+        "desc": "• Architected control systems for competitive robotics\n• Implemented real-time sensor processing and autonomous navigation\n• Collaborated in rapid development cycles for FRC"
       },
       {
-        "year": "02/2025 - 05/2025",
-        "title": "French Cinemas Analysis",
-        "desc": "Analyzed the evolution of French cinemas facing Covid-19, streaming, and inflation. Data prep in Python, analysis in R, and dataviz in Power BI."
+        "year": "2025 - 2026",
+        "title": "International Scholar | University of Lille",
+        "desc": "• Pursuing advanced Data Science & Analytics studies\n• Specializing in AI, statistical modeling, and high-dimensional data\n• Thriving in a global, multicultural academic environment"
       }
     ],
     "skills": {
-      "communication": "Curiosity & Continuous Learning",
+      "communication": "Communication",
       "collaboration": "Teamwork & Collaboration",
-      "team-leadership": "Problem Solving",
-      "adaptability": "Analytical Mind"
+      "problem-solving": "Problem Solving",
+      "adaptability": "Adaptability",
+      "team-leadership": "Team Leadership",
+      "critical-thinking": "Critical Thinking"
     },
     "description1": "Curious and motivated, I am passionate about the management and strategic exploitation of data to generate actionable insights.",
     "description2": "Currently pursuing a BUT in Data Science at the University of Lille, I am looking for an opportunity to apply my skills in a stimulating professional environment and learn alongside industry experts.",
@@ -81,9 +91,18 @@
   "Skills": {
     "title": "Technical Skills",
     "subtitle": "A blend of data analytics science passion",
-    "languages": "Languages",
-    "dataScience": "Data Science",
-    "webTech": "Web Technologies"
+    "tools": "Tools",
+    "codingLanguage": "Coding Languages",
+    "tech": "Technologies"
+  },
+  "Blog": {
+    "title": "My Blog",
+    "subtitle": "Recent thoughts, technical discoveries, and explorations in data.",
+    "viewAll": "View All Posts",
+    "readArticle": "Read Article",
+    "noBlogsFound": "No blogs found in the archives.",
+    "backHome": "Home",
+    "backToBlog": "Back to Blog"
   },
   "Contact": {
     "title": "Let's Connect",
@@ -100,6 +119,7 @@
     "brandTagline": "Passionate about data management and generating relevant insights.",
     "explore": "Explore",
     "connect": "Connect",
-    "copyright": "© 2026 Phuc Anh. All rights reserved."
+    "copyright": "© 2026 Phuc Anh. All rights reserved.",
+    "backToTop": "Back to Top"
   }
 }

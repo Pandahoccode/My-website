@@ -3,18 +3,14 @@
 import { motion } from "framer-motion";
 import { useTranslations } from 'next-intl';
 import { ChevronDown } from "lucide-react";
-import { useMounted } from "@/hooks/useMounted";
-import { useTheme } from "next-themes";
+import { useThemeDark } from "@/hooks/useThemeDark";
 import { AvatarEffect } from "@/components/ui/AvatarEffect";
 import { ResumeDropdown } from "@/components/ui/ResumeDropdown";
 import { SocialOrbit } from "@/components/ui/SocialOrbit";
 
 export function Home() {
   const t = useTranslations('Home');
-  const mounted = useMounted();
-  const { theme } = useTheme();
-  // Simplified theme check — safe because we early-return below when !mounted
-  const isDark = mounted ? (theme === 'dark' || theme === 'system') : true;
+  const { isDark, mounted } = useThemeDark();
 
   if (!mounted) {
     return <section className="min-h-[100svh]" />;
@@ -30,7 +26,7 @@ export function Home() {
         padding: 'clamp(2rem, 5vh, 10rem) clamp(1.5rem, 4vw, 3rem)',
       }}
     >
-      <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 items-center relative z-10 gap-12 lg:gap-20">
+      <div className="max-w-[85rem] w-full grid grid-cols-1 lg:grid-cols-2 items-center relative z-10 gap-12 lg:gap-20">
 
         {/* 1. The "Who & What" (Typographic Anchor) */}
         <div className="flex flex-col items-start text-left space-y-8 z-10 order-2 lg:order-1">
@@ -55,9 +51,9 @@ export function Home() {
               </span>
             </h1>
 
-            {/* The "Elevator Pitch": Punchy, Contrast */}
+            {/* The "Elevator Pitch": Punchy, Contrast (h4 size) */}
             <p
-              className="text-xl md:text-2xl font-bold max-w-xl leading-relaxed"
+              className="text-lg md:text-xl font-bold max-w-2xl leading-relaxed"
               style={{ color: 'var(--foreground)' }}
             >
               <span className="opacity-90">{t('bio')}</span>

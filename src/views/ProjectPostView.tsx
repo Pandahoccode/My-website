@@ -3,9 +3,11 @@ import { MDXRemote } from 'next-mdx-remote/rsc';
 import { notFound } from 'next/navigation';
 import { Link } from '@/i18n/routing';
 import { ArrowLeft, Github, ExternalLink, Home } from 'lucide-react';
+import { getTranslations } from 'next-intl/server';
 
 export async function ProjectPostView({ slug }: { slug: string }) {
   const project = getProjectBySlug(slug);
+  const t = await getTranslations('Projects');
 
   if (!project) {
     notFound();
@@ -20,11 +22,11 @@ export async function ProjectPostView({ slug }: { slug: string }) {
       {/* Navigation */}
       <div className="flex items-center gap-4 mb-8">
         <Link href="/" className="inline-flex items-center gap-2 text-gray-400 hover:text-cyan-400 transition-colors">
-          <Home className="w-4 h-4" /> Home
+          <Home className="w-4 h-4" /> {t('backHome')}
         </Link>
         <span className="text-gray-600">|</span>
         <Link href="/projects" className="inline-flex items-center gap-2 text-gray-400 hover:text-cyan-400 transition-colors">
-          <ArrowLeft className="w-4 h-4" /> Back to Projects
+          <ArrowLeft className="w-4 h-4" /> {t('backToProjects')}
         </Link>
       </div>
 
@@ -87,7 +89,7 @@ export async function ProjectPostView({ slug }: { slug: string }) {
                 : 'border-purple-500/30 text-purple-400 hover:bg-purple-500/10'
                 }`}
             >
-              <Github className="w-4 h-4" /> View Code
+              <Github className="w-4 h-4" /> {t('viewCode')}
             </a>
           )}
           {project.meta.demo && project.meta.demo !== '#' && (
@@ -100,7 +102,7 @@ export async function ProjectPostView({ slug }: { slug: string }) {
                 : 'border-purple-500/30 text-purple-400 hover:bg-purple-500/10'
                 }`}
             >
-              <ExternalLink className="w-4 h-4" /> Live Demo
+              <ExternalLink className="w-4 h-4" /> {t('liveDemo')}
             </a>
           )}
         </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { useTheme } from 'next-themes';
 import { useMounted } from '@/hooks/useMounted';
 
@@ -8,6 +8,7 @@ export function Separator() {
   // 1. Theme Logic
   const { resolvedTheme } = useTheme();
   const mounted = useMounted();
+  const prefersReducedMotion = useReducedMotion();
 
   // Prevent hydration mismatch by defaulting to a safe state until mounted
   if (!mounted) return <div className="py-24" />;
@@ -34,15 +35,15 @@ export function Separator() {
 
         {/* Breathing Energy Pulse - ALL BLUE (Blue-300 in Light, Cyan-400 in Dark) */}
         <motion.div
-          animate={{
+          animate={prefersReducedMotion ? {} : {
             opacity: [0.4, 0.8, 1, 0.8, 0.4],
             scaleX: [0.95, 1, 1.05, 1, 0.95],
-            scaleY: [1, 1.5, 2, 1.5, 1], // Vertical expansion for "breathing" look
+            scaleY: [1, 1.5, 2, 1.5, 1],
           }}
           transition={{
-            duration: 5, // Slower, deeper breath
+            duration: 5,
             repeat: Infinity,
-            ease: "easeInOut",
+            ease: [0.37, 0, 0.63, 1], // Organic sine wave — natural inhale/exhale
           }}
           className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-300 dark:via-cyan-400 to-transparent blur-sm"
         />
@@ -50,8 +51,8 @@ export function Separator() {
         {/* The Heartbeat Center */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <motion.div
-            animate={{
-              // 3. New Scale Sequence: [1, 1.25, 1.5, 1.25, 1]
+            animate={prefersReducedMotion ? {} : {
+              // Heartbeat scale sequence
               scale: [1, 1.2, 1.3, 1.2, 1],
               opacity: [0.7, 0.9, 1, 0.9, 0.7],
               boxShadow: [
@@ -63,9 +64,9 @@ export function Separator() {
               ]
             }}
             transition={{
-              duration: 5, // Synced with the line breath
+              duration: 5,
               repeat: Infinity,
-              ease: "easeInOut",
+              ease: [0.22, 0.68, 0, 1.71], // Elastic overshoot — organic heartbeat
             }}
             // Dot Color: Blue-600 (Light) / Cyan-500 (Dark)
             className="relative w-3 h-3 rounded-full bg-blue-600 dark:bg-cyan-500"

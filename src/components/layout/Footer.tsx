@@ -3,19 +3,14 @@
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { Github, Linkedin, Mail, ArrowUpRight, ArrowRight } from 'lucide-react';
-import { usePathname } from 'next/navigation';
 import Image from 'next/image';
+import { useMounted } from '@/hooks/useMounted';
+import { useNavigation } from '@/hooks/useNavigation';
 
 export function Footer() {
   const t = useTranslations('Footer');
-  const pathname = usePathname();
-
-  // Detect if current path is the home page (including locale prefixes)
-  const isHomePage = pathname === '/' || /^\/(en|fr|vi)\/?$/.test(pathname);
-
-  const getNavHref = (section: string) => {
-    return isHomePage ? section : `/${section}`;
-  };
+  const { isHomePage, getNavHref } = useNavigation();
+  const mounted = useMounted();
 
   const socialLinks = [
     { icon: Github, href: "https://github.com/Pandahoccode", label: "GitHub" },
@@ -119,10 +114,10 @@ export function Footer() {
           <p>{t('copyright')}</p>
           <div className="flex gap-8 mt-4 md:mt-0">
             <button
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              onClick={() => mounted && window.scrollTo({ top: 0, behavior: 'smooth' })}
               className="hover:text-foreground transition-colors flex items-center gap-2"
             >
-              Back to Top <ArrowUpRight className="w-4 h-4" />
+              {t('backToTop')} <ArrowUpRight className="w-4 h-4" />
             </button>
           </div>
         </div>

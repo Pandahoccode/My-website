@@ -1,106 +1,125 @@
 {
   "Navigation": {
-    "home": "Trang Chủ",
-    "projects": "Dự Án",
-    "about": "Giới Thiệu",
+    "home": "Trang chủ",
+    "projects": "Dự án",
+    "about": "Giới thiệu",
     "blog": "Blog",
-    "contact": "Liên Hệ"
+    "contact": "Liên hệ"
   },
   "Home": {
-    "greeting": "Xin chào, tôi là",
+    "greeting": "Xin chào, mình là",
     "title": "Đặng Phúc Anh",
-    "description": "Quản lý và khai thác chiến lược dữ liệu để tạo ra những hiểu biết phù hợp.",
-    "subBio": "Chuyên môn về Python, SQL, Power BI và Machine Learning.",
-    "role": "Tò mò và năng động, tôi đang tìm kiếm cơ hội để áp dụng kỹ năng của mình trong một môi trường chuyên nghiệp thú vị và học hỏi cùng các chuyên gia trong ngành. Mục tiêu của tôi là đóng góp cho các dự án quản lý dữ liệu sáng tạo.",
-    "resumeButton": "CV",
-    "quote": "\"Không có dữ liệu, bạn chỉ là một người khác với một ý kiến.\"",
+    "bio": "Tò mò và đầy động lực, đam mê quản lý và khai thác dữ liệu chiến lược.",
+    "description": "Hiện đang theo học Bằng Cử nhân Công nghệ (BUT) chuyên ngành Khoa học Dữ liệu tại Đại học Lille, mình đang tìm kiếm cơ hội để áp dụng các kỹ năng của mình trong một môi trường chuyên nghiệp đầy kích thích và học hỏi từ các chuyên gia hàng đầu. Mục tiêu của mình là đóng góp vào các dự án quản lý dữ liệu đổi mới và tạo ra những tác động tích cực.",
+    "resumeButton": "Hồ sơ (CV)",
+    "quote": "\"Không có dữ liệu, nhận định của bạn chỉ là quan điểm của một người lạ mà thôi.\"",
     "quoteAuthor": "— W. Edwards Deming"
   },
   "Projects": {
-    "title": "Dự Án Tiêu Biểu",
-    "featuredTitle": "Dự Án Nổi Bật",
-    "viewProject": "Xem Dự Án",
-    "frenchCinema": {
-      "title": "Phân Tích Điện Ảnh Pháp",
-      "category": "Phân Tích Dữ Liệu",
-      "description": "Phân tích sự phát triển đối phó với Covid-19, streaming, và lạm phát. Chuẩn bị bằng Python, phân tích bằng R, và trực quan hóa bằng Power BI."
+    "title": "Dự án Tiêu biểu",
+    "subtitle": "Nơi trưng bày các công trình nghiên cứu dữ liệu và phát triển của mình",
+    "viewProject": "Xem Dự án",
+    "viewAll": "Xem tất cả dự án",
+    "searchPlaceholder": "Tìm kiếm dự án...",
+    "noProjectsFound": "Không tìm thấy dự án nào phù hợp.",
+    "readCaseStudy": "Đọc nghiên cứu",
+    "backHome": "Trang chủ",
+    "backToProjects": "Quay lại Dự án",
+    "viewCode": "Xem mã nguồn",
+    "liveDemo": "Bản demo",
+    "dataWarehouse": {
+      "title": "Kho dữ liệu Chinook",
+      "description": "Chuyển đổi cơ sở dữ liệu Chinook thành Star schema (mô hình sao) để tối ưu hóa phân tích doanh số âm nhạc. Thiết kế và tự động hóa toàn bộ quy trình ETL với Oracle Data Integrator."
     },
     "airQuality": {
-      "title": "Phân Tích Chất Lượng Không Khí",
-      "category": "Học Máy",
-      "description": "Thu thập qua API (hơn 40 trạm). Làm sạch, cấu trúc và phân tích mức độ ô nhiễm thông qua phân cụm không giám sát (PCA + K-means)."
+      "title": "Phân tích Chất lượng Không khí Việt Nam",
+      "description": "Thu thập và chuẩn bị dữ liệu chất lượng không khí từ hơn 40 trạm qua API. Làm sạch, cấu trúc và phân tích mức độ ô nhiễm bằng thuật toán phân cụm không giám sát (PCA + K-means)."
     },
-    "dataWarehouse": {
-      "title": "Kho Dữ Liệu Chinook",
-      "category": "Kỹ Thuật Dữ Liệu",
-      "description": "Chuyển đổi cơ sở dữ liệu Chinook thành Data Warehouse dạng sao. Thiết kế và tự động hóa quy trình ETL hoàn chỉnh bằng Oracle Data Integrator."
+    "frenchCinema": {
+      "title": "Phân tích Rạp chiếu phim Pháp",
+      "description": "Phân tích sự phát triển của các rạp chiếu phim Pháp trước tác động của Covid-19, dịch vụ streaming và lạm phát. Xử lý dữ liệu bằng Python, phân tích bằng R và trực quan hóa qua Power BI."
     }
   },
   "About": {
-    "title": "Hành Trình Dữ Liệu",
-    "description1": "Tò mò và năng động, tôi đam mê quản lý và khai thác dữ liệu chiến lược để tạo ra những hiểu biết sâu sắc.",
-    "description2": "Hiện đang theo học Cử nhân Công nghệ (BUT) về Khoa học Dữ liệu tại Đại học Lille, tôi đang tìm kiếm cơ hội để áp dụng các kỹ năng của mình trong một môi trường làm việc đầy thử thách và học hỏi cùng các chuyên gia.",
+    "title": "Về mình",
+    "subtitle": "Hành trình xuyên suốt dữ liệu, mã code và sự sáng tạo.",
+    "journeyTitle": "Hành trình",
+    "journeyDescription": "Mục tiêu của mình là đóng góp vào các dự án quản lý dữ liệu đổi mới và tạo ra tác động tích cực thông qua việc khai thác dữ liệu hiệu quả.",
+    "roadmapTitle": "Lộ trình của mình",
+    "educationTitle": "Học vấn",
+    "certTitle": "Chứng chỉ",
+    "skillsTitle": "Kỹ năng mềm",
     "education": {
-      "title": "Giáo Dục",
-      "degree": "Cử nhân (BUT) Khoa học Dữ liệu",
+      "degree": "Cử nhân Công nghệ Khoa học Dữ liệu",
       "school": "Đại học Lille - IUT",
-      "year": "2024 – Hiện tại",
-      "hs_degree": "Tú tài Khoa học",
+      "hs_degree": "Bằng Tú tài (Chuyên Pháp)",
       "hs_school": "THPT Chuyên Hà Nội - Amsterdam"
     },
-    "roadmap": {
-      "year1": "Tò mò & Học tập liên tục",
-      "year2": "Kỹ năng giải quyết vấn đề",
-      "future": "Tư duy phân tích & Làm việc nhóm"
-    },
-    "skills": {
-      "title": "Công cụ & Kỹ thuật",
-      "python": "Python, SQL, R, SAS. Lập trình web (HTML/CSS)",
-      "visualization": "Power BI / Qlik Sense / ODI",
-      "ml": "Ngôn ngữ (FR B2, EN B2, VI Bản xứ)"
-    },
-    "certifications": {
-      "title": "Chứng Chỉ",
-      "google": "Google Data Analytics (Coursera & Google, 07/2025 - 11/2025)",
-      "oracle": "Oracle AI Foundations (Oracle Cloud Infrastructure, 10/2025)"
-    },
-    "basedIn": "Sinh sống tại",
-    "journey": "Hành Trình",
     "timeline": [
       {
-        "year": "09/2025 - Hiện tại",
-        "title": "Thiết kế Kho Dữ liệu",
-        "desc": "Chuyển đổi cơ sở dữ liệu Chinook thành Data Warehouse dạng sao để tối ưu hóa phân tích bán vé nghe nhạc. Tự động hóa pipeline ETL với Oracle Data Integrator."
+        "year": "2021 - 2022",
+        "title": "Nền tảng Phát triển Phần mềm",
+        "desc": "• Nắm vững các kiến thức cơ bản về Khoa học Máy tính và tư duy thuật toán\n• Phát triển kỹ năng cốt lõi với C++ và Python\n• Xây dựng nền tảng vững chắc về lập trình chức năng (functional programming)"
       },
       {
-        "year": "11/2025 - Hiện tại",
-        "title": "Phân tích chất lượng không khí tại Việt Nam",
-        "desc": "Thu thập và chuẩn bị dữ liệu từ hơn 40 trạm qua API. Phân cụm không giám sát (PCA + K-means) để phân loại các trạm và hỗ trợ phân tích môi trường."
+        "year": "2023 - 2024",
+        "title": "Kỹ sư Phần mềm | Green Ams Robotics Team",
+        "desc": "• Thiết kế hệ thống điều khiển cho robot thi đấu\n• Triển khai xử lý cảm biến thời gian thực và điều hướng tự động\n• Phối hợp trong các chu kỳ phát triển nhanh cho giải đấu FRC"
       },
       {
-        "year": "02/2025 - 05/2025",
-        "title": "Phân tích rạp chiếu phim ở Pháp",
-        "desc": "Phân tích sự phát triển của điện ảnh Pháp đối mặt với Covid-19, streaming và lạm phát. Chuẩn bị dữ liệu bằng Python, phân tích bằng R và trực quan hóa bằng Power BI."
+        "year": "2025 - 2026",
+        "title": "Du học sinh Quốc tế | Đại học Lille",
+        "desc": "• Theo đuổi nghiên cứu chuyên sâu về Khoa học Dữ liệu & Phân tích\n• Chuyên sâu về AI, mô hình hóa thống kê và dữ liệu đa chiều\n• Phát triển trong môi trường học thuật quốc tế đa văn hóa"
       }
-    ]
+    ],
+    "skills": {
+      "communication": "Giao tiếp",
+      "collaboration": "Làm việc nhóm",
+      "problem-solving": "Giải quyết vấn đề",
+      "adaptability": "Khả năng thích ứng",
+      "team-leadership": "Lãnh đạo nhóm",
+      "critical-thinking": "Tư duy phản biện"
+    },
+    "description1": "Tò mò và đầy động lực, mình đam mê quản lý và khai thác chiến lược dữ liệu để tạo ra những thông tin có giá trị thực tiễn.",
+    "description2": "Hiện đang theo học BUT Khoa học Dữ liệu tại Đại học Lille, mình đang tìm kiếm cơ hội để áp dụng các kỹ năng trong môi trường chuyên nghiệp và học hỏi từ các chuyên gia.",
+    "certifications": {
+      "title": "Chứng chỉ",
+      "google": "Google Data Analytics (Coursera & Google, 07/2025 - 11/2025)",
+      "oracle": "Oracle AI Foundations (Oracle Cloud Infrastructure, 10/2025)"
+    }
   },
   "Skills": {
-    "title": "Công cụ Kỹ thuật",
-    "subtitle": "Sự kết hợp giữa khoa học dữ liệu và lập trình web.",
-    "languages": "Lập trình",
-    "dataScience": "Khoa học Dữ liệu & BI",
-    "webTech": "Ngôn ngữ"
+    "title": "Kỹ năng Chuyên môn",
+    "subtitle": "Sự kết hợp giữa niềm đam mê phân tích và khoa học dữ liệu",
+    "tools": "Công cụ",
+    "codingLanguage": "Ngôn ngữ lập trình",
+    "tech": "Công nghệ"
+  },
+  "Blog": {
+    "title": "Blog của mình",
+    "subtitle": "Suy nghĩ gần đây, khám phá kỹ thuật và trải nghiệm trong thế giới dữ liệu.",
+    "viewAll": "Xem tất cả bài viết",
+    "readArticle": "Đọc bài viết",
+    "noBlogsFound": "Không tìm thấy bài viết nào trong kho lưu trữ.",
+    "backHome": "Trang chủ",
+    "backToBlog": "Quay lại Blog"
   },
   "Contact": {
-    "title": "Kết Nối",
-    "text": "Quan tâm đến việc hợp tác hoặc có câu hỏi? Tôi luôn sẵn sàng thảo luận về khoa học dữ liệu, AI và phát triển sáng tạo.",
+    "title": "Kết nối với mình",
+    "text": "Bạn quan tâm đến việc hợp tác hay có câu hỏi nào không? mình luôn sẵn sàng thảo luận về khoa học dữ liệu, AI và phát triển sáng tạo.",
     "emailLabel": "Email",
-    "messageLabel": "Tin Nhắn",
-    "sendButton": "Gửi Tin Nhắn",
+    "messageLabel": "Tin nhắn",
+    "sendButton": "Gửi tin nhắn",
     "email": "phuc-anh.dang.etu@univ-lille.fr, dpa280706@gmail.com"
   },
   "Footer": {
-    "copyright": "© 2026 Phúc Anh. Xây dựng với Next.js & Lovelace.",
-    "contact": "Kết Nối"
+    "ctaTitle": "Sẵn sàng tạo ra tác động?",
+    "ctaButton": "Liên hệ ngay",
+    "status": "Đang tìm kiếm cơ hội mới",
+    "brandTagline": "Đam mê quản lý dữ liệu và tạo ra các giá trị thực tiễn.",
+    "explore": "Khám phá",
+    "connect": "Kết nối",
+    "copyright": "© 2026 Phuc Anh. Bảo lưu mọi quyền.",
+    "backToTop": "Lên đầu trang"
   }
 }

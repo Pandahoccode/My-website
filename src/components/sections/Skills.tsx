@@ -4,23 +4,21 @@ import { motion } from "framer-motion";
 import { useTranslations } from 'next-intl';
 
 const skillsData = {
-  languages: [
+  Tools: [
+    { name: "Microsoft SQL Server/ PostgreSQL Server", level: 90 },
+    { name: "Oracle Data Integrator / Visual Studio SSIS", level: 80 },
+    { name: "Power BI / Qlik Sense", level: 85 },
+  ],
+  codingLanguage: [
     { name: "Python", level: 90 },
     { name: "SQL", level: 85 },
-    { name: "JavaScript / TypeScript", level: 80 },
-    { name: "R", level: 70 },
+    { name: "R", level: 80 },
+    { name: "SAS", level: 70 },
   ],
-  dataScience: [
-    { name: "Machine Learning (Scikit-Learn)", level: 85 },
-    { name: "Deep Learning (PyTorch/TensorFlow)", level: 75 },
-    { name: "Data Visualization (Tableau/PowerBI)", level: 80 },
-    { name: "NLP", level: 70 },
-  ],
-  webTech: [
-    { name: "React / Next.js", level: 85 },
-    { name: "Tailwind CSS", level: 90 },
-    { name: "Framer Motion", level: 75 },
-    { name: "FastAPI / Flask", level: 80 },
+  Tech: [
+    { name: "Git & GitHub", level: 85 },
+    { name: "Docker / Linux", level: 80 },
+    { name: "Apache Airflow", level: 75 },
   ]
 };
 
@@ -40,21 +38,26 @@ export function Skills() {
       </div>
 
       <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-12">
-        {/* Languages Column */}
-        <SkillColumn title={t('languages')} skills={skillsData.languages} delay={0} />
+        {/* Tools Column */}
+        <SkillColumn title={t('tools')} skills={skillsData.Tools} delay={0} />
 
-        {/* Data Science Column */}
-        <SkillColumn title={t('dataScience')} skills={skillsData.dataScience} delay={0.2} />
+        {/* Coding Language Column */}
+        <SkillColumn title={t('codingLanguage')} skills={skillsData.codingLanguage} delay={0.2} />
 
-        {/* Web Tech Column */}
-        <SkillColumn title={t('webTech')} skills={skillsData.webTech} delay={0.4} />
+        {/* Tech Column */}
+        <SkillColumn title={t('tech')} skills={skillsData.Tech} delay={0.4} />
       </div>
     </section>
   );
 }
 
 
-function SkillColumn({ title, skills, delay }: { title: string, skills: any[], delay: number }) {
+interface Skill {
+  name: string;
+  level: number;
+}
+
+function SkillColumn({ title, skills, delay }: { title: string, skills: Skill[], delay: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}

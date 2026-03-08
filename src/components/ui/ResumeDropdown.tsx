@@ -4,25 +4,23 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from 'next-intl';
 import { useState } from "react";
 import { Download, ChevronDown, Sparkles } from "lucide-react";
-import { useTheme } from "next-themes";
-import { useMounted } from "@/hooks/useMounted";
+import { useThemeDark } from "@/hooks/useThemeDark";
+import Image from "next/image";
 
 export function ResumeDropdown() {
   const t = useTranslations('Home');
   const [isOpen, setIsOpen] = useState(false);
-  const { theme } = useTheme();
-  const mounted = useMounted();
-  const isDark = mounted ? theme === 'dark' : true;
+  const { isDark } = useThemeDark();
 
   const resumeOptions = [
-    { label: "🇫🇷 FR", href: "/assets/CV_Phuc_Anh_DANG_FR.pdf" },
-    { label: "🇬🇧 EN", href: "/assets/CV_Phuc_Anh_DANG_EN.pdf" },
-    { label: "🇻🇳 VI", href: "/assets/CV_Phuc_Anh_DANG_VI.pdf" },
+    { label: "FR", flag: "/assets/images/logo/france.svg", href: "/assets/docs/(FR) CV Phuc Anh DANG (DADE).pdf" },
+    { label: "EN", flag: "/assets/images/logo/english.svg", href: "/assets/docs/(EN) CV Phuc Anh DANG (DADE).pdf" },
+    { label: "VI", flag: "/assets/images/logo/vietnam.svg", href: "/assets/docs/(EN) CV Phuc Anh DANG (DADE).pdf" }, // Fallback to EN for Vietnamese
   ];
 
   return (
     <div
-      className="flex flex-col items-center z-[100]"
+      className="relative flex flex-col items-center z-[100]"
       onMouseLeave={() => setIsOpen(false)}
     >
       {/* Resume Button */}
@@ -39,10 +37,7 @@ export function ResumeDropdown() {
         />
       </button>
 
-      {/* Phase 12 Buffer: 50px - Creates physical space that respects zoom */}
-      {isOpen && <div className="h-[50px]" />}
-
-      {/* Dropdown Menu - Relative Flow Positioning */}
+      {/* Dropdown Menu - Absolute positioning to prevent layout shift */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -50,7 +45,7 @@ export function ResumeDropdown() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -3, scale: 0.95 }}
             transition={{ duration: 0.15 }}
-            className="backdrop-blur-md border rounded-xl overflow-hidden shadow-2xl z-[110] flex flex-row"
+            className="absolute top-full mt-3 backdrop-blur-md border rounded-xl overflow-hidden shadow-2xl z-[110] flex flex-row"
             style={{
               minWidth: 'max-content',
               backgroundColor: !isDark ? '#ffffff' : 'rgba(0, 0, 0, 0.9)',
@@ -76,6 +71,7 @@ export function ResumeDropdown() {
                 }}
               >
                 <Download size={16} className="opacity-70" />
+                <Image src={option.flag} alt={`${option.label} Flag`} width={24} height={16} className="w-6 h-4 rounded-[3px] object-cover shadow-sm" />
                 {option.label}
               </a>
             ))}

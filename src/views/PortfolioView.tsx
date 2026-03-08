@@ -10,7 +10,15 @@ import { Blog } from "@/components/sections/Blog";
 import { ScrollFrames } from "@/components/layout/ScrollFrames";
 import { Separator } from "@/components/ui/SectionSeparator";
 
-export function PortfolioView() {
+import { getLocale } from 'next-intl/server';
+import { getProjectsByLocale } from "@/lib/project";
+import { getBlogsByLocale } from "@/lib/blog";
+
+export async function PortfolioView() {
+  const locale = await getLocale();
+  const projects = getProjectsByLocale(locale);
+  const blogs = getBlogsByLocale(locale);
+
   return (
     <>
       {/* Main Content */}
@@ -24,7 +32,7 @@ export function PortfolioView() {
         <Separator />
 
         {/* Projects Section */}
-        <Projects />
+        <Projects projects={projects} />
         <Separator />
 
         {/* About Section */}
@@ -36,7 +44,7 @@ export function PortfolioView() {
         <Separator />
 
         {/* Blog Section */}
-        <Blog />
+        <Blog blogs={blogs} />
         <Separator />
 
         {/* Contact Section */}
