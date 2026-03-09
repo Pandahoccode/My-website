@@ -1,167 +1,66 @@
-# ✦ Antigravity — Personal Portfolio
-
 <div align="center">
 
-A high-performance, glassmorphic portfolio built with **Next.js 16**, **Tailwind CSS 4**, **Framer Motion**, and **next-intl** — featuring scroll-driven frame animations, elastic halo effects, and trilingual localization.
+# ✦ Antigravity
 
-**[Live Demo →](https://phuc-anh.vercel.app)**
+*A digital extension of my mind, built to defy the friction of the web.*
+
+[![Next.js](https://img.shields.io/badge/Next.js_14-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![Framer Motion](https://img.shields.io/badge/Framer_Motion-white?style=for-the-badge&logo=framer&logoColor=black)](https://www.framer.com/motion/)
+[![MDX](https://img.shields.io/badge/MDX-1B1F24?style=for-the-badge&logo=mdx&logoColor=white)](https://mdxjs.com/)
+
+**[Step into the experience →](https://phuc-anh.vercel.app)**
 
 </div>
 
 ---
 
-## ⚡ Tech Stack
+## 🌌 The Vision
 
-| Layer | Technology |
-|-------|-----------|
-| **Framework** | Next.js 16 (App Router + Turbopack) |
-| **Styling** | Tailwind CSS 4 |
-| **Animation** | Framer Motion 12 |
-| **Theming** | next-themes (Dark/Light) |
-| **i18n** | next-intl (EN / FR / VI) |
-| **Content** | MDX (gray-matter + next-mdx-remote) |
-| **Icons** | Lucide React |
-| **Analytics** | Vercel Analytics |
-| **Fonts** | Space Grotesk + Archivo (Google Fonts) |
+We spend our lives anchored to physical limitations, but the web should feel weightless. **Antigravity** is not just a portfolio—it is an experiment in digital fluidity. I wanted to create a space that doesn't just display information, but *breathes*.
 
----
+Every interaction is designed to feel responsive and alive. From the elastic halo effects that track your cursor to the organic, sine-wave breathing of the layout separators, this space is built to pull you in and let you float through my work.
 
-## 🏗️ Architecture
+## 🎭 The Architecture of Weightlessness
 
-```
-src/
-├── app/[locale]/          # App Router pages (locale-aware)
-│   ├── layout.tsx         # Root layout with providers
-│   ├── globals.css        # Design system tokens + glass utilities
-│   ├── blog/              # Blog routes
-│   ├── project/           # Project detail routes
-│   └── projects/          # Projects list route
-├── components/
-│   ├── layout/            # Navbar, Footer, LanguageSwitcher, StarBackground
-│   ├── providers/         # ThemeProvider wrapper
-│   ├── sections/          # Home, About, Skills, Projects, Blog, Contact
-│   └── ui/                # SearchBar, ResumeDropdown, AvatarEffect, SectionSeparator
-├── content/               # MDX blog posts + project case studies
-├── hooks/                 # useMounted, useThemeDark, useNavigation
-├── i18n/                  # Routing, settings, request config
-├── lib/                   # blog.ts, project.ts, utils.ts (cn helper)
-├── messages/              # Translation JSON: en.json, fr.json, vi.json
-└── views/                 # Page-level view composers
-```
+To build something that feels like nothing, you need a surprisingly heavy foundation. I chose a stack that could deliver absolute uncompromised performance while giving me the canvas to paint with motion and light.
 
----
+*   **The Engine:** **Next.js 16 (App Router + Turbopack)** powers the core. It provides the seamless, instantaneous routing necessary to keep the illusion of a single, unbroken space alive.
+*   **The Canvas:** **Tailwind CSS 4** gave me the granular control to invent my own *Glass Utilities*. The frosted glass, the 40px blurs, the nebula glows—all systematized into reusable tokens.
+*   **The Physics:** **Framer Motion 12** is the secret to the antigravity feel. Instead of linear animations, elements use dampened spring physics (`cubic-bezier(0.16, 1, 0.3, 1)`) so they snap, bounce, and settle naturally.
+*   **The Voice:** **next-intl** allows the portfolio to speak English, French, and Vietnamese natively—because a truly borderless space shouldn't be bound by a single language.
+*   **The Stories:** Content is authored in **MDX**, allowing me to weave interactive React components directly into my case studies and blog posts.
 
-## 🚀 Quick Start
+## 🛠️ Exploring the Mechanics
 
-### Prerequisites
-
-- **Node.js** ≥ 18.17
-- **npm** ≥ 9
-
-### Install & Run
+If you want to look under the hood and see how the springs are coiled, you are welcome to explore the source code.
 
 ```bash
-# Clone the repository
+# Clone the blueprints
 git clone https://github.com/Pandahoccode/My-website.git
 cd My-website
 
-# Install dependencies
+# Assemble the parts
 npm install
 
-# Start dev server (Turbopack)
+# Ignite the engine
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+### The Anatomy of the Codebase
 
-### Available Scripts
+*   `src/app/[locale]/` — The core routing engine, natively aware of the user's language.
+*   `src/components/ui/` — The atoms of the design system. Here you'll find the `AvatarEffect`, the `SectionSeparator`, and the glass components.
+*   `src/content/` — Where my thoughts and case studies live, written in MDX to blend prose with code.
 
-| Command | Description |
-|---------|------------|
-| `npm run dev` | Start development server with Turbopack |
-| `npm run build` | Create production build |
-| `npm run start` | Serve production build |
-| `npm run lint` | Run ESLint |
+## 📬 Let's Connect
 
----
+Whether you want to talk about React architectures, fluid animations, or just say hello, I'm always open to connecting with fellow builders and designers.
 
-## 🎨 Design System
-
-### Glass Utilities
-
-| Utility | Description |
-|---------|------------|
-| `.glass-surface` | 40px blur, frosted glass with CSS containment |
-| `.antigravity-card` | Dampened spring hover with nebula glow |
-| `.glass-card` | Lightweight glass for subtle elements |
-| `.text-gradient-primary` | Cyan → Purple gradient text |
-
-### Theme Variables
-
-All theme tokens are defined in `globals.css` under `:root` (light) and `.dark` (dark), controlling backgrounds, borders, text colors, and glass opacity.
-
-### Motion System
-
-- **Separators**: Organic sine-wave breathing (`cubic-bezier(0.37, 0, 0.63, 1)`)
-- **Cards**: Dampened spring easing (`cubic-bezier(0.16, 1, 0.3, 1)`)
-- **Avatars**: Elastic halo with mouse-tracking via Framer Motion springs
-- **Accessibility**: All animations respect `prefers-reduced-motion`
+[Visit my live site](https://phuc-anh.vercel.app) to find my contact points.
 
 ---
-
-## 🌍 Localization
-
-Three locales supported via `next-intl`:
-
-| Locale | File |
-|--------|------|
-| English | `src/messages/en.json` |
-| French | `src/messages/fr.json` |
-| Vietnamese | `src/messages/vi.json` |
-
-Add a new locale by:
-1. Adding the locale code to `src/i18n/settings.ts` and `src/i18n/routing.ts`
-2. Creating a new `src/messages/{locale}.json` translation file
-3. Updating `middleware.ts` if needed
-
----
-
-## 📝 Content (MDX)
-
-Blog posts and project case studies are stored as `.mdx` files:
-
-```
-src/content/
-├── blog/          # Blog posts
-└── projects/      # Project case studies
-```
-
-Each file uses YAML frontmatter for metadata (title, date, tags, category, etc.) and MDX for rich content.
-
----
-
-## 🚢 Deployment (Vercel)
-
-### One-Click Deploy
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Pandahoccode/My-website)
-
-### Manual Deploy
-
-```bash
-# Install Vercel CLI
-npm i -g vercel
-
-# Deploy
-vercel --prod
-```
-
-### Environment
-
-No environment variables are required. The app is fully static-compatible and uses ISR for dynamic routes.
-
----
-
-## 📄 License
-
-© 2026 Phuc Anh Dang. All rights reserved.
+<div align="center">
+  <p><i>Design is not just what it looks like and feels like. Design is how it works.</i></p>
+  <p>© 2026 Phuc Anh Dang.</p>
+</div>
