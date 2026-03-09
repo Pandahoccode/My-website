@@ -14,6 +14,7 @@ const nextConfig = {
   devIndicators: {
     appIsrStatus: false,
   },
+  serverExternalPackages: ['next-mdx-remote'],
 };
 
 export default withNextIntl(nextConfig);
