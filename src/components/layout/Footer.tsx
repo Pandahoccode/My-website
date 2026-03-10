@@ -65,9 +65,14 @@ export function Footer() {
 
           {/* Brand Column */}
           <div className="md:col-span-4 space-y-4">
-            <Link href="/" className="flex items-center gap-2 group w-fit">
-              <Image src="/assets/images/logo.svg" alt="Logo" width={48} height={48} className="w-12 h-12 rounded-full grayscale group-hover:grayscale-0 transition-all duration-500" />
-              <span className="text-xl font-bold text-foreground">Phuc Anh</span>
+            <Link href="/" className="flex items-center group w-fit">
+              <Image
+                src="/assets/images/logo.svg"
+                alt="Logo"
+                width={120}
+                height={68}
+                className="w-auto h-12 sm:h-14 grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+              />
             </Link>
             <p className="text-foreground/60 max-w-sm text-lg leading-relaxed">
               {t('brandTagline')}

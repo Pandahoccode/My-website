@@ -40,14 +40,15 @@ export function Navbar() {
     >
       <div className="w-full px-6 py-3 flex items-center justify-between">
         {/* LEFT: Logo */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <Image src="/assets/images/logo.svg" alt="Logo" width={72} height={72} className="w-18 h-18 group-hover:scale-110 transition-transform duration-300" priority />
-          <span className="text-xl font-bold transition-all duration-300 relative">
-            {/* Gradient Text (Reveal on Hover - Slide In) */}
-            <span className="absolute inset-0 bg-gradient-to-r from-[#22D3EE] to-[#A855F7] bg-clip-text text-transparent opacity-0 -translate-x-4 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500 ease-out">
-              Phuc Anh
-            </span>
-          </span>
+        <Link href="/" className="flex items-center group">
+          <Image
+            src="/assets/images/logo.svg"
+            alt="Logo"
+            width={120}
+            height={68}
+            className="w-auto h-12 sm:h-14 group-hover:scale-105 transition-transform duration-300"
+            priority
+          />
         </Link>
 
         {/* CENTER: Nav Links */}
