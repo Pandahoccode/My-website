@@ -8,7 +8,10 @@
  */
 
 import { BlogListView } from "@/views/BlogListView";
+import { setRequestLocale } from 'next-intl/server';
 
-export default function BlogListPage() {
+export default async function BlogListPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   return <BlogListView />;
 }

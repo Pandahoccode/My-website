@@ -1,5 +1,5 @@
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages } from 'next-intl/server';
+import { getMessages, setRequestLocale } from 'next-intl/server';
 import "./globals.css";
 import { Providers } from "@/components/providers/Providers";
 import { Space_Grotesk, Archivo } from "next/font/google";
@@ -14,6 +14,10 @@ import { Analytics } from '@vercel/analytics/react';
 const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space" });
 const archivo = Archivo({ subsets: ["latin"], variable: "--font-archivo" });
 
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
 export default async function LocaleLayout({
   children,
   params
@@ -26,6 +30,8 @@ export default async function LocaleLayout({
   if (!routing.locales.includes(locale as typeof routing.locales[number])) {
     notFound();
   }
+
+  setRequestLocale(locale);
 
   const messages = await getMessages({ locale });
 

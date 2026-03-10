@@ -11,6 +11,7 @@
 
 import { BlogPostView } from "@/views/BlogPostView";
 import { getBlogSlugs } from '@/lib/blog';
+import { setRequestLocale } from 'next-intl/server';
 
 export async function generateStaticParams() {
   const slugs = getBlogSlugs();
@@ -19,7 +20,8 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string, locale: string }> }) {
+  const { slug, locale } = await params;
+  setRequestLocale(locale);
   return <BlogPostView slug={slug} />;
 }

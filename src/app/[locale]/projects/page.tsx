@@ -1,11 +1,12 @@
 import { getProjectsByLocale } from "@/lib/project";
 import { ProjectList } from "@/components/sections/ProjectList";
-import { getTranslations, getLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Separator } from "@/components/ui/SectionSeparator";
 
-export default async function ProjectsPage() {
+export default async function ProjectsPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations('Projects');
-  const locale = await getLocale();
   const projects = getProjectsByLocale(locale);
 
   return (

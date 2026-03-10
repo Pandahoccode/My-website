@@ -11,6 +11,7 @@
 
 import { ProjectPostView } from "@/views/ProjectPostView";
 import { getProjectSlugs } from '@/lib/project';
+import { setRequestLocale } from 'next-intl/server';
 
 export async function generateStaticParams() {
   const slugs = getProjectSlugs();
@@ -19,7 +20,8 @@ export async function generateStaticParams() {
   }));
 }
 
-export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
-  const { slug } = await params;
+export default async function ProjectPage({ params }: { params: Promise<{ slug: string, locale: string }> }) {
+  const { slug, locale } = await params;
+  setRequestLocale(locale);
   return <ProjectPostView slug={slug} />;
 }
