@@ -5,8 +5,8 @@ import { Link } from '@/i18n/routing';
 import { ArrowLeft, Github, ExternalLink, Home } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 
-export async function ProjectPostView({ slug }: { slug: string }) {
-  const project = getProjectBySlug(slug);
+export async function ProjectPostView({ slug, locale }: { slug: string, locale: string }) {
+  const project = getProjectBySlug(slug, locale);
   const t = await getTranslations('Projects');
 
   if (!project) {

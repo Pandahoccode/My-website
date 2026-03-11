@@ -11,17 +11,21 @@
 
 import { BlogPostView } from "@/views/BlogPostView";
 import { getBlogSlugs } from '@/lib/blog';
+import { routing } from '@/i18n/routing';
 import { setRequestLocale } from 'next-intl/server';
 
-export async function generateStaticParams() {
-  const slugs = getBlogSlugs();
-  return slugs.map((slug) => ({
-    slug: slug.replace(/\.mdx$/, ''),
-  }));
+export function generateStaticParams() {
+  return routing.locales.flatMap((locale) => {
+    const slugs = getBlogSlugs(locale);
+    return slugs.map((slug) => ({
+      locale,
+      slug: slug.replace(/\.mdx$/, ''),
+    }));
+  });
 }
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string, locale: string }> }) {
   const { slug, locale } = await params;
   setRequestLocale(locale);
-  return <BlogPostView slug={slug} />;
+  return <BlogPostView slug={slug} locale={locale} />;
 }

@@ -5,8 +5,8 @@ import { Link } from '@/i18n/routing';
 import { ArrowLeft, Home } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 
-export async function BlogPostView({ slug }: { slug: string }) {
-  const blog = getBlogBySlug(slug);
+export async function BlogPostView({ slug, locale }: { slug: string; locale: string }) {
+  const blog = getBlogBySlug(slug, locale);
   const t = await getTranslations('Blog');
 
   if (!blog) {

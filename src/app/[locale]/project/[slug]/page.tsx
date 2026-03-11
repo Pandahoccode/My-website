@@ -11,17 +11,21 @@
 
 import { ProjectPostView } from "@/views/ProjectPostView";
 import { getProjectSlugs } from '@/lib/project';
+import { routing } from '@/i18n/routing';
 import { setRequestLocale } from 'next-intl/server';
 
-export async function generateStaticParams() {
-  const slugs = getProjectSlugs();
-  return slugs.map((slug) => ({
-    slug: slug.replace(/\.mdx$/, ''),
-  }));
+export function generateStaticParams() {
+  return routing.locales.flatMap((locale) => {
+    const slugs = getProjectSlugs(locale);
+    return slugs.map((slug) => ({
+      locale,
+      slug: slug.replace(/\.mdx$/, ''),
+    }));
+  });
 }
 
 export default async function ProjectPage({ params }: { params: Promise<{ slug: string, locale: string }> }) {
   const { slug, locale } = await params;
   setRequestLocale(locale);
-  return <ProjectPostView slug={slug} />;
+  return <ProjectPostView slug={slug} locale={locale} />;
 }

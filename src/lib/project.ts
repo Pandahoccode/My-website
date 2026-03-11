@@ -36,16 +36,17 @@ const projectsDirectory = path.join(process.cwd(), 'src/content/projects');
 // Project Functions
 // ============================================================================
 
-export function getProjectSlugs(): string[] {
-  if (!fs.existsSync(projectsDirectory)) {
+export function getProjectSlugs(locale: string): string[] {
+  const mappedDir = path.join(projectsDirectory, locale);
+  if (!fs.existsSync(mappedDir)) {
     return [];
   }
-  return fs.readdirSync(projectsDirectory).filter((file) => file.endsWith('.mdx'));
+  return fs.readdirSync(mappedDir).filter((file) => file.endsWith('.mdx'));
 }
 
-export function getProjectBySlug(slug: string): Project | null {
+export function getProjectBySlug(slug: string, locale: string): Project | null {
   const realSlug = slug.replace(/\.mdx$/, '');
-  const fullPath = path.join(projectsDirectory, `${realSlug}.mdx`);
+  const fullPath = path.join(projectsDirectory, locale, `${realSlug}.mdx`);
 
   if (!fs.existsSync(fullPath)) {
     return null;
@@ -61,10 +62,10 @@ export function getProjectBySlug(slug: string): Project | null {
   };
 }
 
-export function getAllProjects(): Project[] {
-  const slugs = getProjectSlugs();
+export function getAllProjects(locale: string): Project[] {
+  const slugs = getProjectSlugs(locale);
   const projects = slugs
-    .map((slug) => getProjectBySlug(slug))
+    .map((slug) => getProjectBySlug(slug, locale))
     .filter((project): project is Project => project !== null)
     .sort((a, b) => (a.meta.date > b.meta.date ? -1 : 1));
   return projects;
@@ -72,10 +73,7 @@ export function getAllProjects(): Project[] {
 
 /**
  * Get projects filtered by locale.
- * Projects without a lang field are shown in all locales.
  */
 export function getProjectsByLocale(locale: string): Project[] {
-  return getAllProjects().filter(p =>
-    !p.meta.lang || p.meta.lang === locale
-  );
+  return getAllProjects(locale);
 }
