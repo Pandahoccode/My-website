@@ -3,7 +3,7 @@
     "home": "Accueil",
     "projects": "Projets",
     "about": "À Propos",
-    "blog": "Blog",
+    "blog": "Portfolio",
     "contact": "Contact"
   },
   "Home": {
@@ -96,13 +96,13 @@
     "tech": "Technologies"
   },
   "Blog": {
-    "title": "Mon Blog",
+    "title": "Mon Portfolio",
     "subtitle": "Pensées récentes, découvertes techniques et explorations dans les données.",
     "viewAll": "Voir tous les articles",
     "readArticle": "Lire l'article",
     "noBlogsFound": "Aucun article trouvé dans les archives.",
     "backHome": "Accueil",
-    "backToBlog": "Retour au Blog"
+    "backToBlog": "Retour au Portfolio"
   },
   "Contact": {
     "title": "Restons en Contact",
