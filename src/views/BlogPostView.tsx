@@ -1,5 +1,5 @@
 import { getBlogBySlug } from '@/lib/blog';
-import { MDXRemote } from 'next-mdx-remote/rsc';
+import { MDXComponent } from '@/components/layout/MDXComponent';
 import { notFound } from 'next/navigation';
 import { Link } from '@/i18n/routing';
 import { ArrowLeft, Home } from 'lucide-react';
@@ -42,8 +42,8 @@ export async function BlogPostView({ slug, locale }: { slug: string; locale: str
         </time>
       </header>
 
-      <div className="prose prose-lg max-w-none prose-headings:font-outfit prose-headings:text-foreground prose-p:text-foreground/80 prose-a:text-electric-blue prose-pre:bg-foreground/5 prose-pre:border prose-pre:border-foreground/10 prose-pre:backdrop-blur-xl">
-        <MDXRemote source={blog.content} />
+      <div className="mt-8">
+        <MDXComponent source={blog.content} />
       </div>
     </article>
   );
