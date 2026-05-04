@@ -1,5 +1,5 @@
 import { getProjectBySlug } from '@/lib/project';
-import { MDXRemote } from 'next-mdx-remote/rsc';
+import { MDXComponent } from '@/components/layout/MDXComponent';
 import { notFound } from 'next/navigation';
 import { Link } from '@/i18n/routing';
 import { ArrowLeft, Github, ExternalLink, Home } from 'lucide-react';
@@ -108,11 +108,8 @@ export async function ProjectPostView({ slug, locale }: { slug: string, locale: 
         </div>
       </header>
 
-      {/* MDX Content with Glass Surface */}
-      <div className="glass-surface p-8 md:p-12 rounded-2xl">
-        <div className="prose prose-invert prose-lg max-w-none prose-headings:font-outfit prose-headings:text-white prose-p:text-gray-300 prose-a:text-cyan-400 prose-pre:bg-black/50 prose-pre:border prose-pre:border-white/10 prose-pre:backdrop-blur-xl prose-code:text-cyan-300 prose-strong:text-white">
-          <MDXRemote source={project.content} />
-        </div>
+      <div className="glass-surface p-8 md:p-12 rounded-2xl mt-8">
+        <MDXComponent source={project.content} />
       </div>
     </article>
   );
