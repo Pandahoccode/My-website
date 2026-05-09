@@ -136,7 +136,24 @@ src/content/
 └── projects/      # Project case studies
 ```
 
-Each file uses YAML frontmatter for metadata (title, date, tags, category, etc.) and MDX for rich content.
+Each file uses YAML frontmatter for metadata (title, date, tags, category, rating, etc.) and MDX for rich content.
+
+### Sorting Logic
+
+By default, blogs and projects are sorted using the following priority:
+1. **Rating** (Descending): Highest rated items appear first (uses `rating` field in frontmatter).
+2. **Name/Title** (Ascending): Alphabetical order if ratings are equal.
+3. **Date** (Descending): Most recent items first if ratings and names are equal.
+
+### Interactive Components
+
+You can enhance your blog posts with custom interactive components:
+
+- **Project Embeds**: Embed full project cards by slug.
+  ```mdx
+  <Project slug="data-warehouse" />
+  ```
+  *Features: Locale-aware, dynamic category theming, and consistent "antigravity" hover effects.*
 
 ---
 

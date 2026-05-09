@@ -18,6 +18,7 @@ export interface ProjectMeta {
   color: string;
   featured?: boolean;
   lang?: string;
+  rating?: number;
 }
 
 export interface Project {
@@ -67,7 +68,19 @@ export function getAllProjects(locale: string): Project[] {
   const projects = slugs
     .map((slug) => getProjectBySlug(slug, locale))
     .filter((project): project is Project => project !== null)
-    .sort((a, b) => (a.meta.date > b.meta.date ? -1 : 1));
+    .sort((a, b) => {
+      // 1. Rating (descending) - default to 0 if missing
+      const ratingA = a.meta.rating || 0;
+      const ratingB = b.meta.rating || 0;
+      if (ratingA !== ratingB) return ratingB - ratingA;
+
+      // 2. Name/Title (ascending)
+      const titleComparison = a.meta.title.localeCompare(b.meta.title);
+      if (titleComparison !== 0) return titleComparison;
+
+      // 3. Date (descending)
+      return b.meta.date.localeCompare(a.meta.date);
+    });
   return projects;
 }
 

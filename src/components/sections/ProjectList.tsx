@@ -38,10 +38,10 @@ export function ProjectList({ projects }: ProjectListProps) {
       const matchesSearch =
         project.meta.title.toLowerCase().includes(lowerTerm) ||
         project.meta.excerpt?.toLowerCase().includes(lowerTerm) ||
-        project.meta.category.toLowerCase().includes(lowerTerm);
+        project.meta.category?.toLowerCase().includes(lowerTerm);
 
       const matchesTags = selectedTags.length === 0 || selectedTags.every(tag => {
-        return project.meta.category === tag || project.meta.tags.includes(tag);
+        return project.meta.category === tag || project.meta.tags?.includes(tag);
       });
 
       return matchesSearch && matchesTags;
@@ -89,7 +89,7 @@ export function ProjectList({ projects }: ProjectListProps) {
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const t = useTranslations('Projects');
   // Determine Glow Color based on Category
-  const isData = project.meta.category.includes("Data");
+  const isData = project.meta.category?.toLowerCase().includes("data") || false;
   const glowClass = isData ? "shadow-cyan-500/20 hover:shadow-cyan-500/40" : "shadow-purple-500/20 hover:shadow-purple-500/40";
   const borderClass = isData ? "hover:border-cyan-500/50" : "hover:border-purple-500/50";
   const textGradient = isData ? "from-cyan-400 to-blue-500" : "from-purple-400 to-pink-500";
