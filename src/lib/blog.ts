@@ -13,6 +13,7 @@ export interface BlogMeta {
   tags: string[];
   image?: string;
   lang?: string;
+  rating?: number;
 }
 
 export interface BlogPost {
@@ -62,7 +63,19 @@ export function getAllBlogs(locale: string): BlogPost[] {
   const blogs = slugs
     .map((slug) => getBlogBySlug(slug, locale))
     .filter((blog): blog is BlogPost => blog !== null)
-    .sort((a, b) => (a.meta.date > b.meta.date ? -1 : 1));
+    .sort((a, b) => {
+      // 1. Rating (descending) - default to 0 if missing
+      const ratingA = a.meta.rating || 0;
+      const ratingB = b.meta.rating || 0;
+      if (ratingA !== ratingB) return ratingB - ratingA;
+
+      // 2. Name/Title (ascending)
+      const titleComparison = a.meta.title.localeCompare(b.meta.title);
+      if (titleComparison !== 0) return titleComparison;
+
+      // 3. Date (descending)
+      return b.meta.date.localeCompare(a.meta.date);
+    });
   return blogs;
 }
 

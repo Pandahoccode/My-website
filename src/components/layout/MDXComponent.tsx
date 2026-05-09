@@ -2,6 +2,7 @@ import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote/rsc';
 import remarkGfm from 'remark-gfm';
 import { Link } from '@/i18n/routing';
 import React from 'react';
+import { ProjectEmbed } from '@/components/ui/ProjectEmbed';
 
 // Custom components to override default HTML elements for consistent UI-UX
 const components = {
@@ -15,6 +16,7 @@ const components = {
     }
     return <a target="_blank" rel="noopener noreferrer" {...props} />;
   },
+  Project: ProjectEmbed,
 };
 
 interface MDXComponentProps {
