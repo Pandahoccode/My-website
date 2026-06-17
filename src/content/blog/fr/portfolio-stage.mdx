@@ -1,6 +1,101 @@
 ---
-title: 'Portfolio Stage'
+title: 'Portfolio de Stage — Ingénierie des Données pour LLM'
 date: '2026-05-04'
-tags: ['Stage', 'BUT SD','LLM','Data Preprocessing']
+tags: ['Stage', 'BUT SD', 'LLM', 'Data Preprocessing', 'Portfolio']
 rating: 2
 ---
+
+## Introduction
+
+Le stage en entreprise accompagne la professionnalisation de la formation et permet de réaliser une mission d’envergure conforme aux compétences techniques, technologiques et relationnelles attendues d’un étudiant en 2e année de BUT Science des Données (BUT SD). Cette période est l'opportunité de mettre en application les connaissances et savoir-faire acquis au cours des deux premières années de formation, mais également d’acquérir de nouveaux savoir-être et savoir-faire professionnels.
+
+La démarche Portfolio relative au stage a pour but de faire le point, de démontrer la mobilisation opérationnelle des acquis et de valider l'acquisition de ces nouvelles compétences. En s'appuyant sur les démarches Portfolio des quatre semestres précédents, ce document retrace mon positionnement en tant que futur professionnel de la donnée.
+
+---
+
+## 1. Présentation du Stage et de la Mission
+
+### Cadre Institutionnel et Organisationnel
+
+| Élément | Description |
+| :--- | :--- |
+| **Diplôme préparé** | Bachelor Universitaire de Technologie (BUT) Science des Données |
+| **Établissement** | Institut Universitaire de Technologie (IUT) |
+| **Entreprise d'accueil** | [Nom de l'Entreprise / Unité de Recherche] |
+| **Secteur d’activité** | Intelligence Artificielle et Ingénierie des Données |
+| **Durée du stage** | [X] semaines (du [Date] au [Date]) |
+| **Tuteur Entreprise** | [Nom du Tuteur Entreprise], Maître de stage |
+| **Tuteur Universitaire** | [Nom du Tuteur Universitaire], Enseignant-Chercheur |
+
+### Contexte et Objectifs de la Mission
+La mission s'inscrit dans la phase amont de l'entraînement des grands modèles de langage (LLM). L'objectif central était de concevoir, d'optimiser et d'auditer un pipeline industriel de nettoyage, de filtrage sémantique et de conversion de jeux de données massifs (jusqu'à plusieurs dizaines de millions de lignes) vers un format pivot standardisé, avant leur injection dans les scripts d'ajustement fin supervisé (SFT).
+
+### Niveau de Responsabilité et Contraintes
+Positionné en autonomie sur plusieurs jeux de données critiques, j'avais la responsabilité de livrer des briques logicielles robustes et réutilisables par l'ensemble de l'équipe (notamment le module d'architecture des messages). Les contraintes majeures résidaient dans la gestion de la mémoire vive (RAM) sur serveur Ubuntu face à des volumes de données industriels, le respect strict de la confidentialité des données (RGPD), et la synchronisation logique des dialogues itératifs complexes.
+
+---
+
+## 2. Connaissances et Compétences Mobilisées
+*Issues de la formation BUT Science des Données*
+
+Cette période de stage m'a permis de déployer à grande échelle des blocs de compétences travaillés durant les deux premières années de BUT :
+
+### Bloc : Traitement et Analyse de Données
+*   **Programmation Python :** Application des structures algorithmiques et manipulation de fichiers de données. Durant le stage, j'ai mobilisé ces acquis pour écrire les scripts de conversion des datasets de base (Bash et Python).
+*   **Pensée algorithmique ("Je suis capable de") :** Je suis capable de concevoir un algorithme séquentiel pour nettoyer des chaînes de caractères. J'ai mis en pratique cela en épurant les espaces blancs et en isolant les balises de code Markdown.
+
+### Bloc : Environnement Technologique et Outils de Développement
+*   **Environnement Linux / Ubuntu :** Utilisation des commandes système pour naviguer et exécuter des tâches. En stage, l'intégralité du pipeline tournait sur un serveur Ubuntu, m'obligeant à manipuler les fichiers via le terminal et à surveiller les ressources.
+*   **Gestion de version avec Git :** Utilisation des branches et des commandes de suivi de code. J'ai mobilisé cette compétence pour intégrer mon travail de manière propre sur le dépôt commun de l'entreprise.
+
+---
+
+## 3. Connaissances et Compétences Nouvellement Acquises
+*Développées en autonomie ou via formation interne durant le stage*
+
+Le niveau industriel du projet m'a confronté à des problématiques avancées non abordées de manière approfondie en formation :
+
+### Architecture Logicielle Orientée Objet et Dépendances Globalles
+*   **Auto-formation en POO Avancée :** Développement d'une architecture centralisée basée sur des classes mères abstraites (`base_message.py`) et le module natif `abc`.
+*   **Réalisation concrète :** Conception des Data Transfer Objects (DTO) pour modéliser les messages systèmes, utilisateurs, et l'état complexe de l'assistant. Ce module est devenu une dépendance obligatoire pour tous les convertisseurs de l'équipe.
+
+### Logique Algorithmique des Machines à États
+*   **Développement d'un mécanisme de synchronisation :** Conception de la logique *Flush Assistant* (`iterate_and_group_messages`).
+*   **Réalisation concrète :** Implémentation d'une mémoire tampon dynamique pour accumuler les blocs de réflexion (*reasoning*) et les appels d'outils (*tool calls*), résolvant ainsi le problème d'alignement des conversations multi-tours pour le format v3.
+
+### Audit Qualitatif de Données pour les LLM
+*   **Prompt Engineering et Validation Logique :** Création d'agents de notation guidés par des prompts experts hautement directifs pour auditer les hallucinations et l'exactitude syntaxique du code généré par les modèles.
+*   **Réalisation concrète :** Traitement de fichiers volumineux (*SFT Code Dataset* et *Competitive Programming*), identification des taux d'erreur par modèle (ex: ~30% d'erreurs logiques sur le segment Mixtral), et arbitrage métier pour exclure les données défectueuses.
+
+---
+
+## 4. Compétences Transversales et Savoir-être Professionnels
+
+L'insertion au sein de l'environnement de production a consolidé mes compétences relationnelles (Soft Skills) :
+
+*   **Esprit d'équipe et transmission :** J'ai collaboré activement avec d'autres stagiaires et ingénieurs. J'ai pris soin de documenter mon code de manière exhaustive (docstrings de fichiers, commentaires *inline*) pour faciliter la reprise de mes travaux.
+*   **Adaptabilité et autonomie :** Suite au blocage technique d'un collaborateur, j'ai su reprendre la direction opérationnelle complète du jeu de données *Tool Call* en Phase 2 pour débloquer la situation et amener le taux de résolution d'alignement à 95 %.
+*   **Méthodologie de travail rigoureuse :** Structuration de mon temps selon une règle stricte (20% audit, 20% codage du convertisseur, 40% contrôle qualité et cohérence sémantique, 20% documentation), plaçant la pureté de la donnée au centre de mes priorités.
+
+---
+
+## 5. Synthèse Personnelle
+
+### Évaluation des Objectifs et Autonomie
+Les objectifs fixés au début du stage ont été pleinement atteints. J'ai fait preuve d'une grande autonomie, notamment dans le choix des stratégies de filtrage des données de programmation compétitive (*Very Hard*) et dans la conception de l'outillage complémentaire (refondues de l'interface graphique avec logique booléenne ET/OU et création du visualiseur JSON autonome).
+
+### Gestion des Difficultés
+La principale difficulté a été l'hétérogénéité des formats bruts et la gestion des codes non testables ou en dépassement de temps limite (TLE) dans le sous-ensemble C++. J'ai surmonté ces obstacles en développant des fonctions de normalisation robustes dans `utils.py` (comme `format_name_conventions` pour imposer le `snake_case`) et en appliquant un filtrage qualitatif strict validé par mon maître de stage.
+
+### Alignement avec la Formation et Projet Professionnel
+Les compétences acquises au cours des deux premières années de BUT SD ont été un socle précieux, mais elles se sont révélées insuffisantes pour aborder directement l'ingénierie des LLM à grande échelle sans un effort d'auto-formation en développement logiciel (POO, gestion mémoire). Ce stage a profondément conforté mon projet professionnel, confirmant mon souhait de me spécialiser dans l'ingénierie des données appliquées à l'intelligence artificielle.
+
+---
+
+## 6. Et maintenant ???
+
+Ce stage de deuxième année de BUT valide une transition majeure entre l'analyse de données académique et l'ingénierie logicielle axée sur la donnée de production.
+
+### Perspectives Immédiates
+1.  **Restructuration technique :** À court terme, les fondations en POO développées pourraient être migrées vers des frameworks de validation de données comme Pydantic pour accélérer les temps de traitement des DTO.
+2.  **Poursuite d'études et professionnalisation :** Fort de ces acquis industriels (maîtrise d'Ubuntu, de Git, de l'optimisation mémoire et de l'audit de données LLM), j'aborde ma troisième année de BUT Science des Données avec une vision claire des exigences du marché, visant à terme un rôle d'Ingénieur de Données IA (*Data Engineer for AI*).
