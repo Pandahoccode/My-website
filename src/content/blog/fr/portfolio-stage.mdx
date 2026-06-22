@@ -1,101 +1,147 @@
 ---
 title: 'Portfolio de Stage — Ingénierie des Données pour LLM'
-date: '2026-05-04'
+date: '2026-06-17'
 tags: ['Stage', 'BUT SD', 'LLM', 'Data Preprocessing', 'Portfolio']
 rating: 2
 ---
+# Portfolio de Stage : Bilan des Compétences
 
-## Introduction
-
-Le stage en entreprise accompagne la professionnalisation de la formation et permet de réaliser une mission d’envergure conforme aux compétences techniques, technologiques et relationnelles attendues d’un étudiant en 2e année de BUT Science des Données (BUT SD). Cette période est l'opportunité de mettre en application les connaissances et savoir-faire acquis au cours des deux premières années de formation, mais également d’acquérir de nouveaux savoir-être et savoir-faire professionnels.
-
-La démarche Portfolio relative au stage a pour but de faire le point, de démontrer la mobilisation opérationnelle des acquis et de valider l'acquisition de ces nouvelles compétences. En s'appuyant sur les démarches Portfolio des quatre semestres précédents, ce document retrace mon positionnement en tant que futur professionnel de la donnée.
-
----
+> "Si une machine peut penser, elle pourrait penser plus intelligemment que nous, et alors, où serions-nous ?" — Alan Turing
 
 ## 1. Présentation du Stage et de la Mission
 
 ### Cadre Institutionnel et Organisationnel
 
-| Élément | Description |
+| Variable Institutionnelle | Informations Déployées |
 | :--- | :--- |
-| **Diplôme préparé** | Bachelor Universitaire de Technologie (BUT) Science des Données |
+| **Intitulé du stage** | Stagiaire Ingénieur de Données IA |
+| **Durée et dates** | 10 semaines (du 28 avril au 02 juillet 2026) |
+| **Entreprise** | MCQ - Scan|
+| **Secteur d’activité** | Intelligence Artificielle et Traitement de Données |
+| **Diplôme préparé** | Bachelor Universitaire de Technologie (BUT) Science des Données (2e année) |
 | **Établissement** | Institut Universitaire de Technologie (IUT) |
-| **Entreprise d'accueil** | [Nom de l'Entreprise / Unité de Recherche] |
-| **Secteur d’activité** | Intelligence Artificielle et Ingénierie des Données |
-| **Durée du stage** | [X] semaines (du [Date] au [Date]) |
-| **Tuteur Entreprise** | [Nom du Tuteur Entreprise], Maître de stage |
-| **Tuteur Universitaire** | [Nom du Tuteur Universitaire], Enseignant-Chercheur |
-
-### Contexte et Objectifs de la Mission
-La mission s'inscrit dans la phase amont de l'entraînement des grands modèles de langage (LLM). L'objectif central était de concevoir, d'optimiser et d'auditer un pipeline industriel de nettoyage, de filtrage sémantique et de conversion de jeux de données massifs (jusqu'à plusieurs dizaines de millions de lignes) vers un format pivot standardisé, avant leur injection dans les scripts d'ajustement fin supervisé (SFT).
-
-### Niveau de Responsabilité et Contraintes
-Positionné en autonomie sur plusieurs jeux de données critiques, j'avais la responsabilité de livrer des briques logicielles robustes et réutilisables par l'ensemble de l'équipe (notamment le module d'architecture des messages). Les contraintes majeures résidaient dans la gestion de la mémoire vive (RAM) sur serveur Ubuntu face à des volumes de données industriels, le respect strict de la confidentialité des données (RGPD), et la synchronisation logique des dialogues itératifs complexes.
+| **Tuteur entreprise** | Bogdan Khomutenko (Maître de stage)
+| **Tuteur universitaire** | Caroline Herrmann (Enseignant-Chercheur) |
 
 ---
 
-## 2. Connaissances et Compétences Mobilisées
-*Issues de la formation BUT Science des Données*
+### Contexte, Objectifs et Responsabilités
 
-Cette période de stage m'a permis de déployer à grande échelle des blocs de compétences travaillés durant les deux premières années de BUT :
-
-### Bloc : Traitement et Analyse de Données
-*   **Programmation Python :** Application des structures algorithmiques et manipulation de fichiers de données. Durant le stage, j'ai mobilisé ces acquis pour écrire les scripts de conversion des datasets de base (Bash et Python).
-*   **Pensée algorithmique ("Je suis capable de") :** Je suis capable de concevoir un algorithme séquentiel pour nettoyer des chaînes de caractères. J'ai mis en pratique cela en épurant les espaces blancs et en isolant les balises de code Markdown.
-
-### Bloc : Environnement Technologique et Outils de Développement
-*   **Environnement Linux / Ubuntu :** Utilisation des commandes système pour naviguer et exécuter des tâches. En stage, l'intégralité du pipeline tournait sur un serveur Ubuntu, m'obligeant à manipuler les fichiers via le terminal et à surveiller les ressources.
-*   **Gestion de version avec Git :** Utilisation des branches et des commandes de suivi de code. J'ai mobilisé cette compétence pour intégrer mon travail de manière propre sur le dépôt commun de l'entreprise.
+#### Contexte de la Mission
+La mission s'est déroulée intégralement au sein de la phase amont de l'entraînement des grands modèles de langage (LLM). Plus précisément, les travaux se sont concentrés sur la préparation, la structuration et la purification des corpus destinés au réglage fin supervisé (*Supervised Fine-Tuning* - SFT), une étape critique pour aligner les modèles sur des tâches complexes de raisonnement, de logique et d'exécution de code. L'activité s'est inscrite au cœur d'une équipe de production en intelligence artificielle chez MCQ, confrontée à la nécessité d'industrialiser ses flux d'alimentation en données pour s'affranchir des processus manuels artisanaux.
 
 ---
 
-## 3. Connaissances et Compétences Nouvellement Acquises
-*Développées en autonomie ou via formation interne durant le stage*
-
-Le niveau industriel du projet m'a confronté à des problématiques avancées non abordées de manière approfondie en formation :
-
-### Architecture Logicielle Orientée Objet et Dépendances Globalles
-*   **Auto-formation en POO Avancée :** Développement d'une architecture centralisée basée sur des classes mères abstraites (`base_message.py`) et le module natif `abc`.
-*   **Réalisation concrète :** Conception des Data Transfer Objects (DTO) pour modéliser les messages systèmes, utilisateurs, et l'état complexe de l'assistant. Ce module est devenu une dépendance obligatoire pour tous les convertisseurs de l'équipe.
-
-### Logique Algorithmique des Machines à États
-*   **Développement d'un mécanisme de synchronisation :** Conception de la logique *Flush Assistant* (`iterate_and_group_messages`).
-*   **Réalisation concrète :** Implémentation d'une mémoire tampon dynamique pour accumuler les blocs de réflexion (*reasoning*) et les appels d'outils (*tool calls*), résolvant ainsi le problème d'alignement des conversations multi-tours pour le format v3.
-
-### Audit Qualitatif de Données pour les LLM
-*   **Prompt Engineering et Validation Logique :** Création d'agents de notation guidés par des prompts experts hautement directifs pour auditer les hallucinations et l'exactitude syntaxique du code généré par les modèles.
-*   **Réalisation concrète :** Traitement de fichiers volumineux (*SFT Code Dataset* et *Competitive Programming*), identification des taux d'erreur par modèle (ex: ~30% d'erreurs logiques sur le segment Mixtral), et arbitrage métier pour exclure les données défectueuses.
+#### Objectifs Détaillés
+L'objectif central du projet consistait à concevoir, optimiser et auditer un pipeline industriel automatisé de bout en bout, capable de transformer des données brutes en actifs hautement qualitatifs pour l'entraînement. Les objectifs opérationnels se divisaient en trois axes stratégiques :
+* **Nettoyage et normalisation syntaxique :** Éliminer le bruit textuel des fichiers sources, uniformiser les conventions de nommage (comme l'imposition du `snake_case` pour les variables) et isoler proprement les blocs de code informatique en nettoyant les balises Markdown ou XML corrompues.
+* **Filtrage sémantique et qualitatif :** Évaluer la cohérence logique des interactions, exécuter des scripts d'audit statistique pour identifier les taux d'erreur par modèle générateur et exclure les données défectueuses ou sujettes aux hallucinations (notamment les dépassements de temps limite d'exécution - TLE).
+* **Conversion vers un format pivot standardisé :** Traduire des jeux de données massifs et hétérogènes (Bash, Python Reasoning, Programmation Compétitive) vers une structure intermédiaire unifiée (Style OpenAI v3 ou SmolLM3), garantissant leur parfaite ingestion par les scripts de calcul en aval.
 
 ---
 
-## 4. Compétences Transversales et Savoir-être Professionnels
+#### Niveau de Responsabilité
+Positionné en complète autonomie sur la gestion technique de plusieurs jeux de données particulièrement critiques pour l'entreprise, j'assurais la responsabilité directe des arbitrages de filtrage et de la validation finale du corpus. Ma mission ne se limitait pas à l'écriture de scripts éphémères, mais impliquait la conception et la livraison de briques logicielles robustes, documentées et réutilisables par l'ensemble de l'équipe d'ingénierie. Cette responsabilité s'est concrétisée par le déploiement de composants structurels essentiels (classes de validation et algorithmes de traitement) devenus des dépendances obligatoires pour les autres outils du service.
 
-L'insertion au sein de l'environnement de production a consolidé mes compétences relationnelles (Soft Skills) :
+---
 
-*   **Esprit d'équipe et transmission :** J'ai collaboré activement avec d'autres stagiaires et ingénieurs. J'ai pris soin de documenter mon code de manière exhaustive (docstrings de fichiers, commentaires *inline*) pour faciliter la reprise de mes travaux.
-*   **Adaptabilité et autonomie :** Suite au blocage technique d'un collaborateur, j'ai su reprendre la direction opérationnelle complète du jeu de données *Tool Call* en Phase 2 pour débloquer la situation et amener le taux de résolution d'alignement à 95 %.
-*   **Méthodologie de travail rigoureuse :** Structuration de mon temps selon une règle stricte (20% audit, 20% codage du convertisseur, 40% contrôle qualité et cohérence sémantique, 20% documentation), plaçant la pureté de la donnée au centre de mes priorités.
+#### Contraintes
+L'exécution de cette mission a été encadrée par quatre contraintes majeures :
+* **Optimisation matérielle :** Gestion rigoureuse de la RAM sous Ubuntu face à des volumes de données de plusieurs millions de lignes.
+* **Complexité algorithmique :** Synchronisation chronologique des dialogues multi-tours et gestion robuste des appels d'outils (*Tool Calling*).
+* **Confidentialité :** Respect strict du RGPD et protection des secrets industriels de MCQ.
+* **Intégration (Git Workflow) :** Utilisation rigoureuse de Git (une branche par convertisseur) pour travailler en équipe sans régression.
+
+---
+
+## 2. Liste des connaissances et compétences mobilisées
+
+### Compétences issues de la formation BUT SD appliquées en stage
+
+### Bloc 1 : Traiter (Ingénierie et Préparation des Données)
+L'IUT m'a apporté un socle algorithmique solide axé sur la manipulation de flux de données via des scripts Python natifs, l'utilisation de bibliothèques de traitement de chaînes de caractères et la gestion de flux d'entrée/sortie (I/O). En formation, j'ai appris à concevoir des architectures d'ingestion séquentielles pour parser, nettoyer et restructurer des fichiers de données textuelles brutes.
+
+Dans le cadre du stage, j'ai directement mobilisé ces notions académiques pour développer les premiers scripts d'ingestion du pipeline d'entreprise. J'ai mis en pratique ces acquis en implémentant des expressions régulières complexes (Regex) et des méthodes de manipulation de chaînes (`strip()`, `split()`, `replace()`) afin d'automatiser le nettoyage syntaxique de fichiers volumineux (corpus Bash et Python Reasoning). Cela s'est traduit concrètement par la purge systématique des espaces blancs superflus, la suppression des artefacts de formatage et l'isolement chirurgical des balises de code Markdown au sein des sources brutes, garantissant ainsi la propreté de la donnée avant sa transformation.
+
+### Bloc 4 : Développer (Conception Logicielle Avancée)
+L'initiation à la Programmation Orientée Objet (POO) dispensée au cours de mes deux années de BUT m'a fourni les règles conceptuelles indispensables pour concevoir du code informatique selon les standards industriels. La maîtrise théorique de principes fondateurs tels que l'héritage, le polymorphisme, l'encapsulation et la modularité m'a appris à ne plus simplement rédiger des scripts linéaires ("scripts jetables"), mais à penser mon code sous forme de composants extensibles et réutilisables.
+
+Dès mon intégration chez MCQ, j'ai exploité cette pensée logicielle structurée pour appréhender et analyser les architectures logicielles complexes déjà en place dans l'entreprise. Ce socle technique m'a permis de dialoguer efficacement avec l'équipe d'ingénierie, de concevoir des fonctions d'utilitaires hautement réutilisables et de modéliser les premiers schémas de classes de notre pipeline. J'ai ainsi appliqué les patrons de conception (*design patterns*) étudiés à l'IUT pour structurer mes modules de conversion, m'assurant que chaque brique logicielle développée puisse être facilement maintenue et étendue par d'autres collaborateurs.
+
+### Bloc 2 : Analyser (Exploration et Diagnostic Qualitatif)
+La formation universitaire m'a appris à explorer des jeux de données complexes pour y cartographier les anomalies structurelles, les valeurs manquantes et les déséquilibres statistiques. J'ai réutilisé ces techniques élémentaires pour analyser la distribution des fichiers bruts et vérifier la conformité des premiers datasets d'entraînement qui m'ont été confiés.
+
+### Bloc 3 : Valoriser (Collaboration et Proactivité en Équipe)
+Les projets tuteurés menés en équipe au sein de l'établissement ont développé mon aptitude à collaborer, à restituer mes résultats et à expliciter mes choix algorithmiques. J'ai converti cette habitude de travail collectif en une démarche de proactivité autonome (*chu dong lam viec*) pour m'intégrer rapidement dans la dynamique technique du service.
+
+---
+
+## 3. Liste des connaissances et compétences nouvellement acquises
+
+### Compétences avancées développées en autonomie sur le terrain professionnel
+
+### Bloc 1 : Traiter (Nettoyage de Cohérence de Données)
+Confronté aux exigences de la production industrielle à grande échelle, j'ai dû acquérir une compétence qui dépasse largement le simple nettoyage syntaxique appris à l'école : le nettoyage de cohérence logique et sémantique. Dans le domaine des grands modèles de langage (LLM), la donnée ne doit pas seulement être propre dans sa forme, elle doit être irréprochable dans son sens et sa temporalité.
+
+J'ai appris à concevoir des règles de gestion métier complexes pour auditer le déroulement chronologique des flux de conversations multi-tours (*Tool Calling*). Cela a nécessité le développement de filtres applicatifs capables de vérifier la cohérence des transitions d'états, de s'assurer qu'un appel d'outil possède obligatoirement sa réponse d'API correspondante, et d'éliminer les contradictions sémantiques internes. J'ai ainsi développé une expertise dans la validation sémantique profonde pour garantir la pureté absolue du corpus d'entraînement final.
+
+### Bloc 4 : Développer (Maîtrise de Git et Industrialisation)
+L'immersion dans un environnement de production en IA m'a confronté à la nécessité absolue de maîtriser le travail collaboratif à l'échelle industrielle, une dimension qui n'avait pas pu être approfondie en cours. J'ai réalisé une auto-formation intensive sur l'outil de gestion de versions Git et la plateforme GitHub, devenant pleinement opérationnel sur les flux de production réels.
+
+J'ai acquis et assimilé au bureau la gestion rigoureuse des branches selon le modèle du *Feature Branching* (création d'une branche isolée et dédiée pour chaque convertisseur de dataset). J'ai appris à résoudre de manière autonome des conflits de fusion (*merge conflicts*) complexes sur le dépôt central et à déployer mon code de façon sécurisée via le terminal sur des serveurs de production Ubuntu Server, alignant mes livrables sur les standards technologiques stricts de l'entreprise.
+
+### Bloc 2 : Analyser (Audit Visuel et Conception de GUI)
+Face au besoin critique d'analyser visuellement des millions de lignes de données, j'ai appris en autonomie à concevoir des interfaces graphiques (GUI) interactives. Cette compétence, concrétisée par le développement du *JSON Dataset Viewer*, a permis de simplifier la détection humaine des anomalies logiques et des hallucinations sémantiques au sein du corpus.
+
+### Bloc 3 : Valoriser (Adaptation Professionnelle et Proactivité Accrue)
+Mon intégration au bureau a exigé une forte capacité d'adaptation pour m'aligner sur les cycles de production rapides de l'entreprise. J'ai développé une proactivité encore plus profonde (*cang chu dong lam viec*) qui m'a donné l'autonomie nécessaire pour prendre des initiatives directes, documenter mon code de façon exhaustive et débloquer des projets d'équipe complexes.
+
+---
+
+## 4. Liste des compétences transversales et savoir-être professionnels
+
+Au-delà des lignes de code et des bases de données pures, ce stage au sein de l'équipe MCQ a été une véritable aventure méthodologique et humaine. L'immersion dans un environnement de production d'intelligence artificielle m'a permis de consolider des compétences relationnelles et comportementales (*soft skills*) indispensables pour mon avenir professionnel.
+
+---
+
+### Pensée analytique et esprit critique
+La manipulation de volumes de données industriels m'a appris qu'un bon ingénieur de données ne doit jamais accepter les données brutes à l'aveugle. J'ai développé une solide capacité à investiguer de manière méthodique des flux d'informations complexes pour y déceler la moindre faille logique.
+
+*   **La compétence en action :** Cette rigueur intellectuelle s'est concrétisée lorsque j'ai analysé le segment de données issu de Mixtral. En concevant des protocoles d'audit dédiés, j'ai mis en évidence un taux de près de **30% d'anomalies logiques**.
+*   **Résolution de problèmes :** De la même manière, face au corpus de programmation compétitive, j'ai traqué les erreurs d'exécution cachées et les dépassements de temps limite (*Time Limit Exceeded* - TLE). Cette analyse macroscopique a directement guidé les arbitrages de filtrage stratégiques de l'entreprise pour garantir la propreté du modèle.
+
+### Esprit d'équipe, collaboration et sens de la transmission
+Un pipeline de données n'est jamais un projet isolé ; il s'inscrit dans un écosystème collaboratif où la clarté de la communication est reine. Tout au long de mon parcours chez MCQ, j'ai mis un point d'honneur à maintenir un dialogue fluide, transparent et bienveillant avec les autres stagiaires et les ingénieurs seniors du service.
+
+*   **Le sens du collectif :** J'ai compris que la valeur d'un code réside dans sa capacité à être compris et repris par d'autres. C'est pourquoi j'ai accordé un soin tout particulier à l'explicitation de mes choix d'architecture logicielle.
+*   **Documentation et partage :** J'ai rédigé une documentation technique exhaustive et intégré des commentaires standardisés dans mes scripts. Cette démarche de transmission a permis à mes collègues de s'approprier le pipeline de données et d'y collaborer sans aucune friction opérationnelle.
+
+### Adaptabilité, agilité et gestion des imprévus en production
+Le monde de l'entreprise avance vite, et les priorités de production peuvent évoluer d'un jour à l'autre. J'ai découvert la réalité des cycles de développement agiles, rythmés par des points de suivi réguliers où la flexibilité devient un atout majeur.
+
+*   **Réactivité sur le terrain :** J'ai appris à accueillir les imprévus non pas comme des obstacles, mais comme des opportunités d'apprentissage.
+*   **Gestion de crise positive :** Cela s'est particulièrement illustré lorsque j'ai repris en main de manière opérationnelle le projet *Dataset Tool Call Phase 2*, qui se trouvait alors dans une impasse technique. En réévaluant mes priorités et en adaptant ma posture de travail, j'ai su insuffler une nouvelle dynamique pour débloquer la situation au profit de l'équipe.
 
 ---
 
 ## 5. Synthèse Personnelle
 
-### Évaluation des Objectifs et Autonomie
-Les objectifs fixés au début du stage ont été pleinement atteints. J'ai fait preuve d'une grande autonomie, notamment dans le choix des stratégies de filtrage des données de programmation compétitive (*Very Hard*) et dans la conception de l'outillage complémentaire (refondues de l'interface graphique avec logique booléenne ET/OU et création du visualiseur JSON autonome).
+Portant un regard rétrospectif sur ces semaines intenses passées chez MCQ, le bilan de ce stage s'avère extrêmement positif, tant sur le plan des résultats techniques que sur celui de ma trajectoire personnelle.
 
-### Gestion des Difficultés
-La principale difficulté a été l'hétérogénéité des formats bruts et la gestion des codes non testables ou en dépassement de temps limite (TLE) dans le sous-ensemble C++. J'ai surmonté ces obstacles en développant des fonctions de normalisation robustes dans `utils.py` (comme `format_name_conventions` pour imposer le `snake_case`) et en appliquant un filtrage qualitatif strict validé par mon maître de stage.
+### Un impact concret et des objectifs atteints
+Les ambitions de départ ont été pleinement concrétisées. Le pipeline automatisé que j'ai conçu est aujourd'hui entièrement opérationnel et intégré à l'infrastructure de l'entreprise. Voir mes scripts traiter avec succès **6 jeux de données critiques** et atteindre un **taux d'alignement final de 95%** a été une immense source de satisfaction professionnelle.
 
-### Alignement avec la Formation et Projet Professionnel
-Les compétences acquises au cours des deux premières années de BUT SD ont été un socle précieux, mais elles se sont révélées insuffisantes pour aborder directement l'ingénierie des LLM à grande échelle sans un effort d'auto-formation en développement logiciel (POO, gestion mémoire). Ce stage a profondément conforté mon projet professionnel, confirmant mon souhait de me spécialiser dans l'ingénierie des données appliquées à l'intelligence artificielle.
+> **Le virage de l'autonomie :** Ce projet m'a permis de tester mes limites et de mesurer mon degré d'autonomie. J'ai eu la chance de travailler dans un climat de confiance qui m'a poussé à être une force de proposition constante. L'initiative de concevoir le visualiseur *JSON Dataset Viewer* de bout en bout et de refondre l'interface utilisateur pour y intégrer des filtres logiques booléens (ET / OU) est née de cette liberté d'innover.
 
----
+### Les défis du monde réel : surmonter l'hétérogénéité
+Ce stage m'a confronté à la distance qui sépare parfois les exercices académiques de la réalité industrielle. L'extrême hétérogénéité des formats bruts et la présence de codes sources corrompus ou mal structurés ont constitué de vrais défis. Pour les surmonter, il a fallu faire preuve de persévérance et d'ingéniosité : j'ai développé des fonctions de normalisation globales et instauré des règles de filtrage radicales, à l'image de la décision d'exclure le bloc de difficulté *Very Hard* pour immuniser nos modèles contre les hallucinations sémantiques.
 
-## 6. Et maintenant ???
+Chaque problème résolu a renforcé ma capacité à prendre des décisions techniques difficiles mais nécessaires pour préserver la qualité finale du produit.
 
-Ce stage de deuxième année de BUT valide une transition majeure entre l'analyse de données académique et l'ingénierie logicielle axée sur la donnée de production.
+## 6. Vision du Futur
 
-### Perspectives Immédiates
-1.  **Restructuration technique :** À court terme, les fondations en POO développées pourraient être migrées vers des frameworks de validation de données comme Pydantic pour accélérer les temps de traitement des DTO.
-2.  **Poursuite d'études et professionnalisation :** Fort de ces acquis industriels (maîtrise d'Ubuntu, de Git, de l'optimisation mémoire et de l'audit de données LLM), j'aborde ma troisième année de BUT Science des Données avec une vision claire des exigences du marché, visant à terme un rôle d'Ingénieur de Données IA (*Data Engineer for AI*).
+Ces deux années de formation en BUT Science des Données m'ont apporté un socle académique indispensable en manipulation algorithmique et en méthodologie, tandis que mon stage chez MCQ a transformé ces concepts théoriques en compétences d'ingénierie prêtes pour la production. Cette immersion industrielle m'a prouvé que la préparation et la purification des données constituent le pilier fondamental qui rend l'intelligence artificielle et l'entraînement des modèles de langage possibles. L'apprentissage intensif de la programmation orientée objet appliquée, l'optimisation des performances d'exécution sur serveur et la rigueur collaborative imposée par Git m'ont fait évoluer techniquement bien plus rapidement que n'importe quel projet académique.
+
+Face à un domaine de l'intelligence artificielle qui évolue à une vitesse fulgurante, mon objectif immédiat est de capitaliser sur cette dynamique pour renforcer encore plus en profondeur mes compétences techniques. Je souhaite aller bien au-delà des acquis de ce stage en approfondissant les concepts d'architecture logicielle propre (*Clean Architecture*) et en explorant des frameworks industriels de validation comme *Pydantic* pour sécuriser les objets de transfert de données. Mon but est de me spécialiser dans l'optimisation avancée de pipelines d'ingestion à haute performance afin de transformer les compétences de programmation et d'ingénierie système développées en autonomie au bureau en de véritables automatismes professionnels.
+
+Pour concrétiser cette vision technique et poursuivre cette courbe de progression, mon choix pour ma troisième année de BUT Science des Données est désormais fermement arrêté : je vise activement à décrocher une opportunité en alternance. Ce modèle représente pour moi la passerelle idéale et l'équilibre parfait, me permettant d'assimiler les enseignements universitaires avancés tout en restant immergé au cœur des défis concrets et de la réactivité qu'exige une entreprise de pointe. Fort de la confiance technique acquise chez MCQ, de ma capacité à être force de proposition sur l'outillage et de ma proactivité quotidienne (*cang chu dong lam viec*), je suis pleinement prêt à m'investir à long terme pour consolider mon profil de *Data Engineer for AI*.
